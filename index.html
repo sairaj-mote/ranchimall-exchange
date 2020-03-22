@@ -5,619 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local Bitcoin++</title>
     <link rel="stylesheet" href="css/main.css">
-    <style>
-        @import url("https://fonts.googleapis.com/css?family=Barlow:500,600,700|Roboto&display=swap");
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-  font-family: 'Barlow', sans-serif;
-}
-
-:root {
-  --primary-color: violet;
-  --text: #111;
-  --text-light: #444;
-  --foreground: #fff;
-  --background: #f4f4f4;
-}
-
-body {
-  background: var(--background);
-  color: #111;
-  font-size: 16px;
-  margin: 1rem;
-}
-
-.dark-text {
-  color: #111;
-}
-
-h1, h2, h3, h4, h5 {
-  font-weight: 600;
-  font-family: 'Barlow', sans-serif;
-}
-
-button {
-  font-family: 'Barlow', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 0.4em 0.6em;
-  font-weight: 600;
-  background: none;
-  cursor: pointer;
-  border-radius: 0.3em;
-  color: var(--text);
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
-  border: 1px solid var(--text-light);
-}
-
-button:hover {
-  background: rgba(0, 0, 0, 0.06);
-}
-
-.bottom-padding {
-  padding-bottom: 1em;
-}
-
-.top-padding {
-  padding-top: 1em;
-}
-
-.bottom-margin {
-  margin-bottom: 1em;
-}
-
-.top-margin {
-  margin-top: 1em;
-}
-
-.flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-.grid {
-  display: -ms-grid;
-  display: grid;
-}
-
-.grid-2 {
-  -ms-grid-columns: auto auto;
-      grid-template-columns: auto auto;
-  gap: 1em;
-}
-
-.light-text {
-  color: var(--text-light);
-}
-
-.hide {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.hide-completely {
-  display: none;
-}
-
-.breakable {
-  word-break: break-all;
-}
-
-.separator {
-  padding: .1em;
-}
-
-.no-transformations {
-  -webkit-transform: none !important;
-          transform: none !important;
-}
-
-.loader {
-  fill: none;
-  stroke-width: 6;
-  stroke: black;
-  height: 2rem;
-  width: 2rem;
-  overflow: visible;
-  stroke-dashoffset: 210;
-  stroke-dasharray: 210;
-  padding: 2px;
-}
-
-#action {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-}
-
-#action .btn {
-  z-index: 2;
-}
-
-#action .loader {
-  position: absolute;
-  z-index: 1;
-}
-
-.clip {
-  -webkit-clip-path: circle(0);
-          clip-path: circle(0);
-}
-
-.animate-loader {
-  -webkit-animation: load 2.6s infinite, rotate 1s infinite linear;
-          animation: load 2.6s infinite, rotate 1s infinite linear;
-}
-
-.expand {
-  width: 100%;
-}
-
-.input {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  position: relative;
-  padding: 0.8em;
-  margin: 1rem 0;
-  -webkit-transition: opacity 0.3s ease;
-  transition: opacity 0.3s ease;
-  border-bottom: 1px solid var(--text-light);
-}
-
-.input input:valid {
-  -webkit-transform: translateY(0.4em);
-          transform: translateY(0.4em);
-}
-
-.input input:valid ~ label {
-  -webkit-transform: translateY(-60%) scale(0.7);
-          transform: translateY(-60%) scale(0.7);
-}
-
-.input label {
-  opacity: 0.7;
-  font-size: 1em;
-  position: absolute;
-  -webkit-transition: -webkit-transform 0.3s ease;
-  transition: -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease;
-  transition: transform 0.3s ease, -webkit-transform 0.3s ease;
-  -webkit-transform-origin: left;
-          transform-origin: left;
-  pointer-events: none;
-  will-change: contents;
-}
-
-.input input {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  font-size: 1em;
-  border: none;
-  background: transparent;
-  outline: none;
-  color: var(--text);
-}
-
-.input .validation {
-  padding-left: 0.4em;
-}
-
-.container-header {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  width: 100%;
-  padding: 0 1rem;
-}
-
-.container-header h3 {
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-  font-weight: 500;
-}
-
-.container-header span {
-  color: var(--accent-color);
-  border-radius: 0.2rem;
-  margin-right: 0.2rem;
-  padding: 0.5rem 1rem;
-  font-weight: 500;
-}
-
-.btn {
-  width: 100%;
-  padding: 1rem 1.2rem;
-  background: black;
-  border: none;
-  cursor: pointer;
-  -webkit-clip-path: circle(100%);
-          clip-path: circle(100%);
-  -webkit-transition: -webkit-clip-path 0.3s ease;
-  transition: -webkit-clip-path 0.3s ease;
-  transition: clip-path 0.3s ease;
-  transition: clip-path 0.3s ease, -webkit-clip-path 0.3s ease;
-  text-transform: uppercase;
-  color: white;
-  letter-spacing: 0.1em;
-}
-
-.back-arrow {
-  stroke: var(--text);
-  stroke-width: 6;
-  fill: none;
-  width: 2rem;
-  height: 2rem;
-  padding: 0.5rem 0.5rem 0.5rem 0;
-  cursor: pointer;
-}
-
-.card {
-  border-radius: 0.6rem;
-  padding: 1.5em;
-  background: var(--foreground);
-}
-
-.popup-container {
-  display: -ms-grid;
-  display: grid;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  place-items: center;
-  background: rgba(0, 0, 0, 0.24);
-  z-index: 10;
-  -webkit-transition: opacity 0.3s ease;
-  transition: opacity 0.3s ease;
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
-}
-
-.popup-container .popup {
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  width: 100%;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
-  border-radius: 0.5rem 0.5rem 0 0;
-  padding: 1rem;
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  background: var(--foreground);
-  -webkit-transform: translateY(1rem);
-          transform: translateY(1rem);
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
-  -webkit-box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.24);
-          box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.24);
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
-}
-
-.popup-container .popup h5 {
-  margin: 0.5rem 0;
-}
-
-.popup-container .popup button:first-of-type {
-  margin-left: auto;
-}
-
-.popup-container .popup .container-header {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0;
-}
-
-.popup-container .popup .container-header button {
-  background: rgba(var(--rgb-bw), 0.1);
-  padding: 0.5rem 1rem 0.5rem 0.5rem;
-}
-
-.select-crypto {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.select-crypto input {
-  display: none;
-}
-
-.select-crypto input:checked ~ .icon {
-  border: solid;
-}
-
-.select-crypto .icon {
-  border-radius: 4em;
-  padding: 1em;
-  background: var(--background);
-}
-
-#show_message {
-  -webkit-transform: translate(0, 0.4rem);
-          transform: translate(0, 0.4rem);
-  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
-  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
-  -webkit-box-shadow: 0.2rem 0.4rem 0.8rem rgba(0, 0, 0, 0.16);
-          box-shadow: 0.2rem 0.4rem 0.8rem rgba(0, 0, 0, 0.16);
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  color: white;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  z-index: 11;
-}
-
-#show_message span {
-  font-weight: 500;
-  padding: 1rem;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
-}
-
-#show_message button {
-  padding: 0.5rem 1rem;
-  margin: 0;
-}
-
-#show_message button svg {
-  stroke: white;
-  stroke-width: 2;
-}
-
-#background {
-  position: fixed;
-  z-index: -1;
-  height: calc(100vh + 100%);
-  left: -20vw;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
-
-#main_header {
-  padding: 1em 0;
-  text-align: center;
-}
-
-#user {
-  -ms-grid-columns: auto 1fr;
-      grid-template-columns: auto 1fr;
-}
-
-#profile_pic {
-  background: var(--background);
-  border-radius: 4em;
-  width: 4em;
-  height: 4em;
-}
-
-#switcher_header {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 2em;
-  -ms-grid-columns: (max-content)[3];
-      grid-template-columns: repeat(3, -webkit-max-content);
-      grid-template-columns: repeat(3, max-content);
-  gap: 2em;
-}
-
-#switcher_header li {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  font-size: 1.2em;
-  opacity: 0.6;
-  padding: 0.4em 0;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-}
-
-#switcher_header li:hover {
-  opacity: 1;
-  cursor: pointer;
-}
-
-#switcher_header .active {
-  opacity: 1;
-  border-bottom: 0.1em solid;
-}
-
-.exchange-section {
-  gap: 2em;
-  -ms-grid-columns: (max-content)[3];
-      grid-template-columns: repeat(3, -webkit-max-content);
-      grid-template-columns: repeat(3, max-content);
-}
-
-.exchange-option {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  border-radius: 0.5em;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
-}
-
-.exchange-option:active {
-  -webkit-transform: scale(0.9);
-          transform: scale(0.9);
-}
-
-.exchange-option svg {
-  padding: 1em;
-  height: 4em;
-  width: 4em;
-  border-radius: 0.5em;
-  margin-bottom: 0.4em;
-  background: var(--background);
-  stroke: var(--text);
-}
-
-@media only screen and (min-width: 640px) {
-  body {
-    margin: 1rem 4vw;
-  }
-  .popup-container .popup {
-    width: auto;
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
-    border-radius: 0.2rem;
-  }
-  main {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: 1.5fr 1fr;
-        grid-template-columns: 1.5fr 1fr;
-    gap: 2em;
-    padding: 2em 0;
-  }
-  #main_header {
-    text-align: left;
-  }
-  #show_message {
-    -webkit-transform: translate(0.4rem, 0);
-            transform: translate(0.4rem, 0);
-    margin: 1rem;
-    width: -webkit-max-content;
-    width: -moz-max-content;
-    width: max-content;
-    border-radius: 0.2rem;
-  }
-  #send_crypto_popup {
-    width: 24rem;
-  }
-}
-
-@media only screen and (min-width: 1280px) {
-  body {
-    margin: 1rem 8vw;
-  }
-  main {
-    -ms-grid-columns: 2fr 1fr;
-        grid-template-columns: 2fr 1fr;
-  }
-}
-
-/*@media (prefers-color-scheme: dark){
-    :root{
-        --primary-color: violet;
-        --text: #eee;
-        --text-light: #888;
-        --foreground: #1a1a1a;
-        --background: #111;
-    }
-    body{
-        background: var(--background);
-        color: #eee;
-    }
-}   */
-@media (prefers-color-scheme: light) {
-  :root {
-    --primary-color: violet;
-    --text: #111;
-    --text-light: #666;
-    --foreground: #fff;
-    --background: #f4f4f4;
-  }
-  body {
-    background: var(--background);
-    color: #111;
-  }
-}
-
-@media (prefers-color-scheme: no-preference) {
-  :root {
-    --primary-color: violet;
-    --text: #111;
-    --text-light: #666;
-    --foreground: #fff;
-    --background: #f4f4f4;
-  }
-  body {
-    background: var(--background);
-    color: #111;
-  }
-}
-/*# sourceMappingURL=main.css.map */
-    </style>
 </head>
 <body>
+    <div class="popup-container hide">
+        <div id="confirmation" class="popup">
+            <p></p>
+            <div>
+                <button class="hover" onclick="hidePopup(this)">Cancel</button>
+                <button class="hover">Ok</button>
+            </div>
+        </div>
+    </div>
     <div id="show_message" class="hide">
-        <span>Message nfivnine ijwernvijewnr ijwrnvijwnri</span>
+        <span>Message</span>
         <button id="hide_banner_btn">
         <svg viewBox="0 0 50.71 50.71">
             <title>Close this notification</title>
@@ -629,10 +29,6 @@ button:hover {
     <svg id="background" viewBox="0 0 2064.612 1967.514">
         <defs>
           <filter id="Rectangle_12" x="0" y="0" width="1502.184" height="1449.184" filterUnits="userSpaceOnUse">
-            <feOffset dx="-62" dy="3" input="SourceAlpha"/>
-            <feGaussianBlur stdDeviation="3" result="blur"/>
-            <feFlood flood-opacity="0.161"/>
-            <feComposite operator="in" in2="blur"/>
             <feComposite in="SourceGraphic"/>
           </filter>
         </defs>
@@ -646,107 +42,94 @@ button:hover {
       
     <header id="main_header">
         <small class="dark-text">RanchiMall</small> <br><h3 class="dark-text">Local Bitcoin++</h3>
-        <input type="range" min="10" max="50" step="10">
-        <label class="select-crypto">
-            <input name="crypto" type="radio">
-            <div class="icon">
-
-            </div>
-            <h4>BTC</h4>
-        </label>
-            <input name="crypto" type="radio">
     </header>
     <main>
-        <div id="left" class="bottom-margin grid card">
-            <div id="exchange" >
+        <div id="left" class="bottom-margin grid">
+            <div id="exchange" class="card">
                 <ul id="switcher_header" class="grid">
                     <li onclick="showSection(this, 'asset_section')" class="exchange-btn" title="Buy or sell crypto assets">Trade</li>
-                    <li onclick="showSection(this, 'crypto_section')" class="active exchange-btn" title="Deposit or withdraw crypto assets">Crypto</li>
-                    <li onclick="showSection(this, 'cash_section')" class="exchange-btn" title="Deposit or withdraw cash">Cash</li>
+                    <li onclick="showSection(this, 'crypto_section')" class="exchange-btn" title="Deposit or withdraw crypto assets">Crypto</li>
+                    <li onclick="showSection(this, 'cash_section')" class=" active exchange-btn" title="Deposit or withdraw cash">Cash</li>
                 </ul>
                 <div id="switcher_body">
                     <div id="asset_section" class="exchange-section grid hide-completely">
                     </div>
-                    <div id="crypto_section" class="exchange-section grid">
+                    <div id="crypto_section" class="exchange-section grid hide-completely">
                         <span id="send_crypto_btn" class="exchange-option">
-                            <svg viewBox="0 0 27.922 28.118">
-                                <g id="Group_2" data-name="Group 2" transform="translate(-155.432 516.86) rotate(-135)">
-                                  <path id="Path_1" data-name="Path 1" d="M113.149,614.891l10.675,10.675L134.5,614.891" transform="translate(112 -143.238)" fill="none" stroke-width="2"/>
-                                  <line id="Line_1" data-name="Line 1" y2="25.839" transform="translate(235.686 456.5)" fill="none" stroke-width="2"/>
-                                </g>
-                              </svg>                                                          
+                            <svg viewBox="0 0 73 73">
+                                <line x1="22.13" y1="50.87" x2="50.48" y2="22.52"/>
+                                <polyline points="30.71,22.24 50.76,22.24 50.76,42.29 "/>
+                                <rect x="0.5" y="0.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 0 73)" class="st1" width="72" height="72"/>
+                            </svg>                                                 
                             <h5>Send</h5>
                         </span>
-                        <span class="exchange-option">
-                            <svg viewBox="0 0 34.058 45.243">
-                                <g id="Group_3" data-name="Group 3" transform="translate(-223.442 -468.5)">
-                                  <g id="Group_2" data-name="Group 2" transform="translate(-1 30)">
-                                    <path id="Path_1" data-name="Path 1" d="M113.149,614.891l10.675,10.675L134.5,614.891" transform="translate(112 -143.238)" fill="none" stroke-width="2"/>
-                                    <line id="Line_1" data-name="Line 1" y2="25.839" transform="translate(235.686 456.5)" fill="none" stroke-width="2"/>
-                                  </g>
-                                  <line id="Line_2" data-name="Line 2" x2="16" transform="translate(241.5 476.5)" fill="none" stroke-width="2"/>
-                                  <line id="Line_3" data-name="Line 3" y2="16" transform="translate(249.5 468.5)" fill="none" stroke-width="2"/>
-                                </g>
-                              </svg>                              
+                        <span id="deposit_crypto_btn" class="exchange-option">
+                            <svg viewBox="0 0 73 73">
+                                <line x1="33.78" y1="22.72" x2="33.78" y2="62.81"/>
+                                <polyline class="st0" points="47.96,49.03 33.78,63.2 19.61,49.03 "/>
+                                <line x1="47.15" y1="23.09" x2="47.15" y2="9.73"/>
+                                <line x1="40.47" y1="16.41" x2="53.83" y2="16.41"/>
+                                <rect x="0.5" y="0.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 0 73)" class="st1" width="72" height="72"/>
+                            </svg>                       
                             <h5>Deposit</h5>
                         </span>
-                        <span class="exchange-option">
-                            <svg viewBox="0 0 34.058 36.839">
-                                <g id="Group_4" data-name="Group 4" transform="translate(-223.442 -475.5)">
-                                  <g id="Group_2" data-name="Group 2" transform="translate(470.649 968.839) rotate(180)">
-                                    <path id="Path_1" data-name="Path 1" d="M113.149,614.891l10.675,10.675L134.5,614.891" transform="translate(112 -143.238)" fill="none" stroke-width="2"/>
-                                    <line id="Line_1" data-name="Line 1" y2="25.839" transform="translate(235.686 456.5)" fill="none" stroke-width="2"/>
-                                  </g>
-                                  <line id="Line_2" data-name="Line 2" x2="16" transform="translate(241.5 476.5)" fill="none" stroke-width="2"/>
-                                </g>
-                              </svg>
-                              
+                        <span id="withdraw_crypto_btn" class="exchange-option">
+                            <svg viewBox="0 0 73 73">
+                                <line x1="33.78" y1="63.73" x2="33.78" y2="23.63"/>
+                                <polyline points="19.61,37.42 33.78,23.24 47.96,37.42 "/>
+                                <line x1="40.47" y1="16.41" x2="53.83" y2="16.41"/>
+                                <rect x="0.5" y="0.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 0 73)" class="st1" width="72" height="72"/>
+                            </svg>
                             <h5>Withdraw</h5>
                         </span>
                     </div>
-                    <div id="cash_section" class="exchange-section grid hide-completely">
-                        <span class="exchange-option">
-                            <svg viewBox="0 0 34.058 45.243">
-                                <g id="Group_3" data-name="Group 3" transform="translate(-223.442 -468.5)">
-                                  <g id="Group_2" data-name="Group 2" transform="translate(-1 30)">
-                                    <path id="Path_1" data-name="Path 1" d="M113.149,614.891l10.675,10.675L134.5,614.891" transform="translate(112 -143.238)" fill="none" stroke-width="2"/>
-                                    <line id="Line_1" data-name="Line 1" y2="25.839" transform="translate(235.686 456.5)" fill="none" stroke-width="2"/>
-                                  </g>
-                                  <line id="Line_2" data-name="Line 2" x2="16" transform="translate(241.5 476.5)" fill="none" stroke-width="2"/>
-                                  <line id="Line_3" data-name="Line 3" y2="16" transform="translate(249.5 468.5)" fill="none" stroke-width="2"/>
-                                </g>
-                              </svg>                              
+                    <div id="cash_section" class="exchange-section grid">
+                        <span id="deposit_cash_btn" class="exchange-option">
+                            <svg viewBox="0 0 73 73">
+                                <line x1="33.78" y1="22.72" x2="33.78" y2="62.81"/>
+                                <polyline class="st0" points="47.96,49.03 33.78,63.2 19.61,49.03 "/>
+                                <line x1="47.15" y1="23.09" x2="47.15" y2="9.73"/>
+                                <line x1="40.47" y1="16.41" x2="53.83" y2="16.41"/>
+                                <rect x="0.5" y="0.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 0 73)" class="st1" width="72" height="72"/>
+                            </svg>                               
                             <h5>Deposit</h5>
                         </span>
-                        <span class="exchange-option">
-                            <svg viewBox="0 0 34.058 36.839">
-                                <g id="Group_4" data-name="Group 4" transform="translate(-223.442 -475.5)">
-                                  <g id="Group_2" data-name="Group 2" transform="translate(470.649 968.839) rotate(180)">
-                                    <path id="Path_1" data-name="Path 1" d="M113.149,614.891l10.675,10.675L134.5,614.891" transform="translate(112 -143.238)" fill="none" stroke-width="2"/>
-                                    <line id="Line_1" data-name="Line 1" y2="25.839" transform="translate(235.686 456.5)" fill="none" stroke-width="2"/>
-                                  </g>
-                                  <line id="Line_2" data-name="Line 2" x2="16" transform="translate(241.5 476.5)" fill="none" stroke-width="2"/>
-                                </g>
-                              </svg>
-                              
+                        <span id="withdraw_cash_btn" class="exchange-option">
+                            <svg viewBox="0 0 73 73">
+                                <line x1="33.78" y1="63.73" x2="33.78" y2="23.63"/>
+                                <polyline points="19.61,37.42 33.78,23.24 47.96,37.42 "/>
+                                <line x1="40.47" y1="16.41" x2="53.83" y2="16.41"/>
+                                <rect x="0.5" y="0.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 0 73)" class="st1" width="72" height="72"/>
+                            </svg>
                             <h5>Withdraw</h5>
                         </span>
                     </div>
                 </div>
             </div>
+            <div id="orders_panel" class="top-padding top-margin card">
+                <h3 class="light-text bottom-padding">
+                    Trade History
+                </h3>
+                <div class="grid grid-2">
+                    <div class="balance-display">
+                    </div>
+                    <div class="balance-display">
+                    </div>
+                </div>
+            </div>
         </div>
-        <div id="right" class="card">
-            <div id="user" class="grid grid-2 bottom-margin">
+        <div id="right">
+            <div id="user" class="grid grid-2 bottom-margin card">
                 <div id="profile_pic">
 
                 </div>
                 <div>
                     <h5 class="light-text">FLO ID</h5>
                     <h4 class="breakable">FFS5hFXG7DBtdgzrLwixZLpenAmsCKRddm</h4>
-                    <button class="top-margin">Sign Out</button>
+                    <button onclick="signOut()" class="top-margin">Sign Out</button>
                 </div>
             </div>
-            <div id="balance_panel" class="top-padding">
+            <div id="balance_panel" class="top-padding card">
                 <h3 class="light-text bottom-padding">
                     Balance
                 </h3>
@@ -765,56 +148,229 @@ button:hover {
                     </div>
                 </div>
             </div>
-            <div id="orders_panel" class="top-padding top-margin">
-                <h3 class="light-text bottom-padding">
-                    Trade History
-                </h3>
-                <div class="grid grid-2">
-                    <div class="balance-display">
-                    </div>
-                    <div class="balance-display">
-                    </div>
-                </div>
-            </div>
         </div>
+        <!-- Crypto section-->
         <div class="popup-container hide">
             <div id="send_crypto_popup" class="popup">
-                <div class="container-header">
-                    <svg class="back-arrow" onclick="hidePopup('send_crypto_popup')" viewBox="0 0 31.24 56.83">
+                <div class="container-header bottom-margin">
+                    <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
                         <title>Close this popup</title>
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
-                    <h3 class="medium-top-bottom-margin">Send Crypto</h3>
+                    <h3>Send Crypto</h3>
+                    <div class="action">
+                        <button class="btn" type="submit">
+                            Send
+                        </button>
+                        <svg viewBox="0 0 73 73" class="loader">
+                            <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                        </svg>
+                    </div>
                 </div>
                 <h5>Select Crypto</h5>
+                <div class="crypto-selector flex expand">
+                    <label class="select-crypto">
+                        <input name="crypto" type="radio">
+                        <div class="icon">
+            
+                        </div>
+                        <h4>BTC</h4>
+                        <svg class="selected" viewBox="0 0 73 73">
+                            <circle cx="36.5" cy="36.5" r="36"/>
+                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                        </svg>
+                    </label>
+                    <label class="select-crypto">
+                        <input name="crypto" type="radio">
+                        <div class="icon">
+            
+                        </div>
+                        <h4>FLO</h4>
+                        <svg class="selected" viewBox="0 0 73 73">
+                            <circle cx="36.5" cy="36.5" r="36"/>
+                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                        </svg>
+                    </label>
+                </div>
                 <span class="input">
                     <input type="text" required>
                     <label>Sender's FLO ID</label>
-                    <span class="validation interaction"><h4>X</h4></span>
                 </span>
                 <span class="input">
-                    <input type="text" required>
+                    <input type="password" required>
                     <label>Sender's Private key</label>
-                    <span class="validation interaction"><h4>X</h4></span>
                 </span>
                 <span class="input">
                     <input type="text" required>
                     <label>Reciever's FLO ID</label>
-                    <span class="validation interaction"><h4>X</h4></span>
                 </span>
                 <span class="input">
-                    <input type="text" inputmode="numeric" required>
+                    <input type="number" inputmode="numeric" required>
                     <label>Amount</label>
-                    <span class="validation interaction"><h4>X</h4></span>
                 </span>
-                <div id="action" class="expand bottom-margin">
-                    <button class="btn expand" type="submit" id="sign">
-                        Send
-                    </button>
-                    <svg id="loader" viewBox="0 0 73 73" class="loader">
-                        <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+            </div>
+        </div>
+        <div class="popup-container hide">
+            <div id="deposit_crypto_popup" class="popup">
+                <div class="container-header bottom-margin">
+                    <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
+                        <title>Close this popup</title>
+                        <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
+                    <h3>Deposit Crypto</h3>
+                    <div class="action">
+                        <button class="btn" type="submit" >
+                            Deposit
+                        </button>
+                        <svg viewBox="0 0 73 73" class="loader">
+                            <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                        </svg>
+                    </div>
                 </div>
+                <h5>Select Crypto</h5>
+                <div class="crypto-selector flex expand">
+                    <label class="select-crypto">
+                        <input name="crypto" type="radio">
+                        <div class="icon">
+            
+                        </div>
+                        <h4>BTC</h4>
+                        <svg class="selected" viewBox="0 0 73 73">
+                            <circle cx="36.5" cy="36.5" r="36"/>
+                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                        </svg>
+                    </label>
+                    <label class="select-crypto">
+                        <input name="crypto" type="radio">
+                        <div class="icon">
+            
+                        </div>
+                        <h4>FLO</h4>
+                        <svg class="selected" viewBox="0 0 73 73">
+                            <circle cx="36.5" cy="36.5" r="36"/>
+                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                        </svg>
+                    </label>
+                </div>
+                <span class="input">
+                    <input type="text" required>
+                    <label>Sender's FLO ID</label>
+                </span>
+                <span class="input">
+                    <input type="password" required>
+                    <label>Sender's Private key</label>
+                </span>
+                <span class="input">
+                    <input type="number" inputmode="numeric" required>
+                    <label>Amount</label>
+                </span>
+            </div>
+        </div>
+        <div class="popup-container hide">
+            <div id="withdraw_crypto_popup" class="popup">
+                <div class="container-header bottom-margin">
+                    <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
+                        <title>Close this popup</title>
+                        <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
+                    </svg>
+                    <h3>Withdraw Crypto</h3>
+                    <div class="action" onclick="btnLoading(this, 'start')">
+                        <button class="btn" type="submit" >
+                            withdraw
+                        </button>
+                        <svg viewBox="0 0 73 73" class="loader">
+                            <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <h5>Select Crypto</h5>
+                <div class="crypto-selector flex expand">
+                    <label class="select-crypto">
+                        <input name="crypto" type="radio">
+                        <div class="icon">
+            
+                        </div>
+                        <h4>BTC</h4>
+                        <svg class="selected" viewBox="0 0 73 73">
+                            <circle cx="36.5" cy="36.5" r="36"/>
+                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                        </svg>
+                    </label>
+                    <label class="select-crypto">
+                        <input name="crypto" type="radio">
+                        <div class="icon">
+            
+                        </div>
+                        <h4>FLO</h4>
+                        <svg class="selected" viewBox="0 0 73 73">
+                            <circle cx="36.5" cy="36.5" r="36"/>
+                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                        </svg>
+                    </label>
+                </div>
+                <span class="input">
+                    <input type="text" required>
+                    <label>Recieving crypto Address</label>
+                </span>
+                <span class="input">
+                    <input type="number" inputmode="numeric" required>
+                    <label>Amount</label>
+                </span>
+            </div>
+        </div>
+        <!-- Cash section-->
+        <div class="popup-container hide">
+            <div id="deposit_cash_popup" class="popup">
+                <div class="container-header bottom-margin">
+                    <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
+                        <title>Close this popup</title>
+                        <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
+                    </svg>
+                    <h3>Deposit Cash</h3>
+                    <div class="action">
+                        <button class="btn" type="submit" >
+                            Deposit
+                        </button>
+                        <svg viewBox="0 0 73 73" class="loader">
+                            <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <span class="input">
+                    <input type="text" required>
+                    <label>Depositer's UPI address</label>
+                </span>
+                <span class="input">
+                    <input type="number" inputmode="numeric" required>
+                    <label>Amount in ₹</label>
+                </span>
+            </div>
+        </div>
+        <div class="popup-container hide">
+            <div id="withdraw_cash_popup" class="popup">
+                <div class="container-header bottom-margin">
+                    <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
+                        <title>Close this popup</title>
+                        <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
+                    </svg>
+                    <h3>Withdraw Cash</h3>
+                    <div class="action">
+                        <button class="btn" type="submit" >
+                            withdraw
+                        </button>
+                        <svg viewBox="0 0 73 73" class="loader">
+                            <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                        </svg>
+                    </div>
+                </div>
+                <span class="input">
+                    <input type="text" required>
+                    <label>Recieving UPI Address</label>
+                </span>
+                <span class="input">
+                    <input type="number" inputmode="numeric" required>
+                    <label>Amount in ₹</label>
+                </span>
             </div>
         </div>
     </main>
@@ -840,11 +396,18 @@ button:hover {
 
             // hides the popup or modal 
             function hidePopup(pop, permission){
+                let popup;
+                typeof pop === 'string' ? popup = document.getElementById(pop) : popup = pop.closest('.popup');
                 if(permission === 'no') return;
-                let popup = document.getElementById(pop)
-                popup.parentNode.classList.add('hide');    
-                popup.classList.remove('no-transformations'); 
-                clearAllInputs(popup)   
+                popup.closest('.popup-container').classList.add('hide');    
+                popup.closest('.popup').classList.remove('no-transformations'); 
+                setTimeout(() => {
+                    clearAllInputs(popup) 
+                    if(popup.querySelector('.btn')){
+                        popup.querySelector('.btn').classList.remove('clip')
+                        popup.querySelector('.loader').classList.remove('animate-loader')
+                    }
+                }, 300)
             }
 
             function setAttributes(el, attrs) {
@@ -895,6 +458,19 @@ button:hover {
                     }
                 })
             }
+            function enableBtn(btn){
+                if(typeof btn === 'string')
+                    btn = document.getElementById(btn);
+                if(btn.disabled)
+                    btn.disabled = false;
+            }
+
+            function disableBtn(btn){
+                if(typeof btn === 'string')
+                    btn = document.getElementById(btn);
+                if(!btn.disabled)
+                    btn.disabled = true;
+            }
         let allExchangeSections = document.querySelectorAll('.exchange-section'),
             allExchangeBtns = document.querySelectorAll('.exchange-btn');
         function showSection(thisBtn, elem){
@@ -911,7 +487,33 @@ button:hover {
         document.getElementById('switcher_body').addEventListener('click', (e) => {
             if(e.target.closest('#send_crypto_btn'))
                 showPopup('send_crypto_popup')
+            if(e.target.closest('#deposit_crypto_btn'))
+                showPopup('deposit_crypto_popup')
+            if(e.target.closest('#withdraw_crypto_btn'))
+                showPopup('withdraw_crypto_popup')
+            if(e.target.closest('#deposit_cash_btn'))
+                showPopup('deposit_cash_popup')
+            if(e.target.closest('#withdraw_cash_btn'))
+                showPopup('withdraw_cash_popup')
         })
+        function btnLoading(btn, option){
+            if(typeof btn === 'string')
+                btn = document.getElementById(btn);
+            if(option === 'start'){
+                btn.children[0].classList.add('clip')
+                btn.children[1].classList.add('animate-loader')
+            }
+            else{
+                btn.children[0].classList.remove('clip')
+                btn.children[1].classList.remove('animate-loader')
+            }
+        }
+        function signOut(){
+            askConfirmation('Do you want to sign out?').then((result) => {
+                if(result)
+                    console.log('signed out')
+            })
+        }
     </script>
 </body>
 </html>

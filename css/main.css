@@ -8,9 +8,9 @@
 }
 
 :root {
-  --primary-color: violet;
+  --primary-color: #1E88E5;
   --text: #111;
-  --text-light: #444;
+  --text-light: 68, 68, 68;
   --foreground: #fff;
   --background: #f4f4f4;
 }
@@ -39,17 +39,19 @@ button {
   font-weight: 600;
   background: none;
   cursor: pointer;
-  border-radius: 0.3em;
+  border-radius: 0.2em;
   color: var(--text);
   -webkit-transition: -webkit-transform 0.3s;
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
-  border: 1px solid var(--text-light);
+  border: 1px solid rgba(var(--text-light), 0.6);
 }
 
-button:hover {
-  background: rgba(0, 0, 0, 0.06);
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .bottom-padding {
@@ -86,7 +88,7 @@ button:hover {
 }
 
 .light-text {
-  color: var(--text-light);
+  color: rgba(var(--text-light), 1);
 }
 
 .hide {
@@ -114,7 +116,7 @@ button:hover {
 .loader {
   fill: none;
   stroke-width: 6;
-  stroke: black;
+  stroke: var(--primary-color);
   height: 2rem;
   width: 2rem;
   overflow: visible;
@@ -123,7 +125,39 @@ button:hover {
   padding: 2px;
 }
 
-#action {
+@-webkit-keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes rotate {
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes load {
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -210;
+  }
+}
+
+@keyframes load {
+  50% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -210;
+  }
+}
+
+.action {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -136,18 +170,19 @@ button:hover {
           justify-content: center;
 }
 
-#action .btn {
+.action .btn {
   z-index: 2;
 }
 
-#action .loader {
+.action .loader {
   position: absolute;
   z-index: 1;
+  padding: 0.4em;
 }
 
 .clip {
-  -webkit-clip-path: circle(0);
-          clip-path: circle(0);
+  -webkit-clip-path: circle(0) !important;
+          clip-path: circle(0) !important;
 }
 
 .animate-loader {
@@ -169,24 +204,32 @@ button:hover {
           align-items: center;
   position: relative;
   padding: 0.8em;
-  margin: 1rem 0;
-  -webkit-transition: opacity 0.3s ease;
-  transition: opacity 0.3s ease;
-  border-bottom: 1px solid var(--text-light);
+  margin-bottom: 1.5em;
+  border-radius: 0.2em;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  background: rgba(var(--text-light), 0.1);
+}
+
+.input:last-of-type {
+  margin-bottom: 0;
 }
 
 .input input:valid {
   -webkit-transform: translateY(0.4em);
           transform: translateY(0.4em);
+  caret-color: var(--primary-color);
 }
 
 .input input:valid ~ label {
   -webkit-transform: translateY(-60%) scale(0.7);
           transform: translateY(-60%) scale(0.7);
+  opacity: 1;
+  color: var(--primary-color);
 }
 
 .input label {
-  opacity: 0.7;
+  opacity: .7;
   font-size: 1em;
   position: absolute;
   -webkit-transition: -webkit-transform 0.3s ease;
@@ -208,10 +251,6 @@ button:hover {
   background: transparent;
   outline: none;
   color: var(--text);
-}
-
-.input .validation {
-  padding-left: 0.4em;
 }
 
 .container-header {
@@ -245,8 +284,6 @@ button:hover {
 }
 
 .btn {
-  width: 100%;
-  padding: 1rem 1.2rem;
   background: black;
   border: none;
   cursor: pointer;
@@ -265,7 +302,6 @@ button:hover {
   stroke: var(--text);
   stroke-width: 6;
   fill: none;
-  width: 2rem;
   height: 2rem;
   padding: 0.5rem 0.5rem 0.5rem 0;
   cursor: pointer;
@@ -304,7 +340,7 @@ button:hover {
   height: -moz-max-content;
   height: max-content;
   border-radius: 0.5rem 0.5rem 0 0;
-  padding: 1rem;
+  padding: 1.5rem;
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -335,14 +371,15 @@ button:hover {
       -ms-flex-align: center;
           align-items: center;
   padding: 0;
+  margin-bottom: 1.5em;
 }
 
-.popup-container .popup .container-header button {
-  background: rgba(var(--rgb-bw), 0.1);
-  padding: 0.5rem 1rem 0.5rem 0.5rem;
+.crypto-selector {
+  margin: 0.4em 0 1.5em 0;
 }
 
 .select-crypto {
+  position: relative;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -353,6 +390,8 @@ button:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-right: 1em;
+  cursor: pointer;
 }
 
 .select-crypto input {
@@ -360,13 +399,44 @@ button:hover {
 }
 
 .select-crypto input:checked ~ .icon {
-  border: solid;
+  -webkit-box-shadow: 0 0 0 2px #00C853 inset;
+          box-shadow: 0 0 0 2px #00C853 inset;
+}
+
+.select-crypto input:checked ~ .selected {
+  -webkit-transform: none;
+          transform: none;
 }
 
 .select-crypto .icon {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
   border-radius: 4em;
-  padding: 1em;
+  padding: 1.2em;
   background: var(--background);
+}
+
+.select-crypto .selected {
+  position: absolute;
+  right: 0;
+  height: 1em;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+  transition: transform 0.3s, -webkit-transform 0.3s;
+}
+
+.select-crypto .selected circle {
+  fill: #00C853;
+  stroke: none;
+}
+
+.select-crypto .selected polyline {
+  fill: none;
+  stroke: var(--foreground);
+  stroke-width: 6;
 }
 
 #show_message {
@@ -412,6 +482,34 @@ button:hover {
 #show_message button svg {
   stroke: white;
   stroke-width: 2;
+}
+
+#confirmation {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 1rem;
+}
+
+#confirmation p {
+  margin: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(var(--rgb-bw), 1) !important;
+}
+
+#confirmation div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#confirmation div button:first-of-type {
+  margin-left: auto;
 }
 
 #background {
@@ -509,13 +607,19 @@ button:hover {
 }
 
 .exchange-option svg {
-  padding: 1em;
+  padding: 0.8em;
   height: 4em;
   width: 4em;
+  fill: none;
   border-radius: 0.5em;
   margin-bottom: 0.4em;
   background: var(--background);
   stroke: var(--text);
+  stroke-width: 3;
+}
+
+.exchange-option svg rect {
+  visibility: hidden;
 }
 
 @media only screen and (min-width: 640px) {
@@ -549,7 +653,22 @@ button:hover {
     width: max-content;
     border-radius: 0.2rem;
   }
-  #send_crypto_popup {
+  #confirmation {
+    padding: 1rem;
+    width: 24rem;
+  }
+  #confirmation button {
+    margin-left: 0.5rem;
+  }
+  #confirmation button:first-of-type {
+    margin-left: auto;
+  }
+  #confirmation p {
+    margin: 1rem;
+    margin-bottom: 2rem;
+  }
+  #send_crypto_popup, #deposit_crypto_popup, #withdraw_crypto_popup,
+  #deposit_cash_popup, #withdraw_cash_popup {
     width: 24rem;
   }
 }
@@ -564,11 +683,17 @@ button:hover {
   }
 }
 
+@media only screen and (min-width: 1920px) {
+  body {
+    font-size: 24px;
+    margin: 2rem 16vw;
+  }
+}
+
 /*@media (prefers-color-scheme: dark){
     :root{
-        --primary-color: violet;
         --text: #eee;
-        --text-light: #888;
+        --text-light: 136, 136, 136;
         --foreground: #1a1a1a;
         --background: #111;
     }
@@ -576,12 +701,11 @@ button:hover {
         background: var(--background);
         color: #eee;
     }
-}   */
+} */
 @media (prefers-color-scheme: light) {
   :root {
-    --primary-color: violet;
     --text: #111;
-    --text-light: #666;
+    --text-light: 102, 102, 102;
     --foreground: #fff;
     --background: #f4f4f4;
   }
@@ -593,9 +717,8 @@ button:hover {
 
 @media (prefers-color-scheme: no-preference) {
   :root {
-    --primary-color: violet;
     --text: #111;
-    --text-light: #666;
+    --text-light: 102, 102, 102;
     --foreground: #fff;
     --background: #f4f4f4;
   }

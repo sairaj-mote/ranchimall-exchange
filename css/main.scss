@@ -6,9 +6,9 @@
     font-family: 'Barlow', sans-serif;
 }
 :root{
-    --primary-color: violet;
+    --primary-color: #1E88E5;
     --text: #111;
-    --text-light: #444;
+    --text-light: 68, 68, 68;
     --foreground: #fff;
     --background: #f4f4f4;
 }
@@ -33,13 +33,15 @@ button{
     font-weight: 600;
     background: none;
     cursor: pointer;
-    border-radius: 0.3em;
+    border-radius: 0.2em;
     color: var(--text);
     transition: transform 0.3s;
-    border: 1px solid var(--text-light);
-    &:hover{
-        background: rgba($color: #000000, $alpha: .06);
-    }
+    border: 1px solid rgba(var(--text-light), 0.6);
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none; 
+    margin: 0; 
 }
 .bottom-padding{
     padding-bottom: 1em;
@@ -64,7 +66,7 @@ button{
     gap: 1em;
 }
 .light-text{
-    color: var(--text-light);
+    color: rgba(var(--text-light), 1);
 }
 .hide{
     opacity: 0;
@@ -85,7 +87,7 @@ button{
 .loader{
     fill: none;
     stroke-width: 6;
-    stroke: black;
+    stroke: var(--primary-color);
     height: 2rem;
     width: 2rem;
     overflow: visible;
@@ -93,7 +95,20 @@ button{
     stroke-dasharray: 210;
     padding: 2px;
 }
-#action{
+@keyframes rotate{
+    100%{
+        transform: rotate(360deg);
+    }
+}
+@keyframes load{
+    50%{
+        stroke-dashoffset: 0;
+    }
+    100%{
+        stroke-dashoffset: -210;
+    }
+}
+.action{
     position: relative;
     display: flex;
     align-items: center;
@@ -104,10 +119,11 @@ button{
     .loader{
         position: absolute;
         z-index: 1;
+        padding: 0.4em;
     }
 }
 .clip{
-    clip-path: circle(0);
+    clip-path: circle(0) !important;
 }
 .animate-loader{
     animation: load 2.6s infinite, rotate 1s infinite linear;
@@ -121,17 +137,24 @@ button{
     align-items: center;
     position: relative;
     padding: 0.8em;
-    margin: 1rem 0;
-    transition: opacity 0.3s ease;
-    border-bottom: 1px solid var(--text-light);
+    margin-bottom: 1.5em;
+    border-radius: 0.2em;
+    transition: opacity 0.3s;
+    background: rgba(var(--text-light), 0.1);
+    &:last-of-type{
+        margin-bottom: 0;
+    }
     input:valid{
         transform: translateY(0.4em);
+        caret-color: var(--primary-color);
     }
     input:valid ~ label{
         transform: translateY(-60%)  scale(0.7);
+        opacity: 1;
+        color: var(--primary-color);
     }
     label{
-        opacity: 0.7;
+        opacity: .7;
         font-size: 1em;
         position: absolute;
         transition: transform 0.3s ease;
@@ -146,9 +169,6 @@ button{
         background: transparent;
         outline: none;
         color: var(--text);
-    }
-    .validation{
-        padding-left: 0.4em;
     }
 }
 .container-header{
@@ -170,8 +190,6 @@ button{
     }
 }
 .btn{
-    width: 100%;
-    padding: 1rem 1.2rem;
     background: black;
     border: none;
     cursor: pointer;
@@ -185,7 +203,6 @@ button{
     stroke: var(--text);
     stroke-width: 6;
     fill: none;
-    width: 2rem;
     height: 2rem;
     padding: 0.5rem 0.5rem 0.5rem 0;
     cursor: pointer;
@@ -214,7 +231,7 @@ button{
         width: 100%;
         height: max-content;
         border-radius: 0.5rem 0.5rem 0 0;
-        padding: 1rem;
+        padding: 1.5rem;
         position: relative;
         display: flex;
         background: var(--foreground);
@@ -232,27 +249,51 @@ button{
         .container-header{
             align-items: center;
             padding: 0;
-            button{
-                background: rgba(var(--rgb-bw), 0.1);
-                padding: 0.5rem 1rem 0.5rem 0.5rem;
-            }
+            margin-bottom: 1.5em;
         }
     }
 }
+.crypto-selector{
+    margin: 0.4em 0 1.5em 0;
+}
 .select-crypto{
+    position: relative;
     display: inline-flex;
     flex-direction: column;
     align-items: center;
+    margin-right: 1em;
+    cursor: pointer;
     input{
         display: none;
     }
     input:checked ~ .icon{
-        border: solid;
+        box-shadow: 0 0 0 2px #00C853 inset;
+    }
+    input:checked ~ .selected{
+        transform: none;
     }
     .icon{
+        transition: 0.3s;
         border-radius: 4em;
-        padding: 1em;
+        padding: 1.2em;
         background: var(--background);
+    }
+    .selected{
+        position: absolute;
+        right: 0;
+        height: 1em;
+        transform: scale(0);
+        transition: transform 0.3s;
+        circle{
+            fill: #00C853;
+            stroke: none;
+        }
+        polyline{
+            fill: none;
+            stroke: var(--foreground);
+            stroke-width: 6;
+        }
+
     }
 }
 #show_message{
@@ -279,6 +320,23 @@ button{
         svg{
             stroke: white;
             stroke-width: 2;
+        }
+    }
+}
+#confirmation{
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    p{
+        margin: 1rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: rgba(var(--rgb-bw),1) !important;
+    }
+    div{
+        display: flex;
+        button:first-of-type{
+            margin-left: auto;
         }
     }
 }
@@ -342,13 +400,18 @@ button{
         transform: scale(0.9);
     }
     svg{
-        padding: 1em;
+        padding: 0.8em;
         height: 4em;
         width: 4em;
+        fill: none;
         border-radius: 0.5em;
         margin-bottom: 0.4em;
         background: var(--background);
         stroke: var(--text);
+        stroke-width: 3;
+        rect{
+            visibility: hidden;
+        }
     }
 }
 @media only screen and (min-width: 640px){
@@ -377,7 +440,22 @@ button{
         width: max-content;
         border-radius: 0.2rem;
     }
-    #send_crypto_popup{
+    #confirmation{
+        padding: 1rem;
+        width: 24rem;
+        button{
+            margin-left: 0.5rem;
+            &:first-of-type{
+                margin-left: auto;
+            }
+        }
+        p{
+            margin: 1rem;
+            margin-bottom: 2rem;
+        }
+    }
+    #send_crypto_popup, #deposit_crypto_popup, #withdraw_crypto_popup,
+    #deposit_cash_popup, #withdraw_cash_popup{
         width: 24rem;
     }
 }
@@ -389,11 +467,16 @@ button{
         grid-template-columns: 2fr 1fr;
     }
 }
+@media only screen and (min-width: 1920px){
+    body{
+        font-size: 24px;
+        margin: 2rem 16vw;
+    }
+}
 /*@media (prefers-color-scheme: dark){
     :root{
-        --primary-color: violet;
         --text: #eee;
-        --text-light: #888;
+        --text-light: 136, 136, 136;
         --foreground: #1a1a1a;
         --background: #111;
     }
@@ -401,12 +484,11 @@ button{
         background: var(--background);
         color: #eee;
     }
-}   */
+} */
 @media (prefers-color-scheme: light){
     :root{
-        --primary-color: violet;
         --text: #111;
-        --text-light: #666;
+        --text-light: 102, 102, 102;
         --foreground: #fff;
         --background: #f4f4f4;
     }
@@ -417,9 +499,8 @@ button{
 }
 @media (prefers-color-scheme: no-preference){
     :root{
-        --primary-color: violet;
         --text: #111;
-        --text-light: #666;
+        --text-light: 102, 102, 102;
         --foreground: #fff;
         --background: #f4f4f4;
     }
