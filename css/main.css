@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Barlow:500,600,700|Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Barlow:400,500,600,700&display=swap");
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -10,9 +10,9 @@
 :root {
   --primary-color: #1E88E5;
   --text: #111;
-  --text-light: 68, 68, 68;
+  --text-light: 85, 85, 85;
   --foreground: #fff;
-  --background: #f4f4f4;
+  --background: #eaeaea;
 }
 
 body {
@@ -22,22 +22,32 @@ body {
   margin: 1rem;
 }
 
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
 .dark-text {
   color: #111;
 }
 
 h1, h2, h3, h4, h5 {
   font-weight: 600;
-  font-family: 'Barlow', sans-serif;
 }
 
 button {
+  position: relative;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   font-family: 'Barlow', sans-serif;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   padding: 0.4em 0.6em;
   font-weight: 600;
-  background: none;
   cursor: pointer;
   border-radius: 0.2em;
   color: var(--text);
@@ -45,13 +55,54 @@ button {
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
-  border: 1px solid rgba(var(--text-light), 0.6);
+  border: none;
+  background: rgba(var(--text-light), 0.1);
+  -webkit-tap-highlight-color: transparent;
+}
+
+button::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--text-light), 0.16);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-clip-path: circle(0%);
+          clip-path: circle(0%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+button:hover::after {
+  -webkit-clip-path: circle(100%);
+          clip-path: circle(100%);
+}
+
+button:focus {
+  outline: thin solid rgba(var(--text-light), 1);
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input:invalid {
+  outline: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+::-moz-focus-inner {
+  border: none;
 }
 
 .bottom-padding {
@@ -111,6 +162,32 @@ input[type=number]::-webkit-outer-spin-button {
 .no-transformations {
   -webkit-transform: none !important;
           transform: none !important;
+}
+
+.hoverable {
+  position: relative;
+}
+
+.hoverable::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(var(--text-light), 0.1);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  -webkit-clip-path: circle(0%);
+          clip-path: circle(0%);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.hoverable:hover::after {
+  -webkit-clip-path: circle(100%);
+          clip-path: circle(100%);
 }
 
 .loader {
@@ -246,7 +323,7 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  font-size: 1em;
+  font-size: 1rem;
   border: none;
   background: transparent;
   outline: none;
@@ -284,7 +361,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .btn {
-  background: black;
+  background: var(--primary-color);
   border: none;
   cursor: pointer;
   -webkit-clip-path: circle(100%);
@@ -294,8 +371,9 @@ input[type=number]::-webkit-outer-spin-button {
   transition: clip-path 0.3s ease;
   transition: clip-path 0.3s ease, -webkit-clip-path 0.3s ease;
   text-transform: uppercase;
-  color: white;
+  color: var(--foreground);
   letter-spacing: 0.1em;
+  padding: 0.4em 1em;
 }
 
 .back-arrow {
@@ -326,19 +404,17 @@ input[type=number]::-webkit-outer-spin-button {
   z-index: 10;
   -webkit-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
 }
 
 .popup-container .popup {
   -ms-flex-item-align: end;
       align-self: flex-end;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   width: 100%;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
   border-radius: 0.5rem 0.5rem 0 0;
   padding: 1.5rem;
   position: relative;
@@ -355,7 +431,6 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.24);
           box-shadow: 0 2rem 2rem rgba(0, 0, 0, 0.24);
   overflow-y: auto;
-  overscroll-behavior-y: contain;
 }
 
 .popup-container .popup h5 {
@@ -372,6 +447,10 @@ input[type=number]::-webkit-outer-spin-button {
           align-items: center;
   padding: 0;
   margin-bottom: 1.5em;
+}
+
+.popup-container .popup .container-header .btn {
+  padding: 0.6em 1.2em;
 }
 
 .crypto-selector {
@@ -392,6 +471,11 @@ input[type=number]::-webkit-outer-spin-button {
           align-items: center;
   margin-right: 1em;
   cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .select-crypto input {
@@ -412,8 +496,23 @@ input[type=number]::-webkit-outer-spin-button {
   -webkit-transition: 0.3s;
   transition: 0.3s;
   border-radius: 4em;
-  padding: 1.2em;
-  background: var(--background);
+  padding: 0.4em;
+  height: 2.4em;
+  width: 2.4em;
+  overflow: visible;
+  fill: var(--text);
+}
+
+.select-crypto .btc {
+  fill: #FF9900;
+}
+
+.select-crypto .flo {
+  fill: var(--text);
+}
+
+.select-crypto .inr {
+  padding: 0.45em;
 }
 
 .select-crypto .selected {
@@ -458,12 +557,13 @@ input[type=number]::-webkit-outer-spin-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: white;
+  color: var(--text);
   position: fixed;
-  bottom: 0;
   right: 0;
+  bottom: 0;
   width: 100%;
   z-index: 11;
+  background: var(--foreground);
 }
 
 #show_message span {
@@ -477,11 +577,15 @@ input[type=number]::-webkit-outer-spin-button {
 #show_message button {
   padding: 0.5rem 1rem;
   margin: 0;
+  border: none;
+  background: none;
 }
 
 #show_message button svg {
-  stroke: white;
-  stroke-width: 2;
+  height: 1em;
+  width: 1em;
+  stroke: var(--text);
+  stroke-width: 6;
 }
 
 #confirmation {
@@ -506,10 +610,19 @@ input[type=number]::-webkit-outer-spin-button {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding: 1em;
+  -webkit-box-pack: right;
+      -ms-flex-pack: right;
+          justify-content: right;
+  width: 100%;
+}
+
+#confirmation div button {
+  background: none;
 }
 
 #confirmation div button:first-of-type {
-  margin-left: auto;
+  margin-right: 0.6em;
 }
 
 #background {
@@ -525,6 +638,10 @@ input[type=number]::-webkit-outer-spin-button {
 #main_header {
   padding: 1em 0;
   text-align: center;
+}
+
+#main_header h1 {
+  font-size: 2em;
 }
 
 #user {
@@ -555,6 +672,7 @@ input[type=number]::-webkit-outer-spin-button {
       -ms-user-select: none;
           user-select: none;
   font-size: 1.2em;
+  font-weight: 600;
   opacity: 0.6;
   padding: 0.4em 0;
   text-transform: uppercase;
@@ -568,7 +686,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 #switcher_header .active {
   opacity: 1;
-  border-bottom: 0.1em solid;
+  border-bottom: 0.1em solid var(--primary-color);
+  color: var(--primary-color);
 }
 
 .exchange-section {
@@ -599,6 +718,7 @@ input[type=number]::-webkit-outer-spin-button {
   transition: -webkit-transform 0.3s;
   transition: transform 0.3s;
   transition: transform 0.3s, -webkit-transform 0.3s;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .exchange-option:active {
@@ -622,9 +742,68 @@ input[type=number]::-webkit-outer-spin-button {
   visibility: hidden;
 }
 
+.order {
+  -ms-grid-columns: 1fr auto;
+      grid-template-columns: 1fr auto;
+  margin-bottom: 2em;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.order:last-of-type {
+  margin-bottom: 0;
+}
+
+.order .details {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.order .details h3 {
+  margin-bottom: 0.2em;
+}
+
+.order .details h5 {
+  margin-top: 0.6em;
+  color: rgba(var(--text-light), 1);
+}
+
+.refresh {
+  margin-top: 0.6em;
+  margin-bottom: 1em;
+}
+
+#sign_in_popup h1 {
+  margin-top: 1em;
+}
+
+#sign_in_popup p:first-of-type {
+  margin-bottom: 4em;
+}
+
+#sign_in_popup button {
+  margin-top: 1em;
+}
+
+#sign_in_popup p:nth-of-type(2) {
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+
+.primary-btn {
+  background: var(--primary-color);
+  padding: 1em 1.2em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: #111;
+}
+
 @media only screen and (min-width: 640px) {
   body {
-    margin: 1rem 4vw;
+    margin: 1rem 6vw;
   }
   .popup-container .popup {
     width: auto;
@@ -632,6 +811,7 @@ input[type=number]::-webkit-outer-spin-button {
         -ms-grid-row-align: center;
         align-self: center;
     border-radius: 0.2rem;
+    height: auto;
   }
   main {
     display: -ms-grid;
@@ -639,7 +819,12 @@ input[type=number]::-webkit-outer-spin-button {
     -ms-grid-columns: 1.5fr 1fr;
         grid-template-columns: 1.5fr 1fr;
     gap: 2em;
-    padding: 2em 0;
+    padding: 2em 0 0 0;
+  }
+  .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 2em;
   }
   #main_header {
     text-align: left;
@@ -667,6 +852,8 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 1rem;
     margin-bottom: 2rem;
   }
+  #sign_in_popup,
+  #buy_crypto_popup, #sell_crypto_popup,
   #send_crypto_popup, #deposit_crypto_popup, #withdraw_crypto_popup,
   #deposit_cash_popup, #withdraw_cash_popup {
     width: 24rem;
@@ -675,7 +862,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 @media only screen and (min-width: 1280px) {
   body {
-    margin: 1rem 8vw;
+    margin: 1rem 16vw;
   }
   main {
     -ms-grid-columns: 2fr 1fr;
@@ -686,28 +873,42 @@ input[type=number]::-webkit-outer-spin-button {
 @media only screen and (min-width: 1920px) {
   body {
     font-size: 24px;
-    margin: 2rem 16vw;
+    margin: 2rem 24vw;
   }
 }
 
-/*@media (prefers-color-scheme: dark){
-    :root{
-        --text: #eee;
-        --text-light: 136, 136, 136;
-        --foreground: #1a1a1a;
-        --background: #111;
-    }
-    body{
-        background: var(--background);
-        color: #eee;
-    }
-} */
+@media only screen and (min-width: 2048px) {
+  body {
+    font-size: 24px;
+    margin: 2rem 32vw;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #eee;
+    --text-light: 170, 170, 170;
+    --foreground: #1a1a1a;
+    --background: #111;
+  }
+  body {
+    background: var(--background);
+    color: #eee;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     --text: #111;
-    --text-light: 102, 102, 102;
+    --text-light: 85, 85, 85;
     --foreground: #fff;
-    --background: #f4f4f4;
+    --background: #eaeaea;
   }
   body {
     background: var(--background);
@@ -718,13 +919,24 @@ input[type=number]::-webkit-outer-spin-button {
 @media (prefers-color-scheme: no-preference) {
   :root {
     --text: #111;
-    --text-light: 102, 102, 102;
+    --text-light: 85, 85, 85;
     --foreground: #fff;
-    --background: #f4f4f4;
+    --background: #eaeaea;
   }
   body {
     background: var(--background);
     color: #111;
+  }
+}
+
+@media (any-hover: hover) {
+  .cancel-order {
+    opacity: 0;
+    -webkit-transition: opacity 0.3s;
+    transition: opacity 0.3s;
+  }
+  .order:hover .cancel-order {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=main.css.map */

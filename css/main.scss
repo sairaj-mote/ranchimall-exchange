@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Barlow:500,600,700|Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Barlow:400,500,600,700&display=swap');
 *{
     box-sizing: border-box;
     padding: 0;
@@ -8,9 +8,9 @@
 :root{
     --primary-color: #1E88E5;
     --text: #111;
-    --text-light: 68, 68, 68;
+    --text-light: 85, 85, 85;
     --foreground: #fff;
-    --background: #f4f4f4;
+    --background: #eaeaea;
 }
 body{
     background: var(--background);
@@ -18,31 +18,67 @@ body{
     font-size: 16px;
     margin: 1rem;
 }
+a{
+    text-decoration: none;
+    color: var(--primary-color);
+}
 .dark-text{
     color: #111;
 }
 h1,h2,h3,h4,h5{
     font-weight: 600;
-    font-family: 'Barlow', sans-serif;
 }   
 button{
+    position: relative;
+    display: inline-flex;
+    align-items: center;
     font-family: 'Barlow', sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     padding: 0.4em 0.6em;
     font-weight: 600;
-    background: none;
     cursor: pointer;
     border-radius: 0.2em;
     color: var(--text);
     transition: transform 0.3s;
-    border: 1px solid rgba(var(--text-light), 0.6);
+    border: none;
+    background: rgba(var(--text-light), 0.1);
+    -webkit-tap-highlight-color: transparent;
+    &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(var(--text-light), .16);
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        clip-path: circle(0%);
+        transition: 0.3s;
+    }
+    &:hover::after{
+        clip-path: circle(100%);
+    }
+    &:focus{
+        outline: thin solid rgba(var(--text-light), 1);
+    }
 }
 input[type=number]::-webkit-inner-spin-button, 
 input[type=number]::-webkit-outer-spin-button { 
     -webkit-appearance: none; 
     margin: 0; 
 }
+input[type=number] {
+    -moz-appearance:textfield;
+}
+input:invalid{
+    outline: none;
+    box-shadow: none;
+}
+    ::-moz-focus-inner{
+        border: none;
+    }
 .bottom-padding{
     padding-bottom: 1em;
 }
@@ -83,6 +119,26 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .no-transformations{
     transform: none !important;
+}
+.hoverable{
+    position: relative;
+    &::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(var(--text-light), 0.1);
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        clip-path: circle(0%);
+        transition: 0.3s;
+    }
+    &:hover::after{
+        clip-path: circle(100%);
+    }
 }
 .loader{
     fill: none;
@@ -164,7 +220,7 @@ input[type=number]::-webkit-outer-spin-button {
     }
     input{
         flex: 1;
-        font-size: 1em;
+        font-size: 1rem;
         border: none;
         background: transparent;
         outline: none;
@@ -190,14 +246,15 @@ input[type=number]::-webkit-outer-spin-button {
     }
 }
 .btn{
-    background: black;
+    background: var(--primary-color);
     border: none;
     cursor: pointer;
     clip-path: circle(100%);
     transition: clip-path 0.3s ease;
     text-transform: uppercase;
-    color: white;
+    color: var(--foreground);
     letter-spacing: 0.1em;
+    padding: 0.4em 1em;
 }
 .back-arrow{
     stroke: var(--text);
@@ -223,13 +280,11 @@ input[type=number]::-webkit-outer-spin-button {
     background: rgba($color: #000000, $alpha: 0.24);
     z-index: 10;
     transition: opacity 0.3s ease;
-    overflow-y: auto;
-    overscroll-behavior-y: contain;
     .popup{
         align-self: flex-end;
+        align-items: flex-start;
         flex-wrap: wrap;
         width: 100%;
-        height: max-content;
         border-radius: 0.5rem 0.5rem 0 0;
         padding: 1.5rem;
         position: relative;
@@ -239,7 +294,6 @@ input[type=number]::-webkit-outer-spin-button {
         transition: transform 0.3s;
         box-shadow: 0 2rem 2rem rgba($color: #000000, $alpha: 0.24);
         overflow-y: auto;
-        overscroll-behavior-y: contain;
         h5{
             margin: 0.5rem 0;
         }
@@ -250,6 +304,9 @@ input[type=number]::-webkit-outer-spin-button {
             align-items: center;
             padding: 0;
             margin-bottom: 1.5em;
+            .btn{
+                padding: 0.6em 1.2em;
+            }
         }
     }
 }
@@ -263,6 +320,8 @@ input[type=number]::-webkit-outer-spin-button {
     align-items: center;
     margin-right: 1em;
     cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
     input{
         display: none;
     }
@@ -275,8 +334,20 @@ input[type=number]::-webkit-outer-spin-button {
     .icon{
         transition: 0.3s;
         border-radius: 4em;
-        padding: 1.2em;
-        background: var(--background);
+        padding: 0.4em;
+        height: 2.4em;
+        width: 2.4em;
+        overflow: visible;
+        fill: var(--text);
+    }
+    .btc{
+        fill: #FF9900;
+    }
+    .flo{
+        fill: var(--text);
+    }
+    .inr{
+        padding: 0.45em;
     }
     .selected{
         position: absolute;
@@ -303,12 +374,13 @@ input[type=number]::-webkit-outer-spin-button {
     align-items: center;
     flex-direction: row;
     display: flex;
-    color: white;
+    color: var(--text);
     position: fixed;
-    bottom: 0;
     right: 0;
+    bottom: 0;
     width: 100%;
     z-index: 11;
+    background: var(--foreground);
     span{
         font-weight: 500;
         padding: 1rem;
@@ -317,9 +389,13 @@ input[type=number]::-webkit-outer-spin-button {
     button{
         padding: 0.5rem 1rem;
         margin: 0;
+        border: none;
+        background: none;
         svg{
-            stroke: white;
-            stroke-width: 2;
+            height: 1em;
+            width: 1em;
+            stroke: var(--text);
+            stroke-width: 6;
         }
     }
 }
@@ -335,8 +411,14 @@ input[type=number]::-webkit-outer-spin-button {
     }
     div{
         display: flex;
+        padding: 1em;
+        justify-content: right;
+        width: 100%;
+        button{
+            background: none;
+        }
         button:first-of-type{
-            margin-left: auto;
+            margin-right: 0.6em;
         }
     }
 }
@@ -351,6 +433,9 @@ input[type=number]::-webkit-outer-spin-button {
 #main_header{
     padding: 1em 0;
     text-align: center;
+    h1{
+        font-size: 2em
+    }
 }
 #user{
     grid-template-columns: auto 1fr;
@@ -370,6 +455,7 @@ input[type=number]::-webkit-outer-spin-button {
     li{
         user-select: none;
         font-size: 1.2em;
+        font-weight: 600;
         opacity: 0.6;
         padding: 0.4em 0;
         text-transform: uppercase;
@@ -381,7 +467,8 @@ input[type=number]::-webkit-outer-spin-button {
     }
     .active{
         opacity: 1;
-        border-bottom: 0.1em solid;
+        border-bottom: 0.1em solid var(--primary-color);
+        color: var(--primary-color);
     }
 }
 .exchange-section{
@@ -396,6 +483,7 @@ input[type=number]::-webkit-outer-spin-button {
     cursor: pointer;
     user-select: none;
     transition: transform 0.3s;
+    -webkit-tap-highlight-color: transparent;
     &:active{
         transform: scale(0.9);
     }
@@ -414,22 +502,71 @@ input[type=number]::-webkit-outer-spin-button {
         }
     }
 }
+.order{
+    grid-template-columns: 1fr auto;
+    margin-bottom: 2em;
+    &:last-of-type{
+        margin-bottom: 0;
+    }
+    align-items: flex-start;
+    .details{
+        flex: 1;
+        h3{
+            margin-bottom: 0.2em;
+        }
+        h5{
+            margin-top: 0.6em;
+            color: rgba(var(--text-light), 1);
+        }
+    }
+}
+.refresh{
+    margin-top: 0.6em;
+    margin-bottom: 1em;
+}
+#sign_in_popup{
+    h1{
+        margin-top: 1em;
+    }
+    p:first-of-type{
+        margin-bottom: 4em;
+    }
+    button{
+        //margin-left: 0;
+        margin-top: 1em;
+    }
+    p:nth-of-type(2){
+        margin-top: 2em;
+        margin-bottom: 1em;
+    }
+}
+.primary-btn{
+    background: var(--primary-color);
+    padding: 1em 1.2em;
+    justify-content: center;
+    color: #111;
+}
 @media only screen and (min-width: 640px){
     body{
-        margin: 1rem 4vw;
+        margin: 1rem 6vw;
     }
     .popup-container{
         .popup{
             width: auto;
             align-self: center;
             border-radius: 0.2rem;
+            height: auto;
         }
     }
     main{
         display: grid;
         grid-template-columns: 1.5fr 1fr;
         gap: 2em;
-        padding: 2em 0;
+        padding: 2em 0 0 0;
+    }
+    .sticky{
+        position: sticky;
+        top: 2em;
     }
     #main_header{
         text-align: left;
@@ -454,6 +591,8 @@ input[type=number]::-webkit-outer-spin-button {
             margin-bottom: 2rem;
         }
     }
+    #sign_in_popup,
+    #buy_crypto_popup, #sell_crypto_popup,
     #send_crypto_popup, #deposit_crypto_popup, #withdraw_crypto_popup,
     #deposit_cash_popup, #withdraw_cash_popup{
         width: 24rem;
@@ -461,7 +600,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 @media only screen and (min-width: 1280px){
     body{
-        margin: 1rem 8vw;
+        margin: 1rem 16vw;
     }
     main{
         grid-template-columns: 2fr 1fr;
@@ -470,13 +609,24 @@ input[type=number]::-webkit-outer-spin-button {
 @media only screen and (min-width: 1920px){
     body{
         font-size: 24px;
-        margin: 2rem 16vw;
+        margin: 2rem 24vw;
     }
 }
-/*@media (prefers-color-scheme: dark){
+@media only screen and (min-width: 2048px){
+    body{
+        font-size: 24px;
+        margin: 2rem 32vw;
+    }
+}
+@media only screen and (max-width: 320px){
+    body{
+        font-size: 14px;
+    }
+}
+@media (prefers-color-scheme: dark){
     :root{
         --text: #eee;
-        --text-light: 136, 136, 136;
+        --text-light: 170, 170, 170;
         --foreground: #1a1a1a;
         --background: #111;
     }
@@ -484,13 +634,13 @@ input[type=number]::-webkit-outer-spin-button {
         background: var(--background);
         color: #eee;
     }
-} */
+}
 @media (prefers-color-scheme: light){
     :root{
         --text: #111;
-        --text-light: 102, 102, 102;
+        --text-light: 85, 85, 85;
         --foreground: #fff;
-        --background: #f4f4f4;
+        --background: #eaeaea;
     }
     body{
         background: var(--background);
@@ -500,13 +650,22 @@ input[type=number]::-webkit-outer-spin-button {
 @media (prefers-color-scheme: no-preference){
     :root{
         --text: #111;
-        --text-light: 102, 102, 102;
+        --text-light: 85, 85, 85;
         --foreground: #fff;
-        --background: #f4f4f4;
+        --background: #eaeaea;
     }
     body{
         background: var(--background);
         color: #111;
+    }
+}
+@media (any-hover: hover){
+    .cancel-order{
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .order:hover .cancel-order{
+        opacity: 1;
     }
 }
 
