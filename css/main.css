@@ -8,10 +8,10 @@
 }
 
 :root {
-  --primary-color: #1E88E5;
-  --text: #111;
+  --primary-color: #03A9F4;
+  --text: 17, 17, 17;
   --text-light: 85, 85, 85;
-  --foreground: #fff;
+  --foreground: 255, 255, 255;
   --background: #eaeaea;
 }
 
@@ -23,6 +23,7 @@ body {
 }
 
 a {
+  font-weight: 600;
   text-decoration: none;
   color: var(--primary-color);
 }
@@ -50,12 +51,14 @@ button {
   font-weight: 600;
   cursor: pointer;
   border-radius: 0.2em;
-  color: var(--text);
-  -webkit-transition: -webkit-transform 0.3s;
-  transition: -webkit-transform 0.3s;
-  transition: transform 0.3s;
-  transition: transform 0.3s, -webkit-transform 0.3s;
+  color: rgba(var(--text), 1);
+  -webkit-transition: -webkit-transform 0.3s, -webkit-clip-path 0.3s;
+  transition: -webkit-transform 0.3s, -webkit-clip-path 0.3s;
+  transition: transform 0.3s, clip-path 0.3s;
+  transition: transform 0.3s, clip-path 0.3s, -webkit-transform 0.3s, -webkit-clip-path 0.3s;
   border: none;
+  -webkit-clip-path: circle(100%);
+          clip-path: circle(100%);
   background: rgba(var(--text-light), 0.1);
   -webkit-tap-highlight-color: transparent;
 }
@@ -82,7 +85,21 @@ button:hover::after {
 }
 
 button:focus {
-  outline: thin solid rgba(var(--text-light), 1);
+  outline: thin solid rgba(var(--text-light), 0.4);
+}
+
+button:disabled {
+  cursor: default;
+  background: rgba(var(--text-light), 0.4);
+}
+
+button:disabled ~ .loader {
+  opacity: 0;
+}
+
+button:disabled::after {
+  -webkit-clip-path: none;
+          clip-path: none;
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -139,7 +156,7 @@ input:invalid {
 }
 
 .light-text {
-  color: rgba(var(--text-light), 1);
+  color: rgba(var(--text), 0.7);
 }
 
 .hide {
@@ -307,6 +324,7 @@ input:invalid {
 
 .input label {
   opacity: .7;
+  font-weight: 500;
   font-size: 1em;
   position: absolute;
   -webkit-transition: -webkit-transform 0.3s ease;
@@ -327,7 +345,7 @@ input:invalid {
   border: none;
   background: transparent;
   outline: none;
-  color: var(--text);
+  color: rgba(var(--text), 1);
 }
 
 .container-header {
@@ -362,22 +380,12 @@ input:invalid {
 
 .btn {
   background: var(--primary-color);
-  border: none;
-  cursor: pointer;
-  -webkit-clip-path: circle(100%);
-          clip-path: circle(100%);
-  -webkit-transition: -webkit-clip-path 0.3s ease;
-  transition: -webkit-clip-path 0.3s ease;
-  transition: clip-path 0.3s ease;
-  transition: clip-path 0.3s ease, -webkit-clip-path 0.3s ease;
-  text-transform: uppercase;
-  color: var(--foreground);
-  letter-spacing: 0.1em;
+  color: rgba(var(--foreground), 1);
   padding: 0.4em 1em;
 }
 
 .back-arrow {
-  stroke: var(--text);
+  stroke: rgba(var(--text), 1);
   stroke-width: 6;
   fill: none;
   height: 2rem;
@@ -388,7 +396,11 @@ input:invalid {
 .card {
   border-radius: 0.6rem;
   padding: 1.5em;
-  background: var(--foreground);
+  background: rgba(var(--foreground), 1);
+}
+
+.solid-background {
+  background: var(--background) !important;
 }
 
 .popup-container {
@@ -421,7 +433,7 @@ input:invalid {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  background: var(--foreground);
+  background: rgba(var(--foreground), 1);
   -webkit-transform: translateY(1rem);
           transform: translateY(1rem);
   -webkit-transition: -webkit-transform 0.3s;
@@ -500,7 +512,7 @@ input:invalid {
   height: 2.4em;
   width: 2.4em;
   overflow: visible;
-  fill: var(--text);
+  fill: rgba(var(--text), 1);
 }
 
 .select-crypto .btc {
@@ -508,7 +520,7 @@ input:invalid {
 }
 
 .select-crypto .flo {
-  fill: var(--text);
+  fill: rgba(var(--text), 1);
 }
 
 .select-crypto .inr {
@@ -534,17 +546,17 @@ input:invalid {
 
 .select-crypto .selected polyline {
   fill: none;
-  stroke: var(--foreground);
+  stroke: rgba(var(--foreground), 1);
   stroke-width: 6;
 }
 
 #show_message {
   -webkit-transform: translate(0, 0.4rem);
           transform: translate(0, 0.4rem);
-  -webkit-transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
-  transition: opacity 0.3s ease, -webkit-transform 0.3s ease;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  transition: transform 0.3s ease, opacity 0.3s ease, -webkit-transform 0.3s ease;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s, -webkit-transform 0.3s;
   -webkit-box-shadow: 0.2rem 0.4rem 0.8rem rgba(0, 0, 0, 0.16);
           box-shadow: 0.2rem 0.4rem 0.8rem rgba(0, 0, 0, 0.16);
   -webkit-box-align: center;
@@ -557,26 +569,45 @@ input:invalid {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  color: var(--text);
+  color: rgba(var(--text), 1);
   position: fixed;
   right: 0;
   bottom: 0;
   width: 100%;
+  max-width: 100%;
   z-index: 11;
-  background: var(--foreground);
+  background: rgba(var(--foreground), 1);
+}
+
+#show_message .notification-icon {
+  height: 2em;
+  width: 2em;
+  margin: 1em 0 1em 1em;
+  fill: rgba(var(--text), 1);
+  opacity: 0.8;
+}
+
+#show_message div {
+  padding: 1em;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+#show_message div h5 {
+  opacity: 0.8;
 }
 
 #show_message span {
   font-weight: 500;
-  padding: 1rem;
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
 }
 
 #show_message button {
-  padding: 0.5rem 1rem;
-  margin: 0;
+  padding: 1rem;
+  margin: 0 1em 0 0;
   border: none;
   background: none;
 }
@@ -584,7 +615,7 @@ input:invalid {
 #show_message button svg {
   height: 1em;
   width: 1em;
-  stroke: var(--text);
+  stroke: rgba(var(--text), 1);
   stroke-width: 6;
 }
 
@@ -684,6 +715,10 @@ input:invalid {
   cursor: pointer;
 }
 
+#switcher_header li:focus {
+  outline: thin solid rgba(var(--text-light), 0.6);
+}
+
 #switcher_header .active {
   opacity: 1;
   border-bottom: 0.1em solid var(--primary-color);
@@ -734,7 +769,7 @@ input:invalid {
   border-radius: 0.5em;
   margin-bottom: 0.4em;
   background: var(--background);
-  stroke: var(--text);
+  stroke: rgba(var(--text), 1);
   stroke-width: 3;
 }
 
@@ -775,15 +810,23 @@ input:invalid {
   margin-bottom: 1em;
 }
 
+#sign_in_popup {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  border-radius: 0.5em;
+  width: calc(100vw - 2em);
+}
+
 #sign_in_popup h1 {
-  margin-top: 1em;
+  margin-top: 3em;
 }
 
 #sign_in_popup p:first-of-type {
   margin-bottom: 4em;
 }
 
-#sign_in_popup button {
+#sign_in_popup .action {
   margin-top: 1em;
 }
 
@@ -792,13 +835,25 @@ input:invalid {
   margin-bottom: 1em;
 }
 
+#sign_in_popup #sign_in_illustration {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
 .primary-btn {
   background: var(--primary-color);
   padding: 1em 1.2em;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: #111;
+  color: black;
+}
+
+.primary-btn::after {
+  background: rgba(var(--foreground), 0.1);
 }
 
 @media only screen and (min-width: 640px) {
@@ -833,6 +888,7 @@ input:invalid {
     -webkit-transform: translate(0.4rem, 0);
             transform: translate(0.4rem, 0);
     margin: 1rem;
+    max-width: 60vw;
     width: -webkit-max-content;
     width: -moz-max-content;
     width: max-content;
@@ -890,24 +946,23 @@ input:invalid {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #eee;
-    --text-light: 170, 170, 170;
-    --foreground: #1a1a1a;
-    --background: #111;
-  }
-  body {
-    background: var(--background);
-    color: #eee;
-  }
-}
-
+/*@media (prefers-color-scheme: dark){
+    :root{
+        --text: 238, 238, 238;
+        --text-light: 170, 170, 170;
+        --foreground: 26, 26, 26;
+        --background: #111;
+    }
+    body{
+        background: var(--background);
+        color: #eee;
+    }
+}*/
 @media (prefers-color-scheme: light) {
   :root {
-    --text: #111;
+    --text: 17, 17, 17;
     --text-light: 85, 85, 85;
-    --foreground: #fff;
+    --foreground: 255, 255, 255;
     --background: #eaeaea;
   }
   body {
@@ -918,9 +973,9 @@ input:invalid {
 
 @media (prefers-color-scheme: no-preference) {
   :root {
-    --text: #111;
+    --text: 17, 17, 17;
     --text-light: 85, 85, 85;
-    --foreground: #fff;
+    --foreground: 255, 255, 255;
     --background: #eaeaea;
   }
   body {

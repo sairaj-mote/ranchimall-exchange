@@ -8,24 +8,38 @@
 </head>
 <body>
   <audio id="notification_sound">
-    <source src="notification.mp3" type="audio/mpeg">
-    <source src="notification.ogg" type="audio/ogg">
+    <source src="https://rmservices.duckdns.org/files/notification-sound.ogg" type="audio/mpeg">
+    <source src="https://rmservices.duckdns.org/files/notification-sound.mp3" type="audio/ogg">
   </audio>
     <!--Sign in popup-->
-    <div class="popup-container hide">
+    <div class="popup-container solid-background">
         <div id="sign_in_popup" class="popup">
             <div class="container-header">
                 <h1>Sign In</h1>
             </div>
-            <p class="expand light-text">Welcome to RanchiMall Crypto exchange Local Bitcoin++</p>
+            <p class="expand light-text">Welcome to RanchiMall Crypto exchange <b>Local Bitcoin++</b></p>
             <label class="input">
-                <input id="get_priv_key_field" type="password" required>
+                <input id="get_priv_key_field" onkeyup="" type="password" required>
                 <label>Private key</label>
             </label>
-            <button class="primary-btn expand">Sign in</button>
+            <div class="action expand" onclick="signIn(this)">
+              <button class="primary-btn expand" type="submit">
+                  Sign In
+              </button>
+              <svg viewBox="0 0 73 73" class="loader">
+                  <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+              </svg>
+          </div>
             <p class="light-text">
                 Don't have private key, get it from <a href="https://flo-webwallet.duckdns.org/" target="_blank">here</a>.
             </p>
+            <svg id="sign_in_illustration" viewBox="0 0 612 276.03">
+              <defs><style>.a{fill:#ee2a7b;}.b{fill:#9e1f63;}.c{fill:#da1c5c;}</style></defs>
+              <title>Untitled-1</title>
+              <polygon class="a" points="0 0 0 276.03 195.07 207.16 233.66 0 0 0"/>
+              <polygon class="b" points="114.09 0 117.19 27.93 356.1 132.63 536.42 0 114.09 0"/>
+              <polygon class="c" points="480.49 0 538.11 99.8 612 99.8 612 0 480.49 0"/>
+            </svg>
         </div>
     </div>
     <div class="popup-container hide">
@@ -38,7 +52,21 @@
         </div>
     </div>
     <div id="show_message" class="hide">
-        <span>Message</span>
+      <svg id="error_icon" class="notification-icon hide-completely" viewBox="0 0 100 100">
+        <title>Error icon</title>
+        <path d="M50,0a50,50,0,1,0,50,50A50,50,0,0,0,50,0ZM46,27.18A.79.79,0,0,1,46.6,27h7.72a.79.79,0,0,1,.79.79l-1,28.76a.79.79,0,0,
+        1-.79.79H47.46a.77.77,0,0,1-.56-.23.73.73,0,0,1-.23-.56l-.86-28.76A.77.77,0,0,1,46,27.18Zm7.68,44.39A4.91,4.91,0,0,1,50,73.05a5.08,5.08,
+        0,0,1-5.21-5.21A5,5,0,0,1,50,62.63a5,5,0,0,1,3.73,1.45,5.18,5.18,0,0,1,1.42,3.76A5.11,5.11,0,0,1,53.72,71.57Z"/>
+      </svg>
+      <svg id="done_icon" class="notification-icon" viewBox="0 0 100 100">
+        <title>Done icon</title>
+        <path d="M50,0a50,50,0,1,0,50,50A50,50,0,0,0,50,0ZM80.85,32.37,40.3,72.92a1.24,1.24,0,0,1-1.75,0l-19.4-19.4a1.23,1.23,0,0,1,0-1.75l3.54-3.54a1.23,
+        1.23,0,0,1,1.74,0L38.55,62.35a1.24,1.24,0,0,0,1.75,0L75.57,27.08a1.23,1.23,0,0,1,1.74,0l3.54,3.54A1.23,1.23,0,0,1,80.85,32.37Z"/>
+      </svg>
+      <div>
+        <h5>Notification</h5>
+        <span id="notification_text">Message</span>
+      </div>
         <button id="hide_banner_btn">
         <svg viewBox="0 0 50 50">
             <title>Close this notification</title>
@@ -65,7 +93,7 @@
         <small>RanchiMall</small>
         <h1>Local Bitcoin++</h1>
     </header>
-    <main>
+    <main class="hide-completely">
         <div id="left" class="bottom-margin grid">
             <div id="exchange" class="card">
                 <ul id="switcher_header" class="grid">
@@ -212,8 +240,8 @@
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Buy Crypto</h3>
-                    <div class="action">
-                        <button class="btn" type="submit">
+                    <div class="action" onclick="buyCrypto(this)">
+                        <button class="btn" type="submit" disabled>
                             Buy
                         </button>
                         <svg viewBox="0 0 73 73" class="loader">
@@ -292,7 +320,7 @@
                 </div>
                 
                 <label class="input">
-                    <input type="number"  inputmode="numeric" onkeypress="preventNonNumericalInput(event)" required>
+                    <input type="number"  inputmode="numeric" onkeyup="formValidation(this, event)" required>
                     <label>Buy worth of</label>
                 </label>
             </div>
@@ -305,8 +333,8 @@
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Sell Crypto</h3>
-                    <div class="action">
-                        <button class="btn" type="submit" >
+                    <div class="action" onclick="sellCrypto(this)">
+                        <button class="btn" type="submit" disabled>
                             Sell
                         </button>
                         <svg viewBox="0 0 73 73" class="loader">
@@ -384,7 +412,7 @@
                     </label>
                 </div>
                 <label class="input">
-                    <input type="number" inputmode="numeric" onkeypress="preventNonNumericalInput(event)" required>
+                    <input type="number" inputmode="numeric" onkeyup="formValidation(this, event)" required>
                     <label>Sell worth of</label>
                 </label>
             </div>
@@ -398,8 +426,8 @@
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Send Crypto</h3>
-                    <div class="action">
-                        <button class="btn" type="submit">
+                    <div class="action" onclick="sendCrypto(this)">
+                        <button class="btn" type="submit" disabled>
                             Send
                         </button>
                         <svg viewBox="0 0 73 73" class="loader">
@@ -464,7 +492,7 @@
                     <label>Reciever's FLO ID</label>
                 </label>
                 <label class="input">
-                    <input type="number" inputmode="numeric" onkeypress="preventNonNumericalInput(event)" required>
+                    <input type="number" inputmode="numeric" onkeyup="formValidation(this, event)" required>
                     <label>Amount</label>
                 </label>
             </div>
@@ -477,8 +505,8 @@
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Deposit Crypto</h3>
-                    <div class="action">
-                        <button class="btn" type="submit" >
+                    <div class="action" onclick="depositCrypto(this)">
+                        <button class="btn" type="submit" disabled>
                             Deposit
                         </button>
                         <svg viewBox="0 0 73 73" class="loader">
@@ -537,7 +565,7 @@
                     <label>Sender's Private key</label>
                 </label>
                 <label class="input">
-                    <input type="number" inputmode="numeric" onkeypress="preventNonNumericalInput(event)" required>
+                    <input type="number" inputmode="numeric" onkeyup="formValidation(this, event)" required>
                     <label>Amount</label>
                 </label>
             </div>
@@ -550,8 +578,8 @@
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Withdraw Crypto</h3>
-                    <div class="action" onclick="btnLoading(this, 'start')">
-                        <button class="btn" type="submit" >
+                    <div class="action" onclick="withdrawCrypto(this)">
+                        <button class="btn" type="submit" disabled>
                             withdraw
                         </button>
                         <svg viewBox="0 0 73 73" class="loader">
@@ -606,7 +634,7 @@
                     <label>Recieving crypto Address</label>
                 </label>
                 <label class="input">
-                    <input type="number" inputmode="numeric" onkeypress="preventNonNumericalInput(event)" required>
+                    <input type="number" inputmode="numeric" onkeyup="formValidation(this, event)" required>
                     <label>Amount</label>
                 </label>
             </div>
@@ -620,8 +648,8 @@
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Deposit Cash</h3>
-                    <div class="action">
-                        <button class="btn" type="submit" >
+                    <div class="action" onclick="depositCash(this)">
+                        <button class="btn" type="submit" disabled>
                             Deposit
                         </button>
                         <svg viewBox="0 0 73 73" class="loader">
@@ -634,7 +662,7 @@
                     <label>Depositer's UPI address</label>
                 </label>
                 <label class="input">
-                    <input type="number" inputmode="numeric" onkeypress="preventNonNumericalInput(event)" required>
+                    <input type="number" inputmode="numeric" onkeyup="formValidation(this, event)" required>
                     <label>Amount in ₹</label>
                 </label>
             </div>
@@ -647,8 +675,8 @@
                         <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
                     </svg>
                     <h3>Withdraw Cash</h3>
-                    <div class="action">
-                        <button class="btn" type="submit" >
+                    <div class="action" onclick="withdrawCash(this)">
+                        <button class="btn" type="submit" disabled>
                             withdraw
                         </button>
                         <svg viewBox="0 0 73 73" class="loader">
@@ -661,14 +689,16 @@
                     <label>Recieving UPI Address</label>
                 </label>
                 <label class="input">
-                    <input type="number" inputmode="numeric" onkeypress="preventNonNumericalInput(event)" required>
+                    <input type="number" name="hi" inputmode="numeric" onkeyup="formValidation(this, event)" required>
                     <label>Amount in ₹</label>
                 </label>
             </div>
         </div>
     </main>
     <script id="ui_functions">
-        let frag = document.createDocumentFragment();
+        let frag = document.createDocumentFragment(),
+            currentTimeout,
+            notificationSound = document.getElementById('notification_sound');
         const render = {
           // returns an order element;
             order: function(tradeId, type, product, price, currency){
@@ -718,6 +748,7 @@
                     if(popup.querySelector('.btn')){
                         popup.querySelector('.btn').classList.remove('clip')
                         popup.querySelector('.loader').classList.remove('animate-loader')
+                        popup.querySelector("button[type='submit']").disabled = true;
                     }
                 }, 300)
             }
@@ -731,24 +762,28 @@
             function clearAllInputs(parent){
                 parent.querySelectorAll("input, textarea").forEach((field) => {
                     field.value = '';
+                    console.log(field, field.getAttribute('type'))
+                    if(field.getAttribute('type') === 'radio')
+                      field.checked = false
                 })
             }
-
-            let currentTimeout,
-              notificationSound = document.getElementById('notification_sound');
 
             //Function for displaying toast notifications. pass in error for mode param if you want to show an error.
             function showMessage(mode, message, behavior){
                 let banner = document.getElementById('show_message'),
                     back;
-                mode === 'error'? back = '#D32F2F': back = document.querySelector('body').getAttribute('background');
+                if(mode === 'error'){
+                  banner.querySelector('#error_icon').classList.toggle('hide-completely')
+                  banner.querySelector('#done_icon').classList.toggle('hide-completely')
+                } 
                     
                 banner.style.background = back;
                 banner.classList.add('no-transformations')
                 banner.classList.remove('hide')
-                banner.children[0].textContent = message.charAt(0).toUpperCase() + message.slice(1);
-                notificationSound.play();
-                banner.children[1].onclick = function() {
+                banner.querySelector('#notification_text').textContent = message.charAt(0).toUpperCase() + message.slice(1);
+                if(navigator.onLine)
+                  notificationSound.play();
+                banner.querySelector('#hide_banner_btn').onclick = function() {
                     banner.classList.add('hide')
                     banner.classList.remove('no-transformations')
                 }
@@ -788,15 +823,58 @@
                 if(!btn.disabled)
                     btn.disabled = true;
             }
-            // prevents non numerical input on firefox 
-            function preventNonNumericalInput(e) {
-                e = e || window.event;
-                let charCode = (typeof e.which == "undefined") ? e.keyCode : e.which,
-                    charStr = String.fromCharCode(charCode);
-
-                if (!charStr.match(/^[0-9]+$/))
-                    e.preventDefault();
+            function btnLoading(btn, option){
+            if(typeof btn === 'string')
+                btn = document.getElementById(btn);
+            if(option === 'start'){
+                btn.children[0].classList.add('clip')
+                btn.children[1].classList.add('animate-loader')
             }
+            else{
+                btn.children[0].classList.remove('clip')
+                btn.children[1].classList.remove('animate-loader')
+            }
+        }
+
+        // prevents non numerical input on firefox 
+        function preventNonNumericalInput(e) {
+            e = e || window.event;
+            let charCode = (typeof e.which == "undefined") ? e.keyCode : e.which,
+                charStr = String.fromCharCode(charCode);
+
+            if (!charStr.match(/^\d+$/))
+                e.preventDefault();
+        }
+
+        function areInputsEmpty(parent){
+          let allInputs = parent.querySelectorAll("input:not([type='radio'])"),
+              allRadios = parent.querySelectorAll("input[type='radio']"),
+              radioStatus, inputStatus, counter = 0;
+          
+          inputStatus = [...allInputs].every(input => input.value !== '')
+          
+          allRadios.forEach(radio => {
+            if(radio.checked)
+              counter++;
+          })
+          if(counter == allRadios.length/2)
+            radioStatus = true;
+          console.log(inputStatus, radioStatus)
+          if(inputStatus && radioStatus)
+            return true
+          else false
+        }
+
+        function formValidation(formElement, e){ 
+          preventNonNumericalInput(e);
+          let parent = formElement.closest('.popup'), 
+          submitBtn = parent.querySelector("button[type = 'submit']");
+          console.log(areInputsEmpty(parent))
+          if(areInputsEmpty(parent))
+            submitBtn.disabled = false;
+          else
+            submitBtn.disabled = true;
+         }
         let allExchangeSections = document.querySelectorAll('.exchange-section'),
             allExchangeBtns = document.querySelectorAll('.exchange-btn');
         function showSection(thisBtn, elem){
@@ -813,9 +891,8 @@
         // Event delegation when clicked on exchage options
         window.addEventListener('load', ()=> {
             document.getElementById('switcher_body').addEventListener('click', (e) => {
-                if(e.target.closest('#buy_crypto_btn')){
+                if(e.target.closest('#buy_crypto_btn'))
                     showPopup('buy_crypto_popup')
-                }
                 if(e.target.closest('#sell_crypto_btn'))
                     showPopup('sell_crypto_popup')
                 if(e.target.closest('#send_crypto_btn'))
@@ -834,7 +911,6 @@
                 if(e.target.closest('.cancel-order'))
                     askConfirmation('Are you sure to cancel this trade order?').then((result) => {
                         if(result){
-                            console.log('Trade cancelled')
                             e.target.closest('.order').remove();
                             showMessage('', 'Order cancelled.')
                             if(container.children.length === 0)
@@ -847,18 +923,34 @@
             }
             document.getElementById('orders_container').append(frag);
         })
-        function btnLoading(btn, option){
-            if(typeof btn === 'string')
-                btn = document.getElementById(btn);
-            if(option === 'start'){
-                btn.children[0].classList.add('clip')
-                btn.children[1].classList.add('animate-loader')
-            }
-            else{
-                btn.children[0].classList.remove('clip')
-                btn.children[1].classList.remove('animate-loader')
-            }
+
+        // exchange execute option functions
+
+        function buyCrypto(btn){
+          console.log(btn)
+          let parentPopup = btn.closest('.popup');
+          btnLoading(btn, 'start')  
+          
+          //if operation completes{
+            //btnLoading(btn, 'stop')
+            showMessage('', 'Bought Crypto')
+            hidePopup(parentPopup)
+          //}
         }
+        function signIn(btn){
+          let parentPopup = btn.closest('.popup');
+          btnLoading(btn, 'start')  
+          
+          //if operation completes{
+            //btnLoading(btn, 'stop')
+            setTimeout(() => {
+              hidePopup(parentPopup)
+              showMessage('', 'Signed In')
+              document.querySelector('main').classList.remove('hide-completely')
+            }, 1000)
+          //}
+        }
+
         function signOut(){
             askConfirmation('Do you want to sign out?').then((result) => {
                 if(result){

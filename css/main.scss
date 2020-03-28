@@ -6,10 +6,10 @@
     font-family: 'Barlow', sans-serif;
 }
 :root{
-    --primary-color: #1E88E5;
-    --text: #111;
+    --primary-color: #03A9F4;
+    --text: 17, 17, 17;
     --text-light: 85, 85, 85;
-    --foreground: #fff;
+    --foreground: 255, 255, 255;
     --background: #eaeaea;
 }
 body{
@@ -19,6 +19,7 @@ body{
     margin: 1rem;
 }
 a{
+    font-weight: 600;
     text-decoration: none;
     color: var(--primary-color);
 }
@@ -39,9 +40,10 @@ button{
     font-weight: 600;
     cursor: pointer;
     border-radius: 0.2em;
-    color: var(--text);
-    transition: transform 0.3s;
+    color: rgba(var(--text), 1);
+    transition: transform 0.3s, clip-path 0.3s;
     border: none;
+    clip-path: circle(100%);
     background: rgba(var(--text-light), 0.1);
     -webkit-tap-highlight-color: transparent;
     &::after{
@@ -61,7 +63,17 @@ button{
         clip-path: circle(100%);
     }
     &:focus{
-        outline: thin solid rgba(var(--text-light), 1);
+        outline: thin solid rgba(var(--text-light), .4);
+    }
+    &:disabled{
+        cursor: default;
+        background: rgba(var(--text-light), 0.4);
+    }
+    &:disabled ~ .loader{
+        opacity: 0;
+    }
+    &:disabled::after{
+        clip-path: none;
     }
 }
 input[type=number]::-webkit-inner-spin-button, 
@@ -102,7 +114,7 @@ input:invalid{
     gap: 1em;
 }
 .light-text{
-    color: rgba(var(--text-light), 1);
+    color: rgba(var(--text), .7);
 }
 .hide{
     opacity: 0;
@@ -211,6 +223,7 @@ input:invalid{
     }
     label{
         opacity: .7;
+        font-weight: 500;
         font-size: 1em;
         position: absolute;
         transition: transform 0.3s ease;
@@ -224,7 +237,7 @@ input:invalid{
         border: none;
         background: transparent;
         outline: none;
-        color: var(--text);
+        color: rgba(var(--text), 1);
     }
 }
 .container-header{
@@ -247,17 +260,11 @@ input:invalid{
 }
 .btn{
     background: var(--primary-color);
-    border: none;
-    cursor: pointer;
-    clip-path: circle(100%);
-    transition: clip-path 0.3s ease;
-    text-transform: uppercase;
-    color: var(--foreground);
-    letter-spacing: 0.1em;
+    color: rgba(var(--foreground), 1);
     padding: 0.4em 1em;
 }
 .back-arrow{
-    stroke: var(--text);
+    stroke: rgba(var(--text), 1);
     stroke-width: 6;
     fill: none;
     height: 2rem;
@@ -267,7 +274,10 @@ input:invalid{
 .card{
     border-radius: 0.6rem;
     padding: 1.5em;
-    background: var(--foreground);
+    background: rgba(var(--foreground), 1);
+}
+.solid-background{
+    background: var(--background) !important;
 }
 .popup-container{
     display: grid;
@@ -289,7 +299,7 @@ input:invalid{
         padding: 1.5rem;
         position: relative;
         display: flex;
-        background: var(--foreground);
+        background: rgba(var(--foreground), 1);
         transform: translateY(1rem);
         transition: transform 0.3s;
         box-shadow: 0 2rem 2rem rgba($color: #000000, $alpha: 0.24);
@@ -338,13 +348,13 @@ input:invalid{
         height: 2.4em;
         width: 2.4em;
         overflow: visible;
-        fill: var(--text);
+        fill: rgba(var(--text), 1);
     }
     .btc{
         fill: #FF9900;
     }
     .flo{
-        fill: var(--text);
+        fill: rgba(var(--text), 1);
     }
     .inr{
         padding: 0.45em;
@@ -361,7 +371,7 @@ input:invalid{
         }
         polyline{
             fill: none;
-            stroke: var(--foreground);
+            stroke: rgba(var(--foreground), 1);
             stroke-width: 6;
         }
 
@@ -369,32 +379,46 @@ input:invalid{
 }
 #show_message{
     transform: translate(0, 0.4rem);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition: transform 0.3s, opacity 0.3s;
     box-shadow: 0.2rem 0.4rem 0.8rem rgba($color: #000000, $alpha: 0.16);
     align-items: center;
     flex-direction: row;
     display: flex;
-    color: var(--text);
+    color: rgba(var(--text), 1);
     position: fixed;
     right: 0;
     bottom: 0;
     width: 100%;
+    max-width: 100%;
     z-index: 11;
-    background: var(--foreground);
+    background: rgba(var(--foreground), 1);
+    .notification-icon{
+        height: 2em;
+        width: 2em;
+        margin: 1em 0 1em 1em;
+        fill: rgba(var(--text), 1);
+        opacity: 0.8;
+    }
+    div{
+        padding: 1em;
+        flex: 1;
+        h5{
+            opacity: 0.8;
+        }
+    }
     span{
         font-weight: 500;
-        padding: 1rem;
         flex: 1;
     }
     button{
-        padding: 0.5rem 1rem;
-        margin: 0;
+        padding: 1rem;
+        margin: 0 1em 0 0;
         border: none;
         background: none;
         svg{
             height: 1em;
             width: 1em;
-            stroke: var(--text);
+            stroke: rgba(var(--text), 1);
             stroke-width: 6;
         }
     }
@@ -464,6 +488,9 @@ input:invalid{
             opacity: 1;
             cursor: pointer;
         }
+        &:focus{
+            outline: thin solid rgba(var(--text-light), 0.6);
+        }
     }
     .active{
         opacity: 1;
@@ -495,7 +522,7 @@ input:invalid{
         border-radius: 0.5em;
         margin-bottom: 0.4em;
         background: var(--background);
-        stroke: var(--text);
+        stroke: rgba(var(--text), 1);
         stroke-width: 3;
         rect{
             visibility: hidden;
@@ -525,26 +552,38 @@ input:invalid{
     margin-bottom: 1em;
 }
 #sign_in_popup{
+    align-self: center;
+    border-radius: 0.5em;
+    width: calc(100vw - 2em);
     h1{
-        margin-top: 1em;
+        margin-top: 3em;
     }
     p:first-of-type{
         margin-bottom: 4em;
     }
-    button{
-        //margin-left: 0;
+    .action{
         margin-top: 1em;
     }
     p:nth-of-type(2){
         margin-top: 2em;
         margin-bottom: 1em;
     }
+    #sign_in_illustration{
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: -1;
+    }
 }
 .primary-btn{
     background: var(--primary-color);
     padding: 1em 1.2em;
     justify-content: center;
-    color: #111;
+    color: black;
+    &::after{
+        background: rgba(var(--foreground), 0.1);
+    }
 }
 @media only screen and (min-width: 640px){
     body{
@@ -574,6 +613,7 @@ input:invalid{
     #show_message{
         transform: translate(0.4rem, 0);
         margin: 1rem;
+        max-width: 60vw;
         width: max-content;
         border-radius: 0.2rem;
     }
@@ -623,23 +663,23 @@ input:invalid{
         font-size: 14px;
     }
 }
-@media (prefers-color-scheme: dark){
+/*@media (prefers-color-scheme: dark){
     :root{
-        --text: #eee;
+        --text: 238, 238, 238;
         --text-light: 170, 170, 170;
-        --foreground: #1a1a1a;
+        --foreground: 26, 26, 26;
         --background: #111;
     }
     body{
         background: var(--background);
         color: #eee;
     }
-}
+}*/
 @media (prefers-color-scheme: light){
     :root{
-        --text: #111;
+        --text: 17, 17, 17;
         --text-light: 85, 85, 85;
-        --foreground: #fff;
+        --foreground: 255, 255, 255;
         --background: #eaeaea;
     }
     body{
@@ -649,9 +689,9 @@ input:invalid{
 }
 @media (prefers-color-scheme: no-preference){
     :root{
-        --text: #111;
+        --text: 17, 17, 17;
         --text-light: 85, 85, 85;
-        --foreground: #fff;
+        --foreground: 255, 255, 255;
         --background: #eaeaea;
     }
     body{
