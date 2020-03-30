@@ -11,37 +11,6 @@
     <source src="https://rmservices.duckdns.org/files/notification-sound.ogg" type="audio/mpeg">
     <source src="https://rmservices.duckdns.org/files/notification-sound.mp3" type="audio/ogg">
   </audio>
-    <!--Sign in popup-->
-    <div class="popup-container solid-background">
-        <div id="sign_in_popup" class="popup">
-            <div class="container-header">
-                <h1>Sign In</h1>
-            </div>
-            <p class="expand light-text">Welcome to RanchiMall Crypto exchange <b>Local Bitcoin++</b></p>
-            <label class="input">
-                <input id="get_priv_key_field" onkeyup="" type="password" required>
-                <label>Private key</label>
-            </label>
-            <div class="action expand" onclick="signIn(this)">
-              <button class="primary-btn expand" type="submit">
-                  Sign In
-              </button>
-              <svg viewBox="0 0 73 73" class="loader">
-                  <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
-              </svg>
-          </div>
-            <p class="light-text">
-                Don't have private key, get it from <a href="https://flo-webwallet.duckdns.org/" target="_blank">here</a>.
-            </p>
-            <svg id="sign_in_illustration" viewBox="0 0 612 276.03">
-              <defs><style>.a{fill:#ee2a7b;}.b{fill:#9e1f63;}.c{fill:#da1c5c;}</style></defs>
-              <title>Untitled-1</title>
-              <polygon class="a" points="0 0 0 276.03 195.07 207.16 233.66 0 0 0"/>
-              <polygon class="b" points="114.09 0 117.19 27.93 356.1 132.63 536.42 0 114.09 0"/>
-              <polygon class="c" points="480.49 0 538.11 99.8 612 99.8 612 0 480.49 0"/>
-            </svg>
-        </div>
-    </div>
     <div class="popup-container hide">
         <div id="confirmation" class="popup">
             <p></p>
@@ -88,12 +57,44 @@
         <circle id="Ellipse_3" data-name="Ellipse 3" cx="34.5" cy="34.5" r="34.5" transform="translate(1502.612 769.248)" fill="#b2ffe8"/>
         <circle id="Ellipse_2" data-name="Ellipse 2" cx="98" cy="98" r="98" transform="translate(1868.612 1036.248)" fill="#b2b2ff"/>
       </svg>-->
-      
+     
+               <!--Sign in popup-->
+               <div class="popup-container solid-background hide">
+                <div id="sign_in_popup" class="popup">
+                    <div class="container-header">
+                        <h1>Sign In</h1>
+                    </div>
+                    <p class="expand light-text">Welcome to RanchiMall Crypto exchange <b>Local Bitcoin++</b></p>
+                    <label class="input">
+                        <input id="get_priv_key_field" type="password" required>
+                        <div class="label">Private Key</div>
+                      </label>
+                    <div class="action expand" onclick="signIn(this)">
+                      <button class="primary-btn expand" type="submit">
+                          Sign In
+                      </button>
+                      <svg viewBox="0 0 73 73" class="loader">
+                          <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                      </svg>
+                    </div>
+                    <p class="light-text">
+                        Don't have private key, get it from <a href="https://flo-webwallet.duckdns.org/" target="_blank">here</a>.
+                    </p>
+                    <svg id="sign_in_illustration" viewBox="0 0 612 276.03">
+                      <defs><style>.a{fill:#ee2a7b;}.b{fill:#9e1f63;}.c{fill:#da1c5c;}</style></defs>
+                      <title>Untitled-1</title>
+                      <polygon class="a" points="0 0 0 276.03 195.07 207.16 233.66 0 0 0"/>
+                      <polygon class="b" points="114.09 0 117.19 27.93 356.1 132.63 536.42 0 114.09 0"/>
+                      <polygon class="c" points="480.49 0 538.11 99.8 612 99.8 612 0 480.49 0"/>
+                    </svg>
+                </div>
+              </div> 
+
     <header id="main_header">
         <small>RanchiMall</small>
         <h1>Local Bitcoin++</h1>
     </header>
-    <main class="hide-completely">
+    <main class="">
         <div id="left" class="bottom-margin grid">
             <div id="exchange" class="card">
                 <ul id="switcher_header" class="grid">
@@ -186,9 +187,11 @@
         <div id="right">
             <div class="sticky">
                 <div id="user" class="grid grid-2 bottom-margin card">
-                    <div id="profile_pic">
-    
-                    </div>
+                  <svg id="profile_pic" viewBox="0 0 49.54 61.12">
+                    <title>User icon</title>
+                    <path d="M49.34,19.94c7.73,0,13.26,5.26,13.26,14S58.18,50.14,49.71,50.08,36.82,42.66,36.82,33.93s5.53-14,13.26-14" transform="translate(-25.23 -20)"/>
+                    <path d="M43.83,52c-2.34,4.38-9.77,6.64-15.31,9.06-2.29,1-4.11,13-1.53,13a46.06,46.06,0,0,0,23.51,6,40.48,40.48,0,0,0,22.51-6c2.58,0,.76-12-1.53-13-5.54-2.42-13-4.68-15.31-9.06" transform="translate(-25.23 -19.44)"/>
+                  </svg>
                     <div>
                         <h5 class="light-text">FLO ID</h5>
                         <h4 class="breakable">FFS5hFXG7DBtdgzrLwixZLpenAmsCKRddm</h4>
@@ -204,35 +207,51 @@
                         <h2 id="user_cash_bal">
                             ₹50000
                         </h2>
-                        <button id="refresh_cash_bal" class="refresh">
-                            refresh
-                        </button>
+                        <div id="refresh_cash_bal" class="action refresh">
+                          <button type="submit">
+                              refresh
+                          </button>
+                          <svg viewBox="0 0 73 73" class="loader">
+                              <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                          </svg>
+                        </div>
                     </div>
                     <div class="grid grid-2 top-margin">
                         <div class="balance-display">
                             <h5 class="light-text">Bitcoin</h5>
-                            <h2 id="user_crypto_bal">
+                            <h2 id="user_btc_bal">
                                 600
                             </h2>
-                            <button id="refresh_btc_bal" class="refresh">
-                                refresh
-                            </button>
+                            <div id="refresh_btc_bal" class="action refresh">
+                              <button type="submit">
+                                  refresh
+                              </button>
+                              <svg viewBox="0 0 73 73" class="loader">
+                                  <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                              </svg>
+                            </div>
                         </div>
                         <div class="balance-display">
                             <h5 class="light-text">FLO</h5>
-                            <h2 id="user_crypto_bal">
+                            <h2 id="user_flo_bal">
                                 1200
                             </h2>
-                            <button id="refresh_flo_bal" class="refresh">
-                                refresh
-                            </button>
+                            <div id="refresh_flo_bal" class="action refresh">
+                              <button type="submit">
+                                  refresh
+                              </button>
+                              <svg viewBox="0 0 73 73" class="loader">
+                                  <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                              </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Asset section-->
-        <div class="popup-container hide">
+        <div id="popup-parent">
+          <!--Asset section-->
+          <div class="popup-container hide">
             <div id="buy_crypto_popup" class="popup">
                 <div class="container-header bottom-margin">
                     <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
@@ -252,7 +271,7 @@
                 <h5>Select Crypto</h5>
                 <div class="crypto-selector flex expand">
                     <label class="select-crypto">
-                        <input name="crypto" type="radio">
+                        <input name="crypto" value="btc" type="radio">
                         <svg viewBox="0 0 30.61 40.52" class="icon btc">
                           <title>Bitcoin icon</title>
                             <path d="M30.53,16.29c0.64-4.26-2.61-6.55-7.04-8.07l1.44-5.77l-3.51-0.88l-1.4,5.62c-0.92-0.23-1.87-0.45-2.81-0.66
@@ -271,7 +290,7 @@
                         </svg>
                     </label>
                     <label class="select-crypto">
-                        <input name="crypto" type="radio">
+                        <input name="crypto" value="flo" type="radio">
                         <svg class="icon flo" viewBox="0 0 45.6 47.07">
                           <title>FLO coin icon</title>
                           <path d="M61.4,58.86A12.31,12.31,0,0,0,68.81,55a15.45,15.45,0,0,0,4-8.52c-11-.63-12.36,1-13.71,1.68-1.19.61-5.33,4.56-5.33,
@@ -294,7 +313,7 @@
                 <h5>Select Currency</h5>
                 <div class="crypto-selector flex expand">
                     <label class="select-crypto">
-                        <input name="currency" type="radio">
+                        <input name="currency" value="inr" type="radio">
                         <svg class="icon inr" viewBox="0 0 36.74 40">
                           <title>Indian rupee icon</title>
                           <path d="M62.31,35.47H56.57a11.38,11.38,0,0,1,1.64,4.58h5.53l-1.46,5.42H58.19A10.79,10.79,0,0,1,54.92,52a15.38,15.38,0,0,1-7.58,3.38l12,14.24V70H50.25L37,
@@ -307,7 +326,7 @@
                         </svg>
                     </label>
                     <label class="select-crypto">
-                        <input name="currency" type="radio">
+                        <input name="currency" value="usd" type="radio">
                         <svg class="icon" viewBox="0 0 22.59 40">
                           <title>United states dollar icon</title>
                           <path d="M59.07,63.23a10.5,10.5,0,0,1-6.09,3c-.16.06-.23.15-.23.27l0,3a.56.56,0,0,1-.15.39.53.53,0,0,1-.39.16H47.7a.49.49,0,0,1-.38-.16.53.53,0,0,1-.16-.39l0-3c0-.12-.07-.21-.22-.27A10.82,10.82,0,0,1,40.91,63a8.62,8.62,0,0,1-2.21-6V56a.55.55,0,0,1,.55-.54h4.91a.53.53,0,0,1,.39.16.52.52,0,0,1,.15.38v.69a3.74,3.74,0,0,0,1.6,3.06A6.83,6.83,0,0,0,50.66,61a5,5,0,0,0,3.43-1,3.29,3.29,0,0,0,1.11-2.52,2.6,2.6,0,0,0-.68-1.84,5.9,5.9,0,0,0-1.88-1.32c-.81-.38-2.07-.9-3.8-1.57a34.27,34.27,0,0,1-5-2.14,10.15,10.15,0,0,1-3.39-3,7.69,7.69,0,0,1-1.39-4.66,8.24,8.24,0,0,1,2.12-5.8,10,10,0,0,1,5.7-3c.15-.07.23-.16.23-.28l-.09-3.31a.5.5,0,0,1,.16-.39.49.49,0,0,1,.38-.16h4.55a.49.49,0,0,1,.38.16.5.5,0,0,1,.16.39l0,3.4a.3.3,0,0,0,.23.28,10.56,10.56,0,0,1,6,3.29,9,9,0,0,1,2.22,6.16v.68a.51.51,0,0,1-.16.39.49.49,0,0,1-.38.16h-5a.49.49,0,0,1-.38-.16.51.51,0,0,1-.16-.39V44a4.2,4.2,0,0,0-1.5-3.25,5.94,5.94,0,0,0-4.09-1.34,4.92,4.92,0,0,0-3.18.91,3,3,0,0,0-1.14,2.5,2.84,2.84,0,0,0,.66,1.91,6.15,6.15,0,0,0,2,1.41c.87.42,2.24,1,4.09,1.63a46,46,0,0,1,4.81,2,9.46,9.46,0,0,1,3.19,2.72,7.46,7.46,0,0,1,1.41,4.69A8.44,8.44,0,0,1,59.07,63.23Z" transform="translate(-38.7 -30)"/></svg>
@@ -320,51 +339,144 @@
                 </div>
                 
                 <label class="input">
-                    <input type="number"  inputmode="numeric" onkeyup="formValidation(this, event)" required>
-                    <label>Buy worth of</label>
-                </label>
+                    <input type="number" inputmode="numeric" required>
+                    <div class="label">Buy worth of</div>
+                  </label>
             </div>
-        </div>
-        <div class="popup-container hide">
-            <div id="sell_crypto_popup" class="popup">
-                <div class="container-header bottom-margin">
-                    <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
-                        <title>Close this popup</title>
-                        <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
-                    </svg>
-                    <h3>Sell Crypto</h3>
-                    <div class="action" onclick="sellCrypto(this)">
-                        <button class="btn" type="submit" disabled>
-                            Sell
-                        </button>
-                        <svg viewBox="0 0 73 73" class="loader">
-                            <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
-                        </svg>
-                    </div>
-                </div>
-                <h5>Select Crypto</h5>
-                <div class="crypto-selector flex expand">
-                    <label class="select-crypto">
-                        <input name="crypto" type="radio">
-                        <svg viewBox="0 0 30.61 40.52" class="icon btc">
-                          <title>Bitcoin icon</title>
-                            <path d="M30.53,16.29c0.64-4.26-2.61-6.55-7.04-8.07l1.44-5.77l-3.51-0.88l-1.4,5.62c-0.92-0.23-1.87-0.45-2.81-0.66
-                            l1.41-5.65L15.11,0l-1.44,5.77c-0.76-0.17-1.51-0.35-2.24-0.53l0-0.02L6.59,4.01L5.66,7.76c0,0,2.61,0.6,2.55,0.63
-                            c1.42,0.36,1.68,1.3,1.64,2.04l-1.64,6.57c0.1,0.02,0.23,0.06,0.36,0.12c-0.12-0.03-0.24-0.06-0.37-0.09l-2.3,9.2
-                            c-0.17,0.43-0.61,1.08-1.61,0.83c0.04,0.05-2.55-0.64-2.55-0.64L0,30.45l4.57,1.14c0.85,0.21,1.68,0.44,2.5,0.65l-1.45,5.83
-                            l3.51,0.88l1.44-5.77c0.96,0.26,1.89,0.5,2.8,0.73l-1.43,5.74l3.51,0.88l1.45-5.82c5.99,1.13,10.49,0.68,12.38-4.74
-                            c1.53-4.36-0.08-6.88-3.23-8.52C28.34,20.92,30.07,19.41,30.53,16.29L30.53,16.29z M22.51,27.54c-1.08,4.36-8.43,2-10.81,1.41
-                            l1.93-7.73C16.01,21.82,23.65,22.99,22.51,27.54L22.51,27.54z M23.6,16.23c-0.99,3.97-7.1,1.95-9.08,1.46l1.75-7.01
-                            C18.25,11.17,24.63,12.09,23.6,16.23z"/>
-                        </svg>
-                        <h4>BTC</h4>
-                        <svg class="selected" viewBox="0 0 73 73">
-                            <circle cx="36.5" cy="36.5" r="36"/>
-                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
-                        </svg>
-                    </label>
-                    <label class="select-crypto">
-                        <input name="crypto" type="radio">
+          </div>
+          <div class="popup-container hide">
+              <div id="sell_crypto_popup" class="popup">
+                  <div class="container-header bottom-margin">
+                      <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
+                          <title>Close this popup</title>
+                          <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
+                      </svg>
+                      <h3>Sell Crypto</h3>
+                      <div class="action" onclick="sellCrypto(this)">
+                          <button class="btn" type="submit" disabled>
+                              Sell
+                          </button>
+                          <svg viewBox="0 0 73 73" class="loader">
+                              <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                          </svg>
+                      </div>
+                  </div>
+                  <h5>Select Crypto</h5>
+                  <div class="crypto-selector flex expand">
+                      <label class="select-crypto">
+                          <input name="crypto" value="btc" type="radio">
+                          <svg viewBox="0 0 30.61 40.52" class="icon btc">
+                            <title>Bitcoin icon</title>
+                              <path d="M30.53,16.29c0.64-4.26-2.61-6.55-7.04-8.07l1.44-5.77l-3.51-0.88l-1.4,5.62c-0.92-0.23-1.87-0.45-2.81-0.66
+                              l1.41-5.65L15.11,0l-1.44,5.77c-0.76-0.17-1.51-0.35-2.24-0.53l0-0.02L6.59,4.01L5.66,7.76c0,0,2.61,0.6,2.55,0.63
+                              c1.42,0.36,1.68,1.3,1.64,2.04l-1.64,6.57c0.1,0.02,0.23,0.06,0.36,0.12c-0.12-0.03-0.24-0.06-0.37-0.09l-2.3,9.2
+                              c-0.17,0.43-0.61,1.08-1.61,0.83c0.04,0.05-2.55-0.64-2.55-0.64L0,30.45l4.57,1.14c0.85,0.21,1.68,0.44,2.5,0.65l-1.45,5.83
+                              l3.51,0.88l1.44-5.77c0.96,0.26,1.89,0.5,2.8,0.73l-1.43,5.74l3.51,0.88l1.45-5.82c5.99,1.13,10.49,0.68,12.38-4.74
+                              c1.53-4.36-0.08-6.88-3.23-8.52C28.34,20.92,30.07,19.41,30.53,16.29L30.53,16.29z M22.51,27.54c-1.08,4.36-8.43,2-10.81,1.41
+                              l1.93-7.73C16.01,21.82,23.65,22.99,22.51,27.54L22.51,27.54z M23.6,16.23c-0.99,3.97-7.1,1.95-9.08,1.46l1.75-7.01
+                              C18.25,11.17,24.63,12.09,23.6,16.23z"/>
+                          </svg>
+                          <h4>BTC</h4>
+                          <svg class="selected" viewBox="0 0 73 73">
+                              <circle cx="36.5" cy="36.5" r="36"/>
+                              <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                          </svg>
+                      </label>
+                      <label class="select-crypto">
+                          <input name="crypto" value="flo" type="radio">
+                          <svg class="icon flo" viewBox="0 0 45.6 47.07">
+                            <title>FLO coin icon</title>
+                            <path d="M61.4,58.86A12.31,12.31,0,0,0,68.81,55a15.45,15.45,0,0,0,4-8.52c-11-.63-12.36,1-13.71,1.68-1.19.61-5.33,4.56-5.33,
+                              4.56s3.07-3.14,3.2-9.94a19.94,19.94,0,0,0-2.72-10.65A23.86,23.86,0,0,0,50,26.46a24.09,24.09,0,0,0-4.23,5.67A19.94,19.94,0,0,0,43,42.78c.13,6.8,3.2,9.94,
+                              3.2,9.94s-4.14-3.95-5.33-4.56c-1.35-.69-2.67-2.31-13.71-1.68a15.45,15.45,0,0,0,4,8.52,12.31,12.31,0,0,0,7.41,3.86s-5.05-2-7.15-9.45c0,0,5.76-.69,9.63,1.87,
+                              2.53,1.67,4.86,4.26,6.79,6a17.72,17.72,0,0,0-6.81,1.88,7.85,7.85,0,0,0-4.44,4.38,5.65,5.65,0,0,0-.19,2.27,33.8,33.8,0,0,0,5.94,0,5.87,5.87,0,0,0,3.42-2.16,
+                              12.72,12.72,0,0,1-3.95.77c-2.06,0-2.67-.66-2.67-.66,1-3.64,8.68-5.19,8.68-5.19a16.13,16.13,0,0,0-1.42,6.5A12.76,12.76,0,0,0,50,73.53a12.76,12.76,0,0,0,
+                              3.57-8.45,16.13,16.13,0,0,0-1.42-6.5s7.71,1.55,8.68,5.19c0,0-.61.66-2.67.66a12.72,12.72,0,0,1-3.95-.77,5.87,5.87,0,0,0,3.42,2.16,33.8,33.8,0,0,0,5.94,0,
+                              5.65,5.65,0,0,0-.19-2.27,7.85,7.85,0,0,0-4.44-4.38,17.72,17.72,0,0,0-6.81-1.88c1.93-1.75,4.26-4.34,6.79-6,3.87-2.56,9.63-1.87,9.63-1.87C66.45,56.84,61.4,
+                              58.86,61.4,58.86ZM50,69.52a6.1,6.1,0,0,1-1.47-4.26A10.74,10.74,0,0,1,50,60.12a10.74,10.74,0,0,1,1.47,5.14A6.1,6.1,0,0,1,50,69.52Zm0-15.23a17.26,17.26,0,0,
+                              1-4.35-11c0-9,4.35-11.84,4.35-11.84s4.35,2.84,4.35,11.84A17.26,17.26,0,0,1,50,54.29Z" transform="translate(-27.2 -26.46)"/>
+                          </svg>
+                          <h4>FLO</h4>
+                          <svg class="selected" viewBox="0 0 73 73">
+                              <circle cx="36.5" cy="36.5" r="36"/>
+                              <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                          </svg>
+                      </label>
+                  </div>
+                  <h5>Select Currency</h5>
+                  <div class="crypto-selector flex expand">
+                      <label class="select-crypto">
+                          <input name="currency" value="inr" type="radio">
+                          <svg class="icon inr" viewBox="0 0 36.74 40">
+                            <title>Indian rupee icon</title>
+                            <path d="M62.31,35.47H56.57a11.38,11.38,0,0,1,1.64,4.58h5.53l-1.46,5.42H58.19A10.79,10.79,0,0,1,54.92,52a15.38,15.38,0,0,1-7.58,3.38l12,14.24V70H50.25L37,
+                              54.42l0-4.86h6.51c3.39,0,5.52-1.37,6.38-4.09H36.26l1.43-5.42h12q-1.34-3.31-5.9-3.38H36.26L37.88,30H63.74Z" transform="translate(-27 -30)"/>
+                          </svg>
+                          <h4>INR</h4>
+                          <svg class="selected" viewBox="0 0 73 73">
+                              <circle cx="36.5" cy="36.5" r="36"/>
+                              <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                          </svg>
+                      </label>
+                      <label class="select-crypto">
+                          <input name="currency" value="usd" type="radio">
+                          <svg class="icon" viewBox="0 0 22.59 40">
+                            <title>United states dollar icon</title>
+                            <path d="M59.07,63.23a10.5,10.5,0,0,1-6.09,3c-.16.06-.23.15-.23.27l0,3a.56.56,0,0,1-.15.39.53.53,0,0,1-.39.16H47.7a.49.49,0,0,1-.38-.16.53.53,0,0,1-.16-.39l0-3c0-.12-.07-.21-.22-.27A10.82,10.82,0,0,1,40.91,63a8.62,8.62,0,0,1-2.21-6V56a.55.55,0,0,1,.55-.54h4.91a.53.53,0,0,1,.39.16.52.52,0,0,1,.15.38v.69a3.74,3.74,0,0,0,1.6,3.06A6.83,6.83,0,0,0,50.66,61a5,5,0,0,0,3.43-1,3.29,3.29,0,0,0,1.11-2.52,2.6,2.6,0,0,0-.68-1.84,5.9,5.9,0,0,0-1.88-1.32c-.81-.38-2.07-.9-3.8-1.57a34.27,34.27,0,0,1-5-2.14,10.15,10.15,0,0,1-3.39-3,7.69,7.69,0,0,1-1.39-4.66,8.24,8.24,0,0,1,2.12-5.8,10,10,0,0,1,5.7-3c.15-.07.23-.16.23-.28l-.09-3.31a.5.5,0,0,1,.16-.39.49.49,0,0,1,.38-.16h4.55a.49.49,0,0,1,.38.16.5.5,0,0,1,.16.39l0,3.4a.3.3,0,0,0,.23.28,10.56,10.56,0,0,1,6,3.29,9,9,0,0,1,2.22,6.16v.68a.51.51,0,0,1-.16.39.49.49,0,0,1-.38.16h-5a.49.49,0,0,1-.38-.16.51.51,0,0,1-.16-.39V44a4.2,4.2,0,0,0-1.5-3.25,5.94,5.94,0,0,0-4.09-1.34,4.92,4.92,0,0,0-3.18.91,3,3,0,0,0-1.14,2.5,2.84,2.84,0,0,0,.66,1.91,6.15,6.15,0,0,0,2,1.41c.87.42,2.24,1,4.09,1.63a46,46,0,0,1,4.81,2,9.46,9.46,0,0,1,3.19,2.72,7.46,7.46,0,0,1,1.41,4.69A8.44,8.44,0,0,1,59.07,63.23Z" transform="translate(-38.7 -30)"/></svg>
+                          <h4>USD</h4>
+                          <svg class="selected" viewBox="0 0 73 73">
+                              <circle cx="36.5" cy="36.5" r="36"/>
+                              <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                          </svg>
+                      </label>
+                  </div>
+                  <label class="input">
+                      <input type="number" inputmode="numeric" required>
+                      <div class="label">Sell worth of</div>
+                  </label>
+              </div>
+          </div>
+          <!-- Crypto section-->
+          <div class="popup-container hide">
+              <div id="send_crypto_popup" class="popup">
+                  <div class="container-header bottom-margin">
+                      <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
+                          <title>Close this popup</title>
+                          <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
+                      </svg>
+                      <h3>Send Crypto</h3>
+                      <div class="action" onclick="sendCrypto(this)">
+                          <button class="btn" type="submit" disabled>
+                              Send
+                          </button>
+                          <svg viewBox="0 0 73 73" class="loader">
+                              <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                          </svg>
+                      </div>
+                  </div>
+                  <h5>Select Crypto</h5>
+                  <div class="crypto-selector flex expand">
+                      <label class="select-crypto">
+                          <input name="crypto" value="btc" type="radio">
+                          <svg viewBox="0 0 30.61 40.52" class="icon btc">
+                            <title>Bitcoin icon</title>
+                              <path d="M30.53,16.29c0.64-4.26-2.61-6.55-7.04-8.07l1.44-5.77l-3.51-0.88l-1.4,5.62c-0.92-0.23-1.87-0.45-2.81-0.66
+                              l1.41-5.65L15.11,0l-1.44,5.77c-0.76-0.17-1.51-0.35-2.24-0.53l0-0.02L6.59,4.01L5.66,7.76c0,0,2.61,0.6,2.55,0.63
+                              c1.42,0.36,1.68,1.3,1.64,2.04l-1.64,6.57c0.1,0.02,0.23,0.06,0.36,0.12c-0.12-0.03-0.24-0.06-0.37-0.09l-2.3,9.2
+                              c-0.17,0.43-0.61,1.08-1.61,0.83c0.04,0.05-2.55-0.64-2.55-0.64L0,30.45l4.57,1.14c0.85,0.21,1.68,0.44,2.5,0.65l-1.45,5.83
+                              l3.51,0.88l1.44-5.77c0.96,0.26,1.89,0.5,2.8,0.73l-1.43,5.74l3.51,0.88l1.45-5.82c5.99,1.13,10.49,0.68,12.38-4.74
+                              c1.53-4.36-0.08-6.88-3.23-8.52C28.34,20.92,30.07,19.41,30.53,16.29L30.53,16.29z M22.51,27.54c-1.08,4.36-8.43,2-10.81,1.41
+                              l1.93-7.73C16.01,21.82,23.65,22.99,22.51,27.54L22.51,27.54z M23.6,16.23c-0.99,3.97-7.1,1.95-9.08,1.46l1.75-7.01
+                              C18.25,11.17,24.63,12.09,23.6,16.23z"/>
+                          </svg>
+                          <h4>BTC</h4>
+                          <svg class="selected" viewBox="0 0 73 73">
+                              <circle cx="36.5" cy="36.5" r="36"/>
+                              <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                          </svg>
+                      </label>
+                      <label class="select-crypto">
+                        <input name="crypto" value="flo" type="radio">
                         <svg class="icon flo" viewBox="0 0 45.6 47.07">
                           <title>FLO coin icon</title>
                           <path d="M61.4,58.86A12.31,12.31,0,0,0,68.81,55a15.45,15.45,0,0,0,4-8.52c-11-.63-12.36,1-13.71,1.68-1.19.61-5.33,4.56-5.33,
@@ -383,317 +495,224 @@
                             <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
                         </svg>
                     </label>
-                </div>
-                <h5>Select Currency</h5>
-                <div class="crypto-selector flex expand">
-                    <label class="select-crypto">
-                        <input name="currency" type="radio">
-                        <svg class="icon inr" viewBox="0 0 36.74 40">
-                          <title>Indian rupee icon</title>
-                          <path d="M62.31,35.47H56.57a11.38,11.38,0,0,1,1.64,4.58h5.53l-1.46,5.42H58.19A10.79,10.79,0,0,1,54.92,52a15.38,15.38,0,0,1-7.58,3.38l12,14.24V70H50.25L37,
-                            54.42l0-4.86h6.51c3.39,0,5.52-1.37,6.38-4.09H36.26l1.43-5.42h12q-1.34-3.31-5.9-3.38H36.26L37.88,30H63.74Z" transform="translate(-27 -30)"/>
-                        </svg>
-                        <h4>INR</h4>
-                        <svg class="selected" viewBox="0 0 73 73">
-                            <circle cx="36.5" cy="36.5" r="36"/>
-                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
-                        </svg>
-                    </label>
-                    <label class="select-crypto">
-                        <input name="currency" type="radio">
-                        <svg class="icon" viewBox="0 0 22.59 40">
-                          <title>United states dollar icon</title>
-                          <path d="M59.07,63.23a10.5,10.5,0,0,1-6.09,3c-.16.06-.23.15-.23.27l0,3a.56.56,0,0,1-.15.39.53.53,0,0,1-.39.16H47.7a.49.49,0,0,1-.38-.16.53.53,0,0,1-.16-.39l0-3c0-.12-.07-.21-.22-.27A10.82,10.82,0,0,1,40.91,63a8.62,8.62,0,0,1-2.21-6V56a.55.55,0,0,1,.55-.54h4.91a.53.53,0,0,1,.39.16.52.52,0,0,1,.15.38v.69a3.74,3.74,0,0,0,1.6,3.06A6.83,6.83,0,0,0,50.66,61a5,5,0,0,0,3.43-1,3.29,3.29,0,0,0,1.11-2.52,2.6,2.6,0,0,0-.68-1.84,5.9,5.9,0,0,0-1.88-1.32c-.81-.38-2.07-.9-3.8-1.57a34.27,34.27,0,0,1-5-2.14,10.15,10.15,0,0,1-3.39-3,7.69,7.69,0,0,1-1.39-4.66,8.24,8.24,0,0,1,2.12-5.8,10,10,0,0,1,5.7-3c.15-.07.23-.16.23-.28l-.09-3.31a.5.5,0,0,1,.16-.39.49.49,0,0,1,.38-.16h4.55a.49.49,0,0,1,.38.16.5.5,0,0,1,.16.39l0,3.4a.3.3,0,0,0,.23.28,10.56,10.56,0,0,1,6,3.29,9,9,0,0,1,2.22,6.16v.68a.51.51,0,0,1-.16.39.49.49,0,0,1-.38.16h-5a.49.49,0,0,1-.38-.16.51.51,0,0,1-.16-.39V44a4.2,4.2,0,0,0-1.5-3.25,5.94,5.94,0,0,0-4.09-1.34,4.92,4.92,0,0,0-3.18.91,3,3,0,0,0-1.14,2.5,2.84,2.84,0,0,0,.66,1.91,6.15,6.15,0,0,0,2,1.41c.87.42,2.24,1,4.09,1.63a46,46,0,0,1,4.81,2,9.46,9.46,0,0,1,3.19,2.72,7.46,7.46,0,0,1,1.41,4.69A8.44,8.44,0,0,1,59.07,63.23Z" transform="translate(-38.7 -30)"/></svg>
-                        <h4>USD</h4>
-                        <svg class="selected" viewBox="0 0 73 73">
-                            <circle cx="36.5" cy="36.5" r="36"/>
-                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
-                        </svg>
-                    </label>
-                </div>
-                <label class="input">
-                    <input type="number" inputmode="numeric" onkeyup="formValidation(this, event)" required>
-                    <label>Sell worth of</label>
-                </label>
-            </div>
+                  </div>
+                  <label class="input">
+                      <input name="senderFloId" type="text" required>
+                      <div class="label">Sender's FLO ID</div>
+                  </label>
+                  <label class="input">
+                      <input name="senderPrivateKey" type="password" required>
+                      <div class="label">Sender's Private Key</div>
+                  </label>
+                  <label class="input">
+                      <input name="recieverFloId" type="text" required>
+                      <div class="label">Reciever's FLO ID</div>
+                  </label>
+                  <label class="input">
+                      <input name="amount" type="number" inputmode="numeric" required>
+                      <div class="label">Amount</div>
+                  </label>
+              </div>
+          </div>
+          <div class="popup-container hide">
+              <div id="deposit_crypto_popup" class="popup">
+                  <div class="container-header bottom-margin">
+                      <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
+                          <title>Close this popup</title>
+                          <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
+                      </svg>
+                      <h3>Deposit Crypto</h3>
+                      <div class="action" onclick="depositCrypto(this)">
+                          <button class="btn" type="submit" disabled>
+                              Deposit
+                          </button>
+                          <svg viewBox="0 0 73 73" class="loader">
+                              <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                          </svg>
+                      </div>
+                  </div>
+                  <h5>Select Crypto</h5>
+                  <div class="crypto-selector flex expand">
+                      <label class="select-crypto">
+                          <input name="crypto" value="btc" type="radio">
+                          <svg viewBox="0 0 30.61 40.52" class="icon btc">
+                            <title>Bitcoin icon</title>
+                              <path d="M30.53,16.29c0.64-4.26-2.61-6.55-7.04-8.07l1.44-5.77l-3.51-0.88l-1.4,5.62c-0.92-0.23-1.87-0.45-2.81-0.66
+                              l1.41-5.65L15.11,0l-1.44,5.77c-0.76-0.17-1.51-0.35-2.24-0.53l0-0.02L6.59,4.01L5.66,7.76c0,0,2.61,0.6,2.55,0.63
+                              c1.42,0.36,1.68,1.3,1.64,2.04l-1.64,6.57c0.1,0.02,0.23,0.06,0.36,0.12c-0.12-0.03-0.24-0.06-0.37-0.09l-2.3,9.2
+                              c-0.17,0.43-0.61,1.08-1.61,0.83c0.04,0.05-2.55-0.64-2.55-0.64L0,30.45l4.57,1.14c0.85,0.21,1.68,0.44,2.5,0.65l-1.45,5.83
+                              l3.51,0.88l1.44-5.77c0.96,0.26,1.89,0.5,2.8,0.73l-1.43,5.74l3.51,0.88l1.45-5.82c5.99,1.13,10.49,0.68,12.38-4.74
+                              c1.53-4.36-0.08-6.88-3.23-8.52C28.34,20.92,30.07,19.41,30.53,16.29L30.53,16.29z M22.51,27.54c-1.08,4.36-8.43,2-10.81,1.41
+                              l1.93-7.73C16.01,21.82,23.65,22.99,22.51,27.54L22.51,27.54z M23.6,16.23c-0.99,3.97-7.1,1.95-9.08,1.46l1.75-7.01
+                              C18.25,11.17,24.63,12.09,23.6,16.23z"/>
+                          </svg>
+                          <h4>BTC</h4>
+                          <svg class="selected" viewBox="0 0 73 73">
+                              <circle cx="36.5" cy="36.5" r="36"/>
+                              <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                          </svg>
+                      </label>
+                      <label class="select-crypto">
+                          <input name="crypto" value="flo" type="radio">
+                          <svg class="icon flo" viewBox="0 0 45.6 47.07">
+                            <title>FLO coin icon</title>
+                            <path d="M61.4,58.86A12.31,12.31,0,0,0,68.81,55a15.45,15.45,0,0,0,4-8.52c-11-.63-12.36,1-13.71,1.68-1.19.61-5.33,4.56-5.33,
+                              4.56s3.07-3.14,3.2-9.94a19.94,19.94,0,0,0-2.72-10.65A23.86,23.86,0,0,0,50,26.46a24.09,24.09,0,0,0-4.23,5.67A19.94,19.94,0,0,0,43,42.78c.13,6.8,3.2,9.94,
+                              3.2,9.94s-4.14-3.95-5.33-4.56c-1.35-.69-2.67-2.31-13.71-1.68a15.45,15.45,0,0,0,4,8.52,12.31,12.31,0,0,0,7.41,3.86s-5.05-2-7.15-9.45c0,0,5.76-.69,9.63,1.87,
+                              2.53,1.67,4.86,4.26,6.79,6a17.72,17.72,0,0,0-6.81,1.88,7.85,7.85,0,0,0-4.44,4.38,5.65,5.65,0,0,0-.19,2.27,33.8,33.8,0,0,0,5.94,0,5.87,5.87,0,0,0,3.42-2.16,
+                              12.72,12.72,0,0,1-3.95.77c-2.06,0-2.67-.66-2.67-.66,1-3.64,8.68-5.19,8.68-5.19a16.13,16.13,0,0,0-1.42,6.5A12.76,12.76,0,0,0,50,73.53a12.76,12.76,0,0,0,
+                              3.57-8.45,16.13,16.13,0,0,0-1.42-6.5s7.71,1.55,8.68,5.19c0,0-.61.66-2.67.66a12.72,12.72,0,0,1-3.95-.77,5.87,5.87,0,0,0,3.42,2.16,33.8,33.8,0,0,0,5.94,0,
+                              5.65,5.65,0,0,0-.19-2.27,7.85,7.85,0,0,0-4.44-4.38,17.72,17.72,0,0,0-6.81-1.88c1.93-1.75,4.26-4.34,6.79-6,3.87-2.56,9.63-1.87,9.63-1.87C66.45,56.84,61.4,
+                              58.86,61.4,58.86ZM50,69.52a6.1,6.1,0,0,1-1.47-4.26A10.74,10.74,0,0,1,50,60.12a10.74,10.74,0,0,1,1.47,5.14A6.1,6.1,0,0,1,50,69.52Zm0-15.23a17.26,17.26,0,0,
+                              1-4.35-11c0-9,4.35-11.84,4.35-11.84s4.35,2.84,4.35,11.84A17.26,17.26,0,0,1,50,54.29Z" transform="translate(-27.2 -26.46)"/>
+                          </svg>
+                          <h4>FLO</h4>
+                          <svg class="selected" viewBox="0 0 73 73">
+                              <circle cx="36.5" cy="36.5" r="36"/>
+                              <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                          </svg>
+                      </label>
+                  </div>
+                  <label class="input">
+                      <input name="senderFloId" type="text" required>
+                      <div class="label">Sender's FLO ID</div>
+                  </label>
+                  <label class="input">
+                      <input name="senderPrivateKey" type="password" required>
+                      <div class="label">Sender's Private Key</div>
+                  </label>
+                  <label class="input">
+                      <input name="amount" type="number" inputmode="numeric" required>
+                      <div class="label">Amount</div>
+                  </label>
+              </div>
+          </div>
+          <div class="popup-container hide">
+              <div id="withdraw_crypto_popup" class="popup">
+                  <div class="container-header bottom-margin">
+                      <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
+                          <title>Close this popup</title>
+                          <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
+                      </svg>
+                      <h3>Withdraw Crypto</h3>
+                      <div class="action" onclick="withdrawCrypto(this)">
+                          <button class="btn" type="submit" disabled>
+                              withdraw
+                          </button>
+                          <svg viewBox="0 0 73 73" class="loader">
+                              <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                          </svg>
+                      </div>
+                  </div>
+                  <h5>Select Crypto</h5>
+                  <div class="crypto-selector flex expand">
+                      <label class="select-crypto">
+                          <input name="crypto" value="btc" type="radio">
+                          <svg viewBox="0 0 30.61 40.52" class="icon btc">
+                            <title>Bitcoin icon</title>
+                              <path d="M30.53,16.29c0.64-4.26-2.61-6.55-7.04-8.07l1.44-5.77l-3.51-0.88l-1.4,5.62c-0.92-0.23-1.87-0.45-2.81-0.66
+                              l1.41-5.65L15.11,0l-1.44,5.77c-0.76-0.17-1.51-0.35-2.24-0.53l0-0.02L6.59,4.01L5.66,7.76c0,0,2.61,0.6,2.55,0.63
+                              c1.42,0.36,1.68,1.3,1.64,2.04l-1.64,6.57c0.1,0.02,0.23,0.06,0.36,0.12c-0.12-0.03-0.24-0.06-0.37-0.09l-2.3,9.2
+                              c-0.17,0.43-0.61,1.08-1.61,0.83c0.04,0.05-2.55-0.64-2.55-0.64L0,30.45l4.57,1.14c0.85,0.21,1.68,0.44,2.5,0.65l-1.45,5.83
+                              l3.51,0.88l1.44-5.77c0.96,0.26,1.89,0.5,2.8,0.73l-1.43,5.74l3.51,0.88l1.45-5.82c5.99,1.13,10.49,0.68,12.38-4.74
+                              c1.53-4.36-0.08-6.88-3.23-8.52C28.34,20.92,30.07,19.41,30.53,16.29L30.53,16.29z M22.51,27.54c-1.08,4.36-8.43,2-10.81,1.41
+                              l1.93-7.73C16.01,21.82,23.65,22.99,22.51,27.54L22.51,27.54z M23.6,16.23c-0.99,3.97-7.1,1.95-9.08,1.46l1.75-7.01
+                              C18.25,11.17,24.63,12.09,23.6,16.23z"/>
+                          </svg>
+                          <h4>BTC</h4>
+                          <svg class="selected" viewBox="0 0 73 73">
+                              <circle cx="36.5" cy="36.5" r="36"/>
+                              <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                          </svg>
+                      </label>
+                      <label class="select-crypto">
+                          <input name="crypto" value="flo" type="radio">
+                          <svg class="icon flo" viewBox="0 0 45.6 47.07">
+                            <title>FLO coin icon</title>
+                            <path d="M61.4,58.86A12.31,12.31,0,0,0,68.81,55a15.45,15.45,0,0,0,4-8.52c-11-.63-12.36,1-13.71,1.68-1.19.61-5.33,4.56-5.33,
+                              4.56s3.07-3.14,3.2-9.94a19.94,19.94,0,0,0-2.72-10.65A23.86,23.86,0,0,0,50,26.46a24.09,24.09,0,0,0-4.23,5.67A19.94,19.94,0,0,0,43,42.78c.13,6.8,3.2,9.94,
+                              3.2,9.94s-4.14-3.95-5.33-4.56c-1.35-.69-2.67-2.31-13.71-1.68a15.45,15.45,0,0,0,4,8.52,12.31,12.31,0,0,0,7.41,3.86s-5.05-2-7.15-9.45c0,0,5.76-.69,9.63,1.87,
+                              2.53,1.67,4.86,4.26,6.79,6a17.72,17.72,0,0,0-6.81,1.88,7.85,7.85,0,0,0-4.44,4.38,5.65,5.65,0,0,0-.19,2.27,33.8,33.8,0,0,0,5.94,0,5.87,5.87,0,0,0,3.42-2.16,
+                              12.72,12.72,0,0,1-3.95.77c-2.06,0-2.67-.66-2.67-.66,1-3.64,8.68-5.19,8.68-5.19a16.13,16.13,0,0,0-1.42,6.5A12.76,12.76,0,0,0,50,73.53a12.76,12.76,0,0,0,
+                              3.57-8.45,16.13,16.13,0,0,0-1.42-6.5s7.71,1.55,8.68,5.19c0,0-.61.66-2.67.66a12.72,12.72,0,0,1-3.95-.77,5.87,5.87,0,0,0,3.42,2.16,33.8,33.8,0,0,0,5.94,0,
+                              5.65,5.65,0,0,0-.19-2.27,7.85,7.85,0,0,0-4.44-4.38,17.72,17.72,0,0,0-6.81-1.88c1.93-1.75,4.26-4.34,6.79-6,3.87-2.56,9.63-1.87,9.63-1.87C66.45,56.84,61.4,
+                              58.86,61.4,58.86ZM50,69.52a6.1,6.1,0,0,1-1.47-4.26A10.74,10.74,0,0,1,50,60.12a10.74,10.74,0,0,1,1.47,5.14A6.1,6.1,0,0,1,50,69.52Zm0-15.23a17.26,17.26,0,0,
+                              1-4.35-11c0-9,4.35-11.84,4.35-11.84s4.35,2.84,4.35,11.84A17.26,17.26,0,0,1,50,54.29Z" transform="translate(-27.2 -26.46)"/>
+                          </svg>
+                          <h4>FLO</h4>
+                          <svg class="selected" viewBox="0 0 73 73">
+                              <circle cx="36.5" cy="36.5" r="36"/>
+                              <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
+                          </svg>
+                      </label>
+                  </div>
+                  <label class="input">
+                      <input name="recievingCryptoAddr" type="text" required>
+                      <div class="label">Recieving crypto Address</div>
+                  </label>
+                  <label class="input">
+                      <input name="amount" type="number" inputmode="numeric" required>
+                      <div class="label">Amount</div>
+                  </label>
+              </div>
+          </div>
+          <!-- Cash section-->
+          <div class="popup-container hide">
+              <div id="deposit_cash_popup" class="popup">
+                  <div class="container-header bottom-margin">
+                      <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
+                          <title>Close this popup</title>
+                          <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
+                      </svg>
+                      <h3>Deposit Cash</h3>
+                      <div class="action" onclick="depositCash(this)">
+                          <button class="btn" type="submit" disabled>
+                              Deposit
+                          </button>
+                          <svg viewBox="0 0 73 73" class="loader">
+                              <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                          </svg>
+                      </div>
+                  </div>
+                  <label class="input">
+                      <input name="upiAddr" pattern="^[a-zA-z0-9]+@[a-zA-z0-9]+" type="text" required>
+                      <div class="label">Depositer's UPI address</div>
+                  </label>
+                  <label class="input">
+                      <input name="amount" type="number" inputmode="numeric" required>
+                      <div class="label">Amount</div>
+                  </label>
+              </div>
+          </div>
+          <div class="popup-container hide">
+              <div id="withdraw_cash_popup" class="popup">
+                  <div class="container-header bottom-margin">
+                      <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
+                          <title>Close this popup</title>
+                          <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
+                      </svg>
+                      <h3>Withdraw Cash</h3>
+                      <div class="action" onclick="withdrawCash(this)">
+                          <button class="btn" type="submit" disabled>
+                              withdraw
+                          </button>
+                          <svg viewBox="0 0 73 73" class="loader">
+                              <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                          </svg>
+                      </div>
+                  </div>
+                  <label class="input">
+                      <input name="upiAddr" pattern="^[a-zA-z0-9]+@[a-zA-z0-9]+" type="text" required>
+                      <div class="label">Recieving UPI address</div>
+                  </label>
+                  <label class="input">
+                      <input name="amount" type="number" name="hi" inputmode="numeric" required>
+                      <div class="label">Amount</div>
+                  </label>
+              </div>
+          </div>
         </div>
-        <!-- Crypto section-->
-        <div class="popup-container hide">
-            <div id="send_crypto_popup" class="popup">
-                <div class="container-header bottom-margin">
-                    <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
-                        <title>Close this popup</title>
-                        <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
-                    </svg>
-                    <h3>Send Crypto</h3>
-                    <div class="action" onclick="sendCrypto(this)">
-                        <button class="btn" type="submit" disabled>
-                            Send
-                        </button>
-                        <svg viewBox="0 0 73 73" class="loader">
-                            <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
-                        </svg>
-                    </div>
-                </div>
-                <h5>Select Crypto</h5>
-                <div class="crypto-selector flex expand">
-                    <label class="select-crypto">
-                        <input name="crypto" type="radio">
-                        <svg viewBox="0 0 30.61 40.52" class="icon btc">
-                          <title>Bitcoin icon</title>
-                            <path d="M30.53,16.29c0.64-4.26-2.61-6.55-7.04-8.07l1.44-5.77l-3.51-0.88l-1.4,5.62c-0.92-0.23-1.87-0.45-2.81-0.66
-                            l1.41-5.65L15.11,0l-1.44,5.77c-0.76-0.17-1.51-0.35-2.24-0.53l0-0.02L6.59,4.01L5.66,7.76c0,0,2.61,0.6,2.55,0.63
-                            c1.42,0.36,1.68,1.3,1.64,2.04l-1.64,6.57c0.1,0.02,0.23,0.06,0.36,0.12c-0.12-0.03-0.24-0.06-0.37-0.09l-2.3,9.2
-                            c-0.17,0.43-0.61,1.08-1.61,0.83c0.04,0.05-2.55-0.64-2.55-0.64L0,30.45l4.57,1.14c0.85,0.21,1.68,0.44,2.5,0.65l-1.45,5.83
-                            l3.51,0.88l1.44-5.77c0.96,0.26,1.89,0.5,2.8,0.73l-1.43,5.74l3.51,0.88l1.45-5.82c5.99,1.13,10.49,0.68,12.38-4.74
-                            c1.53-4.36-0.08-6.88-3.23-8.52C28.34,20.92,30.07,19.41,30.53,16.29L30.53,16.29z M22.51,27.54c-1.08,4.36-8.43,2-10.81,1.41
-                            l1.93-7.73C16.01,21.82,23.65,22.99,22.51,27.54L22.51,27.54z M23.6,16.23c-0.99,3.97-7.1,1.95-9.08,1.46l1.75-7.01
-                            C18.25,11.17,24.63,12.09,23.6,16.23z"/>
-                        </svg>
-                        <h4>BTC</h4>
-                        <svg class="selected" viewBox="0 0 73 73">
-                            <circle cx="36.5" cy="36.5" r="36"/>
-                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
-                        </svg>
-                    </label>
-                    <label class="select-crypto">
-                        <input name="crypto" type="radio">
-                        <div class="icon">
-                            <svg class="icon flo" viewBox="0 0 45.6 47.07">
-                              <title>FLO coin icon</title>
-                              <path d="M61.4,58.86A12.31,12.31,0,0,0,68.81,55a15.45,15.45,0,0,0,4-8.52c-11-.63-12.36,1-13.71,1.68-1.19.61-5.33,4.56-5.33,
-                                4.56s3.07-3.14,3.2-9.94a19.94,19.94,0,0,0-2.72-10.65A23.86,23.86,0,0,0,50,26.46a24.09,24.09,0,0,0-4.23,5.67A19.94,19.94,0,0,0,43,42.78c.13,6.8,3.2,9.94,
-                                3.2,9.94s-4.14-3.95-5.33-4.56c-1.35-.69-2.67-2.31-13.71-1.68a15.45,15.45,0,0,0,4,8.52,12.31,12.31,0,0,0,7.41,3.86s-5.05-2-7.15-9.45c0,0,5.76-.69,9.63,1.87,
-                                2.53,1.67,4.86,4.26,6.79,6a17.72,17.72,0,0,0-6.81,1.88,7.85,7.85,0,0,0-4.44,4.38,5.65,5.65,0,0,0-.19,2.27,33.8,33.8,0,0,0,5.94,0,5.87,5.87,0,0,0,3.42-2.16,
-                                12.72,12.72,0,0,1-3.95.77c-2.06,0-2.67-.66-2.67-.66,1-3.64,8.68-5.19,8.68-5.19a16.13,16.13,0,0,0-1.42,6.5A12.76,12.76,0,0,0,50,73.53a12.76,12.76,0,0,0,
-                                3.57-8.45,16.13,16.13,0,0,0-1.42-6.5s7.71,1.55,8.68,5.19c0,0-.61.66-2.67.66a12.72,12.72,0,0,1-3.95-.77,5.87,5.87,0,0,0,3.42,2.16,33.8,33.8,0,0,0,5.94,0,
-                                5.65,5.65,0,0,0-.19-2.27,7.85,7.85,0,0,0-4.44-4.38,17.72,17.72,0,0,0-6.81-1.88c1.93-1.75,4.26-4.34,6.79-6,3.87-2.56,9.63-1.87,9.63-1.87C66.45,56.84,61.4,
-                                58.86,61.4,58.86ZM50,69.52a6.1,6.1,0,0,1-1.47-4.26A10.74,10.74,0,0,1,50,60.12a10.74,10.74,0,0,1,1.47,5.14A6.1,6.1,0,0,1,50,69.52Zm0-15.23a17.26,17.26,0,0,
-                                1-4.35-11c0-9,4.35-11.84,4.35-11.84s4.35,2.84,4.35,11.84A17.26,17.26,0,0,1,50,54.29Z" transform="translate(-27.2 -26.46)"/>
-                            </svg>
-                        </div>
-                        <h4>FLO</h4>
-                        <svg class="selected" viewBox="0 0 73 73">
-                            <circle cx="36.5" cy="36.5" r="36"/>
-                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
-                        </svg>
-                    </label>
-                </div>
-                <label class="input">
-                    <input type="text" required>
-                    <label>Sender's FLO ID</label>
-                </label>
-                <label class="input">
-                    <input type="password" required>
-                    <label>Sender's Private key</label>
-                </label>
-                <label class="input">
-                    <input type="text" required>
-                    <label>Reciever's FLO ID</label>
-                </label>
-                <label class="input">
-                    <input type="number" inputmode="numeric" onkeyup="formValidation(this, event)" required>
-                    <label>Amount</label>
-                </label>
-            </div>
-        </div>
-        <div class="popup-container hide">
-            <div id="deposit_crypto_popup" class="popup">
-                <div class="container-header bottom-margin">
-                    <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
-                        <title>Close this popup</title>
-                        <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
-                    </svg>
-                    <h3>Deposit Crypto</h3>
-                    <div class="action" onclick="depositCrypto(this)">
-                        <button class="btn" type="submit" disabled>
-                            Deposit
-                        </button>
-                        <svg viewBox="0 0 73 73" class="loader">
-                            <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
-                        </svg>
-                    </div>
-                </div>
-                <h5>Select Crypto</h5>
-                <div class="crypto-selector flex expand">
-                    <label class="select-crypto">
-                        <input name="crypto" type="radio">
-                        <svg viewBox="0 0 30.61 40.52" class="icon btc">
-                          <title>Bitcoin icon</title>
-                            <path d="M30.53,16.29c0.64-4.26-2.61-6.55-7.04-8.07l1.44-5.77l-3.51-0.88l-1.4,5.62c-0.92-0.23-1.87-0.45-2.81-0.66
-                            l1.41-5.65L15.11,0l-1.44,5.77c-0.76-0.17-1.51-0.35-2.24-0.53l0-0.02L6.59,4.01L5.66,7.76c0,0,2.61,0.6,2.55,0.63
-                            c1.42,0.36,1.68,1.3,1.64,2.04l-1.64,6.57c0.1,0.02,0.23,0.06,0.36,0.12c-0.12-0.03-0.24-0.06-0.37-0.09l-2.3,9.2
-                            c-0.17,0.43-0.61,1.08-1.61,0.83c0.04,0.05-2.55-0.64-2.55-0.64L0,30.45l4.57,1.14c0.85,0.21,1.68,0.44,2.5,0.65l-1.45,5.83
-                            l3.51,0.88l1.44-5.77c0.96,0.26,1.89,0.5,2.8,0.73l-1.43,5.74l3.51,0.88l1.45-5.82c5.99,1.13,10.49,0.68,12.38-4.74
-                            c1.53-4.36-0.08-6.88-3.23-8.52C28.34,20.92,30.07,19.41,30.53,16.29L30.53,16.29z M22.51,27.54c-1.08,4.36-8.43,2-10.81,1.41
-                            l1.93-7.73C16.01,21.82,23.65,22.99,22.51,27.54L22.51,27.54z M23.6,16.23c-0.99,3.97-7.1,1.95-9.08,1.46l1.75-7.01
-                            C18.25,11.17,24.63,12.09,23.6,16.23z"/>
-                        </svg>
-                        <h4>BTC</h4>
-                        <svg class="selected" viewBox="0 0 73 73">
-                            <circle cx="36.5" cy="36.5" r="36"/>
-                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
-                        </svg>
-                    </label>
-                    <label class="select-crypto">
-                        <input name="crypto" type="radio">
-                        <svg class="icon flo" viewBox="0 0 45.6 47.07">
-                          <title>FLO coin icon</title>
-                          <path d="M61.4,58.86A12.31,12.31,0,0,0,68.81,55a15.45,15.45,0,0,0,4-8.52c-11-.63-12.36,1-13.71,1.68-1.19.61-5.33,4.56-5.33,
-                            4.56s3.07-3.14,3.2-9.94a19.94,19.94,0,0,0-2.72-10.65A23.86,23.86,0,0,0,50,26.46a24.09,24.09,0,0,0-4.23,5.67A19.94,19.94,0,0,0,43,42.78c.13,6.8,3.2,9.94,
-                            3.2,9.94s-4.14-3.95-5.33-4.56c-1.35-.69-2.67-2.31-13.71-1.68a15.45,15.45,0,0,0,4,8.52,12.31,12.31,0,0,0,7.41,3.86s-5.05-2-7.15-9.45c0,0,5.76-.69,9.63,1.87,
-                            2.53,1.67,4.86,4.26,6.79,6a17.72,17.72,0,0,0-6.81,1.88,7.85,7.85,0,0,0-4.44,4.38,5.65,5.65,0,0,0-.19,2.27,33.8,33.8,0,0,0,5.94,0,5.87,5.87,0,0,0,3.42-2.16,
-                            12.72,12.72,0,0,1-3.95.77c-2.06,0-2.67-.66-2.67-.66,1-3.64,8.68-5.19,8.68-5.19a16.13,16.13,0,0,0-1.42,6.5A12.76,12.76,0,0,0,50,73.53a12.76,12.76,0,0,0,
-                            3.57-8.45,16.13,16.13,0,0,0-1.42-6.5s7.71,1.55,8.68,5.19c0,0-.61.66-2.67.66a12.72,12.72,0,0,1-3.95-.77,5.87,5.87,0,0,0,3.42,2.16,33.8,33.8,0,0,0,5.94,0,
-                            5.65,5.65,0,0,0-.19-2.27,7.85,7.85,0,0,0-4.44-4.38,17.72,17.72,0,0,0-6.81-1.88c1.93-1.75,4.26-4.34,6.79-6,3.87-2.56,9.63-1.87,9.63-1.87C66.45,56.84,61.4,
-                            58.86,61.4,58.86ZM50,69.52a6.1,6.1,0,0,1-1.47-4.26A10.74,10.74,0,0,1,50,60.12a10.74,10.74,0,0,1,1.47,5.14A6.1,6.1,0,0,1,50,69.52Zm0-15.23a17.26,17.26,0,0,
-                            1-4.35-11c0-9,4.35-11.84,4.35-11.84s4.35,2.84,4.35,11.84A17.26,17.26,0,0,1,50,54.29Z" transform="translate(-27.2 -26.46)"/>
-                        </svg>
-                        <h4>FLO</h4>
-                        <svg class="selected" viewBox="0 0 73 73">
-                            <circle cx="36.5" cy="36.5" r="36"/>
-                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
-                        </svg>
-                    </label>
-                </div>
-                <label class="input">
-                    <input type="text" required>
-                    <label>Sender's FLO ID</label>
-                </label>
-                <label class="input">
-                    <input type="password" required>
-                    <label>Sender's Private key</label>
-                </label>
-                <label class="input">
-                    <input type="number" inputmode="numeric" onkeyup="formValidation(this, event)" required>
-                    <label>Amount</label>
-                </label>
-            </div>
-        </div>
-        <div class="popup-container hide">
-            <div id="withdraw_crypto_popup" class="popup">
-                <div class="container-header bottom-margin">
-                    <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
-                        <title>Close this popup</title>
-                        <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
-                    </svg>
-                    <h3>Withdraw Crypto</h3>
-                    <div class="action" onclick="withdrawCrypto(this)">
-                        <button class="btn" type="submit" disabled>
-                            withdraw
-                        </button>
-                        <svg viewBox="0 0 73 73" class="loader">
-                            <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
-                        </svg>
-                    </div>
-                </div>
-                <h5>Select Crypto</h5>
-                <div class="crypto-selector flex expand">
-                    <label class="select-crypto">
-                        <input name="crypto" type="radio">
-                        <svg viewBox="0 0 30.61 40.52" class="icon btc">
-                          <title>Bitcoin icon</title>
-                            <path d="M30.53,16.29c0.64-4.26-2.61-6.55-7.04-8.07l1.44-5.77l-3.51-0.88l-1.4,5.62c-0.92-0.23-1.87-0.45-2.81-0.66
-                            l1.41-5.65L15.11,0l-1.44,5.77c-0.76-0.17-1.51-0.35-2.24-0.53l0-0.02L6.59,4.01L5.66,7.76c0,0,2.61,0.6,2.55,0.63
-                            c1.42,0.36,1.68,1.3,1.64,2.04l-1.64,6.57c0.1,0.02,0.23,0.06,0.36,0.12c-0.12-0.03-0.24-0.06-0.37-0.09l-2.3,9.2
-                            c-0.17,0.43-0.61,1.08-1.61,0.83c0.04,0.05-2.55-0.64-2.55-0.64L0,30.45l4.57,1.14c0.85,0.21,1.68,0.44,2.5,0.65l-1.45,5.83
-                            l3.51,0.88l1.44-5.77c0.96,0.26,1.89,0.5,2.8,0.73l-1.43,5.74l3.51,0.88l1.45-5.82c5.99,1.13,10.49,0.68,12.38-4.74
-                            c1.53-4.36-0.08-6.88-3.23-8.52C28.34,20.92,30.07,19.41,30.53,16.29L30.53,16.29z M22.51,27.54c-1.08,4.36-8.43,2-10.81,1.41
-                            l1.93-7.73C16.01,21.82,23.65,22.99,22.51,27.54L22.51,27.54z M23.6,16.23c-0.99,3.97-7.1,1.95-9.08,1.46l1.75-7.01
-                            C18.25,11.17,24.63,12.09,23.6,16.23z"/>
-                        </svg>
-                        <h4>BTC</h4>
-                        <svg class="selected" viewBox="0 0 73 73">
-                            <circle cx="36.5" cy="36.5" r="36"/>
-                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
-                        </svg>
-                    </label>
-                    <label class="select-crypto">
-                        <input name="crypto" type="radio">
-                        <svg class="icon flo" viewBox="0 0 45.6 47.07">
-                          <title>FLO coin icon</title>
-                          <path d="M61.4,58.86A12.31,12.31,0,0,0,68.81,55a15.45,15.45,0,0,0,4-8.52c-11-.63-12.36,1-13.71,1.68-1.19.61-5.33,4.56-5.33,
-                            4.56s3.07-3.14,3.2-9.94a19.94,19.94,0,0,0-2.72-10.65A23.86,23.86,0,0,0,50,26.46a24.09,24.09,0,0,0-4.23,5.67A19.94,19.94,0,0,0,43,42.78c.13,6.8,3.2,9.94,
-                            3.2,9.94s-4.14-3.95-5.33-4.56c-1.35-.69-2.67-2.31-13.71-1.68a15.45,15.45,0,0,0,4,8.52,12.31,12.31,0,0,0,7.41,3.86s-5.05-2-7.15-9.45c0,0,5.76-.69,9.63,1.87,
-                            2.53,1.67,4.86,4.26,6.79,6a17.72,17.72,0,0,0-6.81,1.88,7.85,7.85,0,0,0-4.44,4.38,5.65,5.65,0,0,0-.19,2.27,33.8,33.8,0,0,0,5.94,0,5.87,5.87,0,0,0,3.42-2.16,
-                            12.72,12.72,0,0,1-3.95.77c-2.06,0-2.67-.66-2.67-.66,1-3.64,8.68-5.19,8.68-5.19a16.13,16.13,0,0,0-1.42,6.5A12.76,12.76,0,0,0,50,73.53a12.76,12.76,0,0,0,
-                            3.57-8.45,16.13,16.13,0,0,0-1.42-6.5s7.71,1.55,8.68,5.19c0,0-.61.66-2.67.66a12.72,12.72,0,0,1-3.95-.77,5.87,5.87,0,0,0,3.42,2.16,33.8,33.8,0,0,0,5.94,0,
-                            5.65,5.65,0,0,0-.19-2.27,7.85,7.85,0,0,0-4.44-4.38,17.72,17.72,0,0,0-6.81-1.88c1.93-1.75,4.26-4.34,6.79-6,3.87-2.56,9.63-1.87,9.63-1.87C66.45,56.84,61.4,
-                            58.86,61.4,58.86ZM50,69.52a6.1,6.1,0,0,1-1.47-4.26A10.74,10.74,0,0,1,50,60.12a10.74,10.74,0,0,1,1.47,5.14A6.1,6.1,0,0,1,50,69.52Zm0-15.23a17.26,17.26,0,0,
-                            1-4.35-11c0-9,4.35-11.84,4.35-11.84s4.35,2.84,4.35,11.84A17.26,17.26,0,0,1,50,54.29Z" transform="translate(-27.2 -26.46)"/>
-                        </svg>
-                        <h4>FLO</h4>
-                        <svg class="selected" viewBox="0 0 73 73">
-                            <circle cx="36.5" cy="36.5" r="36"/>
-                            <polyline points="18.23,37.39 29.73,48.9 54.77,25.21 "/>
-                        </svg>
-                    </label>
-                </div>
-                <label class="input">
-                    <input type="text" required>
-                    <label>Recieving crypto Address</label>
-                </label>
-                <label class="input">
-                    <input type="number" inputmode="numeric" onkeyup="formValidation(this, event)" required>
-                    <label>Amount</label>
-                </label>
-            </div>
-        </div>
-        <!-- Cash section-->
-        <div class="popup-container hide">
-            <div id="deposit_cash_popup" class="popup">
-                <div class="container-header bottom-margin">
-                    <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
-                        <title>Close this popup</title>
-                        <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
-                    </svg>
-                    <h3>Deposit Cash</h3>
-                    <div class="action" onclick="depositCash(this)">
-                        <button class="btn" type="submit" disabled>
-                            Deposit
-                        </button>
-                        <svg viewBox="0 0 73 73" class="loader">
-                            <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
-                        </svg>
-                    </div>
-                </div>
-                <label class="input">
-                    <input type="text" required>
-                    <label>Depositer's UPI address</label>
-                </label>
-                <label class="input">
-                    <input type="number" inputmode="numeric" onkeyup="formValidation(this, event)" required>
-                    <label>Amount in ₹</label>
-                </label>
-            </div>
-        </div>
-        <div class="popup-container hide">
-            <div id="withdraw_cash_popup" class="popup">
-                <div class="container-header bottom-margin">
-                    <svg class="back-arrow" onclick="hidePopup(this)" viewBox="0 0 31.24 56.83">
-                        <title>Close this popup</title>
-                        <polyline points="29.83,1.41 2.83,28.41 29.83,55.41 "/>
-                    </svg>
-                    <h3>Withdraw Cash</h3>
-                    <div class="action" onclick="withdrawCash(this)">
-                        <button class="btn" type="submit" disabled>
-                            withdraw
-                        </button>
-                        <svg viewBox="0 0 73 73" class="loader">
-                            <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
-                        </svg>
-                    </div>
-                </div>
-                <label class="input">
-                    <input type="text" required>
-                    <label>Recieving UPI Address</label>
-                </label>
-                <label class="input">
-                    <input type="number" name="hi" inputmode="numeric" onkeyup="formValidation(this, event)" required>
-                    <label>Amount in ₹</label>
-                </label>
-            </div>
-        </div>
+
     </main>
     <script id="ui_functions">
         let frag = document.createDocumentFragment(),
@@ -711,7 +730,7 @@
                             <h5>Trade Id</h5>
                             <span class="breakable">${tradeId}</span>
                         </div>
-                        <button class="cancel-order">Cancel</button>`;
+                        <button id="${tradeId}" class="cancel-order">Cancel</button>`;
                 return card;
             }
         }
@@ -760,10 +779,15 @@
             }
 
             function clearAllInputs(parent){
-                parent.querySelectorAll("input, textarea").forEach((field) => {
+                parent.querySelectorAll("input").forEach((field) => {
+                  if(field.getAttribute('type') !== 'radio'){
                     field.value = '';
-                    console.log(field, field.getAttribute('type'))
-                    if(field.getAttribute('type') === 'radio')
+                    if(field.closest('.input'))
+                      {
+                        field.closest('.input').classList.remove('animate-label')
+                      }
+                  }
+                  else
                       field.checked = false
                 })
             }
@@ -773,9 +797,13 @@
                 let banner = document.getElementById('show_message'),
                     back;
                 if(mode === 'error'){
-                  banner.querySelector('#error_icon').classList.toggle('hide-completely')
-                  banner.querySelector('#done_icon').classList.toggle('hide-completely')
+                  banner.querySelector('#error_icon').classList.remove('hide-completely')
+                  banner.querySelector('#done_icon').classList.add('hide-completely')
                 } 
+                else{
+                  banner.querySelector('#error_icon').classList.add('hide-completely')
+                  banner.querySelector('#done_icon').classList.remove('hide-completely')
+                }
                     
                 banner.style.background = back;
                 banner.classList.add('no-transformations')
@@ -847,11 +875,10 @@
         }
 
         function areInputsEmpty(parent){
-          let allInputs = parent.querySelectorAll("input:not([type='radio'])"),
+          let allInputs = parent.querySelectorAll(".input input"),
               allRadios = parent.querySelectorAll("input[type='radio']"),
               radioStatus, inputStatus, counter = 0;
-          
-          inputStatus = [...allInputs].every(input => input.value !== '')
+          inputStatus = [...allInputs].every(input => input.checkValidity())
           
           allRadios.forEach(radio => {
             if(radio.checked)
@@ -859,22 +886,22 @@
           })
           if(counter == allRadios.length/2)
             radioStatus = true;
-          console.log(inputStatus, radioStatus)
           if(inputStatus && radioStatus)
             return true
           else false
         }
 
         function formValidation(formElement, e){ 
-          preventNonNumericalInput(e);
+          if(formElement.getAttribute('type') === 'number')
+            preventNonNumericalInput(e);
           let parent = formElement.closest('.popup'), 
           submitBtn = parent.querySelector("button[type = 'submit']");
-          console.log(areInputsEmpty(parent))
           if(areInputsEmpty(parent))
             submitBtn.disabled = false;
           else
             submitBtn.disabled = true;
-         }
+        }
+
         let allExchangeSections = document.querySelectorAll('.exchange-section'),
             allExchangeBtns = document.querySelectorAll('.exchange-btn');
         function showSection(thisBtn, elem){
@@ -906,13 +933,38 @@
                 if(e.target.closest('#withdraw_cash_btn'))
                     showPopup('withdraw_cash_popup')
             })
+            document.getElementById('popup-parent').addEventListener('keyup', (e) => {
+              if(e.target.closest('.input')){
+                let parent = e.target.closest('.input');
+                if(parent.firstElementChild.value !== '')
+                  parent.classList.add('animate-label')
+                else 
+                  parent.classList.remove('animate-label')
+                formValidation(parent.firstElementChild, e)
+              }
+            })
+
+            document.getElementById('balance_panel').addEventListener('click', (e) => {
+              if(e.target.closest('#refresh_cash_bal')){
+                refreshBalance('cashInr', e.target.closest('#refresh_cash_bal'))
+              }
+              if(e.target.closest('#refresh_btc_bal')){
+                refreshBalance('cryptoBtc', e.target.closest('#refresh_btc_bal'))
+              }
+              if(e.target.closest('#refresh_flo_bal')){
+                refreshBalance('cryptoFlo', e.target.closest('#refresh_flo_bal'))
+              }
+            })
+
+            // Function for cancelling trade orders
             document.getElementById('orders_container').addEventListener('click', (e) => {
                 let container = document.getElementById('orders_container');
                 if(e.target.closest('.cancel-order'))
                     askConfirmation('Are you sure to cancel this trade order?').then((result) => {
                         if(result){
+                          let tradeId = e.target.closest('.cancel-order').id;
                             e.target.closest('.order').remove();
-                            showMessage('', 'Order cancelled.')
+                            showMessage('', `Order id: ${tradeId} cancelled.`)
                             if(container.children.length === 0)
                                 container.innerHTML = '<h4>No trade orders yet.</h4>'
                         }
@@ -927,23 +979,153 @@
         // exchange execute option functions
 
         function buyCrypto(btn){
-          console.log(btn)
-          let parentPopup = btn.closest('.popup');
+          let parentPopup = btn.closest('.popup'),
+              selectedCrypto = parentPopup.querySelector("input[name='crypto']:checked").value,
+              selectedCurrency = parentPopup.querySelector("input[name='currency']:checked").value,
+              buyWorth = parentPopup.querySelector('.input input').value;
+          console.log(selectedCrypto, selectedCurrency, buyWorth)
           btnLoading(btn, 'start')  
           
           //if operation completes{
-            //btnLoading(btn, 'stop')
-            showMessage('', 'Bought Crypto')
-            hidePopup(parentPopup)
+            setTimeout(() => {
+              btnLoading(btn, 'stop')
+              hidePopup(parentPopup)
+              showMessage('', 'Bought Crypto')
+            }, 1000)
           //}
+          /*else{
+              showMessage('error', 'Error message')
+          }*/
         }
+        
+        function sellCrypto(btn){
+          let parentPopup = btn.closest('.popup'),
+              selectedCrypto = parentPopup.querySelector("input[name='crypto']:checked").value,
+              selectedCurrency = parentPopup.querySelector("input[name='currency']:checked").value,
+              sellWorth = parentPopup.querySelector('.input input').value;
+          console.log(selectedCrypto, selectedCurrency, sellWorth)
+          btnLoading(btn, 'start')  
+          
+          //if operation completes{
+            setTimeout(() => {
+              btnLoading(btn, 'stop')
+              hidePopup(parentPopup)
+              showMessage('', 'Sold Crypto')
+            }, 1000)
+          //}
+          /*else{
+              showMessage('error', 'Error message')
+          }*/
+        }
+
+        function sendCrypto(btn){
+          let parentPopup = btn.closest('.popup'),
+              selectedCrypto = document.querySelector("input[name='crypto']:checked").value,
+              sendersFloId = parentPopup.querySelector("input[name='senderFloId']").value,
+              sendersPrivKey = parentPopup.querySelector("input[name='senderPrivateKey']").value,
+              recieverFloId = parentPopup.querySelector("input[name='recieverFloId']").value,
+              amount = parentPopup.querySelector("input[name='amount']").value;
+          console.log(selectedCrypto, sendersFloId, sendersPrivKey, recieverFloId, amount)
+          btnLoading(btn, 'start')  
+          
+          //if operation completes{
+            setTimeout(() => {
+              btnLoading(btn, 'stop')
+              hidePopup(parentPopup)
+              showMessage('', 'Crypto sent')
+            }, 1000)
+          //}
+          /*else{
+              showMessage('error', 'Error message')
+          }*/
+        }
+
+        function depositCrypto(btn){
+          let parentPopup = btn.closest('.popup'),
+              selectedCrypto = document.querySelector("input[name='crypto']:checked").value,
+              sendersFloId = parentPopup.querySelector("input[name='senderFloId']").value,
+              sendersPrivKey = parentPopup.querySelector("input[name='senderPrivateKey']").value,
+              amount = parentPopup.querySelector("input[name='amount']").value;
+          console.log(selectedCrypto, sendersFloId, sendersPrivKey, amount)
+          btnLoading(btn, 'start')  
+          
+          //if operation completes{
+            setTimeout(() => {
+              btnLoading(btn, 'stop')
+              hidePopup(parentPopup)
+              showMessage('', 'Deposited crypto')
+            }, 1000)
+          //}
+          /*else{
+              showMessage('error', 'Error message')
+          }*/
+        }
+
+        function withdrawCrypto(btn){
+          let parentPopup = btn.closest('.popup'),
+              selectedCrypto = document.querySelector("input[name='crypto']:checked").value,
+              recievingCryptoAddr = parentPopup.querySelector("input[name='recievingCryptoAddr']").value,
+              amount = parentPopup.querySelector("input[name='amount']").value;
+          console.log(selectedCrypto, recievingCryptoAddr, amount)
+          btnLoading(btn, 'start')  
+          
+          //if operation completes{
+            setTimeout(() => {
+              btnLoading(btn, 'stop')
+              hidePopup(parentPopup)
+              showMessage('', 'Crypto withdrawn')
+            }, 1000)
+          //}
+          /*else{
+              showMessage('error', 'Error message')
+          }*/
+        }
+
+        function depositCash(btn){
+          let parentPopup = btn.closest('.popup'),
+              upiAddr = parentPopup.querySelector("input[name='upiAddr']").value,
+              amount = parentPopup.querySelector("input[name='amount']").value;
+          console.log(upiAddr, amount)
+          btnLoading(btn, 'start')  
+          
+          //if operation completes{
+            setTimeout(() => {
+              btnLoading(btn, 'stop')
+              hidePopup(parentPopup)
+              showMessage('', 'Cash deposited')
+            }, 1000)
+          //}
+          /*else{
+              showMessage('error', 'Error message')
+          }*/
+        }
+
+        function withdrawCash(btn){
+          let parentPopup = btn.closest('.popup'),
+              upiAddr = parentPopup.querySelector("input[name='upiAddr']").value,
+              amount = parentPopup.querySelector("input[name='amount']").value;
+          console.log(upiAddr, amount)
+          btnLoading(btn, 'start')  
+          
+          //if operation completes{
+            setTimeout(() => {
+              btnLoading(btn, 'stop')
+              hidePopup(parentPopup)
+              showMessage('', 'Cash withdrawn')
+            }, 1000)
+          //}
+          /*else{
+              showMessage('error', 'Error message')
+          }*/
+        }
+
         function signIn(btn){
           let parentPopup = btn.closest('.popup');
           btnLoading(btn, 'start')  
           
           //if operation completes{
-            //btnLoading(btn, 'stop')
             setTimeout(() => {
+              btnLoading(btn, 'stop')
               hidePopup(parentPopup)
               showMessage('', 'Signed In')
               document.querySelector('main').classList.remove('hide-completely')
@@ -951,10 +1133,48 @@
           //}
         }
 
+        function refreshBalance(type, btn){ 
+          let newBalance ;
+          switch (type){
+            case 'cashInr':
+            //retrive new balance
+            btnLoading(btn, 'start')
+            setTimeout(()=> {
+              btnLoading(btn, 'stop')
+              newBalance = 600000;
+              document.getElementById('user_cash_bal').textContent = '₹'+newBalance;
+              showMessage('', 'Cash balance updated')
+            },1000)
+              break;
+            case 'cryptoBtc':
+            //retrive new balance
+            btnLoading(btn, 'start')
+            setTimeout(()=> {
+              btnLoading(btn, 'stop')
+              newBalance = 700;
+              document.getElementById('user_btc_bal').textContent = newBalance;
+              showMessage('', 'Bitcoin balance updated')
+            },1000)
+              break;
+            case 'cryptoFlo':
+            //retrive new balance
+            btnLoading(btn, 'start')
+            setTimeout(()=> {
+              btnLoading(btn, 'stop')
+              newBalance = 1500;
+              document.getElementById('user_flo_bal').textContent = newBalance;
+              showMessage('', 'FLO balance updated')
+            },1000)
+              break;
+          }
+        }
+
         function signOut(){
             askConfirmation('Do you want to sign out?').then((result) => {
                 if(result){
                     showMessage('', 'Signed out')
+                    document.querySelector('main').classList.add('hide-completely')
+                    showPopup('sign_in_popup')
                 }
             })
         }

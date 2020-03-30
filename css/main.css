@@ -17,7 +17,7 @@
 
 body {
   background: var(--background);
-  color: #111;
+  color: rgba(var(--text), 1);
   font-size: 16px;
   margin: 1rem;
 }
@@ -253,9 +253,9 @@ input:invalid {
 
 .action {
   position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -309,20 +309,11 @@ input:invalid {
   margin-bottom: 0;
 }
 
-.input input:valid {
-  -webkit-transform: translateY(0.4em);
-          transform: translateY(0.4em);
+.input input:focus {
   caret-color: var(--primary-color);
 }
 
-.input input:valid ~ label {
-  -webkit-transform: translateY(-60%) scale(0.7);
-          transform: translateY(-60%) scale(0.7);
-  opacity: 1;
-  color: var(--primary-color);
-}
-
-.input label {
+.input .label {
   opacity: .7;
   font-weight: 500;
   font-size: 1em;
@@ -346,6 +337,18 @@ input:invalid {
   background: transparent;
   outline: none;
   color: rgba(var(--text), 1);
+}
+
+.animate-label input {
+  -webkit-transform: translateY(0.5em);
+          transform: translateY(0.5em);
+}
+
+.animate-label .label {
+  -webkit-transform: translateY(-60%) scale(0.7);
+          transform: translateY(-60%) scale(0.7);
+  opacity: 1;
+  color: var(--primary-color);
 }
 
 .container-header {
@@ -551,8 +554,8 @@ input:invalid {
 }
 
 #show_message {
-  -webkit-transform: translate(0, 0.4rem);
-          transform: translate(0, 0.4rem);
+  -webkit-transform: translate(0, -0.4rem);
+          transform: translate(0, -0.4rem);
   -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
   transition: opacity 0.3s, -webkit-transform 0.3s;
   transition: transform 0.3s, opacity 0.3s;
@@ -572,11 +575,19 @@ input:invalid {
   color: rgba(var(--text), 1);
   position: fixed;
   right: 0;
-  bottom: 0;
+  top: 0;
   width: 100%;
   max-width: 100%;
   z-index: 11;
   background: rgba(var(--foreground), 1);
+}
+
+#show_message #error_icon {
+  fill: #E53935;
+}
+
+#show_message #done_icon {
+  fill: #00C853;
 }
 
 #show_message .notification-icon {
@@ -659,11 +670,10 @@ input:invalid {
 #background {
   position: fixed;
   z-index: -1;
-  height: calc(100vh + 100%);
-  left: -20vw;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
 }
 
 #main_header {
@@ -681,10 +691,16 @@ input:invalid {
 }
 
 #profile_pic {
+  padding: 1em;
+  overflow: visible;
+  fill: none;
+  stroke: rgba(var(--text-light), 1);
+  stroke-width: 4;
   background: var(--background);
   border-radius: 4em;
   width: 4em;
   height: 4em;
+  stroke-linecap: round;
 }
 
 #switcher_header {
@@ -695,6 +711,7 @@ input:invalid {
       grid-template-columns: repeat(3, -webkit-max-content);
       grid-template-columns: repeat(3, max-content);
   gap: 2em;
+  border-bottom: 1px solid rgba(var(--text), 0.2);
 }
 
 #switcher_header li {
@@ -716,13 +733,12 @@ input:invalid {
 }
 
 #switcher_header li:focus {
-  outline: thin solid rgba(var(--text-light), 0.6);
+  outline: none;
 }
 
 #switcher_header .active {
   opacity: 1;
   border-bottom: 0.1em solid var(--primary-color);
-  color: var(--primary-color);
 }
 
 .exchange-section {
@@ -946,28 +962,21 @@ input:invalid {
   }
 }
 
-/*@media (prefers-color-scheme: dark){
-    :root{
-        --text: 238, 238, 238;
-        --text-light: 170, 170, 170;
-        --foreground: 26, 26, 26;
-        --background: #111;
-    }
-    body{
-        background: var(--background);
-        color: #eee;
-    }
-}*/
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: 238, 238, 238;
+    --text-light: 170, 170, 170;
+    --foreground: 26, 26, 26;
+    --background: #111;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     --text: 17, 17, 17;
     --text-light: 85, 85, 85;
     --foreground: 255, 255, 255;
     --background: #eaeaea;
-  }
-  body {
-    background: var(--background);
-    color: #111;
   }
 }
 
@@ -977,10 +986,6 @@ input:invalid {
     --text-light: 85, 85, 85;
     --foreground: 255, 255, 255;
     --background: #eaeaea;
-  }
-  body {
-    background: var(--background);
-    color: #111;
   }
 }
 
