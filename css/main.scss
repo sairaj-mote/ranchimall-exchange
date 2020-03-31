@@ -33,7 +33,6 @@ button{
     position: relative;
     display: inline-flex;
     align-items: center;
-    font-family: 'Barlow', sans-serif;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     padding: 0.4em 0.6em;
@@ -121,7 +120,7 @@ input:invalid{
     pointer-events: none;
 }
 .hide-completely{
-    display: none;
+    display: none !important;
 }
 .breakable{
     word-break: break-all;
@@ -162,6 +161,7 @@ input:invalid{
     stroke-dashoffset: 210;
     stroke-dasharray: 210;
     padding: 2px;
+    justify-self: center;
 }
 @keyframes rotate{
     100%{
@@ -181,6 +181,10 @@ input:invalid{
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
+    &:hover  button::after{
+        clip-path: circle(100%);
+    }
     .btn{
         z-index: 2;
     }
@@ -199,6 +203,14 @@ input:invalid{
 .expand{
     width: 100%;
 }
+@keyframes fade{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
 .input{
     display: flex;
     width: 100%;
@@ -209,6 +221,7 @@ input:invalid{
     border-radius: 0.2em;
     transition: opacity 0.3s;
     background: rgba(var(--text-light), 0.1);
+    animation: fade 0.3s;
     &:last-of-type{
         margin-bottom: 0;
     }
@@ -322,10 +335,31 @@ input:invalid{
                 padding: 0.6em 1.2em;
             }
         }
+        #upiToAddress{
+            padding: 1em 0;
+        }
     }
 }
 .crypto-selector{
     margin: 0.4em 0 1.5em 0;
+}
+.icon{
+    transition: 0.3s;
+    border-radius: 4em;
+    padding: 0.4em;
+    height: 2.4em;
+    width: 2.4em;
+    overflow: visible;
+    fill: rgba(var(--text), 1);
+}
+.btc{
+    fill: #FF9900;
+}
+.flo{
+    fill: #2080a2;
+}
+.inr{
+    padding: 0.45em;
 }
 .select-crypto{
     position: relative;
@@ -344,24 +378,6 @@ input:invalid{
     }
     input:checked ~ .selected{
         transform: none;
-    }
-    .icon{
-        transition: 0.3s;
-        border-radius: 4em;
-        padding: 0.4em;
-        height: 2.4em;
-        width: 2.4em;
-        overflow: visible;
-        fill: rgba(var(--text), 1);
-    }
-    .btc{
-        fill: #FF9900;
-    }
-    .flo{
-        fill: rgba(var(--text), 1);
-    }
-    .inr{
-        padding: 0.45em;
     }
     .selected{
         position: absolute;
@@ -407,7 +423,6 @@ input:invalid{
         width: 2em;
         margin: 1em 0 1em 1em;
         fill: rgba(var(--text), 1);
-        opacity: 0.8;
     }
     div{
         padding: 1em;
@@ -466,10 +481,8 @@ input:invalid{
 }
 #main_header{
     padding: 1em 0;
+    align-items: center;
     text-align: center;
-    h1{
-        font-size: 2em
-    }
 }
 #user{
     grid-template-columns: auto 1fr;
@@ -601,6 +614,33 @@ input:invalid{
         background: rgba(var(--foreground), 0.1);
     }
 }
+
+.crypto-price{
+    align-items: center;
+    grid-template-columns: auto 1fr auto;
+    &:first-of-type{
+        margin-bottom: 1em;
+    }
+    h3{
+        margin-left: 1em;
+    }
+    h5{
+        opacity: 0.8;
+        font-weight: 500;
+    }
+}
+#market_price_display{
+    .flex{
+        margin-bottom: 1.5em;
+    }
+    .light-text{
+        flex: 1;
+    }
+    svg{
+        margin-left: -0.4em;
+        margin-right: 0.5em;
+    }
+}
 @media only screen and (min-width: 640px){
     body{
         margin: 1rem 6vw;
@@ -618,10 +658,7 @@ input:invalid{
         grid-template-columns: 1.5fr 1fr;
         gap: 2em;
         padding: 2em 0 0 0;
-    }
-    .sticky{
-        position: sticky;
-        top: 2em;
+        align-items: flex-start;
     }
     #main_header{
         text-align: left;

@@ -59,7 +59,7 @@
       </svg>-->
      
                <!--Sign in popup-->
-               <div class="popup-container solid-background hide">
+               <div class="popup-container solid-background">
                 <div id="sign_in_popup" class="popup">
                     <div class="container-header">
                         <h1>Sign In</h1>
@@ -70,7 +70,7 @@
                         <div class="label">Private Key</div>
                       </label>
                     <div class="action expand" onclick="signIn(this)">
-                      <button class="primary-btn expand" type="submit">
+                      <button class="primary-btn expand" type="submit" disabled>
                           Sign In
                       </button>
                       <svg viewBox="0 0 73 73" class="loader">
@@ -90,9 +90,11 @@
                 </div>
               </div> 
 
-    <header id="main_header">
+    <header id="main_header" class="flex">
+      <span class="expand">
         <small>RanchiMall</small>
-        <h1>Local Bitcoin++</h1>
+        <h2>Local Bitcoin++</h2>
+      </span>
     </header>
     <main class="">
         <div id="left" class="bottom-margin grid">
@@ -105,21 +107,28 @@
                 <div id="switcher_body">
                     <div id="asset_section" class="exchange-section grid">
                         <span id="buy_crypto_btn" class="exchange-option">
-                            <svg viewBox="0 0 73 73">
-                                <line x1="22.13" y1="50.87" x2="50.48" y2="22.52"/>
-                                <polyline points="30.71,22.24 50.76,22.24 50.76,42.29 "/>
-                                <rect x="0.5" y="0.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 0 73)" class="st1" width="72" height="72"/>
-                            </svg>                                                 
+                          <svg viewBox="0 0 74.98 73.5">
+                            <title>Buy icon</title>
+                            <path d="M68.62,32.25H79.73a3.26,3.26,0,0,1,3.44,3v48a3.25,3.25,0,0,1-3.44,3H16.45a3.25,3.25,0,0,1-3.44-3v-48a3.26,3.26,0,0,1,3.44-3h11.1" transform="translate(-12.51 -13.25)"/>
+                            <rect x="45.48" y="37.5" width="29" height="17" rx="3.72"/>
+                            <path d="M83.27,51.25a3.22,3.22,0,0,1,3.21,3.22V64a3.21,3.21,0,0,1-3.21,3.21H61.7A3.22,3.22,0,0,1,58.48,64V54.47a3.23,3.23,0,0,1,3.22-3.22H83.27m0-1H61.7a4.22,4.22,0,0,0-4.22,4.22V64a4.21,4.21,0,0,0,4.22,4.21H83.27A4.2,4.2,0,0,0,87.48,64V54.47a4.21,4.21,0,0,0-4.21-4.22Z" transform="translate(-12.51 -13.25)"/>
+                            <circle cx="53.23" cy="46" r="4"/><path d="M65.73,55.75a3.5,3.5,0,1,1-3.5,3.5,3.51,3.51,0,0,1,3.5-3.5m0-1a4.5,4.5,0,1,0,4.5,4.5,4.51,4.51,0,0,0-4.5-4.5Z" transform="translate(-12.51 -13.25)"/>
+                            <line x1="35.49" x2="35.49" y2="37.58"/>
+                            <polyline points="23.39 25.79 35.49 37.89 47.6 25.79"/>
+                          </svg>                                               
                             <h5>Buy</h5>
                         </span>
                         <span id="sell_crypto_btn" class="exchange-option">
-                            <svg viewBox="0 0 73 73">
-                                <line x1="33.78" y1="22.72" x2="33.78" y2="62.81"/>
-                                <polyline class="st0" points="47.96,49.03 33.78,63.2 19.61,49.03 "/>
-                                <line x1="47.15" y1="23.09" x2="47.15" y2="9.73"/>
-                                <line x1="40.47" y1="16.41" x2="53.83" y2="16.41"/>
-                                <rect x="0.5" y="0.5" transform="matrix(6.123234e-17 -1 1 6.123234e-17 0 73)" class="st1" width="72" height="72"/>
-                            </svg>                       
+                          <svg viewBox="0 0 74.98 73.5">
+                            <title>Sell icon</title>
+                            <path d="M68.62,32.25H79.73a3.26,3.26,0,0,1,3.44,3v48a3.25,3.25,0,0,1-3.44,3H16.45a3.25,3.25,0,0,1-3.44-3v-48a3.26,3.26,0,0,1,3.44-3h11.1" transform="translate(-12.51 -13.25)"/>
+                            <rect class="b" x="45.48" y="37.5" width="29" height="17" rx="3.72"/>
+                            <path d="M83.27,51.25a3.22,3.22,0,0,1,3.21,3.22V64a3.21,3.21,0,0,1-3.21,3.21H61.7A3.22,3.22,0,0,1,58.48,64V54.47a3.23,3.23,0,0,1,3.22-3.22H83.27m0-1H61.7a4.22,4.22,0,0,0-4.22,4.22V64a4.21,4.21,0,0,0,4.22,4.21H83.27A4.2,4.2,0,0,0,87.48,64V54.47a4.21,4.21,0,0,0-4.21-4.22Z" transform="translate(-12.51 -13.25)"/>
+                            <circle  cx="53.23" cy="46" r="4"/>
+                            <path d="M65.73,55.75a3.5,3.5,0,1,1-3.5,3.5,3.51,3.51,0,0,1,3.5-3.5m0-1a4.5,4.5,0,1,0,4.5,4.5,4.51,4.51,0,0,0-4.5-4.5Z" transform="translate(-12.51 -13.25)"/>
+                            <line x1="35.49" y1="38.6" x2="35.49" y2="1.02"/>
+                            <polyline points="47.6 12.81 35.49 0.71 23.39 12.81"/>
+                          </svg>                     
                             <h5>Sell</h5>
                         </span>
                     </div>
@@ -185,7 +194,6 @@
             </div>
         </div>
         <div id="right">
-            <div class="sticky">
                 <div id="user" class="grid grid-2 bottom-margin card">
                   <svg id="profile_pic" viewBox="0 0 49.54 61.12">
                     <title>User icon</title>
@@ -197,6 +205,58 @@
                         <h4 class="breakable">FFS5hFXG7DBtdgzrLwixZLpenAmsCKRddm</h4>
                         <button onclick="signOut()" class="top-margin">Sign Out</button>
                     </div>
+                </div>
+                <div id="market_price_display" class="card bottom-margin">
+                  <div class="flex">
+                    <h3 class="light-text">
+                      Market price
+                    </h3>
+                    <div id="refresh_market_price" class="action">
+                      <button type="submit">
+                          refresh
+                      </button>
+                      <svg viewBox="0 0 73 73" class="loader">
+                          <path d="M72.5,36.5c0,19.88-16.12,36-36,36s-36-16.12-36-36s16.12-36,36-36S72.5,16.62,72.5,36.5"/>
+                      </svg>
+                    </div>
+                  </div>
+                  <span class="crypto-price grid">
+                    <svg viewBox="0 0 30.61 40.52" class="icon btc">
+                      <title>Bitcoin icon</title>
+                        <path d="M30.53,16.29c0.64-4.26-2.61-6.55-7.04-8.07l1.44-5.77l-3.51-0.88l-1.4,5.62c-0.92-0.23-1.87-0.45-2.81-0.66
+                        l1.41-5.65L15.11,0l-1.44,5.77c-0.76-0.17-1.51-0.35-2.24-0.53l0-0.02L6.59,4.01L5.66,7.76c0,0,2.61,0.6,2.55,0.63
+                        c1.42,0.36,1.68,1.3,1.64,2.04l-1.64,6.57c0.1,0.02,0.23,0.06,0.36,0.12c-0.12-0.03-0.24-0.06-0.37-0.09l-2.3,9.2
+                        c-0.17,0.43-0.61,1.08-1.61,0.83c0.04,0.05-2.55-0.64-2.55-0.64L0,30.45l4.57,1.14c0.85,0.21,1.68,0.44,2.5,0.65l-1.45,5.83
+                        l3.51,0.88l1.44-5.77c0.96,0.26,1.89,0.5,2.8,0.73l-1.43,5.74l3.51,0.88l1.45-5.82c5.99,1.13,10.49,0.68,12.38-4.74
+                        c1.53-4.36-0.08-6.88-3.23-8.52C28.34,20.92,30.07,19.41,30.53,16.29L30.53,16.29z M22.51,27.54c-1.08,4.36-8.43,2-10.81,1.41
+                        l1.93-7.73C16.01,21.82,23.65,22.99,22.51,27.54L22.51,27.54z M23.6,16.23c-0.99,3.97-7.1,1.95-9.08,1.46l1.75-7.01
+                        C18.25,11.17,24.63,12.09,23.6,16.23z"/>
+                    </svg>
+                    <span>
+                      <h4 class="expand">Bitcoin</h4>
+                      <h5>BTC</h5>
+                    </span>
+                    <h3 id="btc_market_price">₹480,600</h3>
+                  </span>
+                  <span class="crypto-price grid">
+                    <svg class="icon flo" viewBox="0 0 45.6 47.07">
+                      <title>FLO coin icon</title>
+                      <path d="M61.4,58.86A12.31,12.31,0,0,0,68.81,55a15.45,15.45,0,0,0,4-8.52c-11-.63-12.36,1-13.71,1.68-1.19.61-5.33,4.56-5.33,
+                        4.56s3.07-3.14,3.2-9.94a19.94,19.94,0,0,0-2.72-10.65A23.86,23.86,0,0,0,50,26.46a24.09,24.09,0,0,0-4.23,5.67A19.94,19.94,0,0,0,43,42.78c.13,6.8,3.2,9.94,
+                        3.2,9.94s-4.14-3.95-5.33-4.56c-1.35-.69-2.67-2.31-13.71-1.68a15.45,15.45,0,0,0,4,8.52,12.31,12.31,0,0,0,7.41,3.86s-5.05-2-7.15-9.45c0,0,5.76-.69,9.63,1.87,
+                        2.53,1.67,4.86,4.26,6.79,6a17.72,17.72,0,0,0-6.81,1.88,7.85,7.85,0,0,0-4.44,4.38,5.65,5.65,0,0,0-.19,2.27,33.8,33.8,0,0,0,5.94,0,5.87,5.87,0,0,0,3.42-2.16,
+                        12.72,12.72,0,0,1-3.95.77c-2.06,0-2.67-.66-2.67-.66,1-3.64,8.68-5.19,8.68-5.19a16.13,16.13,0,0,0-1.42,6.5A12.76,12.76,0,0,0,50,73.53a12.76,12.76,0,0,0,
+                        3.57-8.45,16.13,16.13,0,0,0-1.42-6.5s7.71,1.55,8.68,5.19c0,0-.61.66-2.67.66a12.72,12.72,0,0,1-3.95-.77,5.87,5.87,0,0,0,3.42,2.16,33.8,33.8,0,0,0,5.94,0,
+                        5.65,5.65,0,0,0-.19-2.27,7.85,7.85,0,0,0-4.44-4.38,17.72,17.72,0,0,0-6.81-1.88c1.93-1.75,4.26-4.34,6.79-6,3.87-2.56,9.63-1.87,9.63-1.87C66.45,56.84,61.4,
+                        58.86,61.4,58.86ZM50,69.52a6.1,6.1,0,0,1-1.47-4.26A10.74,10.74,0,0,1,50,60.12a10.74,10.74,0,0,1,1.47,5.14A6.1,6.1,0,0,1,50,69.52Zm0-15.23a17.26,17.26,0,0,
+                        1-4.35-11c0-9,4.35-11.84,4.35-11.84s4.35,2.84,4.35,11.84A17.26,17.26,0,0,1,50,54.29Z" transform="translate(-27.2 -26.46)"/>
+                    </svg>
+                    <span>
+                      <h4 class="expand">FLO</h4>
+                      <h5>FLO</h5>
+                    </span>
+                    <h3 id="flo_market_price">₹1.30</h3>
+                  </span>
                 </div>
                 <div id="balance_panel" class="top-padding card">
                     <h3 class="light-text bottom-padding">
@@ -247,7 +307,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
         </div>
         <div id="popup-parent">
           <!--Asset section-->
@@ -682,6 +741,7 @@
                       <input name="amount" type="number" inputmode="numeric" required>
                       <div class="label">Amount</div>
                   </label>
+                  <h3 id="upiToAddress" class="hide-completely"></h3>
               </div>
           </div>
           <div class="popup-container hide">
@@ -769,7 +829,13 @@
                         popup.querySelector('.loader').classList.remove('animate-loader')
                         popup.querySelector("button[type='submit']").disabled = true;
                     }
-                }, 300)
+                }, 400)
+              if(popup.id === 'deposit_cash_popup'){
+                popup.querySelector('#upiToAddress').classList.add('hide-completely')
+                popup.querySelectorAll('.input').forEach((input) => {
+                  input.classList.remove('hide-completely')
+                })
+              }
             }
 
             function setAttributes(el, attrs) {
@@ -941,7 +1007,34 @@
                 else 
                   parent.classList.remove('animate-label')
                 formValidation(parent.firstElementChild, e)
+                if(e.key === 'Enter')
+                  parent.closest('.popup').querySelector("button[type='submit']").click();
               }
+            })
+
+            //Sign in behaviour
+            document.getElementById('sign_in_popup').addEventListener('keyup', (e) => {
+              if(e.target.closest('.input')){
+                let parent = e.target.closest('.input');
+                if(parent.firstElementChild.value !== '')
+                  parent.classList.add('animate-label')
+                else 
+                  parent.classList.remove('animate-label')
+                formValidation(parent.firstElementChild, e)
+                if(e.key === 'Enter')
+                  parent.closest('.popup').querySelector("button[type='submit']").click();
+              }
+            })
+
+            document.getElementById('refresh_market_price').addEventListener('click', () => {
+              //Fetch new prices
+              let newBtcPrice, newFloPrice;
+              btnLoading(document.getElementById('refresh_market_price'), 'start')
+              setTimeout(() => {
+                btnLoading(document.getElementById('refresh_market_price'), 'stop')
+                document.getElementById('btc_market_price').textContent = '₹'+ newBtcPrice;
+                document.getElementById('flo_market_price').textContent = '₹'+ newFloPrice;
+              }, 1000)
             })
 
             document.getElementById('balance_panel').addEventListener('click', (e) => {
@@ -970,9 +1063,14 @@
                         }
                     })
             })
+
+            //renders trade orders
+            document.getElementById('orders_container').innerHTML = '';
             for(let i = 0; i < 4; i++){
                 frag.append(render.order('s6f5h4s65f4h6s5465s4', 'Buy', 'FLO', '50', 'INR'))
             }
+            if(frag.children.length === 0)
+                document.getElementById('orders_container').innerHTML = '<h4>No trade orders yet.</h4>'
             document.getElementById('orders_container').append(frag);
         })
 
@@ -1046,6 +1144,9 @@
               sendersFloId = parentPopup.querySelector("input[name='senderFloId']").value,
               sendersPrivKey = parentPopup.querySelector("input[name='senderPrivateKey']").value,
               amount = parentPopup.querySelector("input[name='amount']").value;
+
+          // get reciever crypto address from system
+
           console.log(selectedCrypto, sendersFloId, sendersPrivKey, amount)
           btnLoading(btn, 'start')  
           
@@ -1080,24 +1181,28 @@
               showMessage('error', 'Error message')
           }*/
         }
-
+        let deposited = 0;
         function depositCash(btn){
-          let parentPopup = btn.closest('.popup'),
+          deposited === 0 ? deposited = 1: deposited = 0;
+          if(deposited == 1){
+            btn.firstElementChild.textContent = 'done';
+            let parentPopup = btn.closest('.popup'),
               upiAddr = parentPopup.querySelector("input[name='upiAddr']").value,
               amount = parentPopup.querySelector("input[name='amount']").value;
           console.log(upiAddr, amount)
-          btnLoading(btn, 'start')  
-          
-          //if operation completes{
-            setTimeout(() => {
-              btnLoading(btn, 'stop')
-              hidePopup(parentPopup)
-              showMessage('', 'Cash deposited')
-            }, 1000)
-          //}
-          /*else{
-              showMessage('error', 'Error message')
-          }*/
+          let messageShow = parentPopup.querySelector('#upiToAddress'),
+              systemUpiAddress = 'something@something';
+          //fetch system reciever UPI address
+          messageShow.textContent = 'Please send money to '+ systemUpiAddress;
+          messageShow.classList.remove('hide-completely')
+          parentPopup.querySelectorAll('.input').forEach((input) => {
+            input.classList.add('hide-completely')
+          })
+          }
+          else{
+            btn.firstElementChild.textContent = 'deposit';
+            hidePopup('deposit_cash_popup')
+          }
         }
 
         function withdrawCash(btn){
