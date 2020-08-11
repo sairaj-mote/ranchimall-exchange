@@ -517,7 +517,7 @@ function ripemd160(message) {
 
 <script type="text/javascript">
 /*!
- * Crypto-JS v2.5.4	Crypto.js
+ * Crypto-JS v2.5.4 Crypto.js
  * http://code.google.com/p/crypto-js/
  * Copyright (c) 2009-2013, Jeff Mott. All rights reserved.
  * http://code.google.com/p/crypto-js/wiki/License
@@ -827,7 +827,7 @@ if (typeof Crypto == "undefined" || !Crypto.util) {
 
 <script type="text/javascript">
 /*!
- * Crypto-JS v2.5.4	SHA256.js
+ * Crypto-JS v2.5.4 SHA256.js
  * http://code.google.com/p/crypto-js/
  * Copyright (c) 2009-2013, Jeff Mott. All rights reserved.
  * http://code.google.com/p/crypto-js/wiki/License
@@ -1027,7 +1027,7 @@ if (typeof Crypto == "undefined" || !Crypto.util) {
 </script>
 <script type="text/javascript">
 /*!
- * Crypto-JS v2.5.4	PBKDF2.js
+ * Crypto-JS v2.5.4 PBKDF2.js
  * http://code.google.com/p/crypto-js/
  * Copyright (c) 2009-2013, Jeff Mott. All rights reserved.
  * http://code.google.com/p/crypto-js/wiki/License
@@ -1087,7 +1087,7 @@ if (typeof Crypto == "undefined" || !Crypto.util) {
 </script>
 <script type="text/javascript">
 /*!
- * Crypto-JS v2.5.4	HMAC.js
+ * Crypto-JS v2.5.4 HMAC.js
  * http://code.google.com/p/crypto-js/
  * Copyright (c) 2009-2013, Jeff Mott. All rights reserved.
  * http://code.google.com/p/crypto-js/wiki/License
@@ -1142,7 +1142,7 @@ if (typeof Crypto == "undefined" || !Crypto.util) {
 </script>
 <script type="text/javascript">
 /*!
- * Crypto-JS v2.5.4	AES.js
+ * Crypto-JS v2.5.4 AES.js
  * http://code.google.com/p/crypto-js/
  * Copyright (c) 2009-2013, Jeff Mott. All rights reserved.
  * http://code.google.com/p/crypto-js/wiki/License
@@ -7532,7 +7532,7 @@ Bitcoin.ECDSA = (function() {
       cursor += 2 + sig[cursor + 1];
 
       //if (cursor != sig.length)
-      //	throw new Error("Extra bytes in signature");
+      //  throw new Error("Extra bytes in signature");
 
       var r = BigInteger.fromByteArrayUnsigned(rBa);
       var s = BigInteger.fromByteArrayUnsigned(sBa);
@@ -9208,10 +9208,10 @@ function bitjslib(crypto_asset) {
     };
 
     /* sign inputs */
-    btrx.sign = function(wif, sigHashType) {
+    btrx.sign = function(wifs, sigHashType) {
       var shType = sigHashType || 1;
       for (var i = 0; i < this.inputs.length; i++) {
-        this.signinput(i, wif, shType);
+          this.signinput(i, wifs[i], shType);
       }
       return this.serialize();
     };
@@ -10925,7 +10925,6 @@ var localbitcoinplusplus = {
   trade: {},
   rpc: {},
   master_configurations: {},
-  running_ops_status: {},
 };
 
 Object.defineProperty(localbitcoinplusplus, "server", {
@@ -10948,7 +10947,7 @@ Object.defineProperty(localbitcoinplusplus, "server", {
 
 const ENVR = 'TEST'; // LIVE, TEST  
 const WS = 'ws';
-const DBName = "localbitcoinDBRemote";
+const DBName = "localbitcoinDBRemoteUser4May";
 
 // MUST REMOVE FROM HERE. FETCH IT FROM A CONFIG FILE
 const masterEncryptionKey = "rEmoVeMefRomHerE"; 
@@ -11367,7 +11366,7 @@ localbitcoinplusplus.privateKey = {
     // decode IPS
     var x = Bitcoin.Base58.decode(intermediate);
     //if(x.slice(49, 4) !== Bitcoin.Util.dsha256(x.slice(0,49)).slice(0,4)) {
-    //	callback({error: 'Invalid intermediate passphrase string'});
+    //  callback({error: 'Invalid intermediate passphrase string'});
     //}
     var noNumbers = x[7] === 0x53;
     var ownerEntropy = x.slice(8, 8 + 8);
@@ -11529,21 +11528,14 @@ localbitcoinplusplus.actions = {
       #!#tradableAsset1=BTC,FLO,BTC_TEST,FLO_TEST#!#tradableAsset2=INR,USD,
       #!#validTradingAmount=10,50,100,#!#btcTradeMargin=5000
       #!#MaxBackups=1
-      #!#ordersLife={"trade":3600000, "cryptoDeposit":3600000, "cryptoWithdraw":3600000, "cashDeposit":7200000, "cashWithdraw":86400000}
-      #!#miners_fee={"btc":0.0003, "flo":0.0003}
+      #!#ordersLife={"trade":300000, "cryptoDeposit":900000, "cryptoWithdraw":300000, "cashDeposit":900000, "cashWithdraw":900000}
+      #!#miners_fee={"btc":0.0005, "flo":0.001}
       #!#supernodesPubKeys=0315C3A20FE7096CC2E0F81A80D5F1A687B8F9EFA65242A0B0881E1BA3EE7D7D53,
-      03F7493F11B8E44B9798CD434D20FBE7FA34B9779D144984889D11A17C56A18742,039B4AA00DBFC0A6631DE6DA83526611A0E6B857D3579DF840BBDEAE8B6898E3B6,
-      03C8E3836C9A77E2AF03D4265D034BA85732738919708EAF6A16382195AE796EDF,0349B08AA1ABDCFFB6D78CD7C949665AD2FF065EA02B3C6C47A5E9592C9A1C6BCB,
       026FCC6CFF6EB3A39E54BEB6E13FC2F02C3A93F4767AA80E49E7E876443F95AE5F,
-      #!#externalFiles={"d3js":"58f54395efa8346e8e94d12609770f66b916897e7f4e05f6c98780cffa5c70a3"}
-      #!#cashiers={"032871A74D2DDA9D0DE7135F58B5BD2D7F679D2CCA20EA7909466D1A6912DF4022":"johnDoe@upi",
-      "03DB4A12EB543B293DDBB0CE314C46C36D6761294AFBB7264A6D78F710FFD97CF0":"janeDoe@upi"}
-      #!#ShamirsMaxShares=8#!#supernodeSeeds={"ranchimall1":{"ip":"127.0.0.1:9111","kbucketId":"oZxHcbSf1JC8t5GjutopWYXs7C6Fe9p7ps"},
-      "ranchimall2":{"ip":"127.0.0.1:9112","kbucketId":"oTWjPupy3Z7uMdPcu5uXd521HBkcsLuSuM"},
-      "ranchimall3":{"ip":"127.0.0.1:9113","kbucketId":"odYA6KagmbokSh9GY7yAfeTUZRtZLwecY1"},
-      "ranchimall4":{"ip":"127.0.0.1:9114","kbucketId":"oJosrve9dBv2Hj2bfncxv2oEpTysg3Wejv"},
-      "ranchimall5":{"ip":"127.0.0.1:9115","kbucketId":"oMhv5sAzqg77sYHxmUGZWKRrVo4P4JQduS"},
-      "ranchimall6":{"ip":"127.0.0.1:9116","kbucketId":"oV1wCeWca3VawbBTfUGKA7Vd368PATnKAx"}}`;
+      #!#cashiers={"032871A74D2DDA9D0DE7135F58B5BD2D7F679D2CCA20EA7909466D1A6912DF4022":{"upi":"johnDoe@upi", "currencies":["INR"], "is_live":false},
+      "03DB4A12EB543B293DDBB0CE314C46C36D6761294AFBB7264A6D78F710FFD97CF0":{"upi":"janeDoe@upi", "currencies":["INR", "USD"], "is_live":false}}
+      #!#ShamirsMaxShares=8#!#supernodeSeeds={"ranchimall1":{"ip":"ranchimall1.duckdns.org:9111","kbucketId":"oZxHcbSf1JC8t5GjutopWYXs7C6Fe9p7ps"},
+      "ranchimall6":{"ip":"ranchimall1.duckdns.org:9116","kbucketId":"oV1wCeWca3VawbBTfUGKA7Vd368PATnKAx"}}`;
       return callback(text);
      
      let master_data = '';
@@ -11663,7 +11655,7 @@ localbitcoinplusplus.actions = {
     ];
 
     const su_db_data = await localbitcoinplusplus.actions.get_sharable_db_data(
-      tableArray
+      tableArray, false, false
     );
 
     const dbHashData = await localbitcoinplusplus.actions.getDBTablesLatestHashAndTimestamp(
@@ -11710,7 +11702,8 @@ localbitcoinplusplus.actions = {
 
     const su_db_data = await localbitcoinplusplus.actions.get_sharable_db_data(
       tableArray,
-      flo_addr_of_backup
+      flo_addr_of_backup,
+      false
     );
 
     const dbHashData = await localbitcoinplusplus.actions.getDBTablesLatestHashAndTimestamp(
@@ -11736,11 +11729,12 @@ localbitcoinplusplus.actions = {
   get_sharable_db_data: async function(
     dbTableNamesArray,
     backup_db = "",
-    filter_deletables = false
+    with_dbsigns = true
   ) {
     let arr = {};
     let _readAllDB = readAllDB;
-    if (typeof backup_db == "string" && backup_db.length > 0) {
+    if (typeof backup_db == "string" && backup_db.length > 0
+    ) {
       if (
         typeof localbitcoinplusplus.newBackupDatabase.db[backup_db] ==
         "object"
@@ -11757,7 +11751,7 @@ localbitcoinplusplus.actions = {
       }
     }
     for (const elem of dbTableNamesArray) {
-      await _readAllDB(elem, filter_deletables).then(
+      await _readAllDB(elem, with_dbsigns).then(
         e => (arr[elem] = e)
       );
     }
@@ -11767,7 +11761,8 @@ localbitcoinplusplus.actions = {
   get_sharable_db_data_for_single_user: async function(
     userId = "",
     dbTableNamesArray,
-    backup_db = ""
+    backup_db = "",
+    with_dbsigns=true
   ) {
     let arr = {};
     let _readDBbyIndex = readDBbyIndex;
@@ -11780,13 +11775,15 @@ localbitcoinplusplus.actions = {
           localbitcoinplusplus.newBackupDatabase.db[backup_db];
         _readDBbyIndex = foreign_db.backup_readDBbyIndex.bind(foreign_db);
       } else {
-        err_msg = `WARNING: Invalid Backup DB Instance Id: ${backup_db}.`;
-        showMessage(err_msg);
-        throw new Error(err_msg);
+          if(backup_db!==localbitcoinplusplus.wallets.my_local_flo_address) {
+              err_msg = `WARNING: Invalid Backup DB Instance Id: ${backup_db}.`;
+              showMessage(err_msg);
+              throw new Error(err_msg);
+          }
       }
     }
     for (const elem of dbTableNamesArray) {
-      await _readDBbyIndex(elem, "trader_flo_address", userId).then(
+      await _readDBbyIndex(elem, "trader_flo_address", userId, with_dbsigns).then(
         e => (arr[elem] = e)
       );
     }
@@ -11907,7 +11904,8 @@ localbitcoinplusplus.actions = {
       }
       dbDataOfSupernode = await localbitcoinplusplus.actions.get_sharable_db_data(
         tableArray,
-        subjectDB
+        subjectDB,
+        false
       );
     }
 
@@ -11937,25 +11935,6 @@ localbitcoinplusplus.actions = {
       return myArray;
     }
     return false;
-  },
-
-  check_if_you_have_latest_dbhash_of_a_db: function(
-    su = localbitcoinplusplus.wallets.my_local_flo_address
-  ) {
-    if ((su = localbitcoinplusplus.wallets.my_local_flo_address)) {
-      readDB("supernodesDbHash", `SU_DB_${su}`).then(resp => {
-        if (typeof resp == "object") {
-          RM_RPC.send_rpc
-            .call(this, "validate_latest_db_hash", resp)
-            .then(supernodesDbHash_response =>
-              console.log(supernodesDbHash_response)
-            );
-          showMessage(
-            `INFO: Request sent to check latest DB hash for ${su}.`
-          );
-        }
-      });
-    }
   },
 
   reset_flo_keys: () => {
@@ -12909,7 +12888,6 @@ reactor.registerEvent("primary_supernode_down");
 reactor.registerEvent("backup_supernode_up");
 reactor.registerEvent("backup_supernode_down");
 reactor.registerEvent("fireNodeGoodByeEvent");
-reactor.registerEvent("send_refresh_all_supernodes_status_request");
 reactor.registerEvent("sync_primary_and_backup_db");
 reactor.registerEvent("store_backup_crypto_pk_object");
 reactor.registerEvent("sync_backup_nodes_of_my_backup_node");
@@ -12919,12 +12897,13 @@ reactor.registerEvent("switchToBackupWSForSuperNodesOperations");
 reactor.registerEvent("user_flo_keys_active");
 reactor.registerEvent("remove_extra_backup_connections");
 reactor.registerEvent("createClosestSupernodesObject");
+reactor.registerEvent("createCashierStatusObject");
 reactor.registerEvent("informAllSuperNode");
 reactor.registerEvent("informLeftSuperNode");
 reactor.registerEvent("informRightSuperNode");
 reactor.registerEvent("message_for_user");
-reactor.registerEvent("refresh_reserved_crypto_balances");
 reactor.registerEvent("remove_temp_data_from_db");
+reactor.registerEvent("remove_redundant_crypto_deposits");
 
 reactor.addEventListener("new_supernode_connected", async function(evt) {
   const switchMyWS = new backupSupernodesWebSocketObject();
@@ -12998,7 +12977,7 @@ reactor.addEventListener("fireNodeGoodByeEvent", async function(getFLOId='') {
       ) {
 
         // Stop yourself from serving it unless proper DB sync
-        localbitcoinplusplus.services[`can_serve_${getFLOId}`] = false;
+        //localbitcoinplusplus.services[`can_serve_${getFLOId}`] = false;
 
         // Initiate connections with next live supernodes
         //reactor.dispatchEvent("resolve_backup_ws_connections");
@@ -13050,14 +13029,9 @@ reactor.addEventListener("fireNodeGoodByeEvent", async function(getFLOId='') {
               "supernode_private_key_chunks"
             ];
 
-            const su_db_data = await localbitcoinplusplus.actions.get_sharable_db_data(
-              tableArray,
-              getFLOId
-            );
-
+            // Don't pass su_db_data in this as it contains db sign as well
             const dbHashData = await localbitcoinplusplus.actions.getDBTablesLatestHashAndTimestamp(
-              getFLOId,
-              su_db_data
+              getFLOId
             );
 
             // Now you have db tables timestamp and tables hashes. Send it to other supernodes to check
@@ -13082,7 +13056,11 @@ reactor.addEventListener("fireNodeGoodByeEvent", async function(getFLOId='') {
 
             console.log(nonBackUpSusForDeadSu);
 
-            if (typeof su_db_data == "object") {
+            if (nonBackUpSusForDeadSu.length>0) {
+              const su_db_data = await localbitcoinplusplus.actions.get_sharable_db_data(
+                  tableArray,
+                  getFLOId
+              );
               nonBackUpSusForDeadSu.map(nbs => {
                 su_db_data.trader_flo_address = getFLOId;
                 su_db_data.receiver_flo_address = nbs.trader_flo_address;
@@ -13167,25 +13145,6 @@ reactor.addEventListener("fireNodeGoodByeEvent", async function(getFLOId='') {
 
     showMessage(msg);
   
-});
-
-reactor.addEventListener("send_refresh_all_supernodes_status_request", function() {
-  if(localbitcoinplusplus.running_ops_status.already_executing_send_refresh_all_supernodes_status_request) return false;
-  localbitcoinplusplus.running_ops_status.already_executing_send_refresh_all_supernodes_status_request = true;
-  const RM_WALLET = new localbitcoinplusplus.wallets;
-  const msg_obj = {};
-      msg_obj.protocol = '__ALL_SUPERNODES_MSG__';
-      msg_obj.event = 'refresh_all_supernodes_status';
-      msg_obj.data = {request: "RESOLVE_BACKUP_WS_CONNS"};
-      msg_obj.initialSender = localbitcoinplusplus.wallets.my_local_flo_address;
-      msg_obj.su_pubKey = localbitcoinplusplus.wallets.my_local_flo_public_key;
-      msg_obj.hash = Crypto.SHA256(msg_obj);
-      msg_obj.sign = RM_WALLET.sign(
-          msg_obj.hash,
-          localbitcoinplusplus.wallets.MY_SUPERNODE_PRIVATE_KEY
-  );
-
-  reactor.dispatchEvent('informAllSuperNode', msg_obj);
 });
 
 reactor.addEventListener("sync_primary_and_backup_db", async function() {
@@ -13617,6 +13576,9 @@ reactor.addEventListener("user_flo_keys_active", async function(FLOPublicKey="")
       ) {
           // Connect to nearest live backup nodes
           reactor.dispatchEvent("resolve_backup_ws_connections");
+          // Also refresh deposited crypto balances 
+          RM_WALLET.refresh_reserved_crypto_balances(
+              localbitcoinplusplus.wallets.my_local_flo_address);
           // Inform left side Supernodes you are back
           const msg_obj = {};
           msg_obj.protocol = '__ALL_SUPERNODES_MSG__';
@@ -13678,7 +13640,8 @@ reactor.addEventListener("backup_supernode_up", async function(url='') {
       ) {
           
           // Also refresh deposited crypto balances 
-          reactor.dispatchEvent("refresh_reserved_crypto_balances", conn_su_flo_id);
+          const RM_WALLET = new localbitcoinplusplus.wallets;
+          RM_WALLET.refresh_reserved_crypto_balances(conn_su_flo_id);
 
           // If conn_su_flo_id is not an immediate backup then give your data to it to sync
           const myClosestSus = await readAllDB("myClosestSupernodes");
@@ -13734,14 +13697,14 @@ reactor.addEventListener("backup_supernode_up", async function(url='') {
   }
 });
 
-reactor.addEventListener('createClosestSupernodesObject', async function(getClosestSuList=[]) {
+reactor.addEventListener('createClosestSupernodesObject', async function (getClosestSuList = []) {
 
   if (typeof localbitcoinplusplus.myClosestSupernodes === "object"
       && localbitcoinplusplus.myClosestSupernodes.length ===
       localbitcoinplusplus.master_configurations.supernodesPubKeys.length)
       return;
 
-  if(typeof localbitcoinplusplus.myClosestSupernodes==="object") return;    
+  if (typeof localbitcoinplusplus.myClosestSupernodes === "object") return;
 
   const idbData = await readDB("localbitcoinUser", "00-01");
 
@@ -13783,9 +13746,57 @@ reactor.addEventListener('createClosestSupernodesObject', async function(getClos
           }
       }
   }
+  return localbitcoinplusplus.myClosestSupernodes;
+});
 
-      return localbitcoinplusplus.myClosestSupernodes;
-  }); 
+reactor.addEventListener('createCashierStatusObject', async function () {
+
+  if (typeof localbitcoinplusplus.CashierStatusObject === "object"
+      && localbitcoinplusplus.CashierStatusObject.length ===
+      localbitcoinplusplus.master_configurations.cashiers.length)
+      return;
+
+  if (typeof localbitcoinplusplus.CashierStatusObject === "object") return;
+
+  const cashiers_list = JSON.parse(localbitcoinplusplus.master_configurations.cashiers);
+
+  Object.defineProperty(localbitcoinplusplus, 'CashierStatusObject', {
+      value: {},
+      writable: false,
+      enumerable: true,
+      configurable: false
+  });
+
+  for (let cashier_pubkey in cashiers_list) {
+      for (let vals in cashiers_list[cashier_pubkey]) {
+          if (typeof localbitcoinplusplus.CashierStatusObject[cashier_pubkey] !== "object") {
+              Object.defineProperty(localbitcoinplusplus.CashierStatusObject, [cashier_pubkey], {
+                  value: {},
+                  writable: false,
+                  enumerable: true,
+                  configurable: false
+              });
+          }
+          if (vals === 'is_live') {
+              Object.defineProperty(localbitcoinplusplus.CashierStatusObject[cashier_pubkey], vals, {
+                  value: cashiers_list[cashier_pubkey][vals],
+                  writable: true,
+                  enumerable: true,
+                  configurable: false
+              });
+
+          } else {
+              Object.defineProperty(localbitcoinplusplus.CashierStatusObject[cashier_pubkey], vals, {
+                  value: cashiers_list[cashier_pubkey][vals],
+                  writable: false,
+                  enumerable: true,
+                  configurable: false
+              });
+          }
+      }
+  }
+  return localbitcoinplusplus.CashierStatusObject;
+});  
 
 /* Function to notify all Supernodes of a particuat event (may or may not releated to a subject flo id) */   
 reactor.addEventListener("informAllSuperNode", function(msg_obj={}) {
@@ -13813,9 +13824,6 @@ reactor.addEventListener("informAllSuperNode", function(msg_obj={}) {
                       console.info(`Closed ${evt.srcElement.url}`);
                       tempWS[sn] = null;
                       delete tempWS[sn];
-                      if(msg_obj.event == 'refresh_all_supernodes_status') {
-                          localbitcoinplusplus.running_ops_status.already_executing_send_refresh_all_supernodes_status_request = false;
-                      }
                   };
                   tempWS[sn].onerror = function(evt) {
                       tempWS[sn].close();
@@ -13823,10 +13831,6 @@ reactor.addEventListener("informAllSuperNode", function(msg_obj={}) {
               } 
           })();
       }
-
-
-
-
   }
 });  
 
@@ -14035,104 +14039,6 @@ reactor.addEventListener("informLeftSuperNode", async function(msg_obj={}, n=0) 
   }
 });
 
-reactor.addEventListener("refresh_reserved_crypto_balances", async function(user_flo_addr='') {
-  try {
-          const getSupernode = await localbitcoinplusplus.kademlia.determineClosestSupernode(user_flo_addr);
-          const getSupernodeAddr = getSupernode[0].data.id;
-          let backup_db = null;
-          let _readAllDB = readAllDB;
-          let _updateinDB = updateinDB;
-          let _readDBbyIndex = readDBbyIndex;
-
-          if(getSupernodeAddr!==localbitcoinplusplus.wallets.my_local_flo_address) {
-              backup_db = getSupernodeAddr;
-          }
-          if (typeof backup_db == "string" && backup_db.length > 0) {
-              if (
-              typeof localbitcoinplusplus.newBackupDatabase.db[backup_db] ==
-              "object"
-              ) {
-              const foreign_db =
-                  localbitcoinplusplus.newBackupDatabase.db[backup_db];
-                  _readAllDB = foreign_db.backup_readAllDB.bind(foreign_db);
-                  _updateinDB = foreign_db.backup_updateinDB.bind(foreign_db);
-                  _readDBbyIndex = foreign_db.backup_readDBbyIndex.bind(foreign_db);
-              } else {
-                  if(backup_db!==localbitcoinplusplus.wallets.my_local_flo_address) {
-                      err_msg = `WARNING: Invalid Backup DB Instance Id: ${backup_db}.`;
-                      showMessage(err_msg);
-                      throw new Error(err_msg);
-                  }
-              }
-          }
-
-          const get_crypto_deposits = await _readAllDB('deposit');
-
-          for (const crypto_deposits of get_crypto_deposits) {
-              let crypto_address = crypto_deposits.btc_address;
-              let explorer;
-              let decimal = 100000000;
-              let crypto_diff = localbitcoinplusplus.master_configurations.btcTradeMargin;
-              switch (crypto_deposits.product) {
-                  case "BTC":
-                      explorer = localbitcoinplusplus.server.btc_mainnet;
-                      break;
-                  case "BTC_TEST":
-                      explorer = localbitcoinplusplus.server.btc_testnet;
-                      break;
-                  case "FLO":
-                      explorer = localbitcoinplusplus.server.flo_mainnet;
-                      decimal = 1;
-                      crypto_diff = crypto_diff/decimal;
-                      break;
-                  case "FLO_TEST":
-                      explorer = localbitcoinplusplus.server.flo_testnet;
-                      decimal = 1;
-                      crypto_diff = crypto_diff/decimal;
-                      break;
-                  default:
-                      break;
-              }
-
-              let url = `${explorer}/api/addr/${crypto_address}/balance`;
-              console.log(url);
-              let balance = await helper_functions.ajaxGet(url);
-              if (!isNaN(balance) && parseFloat(balance) >= 0) {
-                  balance = helper_functions.truncateDecimals(balance / decimal);
-                  console.log(balance);
-                  crypto_deposits.bitcoinToBePaid = balance;
-                  
-                  if(crypto_deposits.status!==1) {
-                      // Do not update status for status=1
-                      crypto_deposits.status = 2;
-                  }
-                  let p1 = _updateinDB('deposit', crypto_deposits);
-                  let p2 = Promise.resolve(true);
-                  const reserved_pk = await _readDBbyIndex('system_btc_reserves_private_keys', 'btc_address', crypto_address)
-                  if(typeof reserved_pk=="object" && reserved_pk.length>0) {
-                      reserved_pk[0].balance = balance;
-                      p2 = _updateinDB('system_btc_reserves_private_keys', reserved_pk[0], reserved_pk[0].id);
-                  }
-
-                  Promise.all([p1,p2])
-                  .then(res=>{
-                      let timenow = + new Date();
-                      localStorage.setItem(`refresh_reserved_cryptos_prices_time_${getSupernodeAddr}`, timenow);
-                      console.info('Updated reserved crypto prices.');
-                  })
-                  .catch(e=>console.warn("Failed to update balance of "+crypto_address));
-
-              } else {
-                  console.warn("Failed to update balance of "+crypto_address);
-              }
-
-          }
-          
-      } catch (error) {
-          throw new Error(error)
-      }
-})
-
 reactor.addEventListener("remove_temp_data_from_db", async function() {
    
    let backup_db = null;
@@ -14188,14 +14094,7 @@ reactor.addEventListener("remove_temp_data_from_db", async function() {
                       }
                       break;
                   case "deposit":
-                      // Deposits can contain cryptos. Don't delete
-                      break;
-                      let depositData = await _readAllDB(ds);
-                      for (const dbData of depositData) {
-                          if(timenow-dbData.timestamp>=lifetime.cryptoDeposit) {
-                              promises.push(_removeinDB(ds, dbData.id));
-                          } 
-                      }
+                      reactor.dispatchEvent("remove_redundant_crypto_deposits");
                       break;
                   case "withdraw_btc":
                       let withdraw_btcData = await _readAllDB(ds);
@@ -14229,6 +14128,100 @@ reactor.addEventListener("remove_temp_data_from_db", async function() {
     return true;
  });
 
+reactor.addEventListener("remove_redundant_crypto_deposits", async function(deposit_list=[]) {
+  try {
+      if(deposit_list.length==0) 
+          deposit_list = await readAllDB("deposit");
+      if (
+          typeof deposit_list == "object" &&
+          deposit_list.length > 0
+      ) {
+          
+          for (const dl in deposit_list) {
+          if (deposit_list.hasOwnProperty(dl)) {
+              const deposit_dl = deposit_list[dl];
+              if((
+                  typeof deposit_dl.btc_address == "string" &&
+                  localbitcoinplusplus.master_configurations.tradableAsset1.includes(
+                      deposit_dl.product
+                  )
+              )) {
+                  let blockchain_explorer;
+                  let crypto_type = deposit_dl.product;
+                  if (crypto_type == "BTC") {
+                      blockchain_explorer = localbitcoinplusplus.server.btc_mainnet;
+                  } else if (crypto_type == "BTC_TEST") {
+                      blockchain_explorer = localbitcoinplusplus.server.btc_testnet;
+                  } else if (crypto_type == "FLO") {
+                      blockchain_explorer = localbitcoinplusplus.server.flo_mainnet;
+                  } else if (crypto_type == "FLO_TEST") {
+                      blockchain_explorer = localbitcoinplusplus.server.flo_testnet;
+                  }
+                  const orderslife = JSON.parse(localbitcoinplusplus.master_configurations.ordersLife)
+                  let timenow = + new Date();
+                  let url = `${blockchain_explorer}/api/addr/${deposit_dl.btc_address}/utxo`;
+                  let deposited_crypto_balance_req = await helper_functions.ajaxGet(url);
+
+                  if(typeof deposited_crypto_balance_req == "undefined"
+                  || timenow-deposit_dl.timestamp<orderslife.cryptoDeposit) continue;
+                  
+                  if(typeof deposited_crypto_balance_req =="object" 
+                  && deposited_crypto_balance_req.length>0
+                  && deposited_crypto_balance_req[0].amount>0
+                  ) continue;
+           
+                  const res = await readDBbyIndex(
+                      "system_btc_reserves_private_keys",
+                      "btc_address",
+                      deposit_dl.btc_address
+                  );
+                  if(typeof res[0]!=="object" || typeof res[0].id!=="string") {
+                      removeinDB("deposit", deposit_dl.id);
+                      continue;
+                  }
+                  let retrieve_pvtkey_req_id = res[0].id;
+                  const RM_RPC = new localbitcoinplusplus.rpc;
+                  for (const bpks of res[0].btc_private_key_shamirs_id) {
+                      RM_RPC.send_rpc
+                      .call(
+                          this,
+                          "delete_shamirs_secret_btc_pvtkey",
+                          {
+                              retrieve_pvtkey_req_id: retrieve_pvtkey_req_id,
+                              chunk_val: bpks,
+                              db_inst: localbitcoinplusplus.wallets.my_local_flo_address
+                          }
+                      )
+                      .then(retrieve_pvtkey_req =>
+                          doSend(retrieve_pvtkey_req)
+                      );   
+                  }
+
+                  removeinDB("deposit", deposit_dl.id);
+                  removeinDB("system_btc_reserves_private_keys", retrieve_pvtkey_req_id);
+
+                  RM_RPC.send_rpc(
+                      "delete_deposited_crypto_instance",
+                      {
+                          db_inst: localbitcoinplusplus.wallets.my_local_flo_address,
+                          deposit_id: deposit_dl.id,
+                          reserves_id: retrieve_pvtkey_req_id,
+                          trader_flo_address:
+                          localbitcoinplusplus.wallets.my_local_flo_address
+                      }
+                  ).then(delRequestObject =>
+                      doSend(delRequestObject)
+                  );
+
+              }
+          }
+          }
+      }
+  } catch (error) {
+      throw new Error(error)
+  }
+});
+
 </script>
 
 <!-- Misc functions -->
@@ -14246,7 +14239,6 @@ function LogEvent(msg) {
 function showMessage(msg = "", t = 10000) {
   if (msg.length > 0) LogEvent(msg);
   console.trace(msg);
-  displayMessages();
   setTimeout(function() {
     closeMessage();
     clearTimeout();
@@ -14336,7 +14328,7 @@ function duplicatesInArray(arr) {
 </script>
 
 <!-- Wallet Operations (Generate, Sign and Verify) -->
-<!--<script>
+<script>
 var wallets = (localbitcoinplusplus.wallets = function(wallets) {});
 
 const MY_PRIVATE_KEY_SHAMIRS_SHARES = (localbitcoinplusplus.wallets.private_key_shamirs_secrets_shares = []);
@@ -14484,76 +14476,61 @@ wallets.prototype = {
   manually_assign_my_private_key: function() {
       return new Promise((resolve, reject)=>{
           document.querySelector('main').classList.add('hide-completely')
+          notify('Please provide your FLO private key to Sign in.');
           showPopup('sign_in_popup', 'no');
           const signInBtn = document.getElementById('signInBtn');
-          signInBtn.onclick = function(e) {
-              console.log('hi')
-              btnLoading(e.target.closest('.action'), 'start')  
-              //readDB("localbitcoinUser", "00-01")
-              //.then(async usr => {
-              //  if (typeof usr == "object" && usr.myLocalFLOAddress.length > 0) {
-                      const RM_WALLET = new localbitcoinplusplus.wallets();
-                      const pk_manual = document.getElementById('get_priv_key_field').value;
-                      let gen_new_keys = RM_WALLET.generateFloKeys(pk_manual);
-                      //if (gen_new_keys.address == usr.myLocalFLOAddress) {
-                          Object.defineProperty(
-                              localbitcoinplusplus.wallets,
-                              "MY_SUPERNODE_PRIVATE_KEY",
-                              {
-                                  value: gen_new_keys.privateKeyWIF,
-                                  writable: false,
-                                  configurable: false,
-                                  enumerable: false
-                              }
-                          );
-                          Object.defineProperty(
-                              localbitcoinplusplus.wallets,
-                              "my_local_flo_address",
-                              {
-                                  value: gen_new_keys.address,
-                                  writable: false,
-                                  configurable: false,
-                                  enumerable: false
-                              }
-                          );
-                          Object.defineProperty(
-                              localbitcoinplusplus.wallets,
-                              "my_local_flo_public_key",
-                              {
-                                  value: gen_new_keys.pubKeyHex,
-                                  writable: false,
-                                  configurable: false,
-                                  enumerable: false
-                              }
-                          );
+          signInBtn.onclick = function() {
+          const RM_WALLET = new localbitcoinplusplus.wallets();
+          const pk_manual = document.getElementById('get_priv_key_field').value;
+          let gen_new_keys = RM_WALLET.generateFloKeys(pk_manual);
+          
+              Object.defineProperty(
+                  localbitcoinplusplus.wallets,
+                  "MY_SUPERNODE_PRIVATE_KEY",
+                  {
+                      value: gen_new_keys.privateKeyWIF,
+                      writable: false,
+                      configurable: false,
+                      enumerable: false
+                  }
+              );
+              Object.defineProperty(
+                  localbitcoinplusplus.wallets,
+                  "my_local_flo_address",
+                  {
+                      value: gen_new_keys.address,
+                      writable: false,
+                      configurable: false,
+                      enumerable: false
+                  }
+              );
+              Object.defineProperty(
+                  localbitcoinplusplus.wallets,
+                  "my_local_flo_public_key",
+                  {
+                      value: gen_new_keys.pubKeyHex,
+                      writable: false,
+                      configurable: false,
+                      enumerable: false
+                  }
+              );
 
-                          document.querySelector('main').classList.remove('hide-completely')
-                          hidePopup();
-                          btnLoading(e.target.closest('.action'), 'stop')  
-                          if (localbitcoinplusplus.is_ui_loaded == false) {
-                              dataBaseUIOperations();
-                          }
+              notify('Signed in successfully.')
+              document.querySelector('main').classList.remove('hide-completely')
+              hidePopup();
+              if (localbitcoinplusplus.is_ui_loaded == false) {
+                  dataBaseUIOperations();
+                  showPopup('main_loader', 'no')
+              }
 
-                          // Private key is built. Now execute private key dependent functions
-                          const pubkey = gen_new_keys.pubKeyHex;
-                          if (localbitcoinplusplus.master_configurations.supernodesPubKeys
-                              .includes(pubkey)) {
-                              reactor.dispatchEvent("user_flo_keys_active", pubkey);
-                          }
+              // Private key is built. Now execute private key dependent functions
+              const pubkey = gen_new_keys.pubKeyHex;
+              if (localbitcoinplusplus.master_configurations.supernodesPubKeys
+                  .includes(pubkey)) {
+                  reactor.dispatchEvent("user_flo_keys_active", pubkey);
+              }
 
-                          return resolve(gen_new_keys.privateKeyWIF);
-                      // } else {
-                      //     let mes = `WARNING: Failed to build your private key. You can reset keys and generate new keys from keys section below.`;
-                      //     showMessage(mes);
-                      //     throw new Error(mes);
-                      // }
-                  //}
-              //})
-              // .catch(e => {
-              //     let mes = `WARNING: Failed to build your private key. You can reset keys and generate new keys from keys section below.`;
-              //     showMessage(mes);
-              //     Promise.reject(mes);
-              // });
+              return resolve(gen_new_keys.privateKeyWIF);
           }
       });
     
@@ -14579,13 +14556,32 @@ wallets.prototype = {
       }
     );
 
-     // Private key is built. Now execute private key dependent functions
-     const pubkey = RM_WALLET
+    let gen_new_keys = RM_WALLET
           .generateFloKeys(localbitcoinplusplus.wallets.MY_SUPERNODE_PRIVATE_KEY)
-          .pubKeyHex
+
+    Object.defineProperty(
+      localbitcoinplusplus.wallets,
+      "my_local_flo_address",
+      {
+          value: gen_new_keys.address,
+          writable: false,
+          configurable: false,
+          enumerable: false
+      });
+    Object.defineProperty(
+      localbitcoinplusplus.wallets,
+      "my_local_flo_public_key",
+      {
+          value: gen_new_keys.pubKeyHex,
+          writable: false,
+          configurable: false,
+          enumerable: false
+      });
+
+     // Private key is built. Now execute private key dependent functions
       if(localbitcoinplusplus.master_configurations.supernodesPubKeys
-        .includes(pubkey)) {
-          reactor.dispatchEvent("user_flo_keys_active", pubkey);
+        .includes(localbitcoinplusplus.wallets.my_local_flo_public_key)) {
+          reactor.dispatchEvent("user_flo_keys_active", localbitcoinplusplus.wallets.my_local_flo_public_key);
       }
   },
   rebuild_private_key: function(
@@ -14702,9 +14698,112 @@ wallets.prototype = {
       .filter(f => f[1] == flo_id);
 
     return su_arr[0];
-  }
+  },
+  refresh_reserved_crypto_balances:async (user_flo_addr='', deposited_btc_array={})=> {
+      try {
+          const getSupernode = await localbitcoinplusplus.kademlia.determineClosestSupernode(user_flo_addr);
+          const getSupernodeAddr = getSupernode[0].data.id;
+          let backup_db = null;
+          let _readAllDB = readAllDB;
+          let _updateinDB = updateinDB;
+          let _readDBbyIndex = readDBbyIndex;
+
+          if(getSupernodeAddr!==localbitcoinplusplus.wallets.my_local_flo_address) {
+              backup_db = getSupernodeAddr;
+          }
+          if (typeof backup_db == "string" && backup_db.length > 0) {
+              if (
+              typeof localbitcoinplusplus.newBackupDatabase.db[backup_db] ==
+              "object"
+              ) {
+              const foreign_db =
+                  localbitcoinplusplus.newBackupDatabase.db[backup_db];
+                  _readAllDB = foreign_db.backup_readAllDB.bind(foreign_db);
+                  _updateinDB = foreign_db.backup_updateinDB.bind(foreign_db);
+                  _readDBbyIndex = foreign_db.backup_readDBbyIndex.bind(foreign_db);
+              } else {
+                  if(backup_db!==localbitcoinplusplus.wallets.my_local_flo_address) {
+                      err_msg = `WARNING: Invalid Backup DB Instance Id: ${backup_db}.`;
+                      showMessage(err_msg);
+                      throw new Error(err_msg);
+                  }
+              }
+          }
+
+          let get_crypto_deposits = [];
+          if(Object.values(deposited_btc_array).length<=0) {
+              get_crypto_deposits = await _readAllDB('deposit');
+          } else {
+              for (const thisdeposit of Object.values(deposited_btc_array)) {
+                  let depo_obj = await _readDBbyIndex('deposit', 'btc_address', thisdeposit);
+                  if(typeof depo_obj[0].btc_address !== "string") continue;
+                  get_crypto_deposits.push(depo_obj[0]); 
+              }
+          }
+
+          let deposit_promises = [];
+
+          for (const crypto_deposits of get_crypto_deposits) {
+              let crypto_address = crypto_deposits.btc_address;
+              let explorer;
+              let decimal = 100000000;
+              let crypto_diff = localbitcoinplusplus.master_configurations.btcTradeMargin;
+              switch (crypto_deposits.product) {
+                  case "BTC":
+                      explorer = localbitcoinplusplus.server.btc_mainnet;
+                      break;
+                  case "BTC_TEST":
+                      explorer = localbitcoinplusplus.server.btc_testnet;
+                      break;
+                  case "FLO":
+                      explorer = localbitcoinplusplus.server.flo_mainnet;
+                      decimal = 1;
+                      crypto_diff = crypto_diff/decimal;
+                      break;
+                  case "FLO_TEST":
+                      explorer = localbitcoinplusplus.server.flo_testnet;
+                      decimal = 1;
+                      crypto_diff = crypto_diff/decimal;
+                      break;
+                  default:
+                      break;
+              }
+
+              let url = `${explorer}/api/addr/${crypto_address}/balance`;
+              console.log(url);
+              let balance = await helper_functions.ajaxGet(url);
+              if (!isNaN(balance) && parseFloat(balance) >= 0) {
+                  balance = helper_functions.truncateDecimals(balance / decimal);
+                  console.log(balance);
+                  crypto_deposits.bitcoinToBePaid = balance;
+                  
+                  if(crypto_deposits.status!==1) {
+                      // Do not update status for status=1
+                      crypto_deposits.status = 2;
+                  }
+                  deposit_promises.push(_updateinDB('deposit', crypto_deposits))
+                  
+              } else {
+                  console.warn("Failed to update balance of "+crypto_address);
+              }
+
+          }
+
+          Promise.all(deposit_promises).then(res=>{
+              console.log(res);
+              let timenow = + new Date();
+              localStorage.setItem(`refresh_reserved_cryptos_prices_time_${getSupernodeAddr}`, timenow);
+              console.info('Updated deposited crypto prices.');
+              return res;
+          })
+          .catch(e=>console.warn("Failed to update deposited crypto balances"));
+          
+      } catch (error) {
+          throw new Error(error)
+      }
+  },
 };
-</script>-->
+</script>
 
 <!-- RPC Object -->
 <script>
@@ -15042,18 +15141,19 @@ Rpc.prototype = {
             
             if(last_updated==null
               || (today - last_updated > (24 * 60 * 60 * 1000))) {
-                  reactor.dispatchEvent("refresh_reserved_crypto_balances", params.trader_flo_address);
+                  const RM_WALLET = new localbitcoinplusplus.wallets;
+                  RM_WALLET.refresh_reserved_crypto_balances(params.trader_flo_address);
               }
         });
-      }
 
-      // And delete redundant data as well
-      let timestamp_for_last_deletion_of_db_stale_data = localStorage.getItem(`timestamp_for_last_deletion_of_db_stale_data`);
-      if(timestamp_for_last_deletion_of_db_stale_data=null
-      || (today - timestamp_for_last_deletion_of_db_stale_data > (24 * 60 * 60 * 1000))) {
-          limit_function_calls(async function() {
-              await reactor.dispatchEvent("remove_temp_data_from_db");
-          }, 600000); // Its expected in 10 mins all deletion should be complete.   
+          // And delete redundant data as well
+          let timestamp_for_last_deletion_of_db_stale_data = localStorage.getItem(`timestamp_for_last_deletion_of_db_stale_data`);
+          if(timestamp_for_last_deletion_of_db_stale_data=null
+          || (today - timestamp_for_last_deletion_of_db_stale_data > (24 * 60 * 60 * 1000))) {
+              limit_function_calls(async function() {
+                  await reactor.dispatchEvent("remove_temp_data_from_db");
+              }, 600000); // Its expected in 10 mins all deletion should be complete.   
+          }
       }
 
       if(method=="live_prices_request") {
@@ -15160,8 +15260,6 @@ Rpc.prototype = {
                     this,
                     ...request.params,
                     function(supernode_signed_res) {
-                      // supernode_signed_res.receiver_flo_address =
-                      //   params.trader_flo_address;
                       if (typeof supernode_signed_res == "object") {
                         RM_RPC.send_rpc
                           .call(
@@ -15393,7 +15491,7 @@ Rpc.prototype = {
                                   error: false,
                                   method:
                                     "deposit_asset_request_response",
-                                  msg: `Please send ${params.product} ${params.bitcoinToBePaid} to the following addres: ${generate_btc_keys_for_requester.address}`,
+                                  msg: `Please send ${params.product} ${params.bitcoinToBePaid} to ${generate_btc_keys_for_requester.address}`,
                                   data: deposit_res
                                 };
                                 deposit_response_object.receiver_flo_address =
@@ -15467,7 +15565,6 @@ Rpc.prototype = {
                                       id: helper_functions.unique_id(),
                                       product: params.product,
                                       btc_address: params.btc_address,
-                                      balance: null,
                                       trader_flo_address: params.trader_flo_address,
                                       btc_private_key_shamirs_id: btc_private_key_shamirs_id,
                                       supernode_transaction_key: supernode_transaction_key
@@ -15550,11 +15647,14 @@ Rpc.prototype = {
                   receivedTradeInfo["order_validator_public_key"] = su_data.myLocalFLOPublicKey;
 
                   try {
-                    const cashiersList = JSON.parse(
-                      localbitcoinplusplus.master_configurations.cashiers
-                    );
-                    const cashiersPubKeysArray = Object.keys(cashiersList);
-                    const getAPaymentHandler = randomNoRepeats(cashiersPubKeysArray)();
+                      let cashiersList = Object.keys(localbitcoinplusplus.CashierStatusObject)
+                       .filter(f=>localbitcoinplusplus.CashierStatusObject[f].currencies.includes(params.currency));
+                      if(cashiersList.length<1) throw new Error('Unknown currency requested. No cashier found.');  
+                      let liveCashiersList = cashiersList.filter(f=>localbitcoinplusplus.CashierStatusObject[f].is_live===true);
+                      if(liveCashiersList.length>0) {
+                          cashiersList = liveCashiersList;
+                      }
+                    const getAPaymentHandler = randomNoRepeats(cashiersList)();
 
                     if (!cashiersPubKeysArray.includes(
                         getAPaymentHandler
@@ -15570,7 +15670,7 @@ Rpc.prototype = {
                       throw new Error(err_msg);
                     }
 
-                    receivedTradeInfo.cashier_upi = cashiersList[getAPaymentHandler];
+                    receivedTradeInfo.cashier_upi = cashiersList[getAPaymentHandler].upi;
                     receivedTradeInfo.cashier_pubKey = getAPaymentHandler;
                     const receivedTradeInfoResp = await addDB(
                       "cash_deposits",
@@ -15614,7 +15714,7 @@ Rpc.prototype = {
           );
           break;
         case "withdraw_request_method":
-          RM_RPC.filter_legit_requests(
+        RM_RPC.filter_legit_requests(
             params.trader_flo_address,
             async function(is_valid_request) {
               if (is_valid_request !== true) return false;
@@ -15663,182 +15763,189 @@ Rpc.prototype = {
                     params.product
                   )
                 ) {
-                  const eqBTC = helper_functions.truncateDecimals(params.withdrawing_amount);
+                    try {
+                        
+                      const eqBTC = helper_functions.truncateDecimals(params.withdrawing_amount);
 
-                  if (
-                    trade_margin.remaining_crypto_credit < 0 ||
-                    eqBTC <= 0 ||
-                    trade_margin.remaining_crypto_credit <
-                      eqBTC
-                  ) {
-                    err_msg = `Insufficient crypto balance to withdraw. You can withdraw upto: ${params.product} ${trade_margin.remaining_crypto_credit}`;
-                    err_response = {
-                          user_flo_addr: params.trader_flo_address,
-                          msg: err_msg
-                      }
-                      reactor.dispatchEvent('message_for_user', err_response);
-                    throw new Error(err_msg);
-                  }
-
-                  // Check how much cryptos the user can withdraw
-                  let withdrawer_btc_id = `${params.trader_flo_address}_${params.product}`;
-                  readDB("crypto_balances", withdrawer_btc_id).then(
-                    function(btc_balance_res) {
                       if (
-                        typeof btc_balance_res == "object" &&
-                        typeof btc_balance_res.trader_flo_address ==
-                          "string" &&
-                        btc_balance_res.crypto_balance > 0
+                      trade_margin.remaining_crypto_credit < 0 ||
+                      eqBTC <= 0 ||
+                      trade_margin.remaining_crypto_credit < eqBTC
                       ) {
-                        let withdrawer_btc_balance = helper_functions.truncateDecimals(
-                          btc_balance_res.crypto_balance
-                        );
-
-                        let withdrawer_new_btc_balance =
-                          withdrawer_btc_balance - eqBTC;
-                        if (
-                          withdrawer_new_btc_balance >= 0 &&
-                          withdrawer_btc_balance > 0 &&
-                          eqBTC > 0 &&
-                          eqBTC <= withdrawer_btc_balance
-                        ) {
-                          // Now details of Bitcoins can be sent to withdrawer
-
-                          /****************************************************************************
-                           ***********IMPORTANT: CHANGE RECEIVING ADDRESS TO BTC THAN FLO HERE**********
-                           ***********AND DO SOMETHING ABOUT PRIVATE KEY BELOW**************************
-                           ****************************************************************************/
-                          let sum_total_btc = 0;
-                          let valid_utxo_list = [];
-                          let receiverBTCAddress = params.receivinAddress.trim();
-
-                          readAllDB("deposit").then(function(
-                            deposit_list
-                          ) {
-                            if (
-                              typeof deposit_list == "object" &&
-                              deposit_list.length > 0
-                            ) {
-                              
-                              for (const dl in deposit_list) {
-                                if (deposit_list.hasOwnProperty(dl)) {
-                                  const deposit_dl = deposit_list[dl];
-                                  if((
-                                      deposit_dl.status == 2 &&
-                                      localbitcoinplusplus.master_configurations.tradableAsset1.includes(
-                                          deposit_dl.product
-                                      ) &&
-                                      params.product == deposit_dl.product
-                                  )) {
-                                      sum_total_btc += helper_functions.truncateDecimals(
-                                          deposit_dl.bitcoinToBePaid
-                                      );
-
-                                      if (eqBTC <= sum_total_btc) {
-                                          valid_utxo_list.push(deposit_dl);
-                                          break;
-                                      } else {
-                                          valid_utxo_list.push(deposit_dl);
-                                      }
-                                  }
-                                }
-                              }
-                              let deposited_utxo_addr_list = {};
-                              let idx = 0;
-                              for (const deposit_arr of valid_utxo_list) {
-                                  // Deposited Bitcoin is under process
-                                  deposit_arr.status = 3;
-                                  updateinDB(
-                                    "deposit",
-                                    deposit_arr,
-                                    deposit_arr.trader_flo_address
-                                  );
-
-                                  if(idx==valid_utxo_list.length-1) {
-                                      deposited_utxo_addr_list[idx]=deposit_arr.btc_address;
-                                      // save the address and id in a table
-                                      let withdraw_id = helper_functions.unique_id();
-                                      const withdraw_btc_order_object = {
-                                          id: withdraw_id,
-                                          trader_flo_address:
-                                              params.trader_flo_address,
-                                          utxo_addr: deposited_utxo_addr_list,
-                                          receiverBTCAddress:
-                                              params.receivinAddress,
-                                          receivingBTC: eqBTC,
-                                          currency: params.currency,
-                                          product: params.product,
-                                          change_adress:
-                                              deposit_arr.btc_address,
-                                          timestamp: +new Date()
-                                      };
-                                      
-                                      addDB("withdraw_btc", withdraw_btc_order_object);
-                                      
-                                      // Delete the withdraw crypto order after 30 mins anyway
-                                      let withdraw_order_life = JSON.parse(localbitcoinplusplus.master_configurations.ordersLife);
-                                      localbitcoinplusplus.actions.delay(withdraw_order_life.cryptoWithdraw)
-                                      .then(()=>{
-                                          removeinDB("withdraw_btc", withdraw_id)
-                                      });
-
-                                      // doSend btc_private_key_shamirs_id from system_btc_reserves_private_keys
-                                      Object.values(deposited_utxo_addr_list)
-                                      .map(vbl => {
-                                          readDBbyIndex(
-                                              "system_btc_reserves_private_keys",
-                                              "btc_address",
-                                              vbl.deposited_btc_address
-                                          ).then(function(res) {
-                                              let retrieve_pvtkey_req_id = res[0].id;
-                                              res[0].btc_private_key_shamirs_id.map(
-                                              bpks => {
-                                                  RM_RPC.send_rpc
-                                                  .call(
-                                                      this,
-                                                      "send_back_shamirs_secret_btc_pvtkey",
-                                                      {
-                                                      retrieve_pvtkey_req_id: retrieve_pvtkey_req_id,
-                                                      chunk_val: bpks,
-                                                      withdraw_id: vbl.withdraw_id,
-                                                      db_inst: primarySupernodeForThisUser
-                                                      }
-                                                  )
-                                                  .then(retrieve_pvtkey_req =>
-                                                      doSend(retrieve_pvtkey_req)
-                                                  );
-                                              }
-                                              );
-                                          });
-                                          });
-
-                                  } else {
-                                      deposited_utxo_addr_list[idx]=deposit_arr.btc_address;
-                                  }
-                                  idx++;
-                                }
-                            }
-                          });
-                        } else {
-                          err_msg = `Withdrawal request failed: You are trying to withdraw more ${params.product} than you have.`;
-                          err_response = {
+                      err_msg = `Insufficient crypto balance to withdraw. You can withdraw upto: ${params.product} ${trade_margin.remaining_crypto_credit}`;
+                      err_response = {
                               user_flo_addr: params.trader_flo_address,
                               msg: err_msg
                           }
                           reactor.dispatchEvent('message_for_user', err_response);
                           throw new Error(err_msg);
-                        }
-                      } else {
-                        err_msg = `Withdrawal request failed: You don't seem to have any ${params.product} balance in the system yet.
-                                   Please buy some ${params.product} to withdraw.`;
-                          err_response = {
-                              user_flo_addr: params.trader_flo_address,
-                              msg: err_msg
-                          }
-                          reactor.dispatchEvent('message_for_user', err_response);
                       }
+
+                      // Check how much cryptos the user can withdraw
+                      let withdrawer_btc_id = `${params.trader_flo_address}_${params.product}`;
+                      readDB("crypto_balances", withdrawer_btc_id).then(
+                      async function(btc_balance_res) {
+                          if (
+                          typeof btc_balance_res == "object" &&
+                          typeof btc_balance_res.trader_flo_address ==
+                              "string" &&
+                          btc_balance_res.crypto_balance > 0
+                          ) {
+                          let withdrawer_btc_balance = helper_functions.truncateDecimals(
+                              btc_balance_res.crypto_balance
+                          );
+
+                          let withdrawer_new_btc_balance =
+                              withdrawer_btc_balance - eqBTC;
+                          if (
+                              withdrawer_new_btc_balance >= 0 &&
+                              withdrawer_btc_balance > 0 &&
+                              eqBTC > 0 &&
+                              eqBTC <= withdrawer_btc_balance
+                          ) {
+                              // Now details of Bitcoins can be sent to withdrawer
+
+                              let sum_total_btc = 0;
+                              let valid_utxo_list = [];
+                              let receiverBTCAddress = params.receivinAddress.trim();
+
+                              const deposit_list = await readAllDB("deposit");
+                              if (
+                                  typeof deposit_list == "object" &&
+                                  deposit_list.length > 0
+                              ) {
+                                  
+                                  for (const dl in deposit_list) {
+                                  if (deposit_list.hasOwnProperty(dl)) {
+                                      const deposit_dl = deposit_list[dl];
+                                      if((
+                                          deposit_dl.status == 2 &&
+                                          localbitcoinplusplus.master_configurations.tradableAsset1.includes(
+                                              deposit_dl.product
+                                          ) &&
+                                          params.product == deposit_dl.product
+                                      )) {
+                                          // Deposited Bitcoin is under process
+                                          deposit_dl.status = 3;
+                                          await updateinDB(
+                                              "deposit",
+                                              deposit_dl,
+                                              deposit_dl.id
+                                          );
+                                          sum_total_btc += helper_functions.truncateDecimals(
+                                              deposit_dl.bitcoinToBePaid
+                                          );
+
+                                          if (eqBTC <= sum_total_btc) {
+                                              valid_utxo_list.push(deposit_dl);
+                                              break;
+                                          } else {
+                                              valid_utxo_list.push(deposit_dl);
+                                          }
+                                      }
+                                  }
+                                  }
+                                  let deposited_utxo_addr_list = {};
+                                  let idx = 0;
+                                  for (const deposit_arr of valid_utxo_list) {
+                                      
+                                      if(idx==valid_utxo_list.length-1) {
+                                          deposited_utxo_addr_list[idx]=deposit_arr.btc_address;
+                                          // save the address and id in a table
+                                          let withdraw_id = helper_functions.unique_id();
+                                          const withdraw_btc_order_object = {
+                                              id: withdraw_id,
+                                              trader_flo_address:
+                                                  params.trader_flo_address,
+                                              utxo_addr: deposited_utxo_addr_list,
+                                              receiverBTCAddress:
+                                                  params.receivinAddress,
+                                              receivingBTC: eqBTC,
+                                              currency: params.currency,
+                                              product: params.product,
+                                              timestamp: +new Date()
+                                          };
+                                          
+                                          await addDB("withdraw_btc", withdraw_btc_order_object);
+                                          
+                                          // Delete the withdraw crypto order after 30 mins anyway
+                                          let withdraw_order_life = JSON.parse(localbitcoinplusplus.master_configurations.ordersLife);
+                                          localbitcoinplusplus.actions.delay(withdraw_order_life.cryptoWithdraw)
+                                          .then(()=>{
+                                              removeinDB("withdraw_btc", withdraw_id)
+                                          });
+
+                                          // doSend btc_private_key_shamirs_id from system_btc_reserves_private_keys
+                                          for (const depositedutxoaddr in deposited_utxo_addr_list) {
+                                              if (deposited_utxo_addr_list.hasOwnProperty(depositedutxoaddr)) {
+                                                  const vbl = deposited_utxo_addr_list[depositedutxoaddr];
+                                                  const res = await readDBbyIndex(
+                                                      "system_btc_reserves_private_keys",
+                                                      "btc_address",
+                                                      vbl
+                                                  );
+                                                  if(typeof res!=="object" || typeof res[0].id!=="string") {
+                                                      deposit_arr.status = 2;
+                                                          await updateinDB(
+                                                          "deposit",
+                                                          deposit_arr,
+                                                          deposit_arr.id,
+                                                          false,
+                                                          false
+                                                      );
+                                                      return;
+                                                  }
+                                                  let retrieve_pvtkey_req_id = res[0].id;
+                                                  res[0].btc_private_key_shamirs_id.map(
+                                                  bpks => {
+                                                      RM_RPC.send_rpc
+                                                      .call(
+                                                          this,
+                                                          "send_back_shamirs_secret_btc_pvtkey",
+                                                          {
+                                                          retrieve_pvtkey_req_id: retrieve_pvtkey_req_id,
+                                                          chunk_val: bpks,
+                                                          withdraw_id: withdraw_id,
+                                                          db_inst: primarySupernodeForThisUser
+                                                          }
+                                                      )
+                                                      .then(retrieve_pvtkey_req =>
+                                                          doSend(retrieve_pvtkey_req)
+                                                      );
+                                                  });
+                                              }
+                                          }
+
+                                      } else {
+                                          deposited_utxo_addr_list[idx]=deposit_arr.btc_address;
+                                      }
+                                      idx++;
+                                  }
+                              }
+                              
+                          } else {
+                              err_msg = `Withdrawal request failed: You are trying to withdraw more ${params.product} than you have.`;
+                              err_response = {
+                                  user_flo_addr: params.trader_flo_address,
+                                  msg: err_msg
+                              }
+                              reactor.dispatchEvent('message_for_user', err_response);
+                              throw new Error(err_msg);
+                          }
+                          } else {
+                          err_msg = `Withdrawal request failed: You don't seem to have any ${params.product} balance in the system yet.
+                                      Please buy some ${params.product} to withdraw.`;
+                              err_response = {
+                                  user_flo_addr: params.trader_flo_address,
+                                  msg: err_msg
+                              }
+                              reactor.dispatchEvent('message_for_user', err_response);
+                          }
+                      });
+
+                    } catch (error) {
+                        console.log(error);
                     }
-                  );
                 } else if (
                   localbitcoinplusplus.master_configurations.tradableAsset2.includes(
                     params.product
@@ -15967,14 +16074,12 @@ Rpc.prototype = {
 
                             try {
                               // Transfer Token
-                              RM_TRADE.sendTransaction(
-                                  localbitcoinplusplus.BASE_BLOCKCHAIN,
-                                localbitcoinplusplus.wallets
-                                  .my_local_flo_address,
-                                localbitcoinplusplus.wallets
-                                  .MY_SUPERNODE_PRIVATE_KEY,
+                              RM_TRADE.sendMultipleInputsTransaction(
+                                localbitcoinplusplus.BASE_BLOCKCHAIN,
+                                [localbitcoinplusplus.wallets
+                                  .MY_SUPERNODE_PRIVATE_KEY],
                                 cashierFloAddr,
-                                0.001,
+                                0.01,
                                 localbitcoinplusplus.wallets
                                   .my_local_flo_address,
                                 async function(res) {
@@ -16172,49 +16277,38 @@ Rpc.prototype = {
           RM_RPC.filter_legit_requests(
               params.trader_flo_address,
               async function (is_valid_request) {
-                  if (is_valid_request !== true) return false;
-
-                  if (
-                      typeof params.btc_private_key_array !== "object" ||
-                      typeof params.retrieve_pvtkey_req_id !== "string"
-                  )
-                      return false;
-
-                  let rec_flo_id =
-                      params.receiver_flo_address ||
-                      request.globalParams.receiverFloId;
-                  if (
-                      typeof rec_flo_id == "undefined" ||
-                      rec_flo_id !==
-                      localbitcoinplusplus.wallets.my_local_flo_address
-                  )
-                      return;
-
-                  if (typeof params.db_inst !== "string")
-                      throw new Error(`ERROR: No DB instance provided.`);
-                  if (
-                      params.db_inst !==
-                      localbitcoinplusplus.wallets.my_local_flo_address
-                  ) return;
-
-                  let btc_private_key_str = params.btc_private_key_array;
-                  let retrieve_pvtkey_req_id = params.retrieve_pvtkey_req_id;
-                  let withdraw_id = params.withdraw_id;
-
                   try {
-                      let btc_private_key_object = JSON.parse(btc_private_key_str);
-                      let btc_pk_shares_array = btc_private_key_object
-                          .map(pkChunks => {
-                              if (typeof pkChunks.private_key_chunk !== "undefined")
-                                  return pkChunks.private_key_chunk.privateKeyChunks;
-                          })
-                          .filter(val => val !== undefined);
-                      console.log(btc_pk_shares_array);
+                      if (is_valid_request !== true) return false;
+
+                      if (
+                          typeof params.btc_private_key_array !== "object"
+                      )
+                          return false;
+
+                      let rec_flo_id =
+                          params.receiver_flo_address ||
+                          request.globalParams.receiverFloId;
+                      if (
+                          typeof rec_flo_id == "undefined" ||
+                          rec_flo_id !==
+                          localbitcoinplusplus.wallets.my_local_flo_address
+                      )
+                          return;
+
+                      if (typeof params.db_inst !== "string")
+                          throw new Error(`ERROR: No DB instance provided.`);
+                      if (
+                          params.db_inst !==
+                          localbitcoinplusplus.wallets.my_local_flo_address
+                      ) return;
+
+                      const withdraw_id = params.withdraw_id;
 
                       const withdraw_res = await readDB("withdraw_btc", withdraw_id);
                       if (typeof withdraw_res == "object") {
                           const withdrawer_crypto_bal_id = `${withdraw_res.trader_flo_address}_${withdraw_res.product}`;
                           const withdrawer_crypto_bal_response = await readDB("crypto_balances", withdrawer_crypto_bal_id);
+                          const withdrawer_crypto_bal_response_before_update = JSON.parse(JSON.stringify(withdrawer_crypto_bal_response));
 
                           if (typeof withdrawer_crypto_bal_response !== "object"
                               || typeof withdrawer_crypto_bal_response.crypto_balance !== "number") {
@@ -16262,303 +16356,235 @@ Rpc.prototype = {
                               return false;
                           }
 
-                          const bal_url = `${explorer}/api/addr/${withdraw_res.utxo_addr}/balance`;
-                          console.log(bal_url);
-
                           // Get the balance before sending the tx. It is important to get balance before
                           // tx than to after because fetching balance after can return older or newer balance 
                           // on random events
-                          let current_balance = await helper_functions.ajaxGet(bal_url);
+                          let current_utxos_balance = 0;
+                          //const RM_WALLET = new localbitcoinplusplus.wallets;
+                          let total_balance_promises = [];
+                          // Send change to the first utxo 
+                          for (const utxo_pk of params.btc_private_key_array) {
+                              let utxo_addr = RM_WALLET.generateFloKeys(utxo_pk, withdraw_res.product).address;
+                              const bal_url = `${explorer}/api/addr/${utxo_addr}/balance`;
+                              total_balance_promises.push(helper_functions.ajaxGet(bal_url));
+                          }
+                          let total_balance_promises_resp = await Promise.all(total_balance_promises);
+                          current_utxos_balance = total_balance_promises_resp.reduce((acc, c) => acc + c, 0);
+                          console.log(current_utxos_balance);
 
-                          if(typeof current_balance !== "number" || current_balance<=0) {
+                          if (typeof current_utxos_balance !== "number" || current_utxos_balance <= 0) {
                               throw new Error(
-                                  "Failed to determine utxo balance of address "+withdraw_res.utxo_addr
+                                  "Failed to determine utxo balance of deposits in withdraw_id " + withdraw_res.id
                               );
                           }
-                          
-                          const btc_reserves = await readDB("system_btc_reserves_private_keys", retrieve_pvtkey_req_id);
-                          if (typeof btc_reserves == "object") {
-                              // Ideally this line should never run.
-                              if (btc_reserves.product !== withdraw_res.product)
-                                  throw new Error(
-                                      "Mismatch of assets in withdrawal request."
-                                  );
 
-                              await RM_TRADE.resolve_current_crypto_price_in_fiat(
-                                  withdraw_res.product,
-                                  withdraw_res.currency
-                              );
-                              const EqCryptoWd = helper_functions.truncateDecimals(withdraw_res.receivingBTC);
-                              //const EqCryptoWd = helper_functions.truncateDecimals(current_balance);
+                          const totalWithdrawingAmount = helper_functions.truncateDecimals(withdraw_res.receivingBTC);
 
-                              if (withdraw_res.receivingBTC > withdrawer_crypto_bal_response.crypto_balance) {
-                                  err_response = {
-                                      user_flo_addr: params.trader_flo_address,
-                                      msg: `You are withdrawing ${withdraw_res.product} more than your balance.`
-                                  }
-                                  reactor.dispatchEvent('message_for_user', err_response);
-                                  return false;
+                          if (totalWithdrawingAmount > withdrawer_crypto_bal_response.crypto_balance) {
+                              err_response = {
+                                  user_flo_addr: params.trader_flo_address,
+                                  msg: `You are withdrawing ${withdraw_res.product} more than your balance.`
                               }
+                              reactor.dispatchEvent('message_for_user', err_response);
+                              return false;
+                          }
 
-                              let transaction_key = localbitcoinplusplus.actions
-                                  .master_decrypt(btc_reserves.supernode_transaction_key);
-                              if(typeof transaction_key=="string") {
-                                  transaction_key = JSON.parse(transaction_key);
-                              }     
-                              if (transaction_key.length > 0) {
-                                  let btc_private_key = RM_WALLET.rebuild_private_key(
-                                      btc_pk_shares_array,
-                                      transaction_key
-                                  );
-                              console.log(btc_private_key);
-
-                              let withdrawingAmountInThisTx = helper_functions.truncateDecimals(withdraw_res.receivingBTC);
-                              if(withdraw_res.receivingBTC>current_balance) {
-                                  withdrawingAmountInThisTx = current_balance;
+                          if (totalWithdrawingAmount > current_utxos_balance) {
+                              err_response = {
+                                  user_flo_addr: params.trader_flo_address,
+                                  msg: `${withdraw_res.product} Withdrawal request failed: System does not have sufficient balance.
+                                          Please try later.`
                               }
+                              reactor.dispatchEvent('message_for_user', err_response);
+                              return false;
+                          }
 
-                                  RM_TRADE.sendTransaction(
-                                      withdraw_res.product,
-                                      withdraw_res.utxo_addr,
-                                      btc_private_key,
-                                      withdraw_res.receiverBTCAddress,
-                                      withdrawingAmountInThisTx,
-                                      withdraw_res.change_adress,
-                                      async function (res) {
-                                          console.log(res);
-                                          if (typeof res == "object") {
-                                              try {
-                                                  let msg = "";
-                                                  if (
-                                                      typeof res.txid == "string" &&
-                                                      res.txid.length > 0
-                                                  ) {
-                                                      resp_obj = JSON.parse(res.txid);
-                                                      resp_txid = resp_obj.txid.result || resp_obj.txid;
-                                                      msg = `Transaction Id for your withdrawn crypto asset: ${resp_txid}.`;
+                          // Deduct balance before sending crypto
+                          withdrawer_crypto_bal_response.crypto_balance -= totalWithdrawingAmount;
+                          withdrawer_crypto_bal_response.crypto_balance =
+                              helper_functions.truncateDecimals(withdrawer_crypto_bal_response.crypto_balance);
+                          const updated_crypto_balance = await updateinDB(
+                              "crypto_balances",
+                              withdrawer_crypto_bal_response,
+                              withdrawer_crypto_bal_id
+                          );
 
-                                                      const RM_RPC = new localbitcoinplusplus.rpc();
-                                                      RM_RPC.send_rpc
-                                                          .call(this, "supernode_message", {
+                          RM_TRADE.sendMultipleInputsTransaction(
+                              withdraw_res.product,
+                              params.btc_private_key_array,
+                              withdraw_res.receiverBTCAddress,
+                              totalWithdrawingAmount,
+                              withdraw_res.utxo_addr[0],
+                              async function (res) {
+                                  console.log(res);
+                                  try {
+                                      if (typeof res == "object") {
+                                          let msg = "";
+                                          if (
+                                              typeof res.txid == "string" &&
+                                              res.txid.length > 0
+                                          ) {
+                                              resp_obj = JSON.parse(res.txid);
+                                              resp_txid = resp_obj.txid.result || resp_obj.txid;
+                                              msg = `Transaction Id for your withdrawn crypto asset: ${resp_txid}.`;
+
+                                              const RM_RPC = new localbitcoinplusplus.rpc();
+                                              RM_RPC.send_rpc
+                                                  .call(this, "supernode_message", {
+                                                      trader_flo_address:
+                                                          withdraw_res.trader_flo_address,
+                                                      receiver_flo_address:
+                                                          withdraw_res.trader_flo_address,
+                                                      server_msg: msg
+                                                  })
+                                                  .then(server_response =>
+                                                      doSend(server_response)
+                                                  );
+
+                                              const res_obj_str = JSON.stringify(updated_crypto_balance);
+                                              const res_obj_hash = Crypto.SHA256(res_obj_str);
+                                              const res_obj_sign = RM_WALLET.sign(
+                                                  res_obj_hash,
+                                                  localbitcoinplusplus.wallets.MY_SUPERNODE_PRIVATE_KEY
+                                              );
+
+                                              const updateUserCryptoBalanceObject = {
+                                                  updatedBTCBalanceObject: updated_crypto_balance,
+                                                  updatedBTCBalanceObjectSign: res_obj_sign,
+                                                  trader_flo_address: withdraw_res.trader_flo_address,
+                                                  receiver_flo_address: withdraw_res.trader_flo_address
+                                              };
+
+                                              RM_RPC.send_rpc(
+                                                  "updateUserCryptoBalanceRequest",
+                                                  updateUserCryptoBalanceObject
+                                              ).then(
+                                                  updateUserCryptoBalanceRequestObject =>
+                                                      doSend(updateUserCryptoBalanceRequestObject)
+                                              );
+
+                                              // Validate txid
+                                              let withdrawTxCounter=1;
+                                              (async function validateWithdrawTxidInBlockchain() {
+                                                  await localbitcoinplusplus.actions.delay(180000); 
+                                                  const validate_withdraw_txid = await helper_functions
+                                                  .ajaxGet(`${explorer}/api/tx/${resp_txid}`);
+                                                  console.log(validate_withdraw_txid);
+                                                  if(typeof validate_withdraw_txid=="object"
+                                                  && validate_withdraw_txid.txid===resp_txid
+                                                  && validate_withdraw_txid.confirmations>0) {
+
+                                                      const deposited_utxos_latest_status = 
+                                                      await RM_WALLET.refresh_reserved_crypto_balances(
+                                                          withdraw_res.trader_flo_address, 
+                                                          withdraw_res.utxo_addr    
+                                                      );
+
+                                                      // Send the resp to backups
+                                                      RM_RPC.send_rpc(
+                                                          "update_deposited_crypto_instance",
+                                                          {
+                                                              deposit_data: deposited_utxos_latest_status,
+                                                              db_inst: params.db_inst,
                                                               trader_flo_address:
-                                                                  withdraw_res.trader_flo_address,
-                                                              receiver_flo_address:
-                                                                  withdraw_res.trader_flo_address,
-                                                              server_msg: msg
-                                                          })
-                                                          .then(server_response =>
-                                                              doSend(server_response)
-                                                          );
-
-                                                      withdrawer_crypto_bal_response.crypto_balance -= EqCryptoWd;
-                                                      withdrawer_crypto_bal_response.crypto_balance = 
-                                                          helper_functions.truncateDecimals(withdrawer_crypto_bal_response.crypto_balance);
-                                                      const updated_crypto_balance = await updateinDB(
-                                                          "crypto_balances",
-                                                          withdrawer_crypto_bal_response,
-                                                          withdrawer_crypto_bal_id
-                                                      );
-                                                      const res_obj_str = JSON.stringify(updated_crypto_balance);
-                                                      const res_obj_hash = Crypto.SHA256(res_obj_str);
-                                                      const res_obj_sign = RM_WALLET.sign(
-                                                          res_obj_hash,
-                                                          localbitcoinplusplus.wallets.MY_SUPERNODE_PRIVATE_KEY
+                                                              withdraw_res.trader_flo_address
+                                                          }
+                                                      ).then(delRequestObject =>
+                                                          doSend(delRequestObject)
                                                       );
 
-                                                      const updateUserCryptoBalanceObject = {
-                                                          updatedBTCBalanceObject: updated_crypto_balance,
-                                                          updatedBTCBalanceObjectSign: res_obj_sign,
-                                                          trader_flo_address: withdraw_res.trader_flo_address,
-                                                          receiver_flo_address: withdraw_res.trader_flo_address
-                                                      };
+                                                      removeinDB("withdraw_btc", withdraw_id);
 
                                                       RM_RPC.send_rpc(
-                                                          "updateUserCryptoBalanceRequest",
-                                                          updateUserCryptoBalanceObject
-                                                      ).then(
-                                                          updateUserCryptoBalanceRequestObject =>
-                                                              doSend(updateUserCryptoBalanceRequestObject)
+                                                          "delete_deposited_crypto_instance",
+                                                          {
+                                                              withdraw_btc_id: withdraw_id,
+                                                              db_inst: params.db_inst,
+                                                              trader_flo_address:
+                                                              withdraw_res.trader_flo_address
+                                                          }
+                                                      ).then(delRequestObject =>
+                                                          doSend(delRequestObject)
                                                       );
 
-                                                      // Check if there's BTC left in deposited BTC. If yes update its status to 2 else delete it
-
-                                                      /***********************************************************************************************************************************
-                                                      *******************CHECK ACTUAL BTC BALANCE HERE THROUGH AN API AND UPDATE DEPOSIT TABLE****************************************************
-                                                      ************************************************************************************************************************************/
-
-                                                      const deposit_arr_resp = await readDBbyIndex(
-                                                          "deposit",
-                                                          "btc_address",
-                                                          withdraw_res.utxo_addr
-                                                      );
-                                                      if (typeof deposit_arr_resp[0] == "object") {
-                                                          const deposit_arr = deposit_arr_resp[0];
-                                                          if (
-                                                              !isNaN(current_balance) &&
-                                                              parseFloat(current_balance) > 0
-                                                          ) {
-                                                              current_balance = helper_functions.truncateDecimals(
-                                                                  current_balance / decimal
-                                                              );
-                                                          }
-
-                                                          if (
-                                                              typeof current_balance == "number"
-                                                          ) {
-                                                              deposit_arr.bitcoinToBePaid = current_balance-EqCryptoWd;
-                                                              btc_reserves.balance = current_balance-EqCryptoWd;
-                                                          } else {
-                                                              deposit_arr.bitcoinToBePaid -= EqCryptoWd;
-                                                              btc_reserves.balance -= EqCryptoWd;
-                                                              // Tx is not registered in Blocckhain yet. Refresh balance after 30 minutes
-                                                              localbitcoinplusplus.actions.delay(1800000).then(() =>
-                                                                  reactor.dispatchEvent("refresh_reserved_crypto_balances", params.trader_flo_address)
-                                                              );
-                                                          }
-
-                                                          deposit_arr.bitcoinToBePaid = helper_functions.truncateDecimals(deposit_arr.bitcoinToBePaid);
-                                                          btc_reserves.balance = helper_functions.truncateDecimals(btc_reserves.balance);
-
-                                                          if (
-                                                              deposit_arr.bitcoinToBePaid > 0
-                                                          ) {
-                                                              // update deposits in db
-                                                              deposit_arr.status = 2; // UTXO ready to be used again
-                                                              const deposit_resp = await updateinDB(
-                                                                  "deposit",
-                                                                  deposit_arr,
-                                                                  deposit_arr.id
-                                                              );
-                                                              // Update new balance in system_btc_reserves
-                                                              const reserves_resp = await updateinDB(
-                                                                  "system_btc_reserves_private_keys",
-                                                                  btc_reserves,
-                                                                  btc_reserves.id
-                                                              );
-
-                                                              // Send the resp to backups
-                                                              RM_RPC.send_rpc(
-                                                                  "update_deposited_crypto_instance",
-                                                                  {
-                                                                      deposit_data: deposit_resp,
-                                                                      btc_reserve_data: reserves_resp,
-                                                                      db_inst: params.db_inst,
-                                                                      trader_flo_address:
-                                                                          deposit_arr.trader_flo_address
-                                                                  }
-                                                              ).then(delRequestObject =>
-                                                                  doSend(delRequestObject)
-                                                              );
-
-                                                              // Do not delete these data instantly as the data
-                                                              // may be required by a follow-up withdraw request
-                                                              await localbitcoinplusplus.actions.delay(180000)
-                                                              await removeinDB("withdraw_btc", withdraw_id);
-
-                                                              RM_RPC.send_rpc(
-                                                                  "delete_deposited_crypto_instance",
-                                                                  {
-                                                                      withdraw_btc_id: withdraw_id,
-                                                                      db_inst: params.db_inst,
-                                                                      trader_flo_address:
-                                                                          deposit_arr.trader_flo_address
-                                                                  }
-                                                              ).then(delRequestObject =>
-                                                                  doSend(delRequestObject)
-                                                              );
-
-                                                              // AND DO THE SAME ABOVE 2 IN BACKUP RECEIVE RPC
-                                                          } else {
-                                                              // Do not delete these data instantly as the data
-                                                              // may be required by a follow-up withdraw request
-                                                              await localbitcoinplusplus.actions.delay(180000);
-
-                                                              let p1 = removeinDB("deposit", deposit_arr.id);
-                                                              let p2 = removeinDB("system_btc_reserves_private_keys", retrieve_pvtkey_req_id);
-                                                              let p3 = removeinDB("withdraw_btc", withdraw_id);
-
-                                                              await Promise.all([p1, p2, p3]);
-
-                                                              RM_RPC.send_rpc(
-                                                                  "delete_deposited_crypto_instance",
-                                                                  {
-                                                                      deposit_id:
-                                                                          deposit_arr.id,
-                                                                      btc_reserve_id: retrieve_pvtkey_req_id,
-                                                                      withdraw_btc_id: withdraw_id,
-                                                                      db_inst: params.db_inst,
-                                                                      trader_flo_address:
-                                                                          deposit_arr.trader_flo_address
-                                                                  }
-                                                              ).then(delRequestObject =>
-                                                                  doSend(delRequestObject)
-                                                              );
-
-                                                          }
-                                                              
-                                                          return true;
-                                                      }
-
+                                                  } else if(n<=20) {
+                                                      validateWithdrawTxidInBlockchain();
+                                                      withdrawTxCounter++;
                                                   } else {
-                                                      console.log(res);
-                                                      throw new Errror(`ERROR: Failed to make transaction.`);
-                                                      return false;
+                                                      throw new Error(`Txid ${resp_txid} not registered in ${withdraw_res.product} Blockhain`);
                                                   }
+                                              })();
 
-                                              } catch (error) {
-                                                  console.warn(error);
-                                                  err_response = {
-                                                      user_flo_addr: params.trader_flo_address,
-                                                      msg: `Withdraw of crypto failed. Network issue:- Please try again after 30 minutes.`
-                                                  }
-                                                  reactor.dispatchEvent('message_for_user', err_response);
-                                                  // Do not delete these data instantly as the data
-                                                  // may be required by a follow-up withdraw request
-                                                  await localbitcoinplusplus.actions.delay(180000);
+                                          } else {
+                                              console.log(res);
+                                              throw new Errror(`ERROR: Failed to make transaction.`);
+                                          }
+                                      } else {
+                                          console.error("Waithdraw transaction is not an object");
+                                          //throw new Errror(`ERROR: Failed to make transaction.`);
+                                      }
 
-                                                  // update deposits status back to 2 in db
-                                                  const deposit_arr_resp = await readDBbyIndex(
-                                                      "deposit",
-                                                      "btc_address",
-                                                      withdraw_res.utxo_addr
-                                                  )
-                                                  if (typeof deposit_arr_resp[0] == "object") {
-                                                      deposit_arr_resp[0].status = 2; // UTXO ready to be used again
-                                                      await updateinDB(
-                                                          "deposit",
-                                                          deposit_arr_resp[0],
-                                                          deposit_arr_resp[0].id
-                                                      );
-                                                  }
-                                                  await removeinDB("withdraw_btc", withdraw_id);
+                                  } catch (error) {
+                                      console.warn(error);
+                                      err_response = {
+                                          user_flo_addr: params.trader_flo_address,
+                                          msg: `Withdraw of crypto failed. Network issue:- Please try again after 30 minutes.`
+                                      }
+                                      reactor.dispatchEvent('message_for_user', err_response);
 
-                                              }
+                                      // update deposits status back to 2 in db
+                                      for (const deposited_utxo_idx in withdraw_res.utxo_addr) {
+                                          let deposited_utxo_addr = withdraw_res.utxo_addr[deposited_utxo_idx];
+                                          const deposit_arr_resp = await readDBbyIndex(
+                                              "deposit",
+                                              "btc_address",
+                                              deposited_utxo_addr
+                                          )
+                                          if (typeof deposit_arr_resp[0] == "object") {
+                                              deposit_arr_resp[0].status = 2; // UTXO ready to be used again
+                                              await updateinDB(
+                                                  "deposit",
+                                                  deposit_arr_resp[0],
+                                                  deposit_arr_resp[0].id
+                                              );
                                           }
                                       }
-                                  );
-                              }
-                          }
+                                      await removeinDB("withdraw_btc", withdraw_id);
 
+                                  }
+                              }
+                          );
                       }
 
                   } catch (error) {
-                      
-                      const withdraw_res = await readDB("withdraw_btc", withdraw_id);
-                      // update deposits status back to 2 in db
-                      const deposit_arr_resp = await readDBbyIndex(
-                          "deposit",
-                          "btc_address",
-                          withdraw_res.utxo_addr
-                      )
-                      if (typeof deposit_arr_resp[0] == "object") {
-                          deposit_arr_resp[0].status = 2; // UTXO ready to be used again
-                          await updateinDB(
+
+                      const withdraw_res = await readDB("withdraw_btc", params.withdraw_id);
+                      for (const deposited_utxo_idx in withdraw_res.utxo_addr) {
+                          let deposited_utxo_addr = withdraw_res.utxo_addr[deposited_utxo_idx];
+                          // update deposits status back to 2 in db
+                          const deposit_arr_resp = await readDBbyIndex(
                               "deposit",
-                              deposit_arr_resp[0],
-                              deposit_arr_resp[0].id
-                          );
+                              "btc_address",
+                              deposited_utxo_addr
+                          )
+                          if (typeof deposit_arr_resp[0] == "object") {
+                              deposit_arr_resp[0].status = 2; // UTXO ready to be used again
+                              updateinDB(
+                                  "deposit",
+                                  deposit_arr_resp[0],
+                                  deposit_arr_resp[0].id
+                              );
+                          }
                       }
-                      await removeinDB("withdraw_btc", withdraw_id);
+                      removeinDB("withdraw_btc", params.withdraw_id);
+                      // Revert user balance
+                      updateinDB("crypto_balances", 
+                      withdrawer_crypto_bal_response_before_update, 
+                      withdrawer_crypto_bal_response_before_update.id,
+                      false,
+                      false
+                      );
+
                       throw new Error(error);
                   }
               }
@@ -16802,7 +16828,8 @@ Rpc.prototype = {
                   if(last_updated==null
                   || (today - last_updated > (24 * 60 * 60 * 1000))) {                            
                       limit_function_calls(async function() {
-                          await reactor.dispatchEvent("refresh_reserved_crypto_balances", params.trader_flo_address);
+                          const RM_WALLET = new localbitcoinplusplus.wallets;
+                          RM_WALLET.refresh_reserved_crypto_balances(params.trader_flo_address);
                       }, 600000);
                   }
               });
@@ -17250,7 +17277,6 @@ Rpc.prototype = {
                                 id: helper_functions.unique_id(),
                                 product: params.product,
                                 btc_address: params.btc_address,
-                                balance: null,
                                 trader_flo_address: params.trader_flo_address,
                                 btc_private_key_shamirs_id: btc_private_key_shamirs_id,
                                 supernode_transaction_key: supernode_transaction_key
@@ -17335,16 +17361,18 @@ Rpc.prototype = {
                       receivedTradeInfo["order_validator_public_key"] = su_data.myLocalFLOPublicKey;
 
                       try {
-                          const cashiersList = JSON.parse(
-                              localbitcoinplusplus.master_configurations.cashiers
-                          );
-                          const cashiersPubKeysArray = Object.keys(cashiersList);
-                          const getAPaymentHandler = randomNoRepeats(cashiersPubKeysArray)();
+                          let cashiersList = Object.keys(localbitcoinplusplus.CashierStatusObject)
+                              .filter(f=>localbitcoinplusplus.CashierStatusObject[f].currencies.includes(params.currency));
+                          if(cashiersList.length<1) throw new Error('Unknown currency requested. No cashier found.');  
+                          let liveCashiersList = cashiersList.filter(f=>localbitcoinplusplus.CashierStatusObject[f].is_live===true);
+                          if(liveCashiersList.length>0) {
+                              cashiersList = liveCashiersList;
+                          }
+                          const getAPaymentHandler = randomNoRepeats(cashiersList)();
 
                           if (!cashiersPubKeysArray.includes(
                               getAPaymentHandler
-                          )
-                          ) {
+                          )) {
                               err_msg = `ERROR: ${getAPaymentHandler} is not recognized as any Cashier's Public Key.`;
                               err_response = {
                                   user_flo_addr: params.trader_flo_address,
@@ -17355,7 +17383,7 @@ Rpc.prototype = {
                               throw new Error(err_msg);
                           }
 
-                          receivedTradeInfo.cashier_upi = cashiersList[getAPaymentHandler];
+                          receivedTradeInfo.cashier_upi = cashiersList[getAPaymentHandler].upi;
                           receivedTradeInfo.cashier_pubKey = getAPaymentHandler;
                           const receivedTradeInfoResp = await backup_server_db_instance
                               .backup_addDB("cash_deposits", receivedTradeInfo);
@@ -17389,7 +17417,7 @@ Rpc.prototype = {
                           });
 
                       } catch (e) {
-
+                          console.error(e);
                       }
                   }
               }
@@ -17459,7 +17487,8 @@ Rpc.prototype = {
                       reactor.dispatchEvent('message_for_user', err_response);
                     throw new Error(err_msg);
                   }
-                } else {
+                } else if(localbitcoinplusplus.master_configurations.tradableAsset2.includes(
+                    params.product)) {
                   if (
                     trade_margin.remaining_fiat_credit < 0 ||
                     params.withdrawing_amount <= 0 ||
@@ -17474,7 +17503,7 @@ Rpc.prototype = {
                       reactor.dispatchEvent('message_for_user', err_response);
                     throw new Error(err_msg);
                   }
-                }
+                } else return;
 
                 params.id = helper_functions.unique_id();
                 params.status = 1;
@@ -17483,164 +17512,197 @@ Rpc.prototype = {
                     params.product
                   )
                 ) {
-                  // Check how much cryptos the user can withdraw
-                  const withdrawer_btc_id = `${params.trader_flo_address}_${params.product}`;
-                  backup_server_db_instance
-                    .backup_readDB("crypto_balances", withdrawer_btc_id)
-                    .then(function(btc_balance_res) {
-                      if (
-                        typeof btc_balance_res == "object" &&
-                        typeof btc_balance_res.trader_flo_address ==
-                          "string" &&
-                        btc_balance_res.crypto_balance > 0
-                      ) {
-                        let withdrawer_btc_balance = helper_functions.truncateDecimals(
-                          btc_balance_res.crypto_balance
-                        );
-                        const eqBTC = helper_functions.truncateDecimals(params.withdrawing_amount);
+                  try {
                         
-                        let withdrawer_new_btc_balance =
-                          withdrawer_btc_balance - eqBTC;
+                        const eqBTC = helper_functions.truncateDecimals(params.withdrawing_amount);
+
                         if (
-                          withdrawer_new_btc_balance >= 0 &&
-                          withdrawer_btc_balance > 0 &&
-                          eqBTC > 0 &&
-                          eqBTC <= withdrawer_btc_balance
+                        trade_margin.remaining_crypto_credit < 0 ||
+                        eqBTC <= 0 ||
+                        trade_margin.remaining_crypto_credit <
+                            eqBTC
                         ) {
-                          // Now details of Bitcoins can be sent to withdrawer
-
-                          /****************************************************************************
-                           ***********IMPORTANT: CHANGE RECEIVING ADDRESS TO BTC THAN FLO HERE**********
-                           ***********AND DO SOMETHING ABOUT PRIVATE KEY BELOW**************************
-                           ****************************************************************************/
-                          let sum_total_btc = 0;
-                          let valid_utxo_list = [];
-                          let receiverBTCAddress = params.receivinAddress.trim();
-
-                          backup_server_db_instance
-                            .backup_readAllDB("deposit")
-                            .then(function(deposit_list) {
-                              if (
-                                typeof deposit_list == "object" &&
-                                deposit_list.length > 0
-                              ) {
-                                deposit_list = deposit_list.filter(
-                                  deposits =>
-                                    deposits.status == 2 &&
-                                    localbitcoinplusplus.master_configurations.tradableAsset1.includes(
-                                      deposits.product
-                                    ) &&
-                                    params.product == deposits.product
-                                );
-                                for (const dl in deposit_list) {
-                                  if (deposit_list.hasOwnProperty(dl)) {
-                                    const deposit_dl = deposit_list[dl];
-                                    sum_total_btc += helper_functions.truncateDecimals(
-                                      deposit_dl.bitcoinToBePaid
-                                    );
-
-                                    if (eqBTC <= sum_total_btc) {
-                                      valid_utxo_list.push(deposit_dl);
-                                      break;
-                                    } else {
-                                      valid_utxo_list.push(deposit_dl);
-                                    }
-                                  }
-                                }
-                                let valid_btc_list = valid_utxo_list.map(
-                                  deposit_arr => {
-                                    // Deposited Bitcoin is under process
-                                    deposit_arr.status = 3;
-                                    backup_server_db_instance.backup_updateinDB(
-                                      "deposit",
-                                      deposit_arr,
-                                      deposit_arr.trader_flo_address
-                                    );
-
-                                    // save the address and id in a table
-                                    const withdraw_id = helper_functions.unique_id();
-                                    const withdraw_btc_order_object = {
-                                      id: withdraw_id,
-                                      trader_flo_address:
-                                        params.trader_flo_address,
-                                      utxo_addr: deposit_arr.btc_address,
-                                      receiverBTCAddress:
-                                        params.receivinAddress,
-                                      receivingBTC: eqBTC,
-                                      currency: params.currency,
-                                      product: params.product,
-                                      change_adress:
-                                        deposit_arr.btc_address,
-                                      timestamp: +new Date()
-                                    };
-                                    backup_server_db_instance.backup_addDB(
-                                      "withdraw_btc",
-                                      withdraw_btc_order_object
-                                    );
-                                    let withdraw_order_life = JSON.parse(localbitcoinplusplus.master_configurations.ordersLife);
-                                    localbitcoinplusplus.actions.delay(withdraw_order_life.cryptoWithdraw)
-                                          .then(()=>backup_server_db_instance
-                                          .backup_removeinDB("withdraw_btc", withdraw_id));
-                                    return {
-                                      withdraw_id: withdraw_id,
-                                      deposited_btc_address:
-                                        deposit_arr.btc_address
-                                    };
-                                  }
-                                );
-
-                                // doSend btc_private_key_shamirs_id from system_btc_reserves_private_keys
-                                valid_btc_list.map(vbl => {
-                                  backup_server_db_instance
-                                  .backup_readDBbyIndex(
-                                    "system_btc_reserves_private_keys",
-                                    "btc_address",
-                                    vbl.deposited_btc_address
-                                  ).then(function(res) {
-                                    let retrieve_pvtkey_req_id =
-                                      res[0].id;
-                                    res[0].btc_private_key_shamirs_id.map(
-                                      bpks => {
-                                        RM_RPC.send_rpc
-                                          .call(
-                                            this,
-                                            "send_back_shamirs_secret_btc_pvtkey",
-                                            {
-                                              retrieve_pvtkey_req_id: retrieve_pvtkey_req_id,
-                                              chunk_val: bpks,
-                                              withdraw_id:
-                                                vbl.withdraw_id,
-                                              db_inst: primarySupernodeForThisUser
-                                            }
-                                          )
-                                          .then(retrieve_pvtkey_req =>
-                                            doSend(retrieve_pvtkey_req)
-                                          );
-                                      }
-                                    );
-                                  });
-                                });
-                              }
-                            });
-                        } else {
-                          err_msg = `Withdrawal request failed: You are trying to withdraw more ${params.product} than you have.`;
-                          err_response = {
-                              user_flo_addr: params.trader_flo_address,
-                              msg: err_msg
-                          }
-                          reactor.dispatchEvent('message_for_user', err_response);
-                          throw new Error(err_msg);
+                        err_msg = `Insufficient crypto balance to withdraw. You can withdraw upto: ${params.product} ${trade_margin.remaining_crypto_credit}`;
+                        err_response = {
+                                user_flo_addr: params.trader_flo_address,
+                                msg: err_msg
+                            }
+                            reactor.dispatchEvent('message_for_user', err_response);
+                            throw new Error(err_msg);
                         }
-                      } else {
-                        err_msg = `Withdrawal request failed: You don't seem to have any ${params.product} balance in the system yet.
-                                  Please buy some Bitcoins to withdraw.`;
-                          err_response = {
-                              user_flo_addr: params.trader_flo_address,
-                              msg: err_msg
-                          }
-                          reactor.dispatchEvent('message_for_user', err_response);
+
+                        // Check how much cryptos the user can withdraw
+                        let withdrawer_btc_id = `${params.trader_flo_address}_${params.product}`;
+                        backup_server_db_instance
+                          .backup_readDB("crypto_balances", withdrawer_btc_id).then(
+                        async function(btc_balance_res) {
+                            if (
+                            typeof btc_balance_res == "object" &&
+                            typeof btc_balance_res.trader_flo_address ==
+                                "string" &&
+                            btc_balance_res.crypto_balance > 0
+                            ) {
+                            let withdrawer_btc_balance = helper_functions.truncateDecimals(
+                                btc_balance_res.crypto_balance
+                            );
+
+                            let withdrawer_new_btc_balance =
+                                withdrawer_btc_balance - eqBTC;
+                            if (
+                                withdrawer_new_btc_balance >= 0 &&
+                                withdrawer_btc_balance > 0 &&
+                                eqBTC > 0 &&
+                                eqBTC <= withdrawer_btc_balance
+                            ) {
+                                // Now details of Bitcoins can be sent to withdrawer
+
+                                let sum_total_btc = 0;
+                                let valid_utxo_list = [];
+                                let receiverBTCAddress = params.receivinAddress.trim();
+
+                                const deposit_list = await backup_server_db_instance
+                                      .backup_readAllDB("deposit");
+                                if (
+                                    typeof deposit_list == "object" &&
+                                    deposit_list.length > 0
+                                ) {
+                                    
+                                    for (const dl in deposit_list) {
+                                    if (deposit_list.hasOwnProperty(dl)) {
+                                        const deposit_dl = deposit_list[dl];
+                                        if((
+                                            deposit_dl.status == 2 &&
+                                            localbitcoinplusplus.master_configurations.tradableAsset1.includes(
+                                                deposit_dl.product
+                                            ) &&
+                                            params.product == deposit_dl.product
+                                        )) {
+                                            // Deposited Bitcoin is under process
+                                            deposit_dl.status = 3;
+                                            await backup_server_db_instance
+                                              .backup_updateinDB(
+                                                "deposit",
+                                                deposit_dl,
+                                                deposit_dl.id
+                                            );
+                                            sum_total_btc += helper_functions.truncateDecimals(
+                                                deposit_dl.bitcoinToBePaid
+                                            );
+
+                                            if (eqBTC <= sum_total_btc) {
+                                                valid_utxo_list.push(deposit_dl);
+                                                break;
+                                            } else {
+                                                valid_utxo_list.push(deposit_dl);
+                                            }
+                                        }
+                                    }
+                                    }
+                                    let deposited_utxo_addr_list = {};
+                                    let idx = 0;
+                                    for (const deposit_arr of valid_utxo_list) {
+                                        
+                                        if(idx==valid_utxo_list.length-1) {
+                                            deposited_utxo_addr_list[idx]=deposit_arr.btc_address;
+                                            // save the address and id in a table
+                                            let withdraw_id = helper_functions.unique_id();
+                                            const withdraw_btc_order_object = {
+                                                id: withdraw_id,
+                                                trader_flo_address:
+                                                    params.trader_flo_address,
+                                                utxo_addr: deposited_utxo_addr_list,
+                                                receiverBTCAddress:
+                                                    params.receivinAddress,
+                                                receivingBTC: eqBTC,
+                                                currency: params.currency,
+                                                product: params.product,
+                                                timestamp: +new Date()
+                                            };
+                                            
+                                            await backup_server_db_instance
+                                              .backup_addDB("withdraw_btc", withdraw_btc_order_object);
+                                            
+                                            // Delete the withdraw crypto order after 30 mins anyway
+                                            let withdraw_order_life = JSON.parse(localbitcoinplusplus.master_configurations.ordersLife);
+                                            localbitcoinplusplus.actions.delay(withdraw_order_life.cryptoWithdraw)
+                                            .then(()=>{
+                                              backup_server_db_instance
+                                                  .backup_removeinDB("withdraw_btc", withdraw_id)
+                                            });
+
+                                            // doSend btc_private_key_shamirs_id from system_btc_reserves_private_keys
+                                            for (const depositedutxoaddr in deposited_utxo_addr_list) {
+                                                if (deposited_utxo_addr_list.hasOwnProperty(depositedutxoaddr)) {
+                                                    const vbl = deposited_utxo_addr_list[depositedutxoaddr];
+                                                    const res = await backup_server_db_instance
+                                                      .backup_readDBbyIndex(
+                                                        "system_btc_reserves_private_keys",
+                                                        "btc_address",
+                                                        vbl
+                                                    );
+                                                    if(typeof res!=="object" || typeof res[0].id!=="string") {
+                                                        deposit_arr.status = 2;
+                                                            await backup_server_db_instance
+                                                            .backup_updateinDB(
+                                                            "deposit",
+                                                            deposit_arr,
+                                                            deposit_arr.id,
+                                                            false,
+                                                            false
+                                                        );
+                                                        return;
+                                                    }
+                                                    let retrieve_pvtkey_req_id = res[0].id;
+                                                    res[0].btc_private_key_shamirs_id.map(
+                                                    bpks => {
+                                                        RM_RPC.send_rpc
+                                                        .call(
+                                                            this,
+                                                            "send_back_shamirs_secret_btc_pvtkey",
+                                                            {
+                                                            retrieve_pvtkey_req_id: retrieve_pvtkey_req_id,
+                                                            chunk_val: bpks,
+                                                            withdraw_id: withdraw_id,
+                                                            db_inst: primarySupernodeForThisUser
+                                                            }
+                                                        )
+                                                        .then(retrieve_pvtkey_req =>
+                                                            doSend(retrieve_pvtkey_req)
+                                                        );
+                                                    });
+                                                }
+                                            }
+
+                                        } else {
+                                            deposited_utxo_addr_list[idx]=deposit_arr.btc_address;
+                                        }
+                                        idx++;
+                                    }
+                                }
+                                
+                            } else {
+                                err_msg = `Withdrawal request failed: You are trying to withdraw more ${params.product} than you have.`;
+                                err_response = {
+                                    user_flo_addr: params.trader_flo_address,
+                                    msg: err_msg
+                                }
+                                reactor.dispatchEvent('message_for_user', err_response);
+                                throw new Error(err_msg);
+                            }
+                            } else {
+                            err_msg = `Withdrawal request failed: You don't seem to have any ${params.product} balance in the system yet.
+                                        Please buy some ${params.product} to withdraw.`;
+                                err_response = {
+                                    user_flo_addr: params.trader_flo_address,
+                                    msg: err_msg
+                                }
+                                reactor.dispatchEvent('message_for_user', err_response);
+                            }
+                        });
+
+                      } catch (error) {
+                          console.log(error);
                       }
-                    });
                 } else if (
                   localbitcoinplusplus.master_configurations.tradableAsset2.includes(
                     params.product
@@ -17766,14 +17828,12 @@ Rpc.prototype = {
 
                                 try {
                                   // Transfer Token
-                                  RM_TRADE.sendTransaction(
+                                  RM_TRADE.sendMultipleInputsTransaction(
                                       localbitcoinplusplus.BASE_BLOCKCHAIN,
-                                    localbitcoinplusplus.wallets
-                                      .my_local_flo_address,
-                                    localbitcoinplusplus.wallets
-                                      .MY_SUPERNODE_PRIVATE_KEY,
+                                    [localbitcoinplusplus.wallets
+                                      .MY_SUPERNODE_PRIVATE_KEY],
                                     cashierFloAddr,
-                                    0.001,
+                                    0.01,
                                     localbitcoinplusplus.wallets
                                       .my_local_flo_address,
                                     async function(res) {
@@ -18014,60 +18074,45 @@ Rpc.prototype = {
           RM_RPC.filter_legit_backup_requests(
               params.trader_flo_address,
               async function (is_valid_request) {
-                  if (is_valid_request !== true) return false;
-
-                  if (
-                      typeof params.btc_private_key_array !== "string" ||
-                      typeof params.retrieve_pvtkey_req_id !== "string"
-                  )
-                      return false;
-
-                  let rec_flo_id =
-                      params.receiver_flo_address ||
-                      request.globalParams.receiverFloId;
-                  if (
-                      typeof rec_flo_id == "undefined" ||
-                      rec_flo_id !==
-                      localbitcoinplusplus.wallets.my_local_flo_address
-                  )
-                      return;
-
-                  if (typeof params.db_inst !== "string")
-                      throw new Error(`ERROR: No DB instance provided.`);
-                  if (
-                      params.db_inst ==
-                      localbitcoinplusplus.wallets.my_local_flo_address
-                  )
-                      return;
-
-                  backup_server_db_instance =
-                      localbitcoinplusplus.newBackupDatabase.db[params.db_inst];
-
-                  if (typeof backup_server_db_instance !== "object") return;
-
-                  let btc_private_key_str = params.btc_private_key_array;
-                  let retrieve_pvtkey_req_id = params.retrieve_pvtkey_req_id;
-                  let withdraw_id = params.withdraw_id;
-
                   try {
-                      let btc_private_key_object = JSON.parse(
-                          btc_private_key_str
-                      );
-                      let btc_pk_shares_array = btc_private_key_object
-                          .map(pkChunks => {
-                              if (typeof pkChunks.private_key_chunk !== "undefined")
-                                  return pkChunks.private_key_chunk.privateKeyChunks;
-                          })
-                          .filter(val => val !== undefined);
-                      console.log(btc_pk_shares_array);
+                      if (is_valid_request !== true) return false;
+
+                      if (
+                          typeof params.btc_private_key_array !== "object"
+                      )
+                          return false;
+
+                      let rec_flo_id =
+                          params.receiver_flo_address ||
+                          request.globalParams.receiverFloId;
+                      if (
+                          typeof rec_flo_id == "undefined" ||
+                          rec_flo_id !==
+                          localbitcoinplusplus.wallets.my_local_flo_address
+                      )
+                          return;
+
+                      if (typeof params.db_inst !== "string")
+                          throw new Error(`ERROR: No DB instance provided.`);
+                      if (
+                          params.db_inst ==
+                          localbitcoinplusplus.wallets.my_local_flo_address
+                      ) return;
+
+                      backup_server_db_instance =
+                          localbitcoinplusplus.newBackupDatabase.db[params.db_inst];
+                      
+                      if (typeof backup_server_db_instance !== "object") return;
+
+                      const withdraw_id = params.withdraw_id;
 
                       const withdraw_res = await backup_server_db_instance
                           .backup_readDB("withdraw_btc", withdraw_id);
-
                       if (typeof withdraw_res == "object") {
                           const withdrawer_crypto_bal_id = `${withdraw_res.trader_flo_address}_${withdraw_res.product}`;
                           const withdrawer_crypto_bal_response = await backup_server_db_instance
                               .backup_readDB("crypto_balances", withdrawer_crypto_bal_id);
+                          const withdrawer_crypto_bal_response_before_update = JSON.parse(JSON.stringify(withdrawer_crypto_bal_response));
 
                           if (typeof withdrawer_crypto_bal_response !== "object"
                               || typeof withdrawer_crypto_bal_response.crypto_balance !== "number") {
@@ -18115,372 +18160,249 @@ Rpc.prototype = {
                               return false;
                           }
 
-                          const bal_url = `${explorer}/api/addr/${withdraw_res.utxo_addr}/balance`;
-                          console.log(bal_url);
-
                           // Get the balance before sending the tx. It is important to get balance before
                           // tx than to after because fetching balance after can return older or newer balance 
                           // on random events
-                          let current_balance = await helper_functions.ajaxGet(bal_url);
+                          let current_utxos_balance = 0;
+                          const RM_WALLET = new localbitcoinplusplus.wallets;
+                          let total_balance_promises = [];
+                          for (const utxo_pk of params.btc_private_key_array) {
+                              let utxo_addr = RM_WALLET.generateFloKeys(utxo_pk, withdraw_res.product).address;
+                              const bal_url = `${explorer}/api/addr/${utxo_addr}/balance`;
+                              total_balance_promises.push(helper_functions.ajaxGet(bal_url));
+                          }
+                          let total_balance_promises_resp = await Promise.all(total_balance_promises);
+                          current_utxos_balance = total_balance_promises_resp.reduce((acc, c) => acc + c, 0);
+                          console.log(current_utxos_balance);
 
-                          if(typeof current_balance !== "number" || current_balance<=0) {
+                          if (typeof current_utxos_balance !== "number" || current_utxos_balance <= 0) {
                               throw new Error(
-                                  "Failed to determine utxo balance of address "+withdraw_res.utxo_addr
+                                  "Failed to determine utxo balance of deposits in withdraw_id " + withdraw_res.id
                               );
                           }
 
-                          const btc_reserves = await backup_server_db_instance
-                              .backup_readDB("system_btc_reserves_private_keys", retrieve_pvtkey_req_id);
+                          const totalWithdrawingAmount = helper_functions.truncateDecimals(withdraw_res.receivingBTC);
 
-                          if (typeof btc_reserves == "object") {
-                              // Ideally this line should never run.
-                              if (
-                                  btc_reserves.product !==
-                                  withdraw_res.product
-                              )
-                                  throw new Error(
-                                      "Mismatch of assets in withdrawal request."
-                                  );
-
-                              await RM_TRADE.resolve_current_crypto_price_in_fiat(
-                                  withdraw_res.product,
-                                  withdraw_res.currency
-                              );
-                              const EqCryptoWd = helper_functions.truncateDecimals(withdraw_res.receivingBTC);
-                              //const EqCryptoWd = helper_functions.truncateDecimals(current_balance);
-
-                              if (withdraw_res.receivingBTC > withdrawer_crypto_bal_response.crypto_balance) {
-                                  err_response = {
-                                      user_flo_addr: params.trader_flo_address,
-                                      msg: `You are withdrawing ${withdraw_res.product} more than your balance.`
-                                  }
-                                  reactor.dispatchEvent('message_for_user', err_response);
-                                  return false;
+                          if (totalWithdrawingAmount > withdrawer_crypto_bal_response.crypto_balance) {
+                              err_response = {
+                                  user_flo_addr: params.trader_flo_address,
+                                  msg: `You are withdrawing ${withdraw_res.product} more than your balance.`
                               }
+                              reactor.dispatchEvent('message_for_user', err_response);
+                              return false;
+                          }
 
-                              let transaction_key = localbitcoinplusplus.actions
-                                  .master_decrypt(btc_reserves.supernode_transaction_key);
-                              if(typeof transaction_key=="string") {
-                                  transaction_key = JSON.parse(transaction_key);
-                              } 
-                              if (transaction_key.length > 0) {
-                                  let btc_private_key = RM_WALLET.rebuild_private_key(
-                                      btc_pk_shares_array,
-                                      transaction_key
-                                  );
-                                  console.log(btc_pk_shares_array);
-                                  console.log(transaction_key);
+                          if (totalWithdrawingAmount > current_utxos_balance) {
+                              err_response = {
+                                  user_flo_addr: params.trader_flo_address,
+                                  msg: `${withdraw_res.product} Withdrawal request failed: System does not have sufficient balance.
+                                          Please try later.`
+                              }
+                              reactor.dispatchEvent('message_for_user', err_response);
+                              return false;
+                          }
 
-                                  let withdrawingAmountInThisTx = helper_functions.truncateDecimals(withdraw_res.receivingBTC);
-                                  if(withdraw_res.receivingBTC>current_balance) {
-                                      withdrawingAmountInThisTx = current_balance;
-                                  }
+                          // Deduct balance before sending crypto
+                          withdrawer_crypto_bal_response.crypto_balance -= totalWithdrawingAmount;
+                          withdrawer_crypto_bal_response.crypto_balance =
+                              helper_functions.truncateDecimals(withdrawer_crypto_bal_response.crypto_balance);
+                          const updated_crypto_balance = await backup_server_db_instance.backup_updateinDB(
+                              "crypto_balances",
+                              withdrawer_crypto_bal_response,
+                              withdrawer_crypto_bal_id
+                          );
 
-                                  RM_TRADE.sendTransaction(
-                                      withdraw_res.product,
-                                      withdraw_res.utxo_addr,
-                                      btc_private_key,
-                                      withdraw_res.receiverBTCAddress,
-                                      withdrawingAmountInThisTx,
-                                      withdraw_res.change_adress,
-                                      async function (res) {
-                                          console.log(res);
-                                          if (typeof res == "object") {
-                                              try {
-                                                  let msg = "";
-                                                  if (
-                                                      typeof res.txid == "string" &&
-                                                      res.txid.length > 0
-                                                  ) {
-                                                      resp_obj = JSON.parse(res.txid);
-                                                      resp_txid =
-                                                          resp_obj.txid.result ||
-                                                          resp_obj.txid;
-                                                      msg = `Transaction Id for your withdrawn crypto asset: ${resp_txid}.`;
+                          RM_TRADE.sendMultipleInputsTransaction(
+                              withdraw_res.product,
+                              params.btc_private_key_array,
+                              withdraw_res.receiverBTCAddress,
+                              totalWithdrawingAmount,
+                              withdraw_res.utxo_addr[0],
+                              async function (res) {
+                                  console.log(res);
+                                  try {
+                                      if (typeof res == "object") {
+                                          let msg = "";
+                                          if (
+                                              typeof res.txid == "string" &&
+                                              res.txid.length > 0
+                                          ) {
+                                              resp_obj = JSON.parse(res.txid);
+                                              resp_txid = resp_obj.txid.result || resp_obj.txid;
+                                              msg = `Transaction Id for your withdrawn crypto asset: ${resp_txid}.`;
 
-                                                      const RM_RPC = new localbitcoinplusplus.rpc();
-                                                      RM_RPC.send_rpc
-                                                          .call(
-                                                              this,
-                                                              "supernode_message",
-                                                              {
-                                                                  trader_flo_address:
-                                                                      withdraw_res.trader_flo_address,
-                                                                  receiver_flo_address:
-                                                                      withdraw_res.trader_flo_address,
-                                                                  server_msg: msg
-                                                              }
-                                                          )
-                                                          .then(server_response =>
-                                                              doSend(server_response)
-                                                          );
+                                              const RM_RPC = new localbitcoinplusplus.rpc();
+                                              RM_RPC.send_rpc
+                                                  .call(this, "supernode_message", {
+                                                      trader_flo_address:
+                                                          withdraw_res.trader_flo_address,
+                                                      receiver_flo_address:
+                                                          withdraw_res.trader_flo_address,
+                                                      server_msg: msg
+                                                  })
+                                                  .then(server_response =>
+                                                      doSend(server_response)
+                                                  );
 
-                                                      let withdrawer_crypto_bal_id = `${withdraw_res.trader_flo_address}_${withdraw_res.product}`;
+                                              const res_obj_str = JSON.stringify(updated_crypto_balance);
+                                              const res_obj_hash = Crypto.SHA256(res_obj_str);
+                                              const res_obj_sign = RM_WALLET.sign(
+                                                  res_obj_hash,
+                                                  localbitcoinplusplus.wallets.MY_SUPERNODE_PRIVATE_KEY
+                                              );
 
-                                                      withdrawer_crypto_bal_response.crypto_balance -= EqCryptoWd;
-                                                      withdrawer_crypto_bal_response.crypto_balance = 
-                                                          helper_functions.truncateDecimals(withdrawer_crypto_bal_response.crypto_balance);
-                                                                      
-                                                      const updated_crypto_balance = await backup_server_db_instance
-                                                          .backup_updateinDB(
-                                                              "crypto_balances",
-                                                              withdrawer_crypto_bal_response,
-                                                              withdrawer_crypto_bal_id
-                                                          );
-                                                      const res_obj_str = JSON.stringify(
-                                                          updated_crypto_balance
+                                              const updateUserCryptoBalanceObject = {
+                                                  updatedBTCBalanceObject: updated_crypto_balance,
+                                                  updatedBTCBalanceObjectSign: res_obj_sign,
+                                                  trader_flo_address: withdraw_res.trader_flo_address,
+                                                  receiver_flo_address: withdraw_res.trader_flo_address
+                                              };
+
+                                              RM_RPC.send_rpc(
+                                                  "updateUserCryptoBalanceRequest",
+                                                  updateUserCryptoBalanceObject
+                                              ).then(
+                                                  updateUserCryptoBalanceRequestObject =>
+                                                      doSend(updateUserCryptoBalanceRequestObject)
+                                              );
+
+                                              // Validate txid
+                                              let withdrawTxCounter=1;
+                                              (async function validateWithdrawTxidInBlockchain() {
+                                                  await localbitcoinplusplus.actions.delay(180000); 
+                                                  const validate_withdraw_txid = await helper_functions
+                                                  .ajaxGet(`${explorer}/api/tx/${resp_txid}`);
+                                                  console.log(validate_withdraw_txid);
+                                                  if(typeof validate_withdraw_txid=="object"
+                                                  && validate_withdraw_txid.txid===resp_txid
+                                                  && validate_withdraw_txid.confirmations>0) {
+
+                                                      const deposited_utxos_latest_status = 
+                                                      await RM_WALLET.refresh_reserved_crypto_balances(
+                                                          withdraw_res.trader_flo_address, 
+                                                          withdraw_res.utxo_addr    
                                                       );
-                                                      const res_obj_hash = Crypto.SHA256(
-                                                          res_obj_str
-                                                      );
-                                                      const res_obj_sign = RM_WALLET.sign(
-                                                          res_obj_hash,
-                                                          localbitcoinplusplus
-                                                              .wallets
-                                                              .MY_SUPERNODE_PRIVATE_KEY
-                                                      );
 
-                                                      const updateUserCryptoBalanceObject = {
-                                                          updatedBTCBalanceObject: updated_crypto_balance,
-                                                          updatedBTCBalanceObjectSign: res_obj_sign,
-                                                          trader_flo_address:
-                                                              withdraw_res.trader_flo_address,
-                                                          receiver_flo_address:
+                                                      // Send the resp to backups
+                                                      RM_RPC.send_rpc(
+                                                          "update_deposited_crypto_instance",
+                                                          {
+                                                              deposit_data: deposited_utxos_latest_status,
+                                                              db_inst: params.db_inst,
+                                                              trader_flo_address:
                                                               withdraw_res.trader_flo_address
-                                                      };
+                                                          }
+                                                      ).then(delRequestObject =>
+                                                          doSend(delRequestObject)
+                                                      );
+
+                                                      backup_server_db_instance
+                                                      .backup_removeinDB("withdraw_btc", withdraw_id);
 
                                                       RM_RPC.send_rpc(
-                                                          "updateUserCryptoBalanceRequest",
-                                                          updateUserCryptoBalanceObject
-                                                      ).then(
-                                                          updateUserCryptoBalanceRequestObject =>
-                                                              doSend(
-                                                                  updateUserCryptoBalanceRequestObject
-                                                              )
+                                                          "delete_deposited_crypto_instance",
+                                                          {
+                                                              withdraw_btc_id: withdraw_id,
+                                                              db_inst: params.db_inst,
+                                                              trader_flo_address:
+                                                              withdraw_res.trader_flo_address
+                                                          }
+                                                      ).then(delRequestObject =>
+                                                          doSend(delRequestObject)
                                                       );
-                                                      // Check if there's BTC left in deposited BTC. If yes update its status to 2 else delete it
-                                                      /***********************************************************************************************************************************
-                                                       *******************CHECK ACTUAL BTC BALANCE HERE THROUGH AN API AND UPDATE DEPOSIT TABLE****************************************************
-                                                      ************************************************************************************************************************************/
 
-                                                      const deposit_arr_resp = await backup_server_db_instance
-                                                          .backup_readDBbyIndex(
-                                                              "deposit",
-                                                              "btc_address",
-                                                              withdraw_res.utxo_addr
-                                                          );
-                                                      if (
-                                                          typeof deposit_arr_resp ==
-                                                          "object"
-                                                      ) {
-                                                          const deposit_arr = deposit_arr_resp[0];
-                                                                  if (
-                                                                      !isNaN(current_balance) &&
-                                                                      parseFloat(
-                                                                          current_balance
-                                                                      ) > 0
-                                                                  ) {
-                                                                      current_balance = helper_functions.truncateDecimals(
-                                                                          current_balance / decimal
-                                                                      );
-                                                                  }
-
-                                                                  if (
-                                                                      typeof current_balance ==
-                                                                      "number"
-                                                                  ) {
-                                                                      deposit_arr.bitcoinToBePaid = current_balance-EqCryptoWd;
-                                                                      btc_reserves.balance = current_balance-EqCryptoWd;
-                                                                  } else {
-                                                                      deposit_arr.bitcoinToBePaid -= EqCryptoWd;
-                                                                      btc_reserves.balance -= EqCryptoWd;
-                                                                      // Tx is not registered in Blocckhain yet. Refresh balance after 30 minutes
-                                                                      localbitcoinplusplus.actions.delay(1800000).then(() =>
-                                                                          reactor.dispatchEvent("refresh_reserved_crypto_balances", params.trader_flo_address)
-                                                                      );
-                                                                  }
-
-                                                                  deposit_arr.bitcoinToBePaid = helper_functions.truncateDecimals(deposit_arr.bitcoinToBePaid);
-                                                                  btc_reserves.balance = helper_functions.truncateDecimals(btc_reserves.balance);
-
-                                                                  if (
-                                                                      deposit_arr.bitcoinToBePaid >
-                                                                      0
-                                                                  ) {
-                                                                      // update deposits in db
-                                                                      deposit_arr.status = 2; // UTXO ready to be used again
-                                                                      const deposit_resp = await backup_server_db_instance.backup_updateinDB(
-                                                                          "deposit",
-                                                                          deposit_arr,
-                                                                          deposit_arr.id
-                                                                      );
-
-                                                                      // Update new balance in system_btc_reserves
-                                                                      const reserves_resp = await backup_server_db_instance.backup_updateinDB(
-                                                                          "system_btc_reserves_private_keys",
-                                                                          btc_reserves,
-                                                                          btc_reserves.id
-                                                                      );
-
-                                                                      // Send the resp to backups
-                                                                      RM_RPC.send_rpc(
-                                                                          "update_deposited_crypto_instance",
-                                                                          {
-                                                                              deposit_data: deposit_resp,
-                                                                              btc_reserve_data: reserves_resp,
-                                                                              db_inst: params.db_inst,
-                                                                              trader_flo_address:
-                                                                                  deposit_arr.trader_flo_address
-                                                                          }
-                                                                      ).then(delRequestObject =>
-                                                                          doSend(delRequestObject)
-                                                                      );
-
-                                                                      await localbitcoinplusplus.actions.delay(180000);
-
-                                                                      await backup_server_db_instance.backup_removeinDB(
-                                                                          "withdraw_btc",
-                                                                          withdraw_id
-                                                                      );
-
-                                                                      RM_RPC.send_rpc(
-                                                                          "delete_deposited_crypto_instance",
-                                                                          {
-                                                                              withdraw_btc_id: withdraw_id,
-                                                                              db_inst:
-                                                                                  params.db_inst,
-                                                                              trader_flo_address:
-                                                                                  deposit_arr.trader_flo_address
-                                                                          }
-                                                                      ).then(
-                                                                          delRequestObject =>
-                                                                              doSend(
-                                                                                  delRequestObject
-                                                                              )
-                                                                      );
-
-                                                                  } else {
-                                                                      await localbitcoinplusplus.actions.delay(180000)
-
-                                                                      // delete entry in deposits in db
-                                                                      let p1 = backup_server_db_instance.backup_removeinDB(
-                                                                          "deposit",
-                                                                          deposit_arr.id
-                                                                      );
-
-                                                                      let p2 = backup_server_db_instance.backup_removeinDB(
-                                                                          "system_btc_reserves_private_keys",
-                                                                          retrieve_pvtkey_req_id
-                                                                      );
-
-                                                                      let p3 = backup_server_db_instance.backup_removeinDB(
-                                                                          "withdraw_btc",
-                                                                          withdraw_id
-                                                                      );
-
-                                                                      await Promise.all([p1, p2, p3]);
-
-                                                                      RM_RPC.send_rpc(
-                                                                          "delete_deposited_crypto_instance",
-                                                                          {
-                                                                              deposit_id:
-                                                                                  deposit_arr.id,
-                                                                              btc_reserve_id: retrieve_pvtkey_req_id,
-                                                                              withdraw_btc_id: withdraw_id,
-                                                                              db_inst:
-                                                                                  params.db_inst,
-                                                                              trader_flo_address:
-                                                                                  deposit_arr.trader_flo_address
-                                                                          }
-                                                                      ).then(
-                                                                          delRequestObject =>
-                                                                              doSend(
-                                                                                  delRequestObject
-                                                                              )
-                                                                      );
-
-                                                                  }
-                                                              
-                                                          
-                                                          return true;
-                                                      }
-
+                                                  } else if(n<=20) {
+                                                      validateWithdrawTxidInBlockchain();
+                                                      withdrawTxCounter++;
                                                   } else {
-                                                      console.log(res);
-                                                      throw new Errror(
-                                                          `ERROR: Failed to make transaction.`
-                                                      );
-                                                      return false;
+                                                      throw new Error(`Txid ${resp_txid} not registered in ${withdraw_res.product} Blockhain`);
                                                   }
+                                              })();
+                                              return true; 
 
-                                              } catch (error) {
-                                                  console.warn(error);
-                                                  err_response = {
-                                                      user_flo_addr: params.trader_flo_address,
-                                                      msg: `Withdraw crypto request failed. Please try again later.`
-                                                  }
-                                                  reactor.dispatchEvent('message_for_user', err_response);
+                                          } else {
+                                              console.log(res);
+                                              throw new Errror(`ERROR: Failed to make transaction.`);
+                                          }
+                                      } else {
+                                          console.error("Waithdraw transaction is not an object");
+                                          throw new Errror(`ERROR: Failed to make transaction.`);
+                                      }
 
-                                                  // Do not delete these data instantly as the data
-                                                  // may be required by a follow-up withdraw request
-                                                  await localbitcoinplusplus.actions.delay(180000);
+                                  } catch (error) {
+                                      console.warn(error);
+                                      err_response = {
+                                          user_flo_addr: params.trader_flo_address,
+                                          msg: `Withdraw of crypto failed. Network issue:- Please try again after 30 minutes.`
+                                      }
+                                      reactor.dispatchEvent('message_for_user', err_response);
 
-                                                  await backup_server_db_instance
-                                                      .backup_removeinDB("withdraw_btc", withdraw_id);
-                                                  // update deposits status back to 2 in db
-                                                  const deposit_arr_resp = await backup_server_db_instance
-                                                      .backup_readDBbyIndex(
-                                                          "deposit",
-                                                          "btc_address",
-                                                          withdraw_res.utxo_addr
-                                                      )
-                                                  if (typeof deposit_arr_resp[0] == "object") {
-                                                      deposit_arr_resp[0].status = 2; // UTXO ready to be used again
-                                                      backup_server_db_instance
-                                                          .backup_updateinDB(
-                                                              "deposit",
-                                                              deposit_arr_resp[0],
-                                                              deposit_arr_resp[0].id
-                                                          );
-                                                  }
-
-                                              }
+                                      // update deposits status back to 2 in db
+                                      for (const deposited_utxo_idx in withdraw_res.utxo_addr) {
+                                          let deposited_utxo_addr = withdraw_res.utxo_addr[deposited_utxo_idx];
+                                          const deposit_arr_resp = await backup_server_db_instance
+                                          .backup_readDBbyIndex(
+                                              "deposit",
+                                              "btc_address",
+                                              deposited_utxo_addr
+                                          )
+                                          if (typeof deposit_arr_resp[0] == "object") {
+                                              deposit_arr_resp[0].status = 2; // UTXO ready to be used again
+                                              await backup_server_db_instance
+                                              .backup_updateinDB(
+                                                  "deposit",
+                                                  deposit_arr_resp[0],
+                                                  deposit_arr_resp[0].id
+                                              );
                                           }
                                       }
-                                  );
-                              }
-                          }
+                                      await backup_server_db_instance
+                                          .backup_removeinDB("withdraw_btc", withdraw_id);
 
+                                  }
+                              }
+                          );
                       }
 
                   } catch (error) {
-                                              
+
                       const withdraw_res = await backup_server_db_instance
-                      .backup_readDB("withdraw_btc", withdraw_id);
-                      // update deposits status back to 2 in db
-                      const deposit_arr_resp = await backup_server_db_instance
-                      .backup_readDBbyIndex(
-                          "deposit",
-                          "btc_address",
-                          withdraw_res.utxo_addr
-                      )
-                      if (typeof deposit_arr_resp[0] == "object") {
-                          deposit_arr_resp[0].status = 2; // UTXO ready to be used again
-                          await backup_server_db_instance
-                          .backup_updateinDB(
+                          .backup_readDB("withdraw_btc", params.withdraw_id);
+                      for (const deposited_utxo_idx in withdraw_res.utxo_addr) {
+                          let deposited_utxo_addr = withdraw_res.utxo_addr[deposited_utxo_idx];
+                          // update deposits status back to 2 in db
+                          const deposit_arr_resp = await backup_server_db_instance
+                          .backup_readDBbyIndex(
                               "deposit",
-                              deposit_arr_resp[0],
-                              deposit_arr_resp[0].id
-                          );
+                              "btc_address",
+                              deposited_utxo_addr
+                          )
+                          if (typeof deposit_arr_resp[0] == "object") {
+                              deposit_arr_resp[0].status = 2; // UTXO ready to be used again
+                              backup_server_db_instance
+                              .backup_updateinDB(
+                                  "deposit",
+                                  deposit_arr_resp[0],
+                                  deposit_arr_resp[0].id
+                              );
+                          }
                       }
-                      await backup_server_db_instance
-                      .backup_removeinDB("withdraw_btc", withdraw_id);
+                      backup_server_db_instance
+                      .backup_removeinDB("withdraw_btc", params.withdraw_id);
+                      // Revert user balance
+                      backup_server_db_instance
+                      .backup_updateinDB("crypto_balances", 
+                      withdrawer_crypto_bal_response_before_update, 
+                      withdrawer_crypto_bal_response_before_update.id,
+                      false,
+                      false
+                      );
+
                       throw new Error(error);
                   }
               }
-          )
-
-          break;
+          );
+        break;
 
         case "superNodeSignedAddUserPublicData":
           if (
@@ -19681,164 +19603,172 @@ Trade.prototype = {
       `current_${crypto_code}_price_in_${currency_code}`
     ];
   },
-  sendTransaction(
-    crypto_type,
-    utxo_addr,
-    utxo_addr_wif,
-    receiver_address,
-    receiving_amount,
-    change_adress,
-    callback,
-    custom_floData = ""
-  ) {
-    let blockchain_explorer;
-    let miners_fee = 0.0003;
-    const miner_fee_obj = JSON.parse(
-      localbitcoinplusplus.master_configurations.miners_fee
-    );
-    if (crypto_type == "BTC") {
-      blockchain_explorer = localbitcoinplusplus.server.btc_mainnet;
-      miners_fee = miner_fee_obj.btc;
-    } else if (crypto_type == "BTC_TEST") {
-      blockchain_explorer = localbitcoinplusplus.server.btc_testnet;
-      miners_fee = miner_fee_obj.btc;
-    } else if (crypto_type == "FLO") {
-      blockchain_explorer = localbitcoinplusplus.server.flo_mainnet;
-      miners_fee = miner_fee_obj.flo;
-    } else if (crypto_type == "FLO_TEST") {
-      blockchain_explorer = localbitcoinplusplus.server.flo_testnet;
-      miners_fee = miner_fee_obj.flo;
-    }
-
-    if (typeof blockchain_explorer !== "string") {
-      showMessage(
-        `WARNING: Please select cryptocurrency/fiat value from select bar.`
-      );
-      return false;
-    }
-
-    let url = `${blockchain_explorer}/api/addr/${utxo_addr}/utxo`;
-    console.log(url);
-    let err_msg;
-
-    helper_functions
-      .ajaxGet(url)
-      .then(utxo_list => {
-        if (utxo_list.length > 0) {
-          try {
-            utxo_list.sort((a,b)=>b.confirmations - a.confirmations);  
-            let btc_eq_receiving_amount = helper_functions.truncateDecimals(receiving_amount);
-            
-            let trx = bitjs[crypto_type].transaction();
-            let sum = 0;
-
-            for (var key in utxo_list) {
-              if (utxo_list[key].confirmations > 0) {
-                var obj = utxo_list[key];
-                sum += obj.amount;
-
-                if (btc_eq_receiving_amount <= sum) {
-                  trx.addinput(obj.txid, obj.vout, obj.scriptPubKey);
-                  break;
-                } else {
-                  trx.addinput(obj.txid, obj.vout, obj.scriptPubKey);
-                }
-              }
-            }
-
-            if (sum <= 0) {
-              console.log(utxo_list);
-              throw new Error("ERROR: No amount found in UTXO.");
-            }
-
-            // Output cannot be greater than input
-            if (sum < btc_eq_receiving_amount) {
-              btc_eq_receiving_amount = sum;
-            }
-
-            if (btc_eq_receiving_amount - miners_fee <= 0)
-              throw new Error(
-                `Error: btc_eq_receiving_amount cannot be less than miners_fee.`
-              );
-
-            btc_eq_receiving_amount =
-              btc_eq_receiving_amount - miners_fee;
-            btc_eq_receiving_amount = helper_functions.truncateDecimals(
-              btc_eq_receiving_amount
-            );
-            trx.addoutput(receiver_address, btc_eq_receiving_amount);
-
-            let change_amount = 0;
-            if (sum - btc_eq_receiving_amount - miners_fee > 0) {
-              change_amount = sum - btc_eq_receiving_amount - miners_fee;
-              change_amount = helper_functions.truncateDecimals(change_amount);
-            }
-
-            if (change_amount > 0) {
-              trx.addoutput(change_adress, change_amount);
-            }
-            var sendFloData = `localbitcoinpluslus tx: Send ${btc_eq_receiving_amount} ${crypto_type} to ${receiver_address}.`; //flochange adding place for flodata -- need a validation of 1024 chars
-            if (custom_floData.length > 0) {
-              sendFloData = custom_floData;
-            }
-            if (crypto_type == "FLO" || crypto_type == "FLO_TEST") {
-              trx.addflodata(sendFloData); // flochange .. create this function
-            }
-
-            try {
-              console.log(trx);
-
-              let signedTxHash = trx.sign(utxo_addr_wif, 1); //SIGHASH_ALL DEFAULT 1
-              console.log(signedTxHash);
-
-              var http = new XMLHttpRequest();
-              var tx_send_url = `${blockchain_explorer}/api/tx/send`;
-              var params = `{"rawtx":"${signedTxHash}"}`;
-              http.open("POST", tx_send_url, true);
-              http.setRequestHeader("Content-type", "application/json");
-              http.onreadystatechange = function() {
-                //Call a function when the state changes.
-                if (http.readyState == 4) {
-                  if (http.status == 200) {
-                    console.log(http.responseText);
-                    let response_obj = {
-                      signedTxHash: signedTxHash,
-                      txid: http.responseText
-                    };
-                    //callback(http.responseText);
-                    callback(response_obj);
-                  } else {
-                    let response_obj = {
-                      signedTxHash: signedTxHash,
-                      txid: ""
-                    };
-                    callback(response_obj);
-                  }
-                }
-              };
-              http.onerror = function() {
-                let response_obj = {
-                  signedTxHash: signedTxHash,
-                  txid: ""
-                };
-                callback(response_obj);
-              };
-              http.send(params);
-            } catch (error) {
-              showMessage(error);
-              throw new Error(error);
-            }
-          } catch (error) {
-            throw new Error(error);
-          }
+  // Send transaction for multiple inputs and outputs
+  sendMultipleInputsTransaction(
+        crypto_type,
+        utxo_addr_wif,
+        receiver_address,
+        receiving_amount,
+        change_adress,
+        callback,
+        custom_floData = ""
+    ) {
+        let blockchain_explorer;
+        let miners_fee = 0.0003;
+        const miner_fee_obj = JSON.parse(
+            localbitcoinplusplus.master_configurations.miners_fee
+        );
+        if (crypto_type == "BTC") {
+            blockchain_explorer = localbitcoinplusplus.server.btc_mainnet;
+            miners_fee = miner_fee_obj.btc;
+        } else if (crypto_type == "BTC_TEST") {
+            blockchain_explorer = localbitcoinplusplus.server.btc_testnet;
+            miners_fee = miner_fee_obj.btc;
+        } else if (crypto_type == "FLO") {
+            blockchain_explorer = localbitcoinplusplus.server.flo_mainnet;
+            miners_fee = miner_fee_obj.flo;
+        } else if (crypto_type == "FLO_TEST") {
+            blockchain_explorer = localbitcoinplusplus.server.flo_testnet;
+            miners_fee = miner_fee_obj.flo;
         }
-      })
-      .catch(e =>
-        console.error(
-          `ERROR: Failed to send tx from utxo ${utxo_addr}: ${e}`
-        )
-      );
-  },
+
+        if (typeof blockchain_explorer !== "string") {
+            notify(
+                `WARNING: Please select cryptocurrency/fiat value from select bar.`
+            );
+            return false;
+        }
+
+        let err_msg;
+        let utxo_list_req = [];
+        const RM_WALLET = new localbitcoinplusplus.wallets;
+
+        for (const pk of utxo_addr_wif) {
+            let keygen = RM_WALLET.generateFloKeys(pk);
+            let utxo_addr = keygen.address;
+            let url = `${blockchain_explorer}/api/addr/${utxo_addr}/utxo`;
+            utxo_list_req.push(helper_functions.ajaxGet(url));
+        }
+
+        Promise.all(utxo_list_req).then(all_utxos => {
+            if (all_utxos.length > 0) {
+                try {
+                    const utxo_list = [].concat(...all_utxos);
+                    utxo_list.sort((a, b) => b.confirmations - a.confirmations);
+                    let btc_eq_receiving_amount = receiving_amount;
+
+                    let trx = bitjs[crypto_type].transaction();
+                    let sum = 0;
+                    let signing_private_keys_array = [];
+
+                    for (var key in utxo_list) {
+                        if (utxo_list[key].confirmations > 0) {
+                            var obj = utxo_list[key];
+                            // Find the private key of this utxo (signingPk)
+                            let signingPk = utxo_addr_wif
+                            .filter(pk=>RM_WALLET.generateFloKeys(pk).address===obj.address); 
+                            
+                            if(typeof signingPk[0]=="string") {
+                              signing_private_keys_array.push(signingPk[0]);
+                            } else continue;
+                            sum += obj.amount;
+
+                            if (btc_eq_receiving_amount <= sum) {
+                                trx.addinput(obj.txid, obj.vout, obj.scriptPubKey);
+                                break;
+                            } else {
+                                trx.addinput(obj.txid, obj.vout, obj.scriptPubKey);
+                            }
+                        }
+                    }
+
+                    if (sum <= 0) {
+                        console.log(utxo_list);
+                        throw new Error("ERROR: No amount found in UTXO.");
+                    }
+
+                    // Output cannot be greater than input
+                    if (sum < btc_eq_receiving_amount) {
+                        btc_eq_receiving_amount = sum;
+                    }
+
+                    if (btc_eq_receiving_amount - miners_fee <= 0)
+                        throw new Error(
+                            `Error: btc_eq_receiving_amount cannot be less than miners_fee.`
+                        );
+
+                    btc_eq_receiving_amount = btc_eq_receiving_amount - miners_fee;
+                    
+                    trx.addoutput(receiver_address, btc_eq_receiving_amount);
+
+                    let change_amount = 0;
+                    if (sum - btc_eq_receiving_amount - miners_fee > 0) {
+                        change_amount = sum - btc_eq_receiving_amount - miners_fee;
+                    }
+
+                    if (change_amount > 0) {
+                        if(typeof change_adress !== "string"
+                        || change_adress.length<1) {
+                          let change_adress_keygen = RM_WALLET.generateFloKeys(utxo_addr_wif[0]);
+                          change_adress = change_adress_keygen.address;
+                        }
+                        trx.addoutput(change_adress, change_amount);
+                    }
+                    var sendFloData = `localbitcoinpluslus tx: Send ${btc_eq_receiving_amount} ${crypto_type} to ${receiver_address}.`; //flochange adding place for flodata -- need a validation of 1024 chars
+                    if (custom_floData.length > 0) {
+                        sendFloData = custom_floData;
+                    }
+                    if (crypto_type == "FLO" || crypto_type == "FLO_TEST") {
+                        trx.addflodata(sendFloData); // flochange .. create this function
+                    }
+
+                    try {
+                        console.log(trx);
+
+                        let signedTxHash = trx.sign(signing_private_keys_array, 1); //SIGHASH_ALL DEFAULT 1
+                        console.log(signedTxHash);
+
+                        var http = new XMLHttpRequest();
+                        var tx_send_url = `${blockchain_explorer}/api/tx/send`;
+                        var params = `{"rawtx":"${signedTxHash}"}`;
+                        http.open("POST", tx_send_url, true);
+                        http.setRequestHeader("Content-type", "application/json");
+                        http.onreadystatechange = function () {
+                            if (http.readyState == 4) {
+                                if (http.status == 200) {
+                                    console.log(http.responseText);
+                                    let response_obj = {
+                                        signedTxHash: signedTxHash,
+                                        txid: http.responseText
+                                    };
+                                    callback(response_obj);
+                                } else {
+                                    let response_obj = {
+                                        signedTxHash: signedTxHash,
+                                        txid: ""
+                                    };
+                                    callback(response_obj);
+                                }
+                            }
+                        };
+                        http.onerror = function () {
+                            let response_obj = {
+                                signedTxHash: signedTxHash,
+                                txid: ""
+                            };
+                            callback(response_obj);
+                        };
+                        http.send(params);
+                    } catch (error) {
+                        showMessage(error);
+                        throw new Error(error);
+                    }
+                } catch (error) {
+                    throw new Error(error);
+                }
+            }
+        })
+    },
   /*Finds the best buy sell id match for a trade*/
   createTradePipes(trading_currency = "USD", backup_db = "") {
     let _readAllDB = readAllDB;
@@ -20363,10 +20293,10 @@ let helper_functions = {
       xhr.open("GET", url);
       xhr.onload = function() {
         if (xhr.status === 200) {
-          callback(xhr.responseText);
+          return xhr.responseText;
         } else {
-          showMessage(`WARNING: Failed to get data from ${url}.`);
-          throw new Error(`Request to ${url} failed: ${xhr.status}`);
+          showMessage(`WARNING: Failed to get data from ${url} with status ${xhr.status}.`);
+          return false;
         }
       };
       xhr.send();
@@ -20452,14 +20382,22 @@ let helper_functions = {
   },
   // https://stackoverflow.com/a/9232092/5348972
   truncateDecimals: (num, digits=8)=> {
+      num = Number(num).toFixed(digits);
+      if(num<0.000000001) num = 0;
+      if(num>100000000000) {
+          console.trace(num);
+          throw new Error("Maximum 'number' upper limit crossed");
+      }
       var numS = num.toString(),
           decPos = numS.indexOf('.'),
           substrLength = decPos == -1 ? numS.length : 1 + decPos + digits,
           trimmedResult = numS.substr(0, substrLength),
           finalResult = isNaN(trimmedResult) ? 0 : trimmedResult;
 
-      if(finalResult>100000000000) return NaN;
-
+      if((Number.MIN_SAFE_INTEGER>finalResult)||(finalResult>Number.MAX_SAFE_INTEGER)) {
+          console.trace(num);
+          throw new Error("SAFE INTEGER Limit Crossed.");
+      }
       return Number(finalResult);
   }
 };
@@ -20668,7 +20606,7 @@ JSON_RPC.parse = function(rpc) {
 var output;
 
 function kickInit() {
-  output = document.getElementById("output_div");
+  showPopup('main_loader', 'no')
   const RM_WALLET = new localbitcoinplusplus.wallets();
   const BACKUP_DB = (localbitcoinplusplus.newBackupDatabase.db = []);
   const backUpSupernodesWS = (localbitcoinplusplus.backupWS = []);
@@ -20758,9 +20696,9 @@ function kickInit() {
 
             wsUri.map((uri, index) => {
               // Do not serve to any requests unless data is fully synced.
-              localbitcoinplusplus.services[
-                `can_serve_${uri.trader_flo_address}`
-              ] = false;
+              // localbitcoinplusplus.services[
+              //   `can_serve_${uri.trader_flo_address}`
+              // ] = false;
 
               if (index > 0) {
                 let dbname = `su_backup_${uri.trader_flo_address}`;
@@ -20804,6 +20742,7 @@ function kickInit() {
       const getClosestSuList = await readAllDB("myClosestSupernodes");
 
       reactor.dispatchEvent("createClosestSupernodesObject", getClosestSuList);
+      reactor.dispatchEvent("createCashierStatusObject", getClosestSuList);
 
       if (
         localbitcoinplusplus.master_configurations.supernodesPubKeys.includes(
@@ -20850,6 +20789,7 @@ function kickInit() {
       await privateKeyBuilder();
 
       setTimeout(async function() {
+        hidePopup()
         if (
           typeof localbitcoinplusplus.wallets.MY_SUPERNODE_PRIVATE_KEY !==
             "string" ||
@@ -20879,9 +20819,9 @@ function kickInit() {
 
         wsUri.map((uri, index) => {
           // Do not serve to any requests unless data is fully synced.
-          localbitcoinplusplus.services[
-            `can_serve_${uri.trader_flo_address}`
-          ] = false;
+          // localbitcoinplusplus.services[
+          //   `can_serve_${uri.trader_flo_address}`
+          // ] = false;
 
           if (index > 0) {
             let dbname = `su_backup_${uri.trader_flo_address}`;
@@ -21148,10 +21088,9 @@ function startWebSocket(wsUri) {
 }
 
 async function onOpen(evt) {
-  //await reactor.dispatchEvent("createClosestSupernodesObject");  
   reactor.dispatchEvent("new_supernode_connected", evt);
   const localUser = await readDB("localbitcoinUser", "00-01");
-  if (typeof localUser == "object" && localUser.myLocalFLOAddress == "string") {
+  if (typeof localUser == "object" && typeof localUser.myLocalFLOAddress == "string") {
       localbitcoinplusplus.wallets.my_local_flo_address =
           localUser.myLocalFLOAddress;
       localbitcoinplusplus.wallets.my_local_flo_public_key =
@@ -21174,14 +21113,10 @@ async function onOpen(evt) {
       }
       let remove_promises_res = await Promise.all(remove_promises);
       console.log(remove_promises_res);
-      // Also refresh deposited crypto balances 
-      reactor.dispatchEvent("refresh_reserved_crypto_balances", 
-          localbitcoinplusplus.wallets.my_local_flo_address);
-      reactor.dispatchEvent("remove_temp_data_from_db", 
-          localbitcoinplusplus.wallets.my_local_flo_address);
   }
   
-  readAllDB("myClosestSupernodes").then(sconn => {
+  readAllDB("myClosestSupernodes")
+  .then(sconn => {
     const switchMyWS = new backupSupernodesWebSocketObject();
     sconn.map((m, i) => {
       if (i > 0)
@@ -21456,9 +21391,6 @@ async function onMessage(evt) {
           if (
             typeof res_obj.globalParams.primarySupernode !== "string"
           ) {
-            showMessage(
-              `INFO: You are not authorized to serve this request.`
-            );
             return false;
           }
         }
@@ -21496,6 +21428,7 @@ async function onMessage(evt) {
                           res.myLocalFLOAddress ===
                           received_resp.receiver_flo_address
                         ) {
+                          notify(received_resp.server_msg);
                           showMessage(received_resp.server_msg);
                           return false;
                         }
@@ -21513,6 +21446,7 @@ async function onMessage(evt) {
                           primarySupernode ==
                           myPrimarySu.trader_flo_address
                         ) {
+                          notify(received_resp.server_msg);
                           showMessage(received_resp.server_msg);
                           return false;
                         }
@@ -21727,6 +21661,8 @@ async function onMessage(evt) {
                     typeof user == "object" &&
                     user.myLocalFLOAddress == resp.data.trader_flo_address
                   ) {
+                    document.getElementById("server_deposit_crypto_addr")
+                      .innerText = resp.data.btc_address;  
                     let counterTraderAccountAddress = resp.msg;
                     showMessage(counterTraderAccountAddress);
                     notify(counterTraderAccountAddress);                   
@@ -22012,7 +21948,7 @@ async function onMessage(evt) {
                 || !localbitcoinplusplus.master_configurations.supernodesPubKeys
                 .includes(res_obj.nodePubKey)
                 || !localbitcoinplusplus.master_configurations.supernodesPubKeys
-                .includes(localbitcoinplusplus.wallets.my_local_flo_address)
+                .includes(localbitcoinplusplus.wallets.my_local_flo_public_key)
               ) return;
               
               readDB(
@@ -22032,6 +21968,25 @@ async function onMessage(evt) {
               });
             }
             break;
+          case "delete_shamirs_secret_btc_pvtkey":
+            if (
+              typeof res_obj.params == "object" &&
+              typeof res_obj.params[0] == "object"
+            ) {
+              if (
+                typeof res_obj.nodePubKey != "string"
+                || !localbitcoinplusplus.master_configurations.supernodesPubKeys
+                .includes(res_obj.nodePubKey)
+                || !localbitcoinplusplus.master_configurations.supernodesPubKeys
+                .includes(localbitcoinplusplus.wallets.my_local_flo_public_key)
+              ) return;
+              
+              removeinDB(
+                "supernode_private_key_chunks",
+                res_obj.params[0].chunk_val
+              );
+            }
+            break;  
           case "retrieve_shamirs_secret_btc_pvtkey":
             if (
               typeof res_obj.params == "object" &&
@@ -22060,20 +22015,28 @@ async function onMessage(evt) {
               if (
                 typeof btc_pvt_arr[retrieve_pvtkey_req_id] == "undefined"
               )
-                btc_pvt_arr[retrieve_pvtkey_req_id] = [];
+                {
+                    btc_pvt_arr[retrieve_pvtkey_req_id] = [];
+                    localbitcoinplusplus.actions.delay(15*60*1000)
+                    .then(()=>{
+                        if(typeof btc_pvt_arr[retrieve_pvtkey_req_id]=="object") {
+                          btc_pvt_arr[retrieve_pvtkey_req_id] = null;
+                        }
+                    });
+                  }
 
               // Filter function below logic source -
               // https://stackoverflow.com/a/9229821/5348972
               let seen_chunk_id_list = [];
 
               btc_pvt_arr[retrieve_pvtkey_req_id].filter(function(item) {
-                if (typeof item.private_key_chunk !== "undefined") {
-                  return seen_chunk_id_list.hasOwnProperty(
-                    item.private_key_chunk.id
-                  )
-                    ? false
-                    : seen_chunk_id_list.push(item.private_key_chunk.id);
-                }
+                if(typeof item.private_key_chunk=="object" &&
+                      typeof item.private_key_chunk.id=="string" &&
+                      !seen_chunk_id_list.hasOwnProperty(
+                      item.private_key_chunk.id
+                  ) ) {
+                      return seen_chunk_id_list.push(item.private_key_chunk.id);
+                  }
               });
 
               if (
@@ -22093,6 +22056,13 @@ async function onMessage(evt) {
                   .ShamirsMaxShares
               ) {
                 delete res_obj.params[0].private_key_chunk;
+                let btc_pk_shares_array = btc_pvt_arr[retrieve_pvtkey_req_id]
+                      .map(pkChunks => {
+                          if (typeof pkChunks.private_key_chunk !== "undefined")
+                              return pkChunks.private_key_chunk.privateKeyChunks;
+                      })
+                      .filter(val => val !== undefined);
+                  console.log(btc_pk_shares_array);
                 const btc_reserves = await readDB("system_btc_reserves_private_keys", retrieve_pvtkey_req_id);
                 if (typeof btc_reserves !== "object") {
                   console.warn(`Record for ${retrieve_pvtkey_req_id} not found in system_btc_reserves_private_keys`);
@@ -22109,7 +22079,7 @@ async function onMessage(evt) {
                   break;
                 }
                 let btc_private_key = RM_WALLET.rebuild_private_key(
-                    btc_pvt_arr[retrieve_pvtkey_req_id],
+                    btc_pk_shares_array,
                     transaction_key
                 );
                 if (btc_private_key.length <= 0) {
@@ -22124,31 +22094,39 @@ async function onMessage(evt) {
                   const RM_WALLET = new localbitcoinplusplus.wallets;
                   let crypto_addr_gen = RM_WALLET.generateFloKeys(btc_private_key, withdraw_res.product);
                   let crypto_addr = crypto_addr_gen.address;
-                  if(!withdraw_res.utxo_addr.includes(crypto_addr)) {
+                  if(!Object.values(withdraw_res.utxo_addr).includes(crypto_addr)) {
                       console.warn(`${crypto_addr} deposit address not present in withdraw id ${withdraw_id}`);
                       break;
                   }
-                  if(typeof res_obj.params[0].btc_private_key_array!=="object"
-                  || res_obj.params[0].btc_private_key_array.length==0) {
-                      res_obj.params[0].btc_private_key_array=[];
-                  }
-                  res_obj.params[0].btc_private_key_array.push(btc_private_key);
 
-                  if(res_obj.params[0].btc_private_key_array.length===withdraw_res.utxo_addr.length) {
+                  if(typeof localbitcoinplusplus.btc_private_key_array!=="object"
+                  || Object.keys(localbitcoinplusplus.btc_private_key_array).length==0) {
+                      localbitcoinplusplus.btc_private_key_array={};
+                  }
+                  if(typeof localbitcoinplusplus.btc_private_key_array[withdraw_id] !== "object"
+                   || localbitcoinplusplus.btc_private_key_array[withdraw_id]==null) {
+                      localbitcoinplusplus.btc_private_key_array[withdraw_id] = [];
+                  }
+                  localbitcoinplusplus.btc_private_key_array[withdraw_id].push(btc_private_key);
+
+                  if(localbitcoinplusplus.btc_private_key_array[withdraw_id].length
+                      ===Object.values(withdraw_res.utxo_addr).length) {
                       // When all the private keys are built successfully proceed further
-                      res_obj.params[0].trader_flo_address =
-                          localbitcoinplusplus.wallets.my_local_flo_address;
-                      // RM_RPC.receive_rpc_response.call(
-                      //     this,
-                      //     JSON.stringify(res_obj)
-                      // );
-                      console.log(res_obj);
-                  }
-                }
+                      res_obj.params[0].btc_private_key_array = 
+                          localbitcoinplusplus.btc_private_key_array[withdraw_id];
 
-                localbitcoinplusplus.actions.delay(300000).then(() => {
-                  btc_pvt_arr[retrieve_pvtkey_req_id] = []; // Unset the object
-                });
+                      res_obj.params[0].trader_flo_address = withdraw_res.trader_flo_address;
+                      RM_RPC.receive_rpc_response.call(
+                          this,
+                          JSON.stringify(res_obj)
+                      );
+                      if(!delete localbitcoinplusplus.btc_private_key_array[withdraw_id]) {
+                          localbitcoinplusplus.btc_private_key_array[withdraw_id] = null; 
+                      }
+                  }
+                  
+                }
+                btc_pvt_arr = Object.keys(btc_pvt_arr).filter(f=>f!==retrieve_pvtkey_req_id);
               }
             }
             break;
@@ -22579,6 +22557,10 @@ async function onMessage(evt) {
               )
                 return;
 
+                const timenow = + new Date();
+                const lifetime = JSON.parse(localbitcoinplusplus.master_configurations.ordersLife);
+                const db_sync_promises = [];
+
               (async function() {
                 let i = 0;
                 for (let tableStoreName in su_db_data) {
@@ -22593,58 +22575,86 @@ async function onMessage(evt) {
                     continue;
 
                   try {
+            
                     let obj = su_db_data[tableStoreName];
                     if (obj.length > 0) {
                       for (var prop in obj) {
                         if (!obj.hasOwnProperty(prop)) continue;
 
-                        if(typeof obj[prop].is_deletable==="boolean"
-                        && obj[prop].is_deletable===true) {
-                          removeinDB(tableStoreName, obj[prop].id);
-                          continue;
+                        if(tableStoreName=="buyOrders" || tableStoreName=="sellOrders") {
+                          if(timenow-obj[prop].timestamp>=lifetime.trade) {
+                              db_sync_promises.push(removeinDB(tableStoreName, obj[prop].id));
+                              continue;
+                          } else {
+                              db_sync_promises.push(localbitcoinplusplus.actions
+                              .delay(timenow-obj[prop].timestamp)
+                              .then(()=>removeinDB(tableStoreName, obj[prop].id)))
+                          } 
+                        }
+                        
+                        if(tableStoreName=="cash_deposits") {
+                          if(timenow-obj[prop].timestamp>=lifetime.cashDeposit) {
+                              db_sync_promises.push(removeinDB(tableStoreName, obj[prop].id));
+                              continue;
+                          } else {
+                              db_sync_promises.push(localbitcoinplusplus.actions
+                              .delay(timenow-obj[prop].timestamp)
+                              .then(()=>removeinDB(tableStoreName, obj[prop].id)))
+                          }
                         }
 
-                        await updateinDB(
+                        if(tableStoreName=="deposit") {
+                          // if(timenow-obj[prop].timestamp>=lifetime.cryptoDeposit) {
+                          //     db_sync_promises.push(removeinDB(tableStoreName, obj[prop].id));
+                          //     continue;
+                          // } else {
+                          //     db_sync_promises.push(localbitcoinplusplus.actions
+                          //     .delay(timenow-obj[prop].timestamp)
+                          //     .then(()=>removeinDB(tableStoreName, obj[prop].id)))
+                          // } 
+                        }
+
+                        if(tableStoreName=="withdraw_btc") {
+                          if(timenow-obj[prop].timestamp>=lifetime.cryptoWithdraw) {
+                              db_sync_promises.push(removeinDB(tableStoreName, obj[prop].id));
+                              continue;
+                          } else {
+                              db_sync_promises.push(localbitcoinplusplus.actions
+                              .delay(timenow-obj[prop].timestamp)
+                              .then(()=>removeinDB(tableStoreName, obj[prop].id)))
+                          } 
+                        }
+
+                        db_sync_promises.push(updateinDB(
                           tableStoreName,
                           obj[prop],
                           obj[prop].id,
                           true,
                           false
-                        );
+                        ));
+                        
                         showMessage(
                           `INFO: "${tableStoreName}" datastore syncing is complete.`
                         );
                       }
                     }
 
-                    if (i == Object.keys(su_db_data).length - 2) {
-                      localbitcoinplusplus.services[
-                        `can_serve_${su_db_data.trader_flo_address}`
-                      ] = true;
-
-                      const RM_RPC = new localbitcoinplusplus.rpc();
-
-                      // Ask backup Supernodes to delete deletable data from backup db instance
-                      RM_RPC.send_rpc
-                        .call(this, "delete_deletables_from_supernode_db_instance", {
-                          trader_flo_address: su_db_data.trader_flo_address,
-                          delete_deletables: true
-                        })
-                        .then(server_response => doSend(server_response));
-                      
-                      // Inform users
-                      RM_RPC.send_rpc
-                        .call(this, "supernode_message", {
-                          trader_flo_address:
-                            su_db_data.trader_flo_address,
-                          server_msg: `System is synced and ready to serve.`
-                        })
-                        .then(server_response => doSend(server_response));
-                    }
                   } catch (error) {
                     console.log(error);
                   }
                 }
+
+                await Promise.all(db_sync_promises);
+
+                const RM_RPC = new localbitcoinplusplus.rpc();                            
+                // Inform users
+                RM_RPC.send_rpc
+                  .call(this, "supernode_message", {
+                  trader_flo_address:
+                      su_db_data.trader_flo_address,
+                  server_msg: `System is synced and ready to serve.`
+                  })
+                  .then(server_response => doSend(server_response));
               })();
             }
             break;
@@ -22663,6 +22673,10 @@ async function onMessage(evt) {
               );
               return;
             }
+
+            const timenow = + new Date();
+            const lifetime = JSON.parse(localbitcoinplusplus.master_configurations.ordersLife);
+            const db_sync_promises = [];
 
             if (
               typeof res_obj.params == "object" &&
@@ -22709,6 +22723,9 @@ async function onMessage(evt) {
                     _updateinDB = foreign_db.backup_updateinDB.bind(
                       foreign_db
                     );
+                   _removeinDB = foreign_db.backup_removeinDB.bind(
+                      foreign_db
+                    );
                   } else {
                     err_msg = `WARNING: Invalid Backup DB Instance Id: ${backup_db}.`;
                     showMessage(err_msg);
@@ -22719,9 +22736,6 @@ async function onMessage(evt) {
                 for (let tableStoreName in su_db_data) {
                   i++;
                   if (i == Object.keys(su_db_data).length - 2) {
-                    localbitcoinplusplus.services[
-                      `can_serve_${su_db_data[`trader_flo_address`]}`
-                    ] = true;
                     // Close unnecessary connections now
                     reactor.dispatchEvent(
                       "remove_extra_backup_connections"
@@ -22740,17 +22754,60 @@ async function onMessage(evt) {
                     if (obj.length > 0) {
                       for (var prop in obj) {
                         if (!obj.hasOwnProperty(prop)) continue;
-                        _updateinDB(
+                        if(tableStoreName=="buyOrders" || tableStoreName=="sellOrders") {
+                          if(timenow-obj[prop].timestamp>=lifetime.trade) {
+                              db_sync_promises.push(_removeinDB(tableStoreName, obj[prop].id));
+                              continue;
+                          } else {
+                              db_sync_promises.push(localbitcoinplusplus.actions
+                              .delay(timenow-obj[prop].timestamp)
+                              .then(()=>_removeinDB(tableStoreName, obj[prop].id)))
+                          } 
+                        }
+                        
+                        if(tableStoreName=="cash_deposits") {
+                          if(timenow-obj[prop].timestamp>=lifetime.cashDeposit) {
+                              db_sync_promises.push(_removeinDB(tableStoreName, obj[prop].id));
+                              continue;
+                          } else {
+                              db_sync_promises.push(localbitcoinplusplus.actions
+                              .delay(timenow-obj[prop].timestamp)
+                              .then(()=>_removeinDB(tableStoreName, obj[prop].id)))
+                          }
+                        }
+
+                        if(tableStoreName=="deposit") {
+                          // if(timenow-obj[prop].timestamp>=lifetime.cryptoDeposit) {
+                          //     db_sync_promises.push(_removeinDB(tableStoreName, obj[prop].id));
+                          //     continue;
+                          // } else {
+                          //     db_sync_promises.push(localbitcoinplusplus.actions
+                          //     .delay(timenow-obj[prop].timestamp)
+                          //     .then(()=>_removeinDB(tableStoreName, obj[prop].id)))
+                          // } 
+                        }
+
+                        if(tableStoreName=="withdraw_btc") {
+                          if(timenow-obj[prop].timestamp>=lifetime.cryptoWithdraw) {
+                              db_sync_promises.push(_removeinDB(tableStoreName, obj[prop].id));
+                              continue;
+                          } else {
+                              db_sync_promises.push(localbitcoinplusplus.actions
+                              .delay(timenow-obj[prop].timestamp)
+                              .then(()=>_removeinDB(tableStoreName, obj[prop].id)))
+                          } 
+                        }
+
+                        db_sync_promises.push(_updateinDB(
                           tableStoreName,
                           obj[prop],
                           obj[prop].id,
                           true,
                           false
-                        ).then(() => {
-                          showMessage(
-                            `INFO: "${tableStoreName}" datastore syncing is complete.`
-                          );
-                        });
+                        ));
+                        showMessage(
+                          `INFO: "${tableStoreName}" datastore syncing is complete.`
+                        );
                       }
                     }
                   } catch (error) {
@@ -22758,63 +22815,19 @@ async function onMessage(evt) {
                   }
                 }
               })();
+                await Promise.all(db_sync_promises);
+
+                const RM_RPC = new localbitcoinplusplus.rpc();                            
+                // Inform users
+                RM_RPC.send_rpc
+                  .call(this, "supernode_message", {
+                  trader_flo_address:
+                      su_db_data.trader_flo_address,
+                  server_msg: `Backup system is synced and ready to serve.`
+                  })
+                  .then(server_response => doSend(server_response));
             }
             break;
-
-          case "delete_deletables_from_supernode_db_instance":
-            if(localbitcoinplusplus.master_configurations.supernodesPubKeys
-            .includes(localbitcoinplusplus.wallets.my_local_flo_public_key)
-            &&
-            localbitcoinplusplus.master_configurations.supernodesPubKeys
-            .includes(res_obj.nodePubKey)) {
-
-              if(res_obj.params[0].delete_deletables===true
-              && typeof localbitcoinplusplus.newBackupDatabase
-              .db[res_obj.params[0].trader_flo_address]==="object") {
-
-                  const backup_db_inst = localbitcoinplusplus.newBackupDatabase
-                  .db[res_obj.params[0].trader_flo_address];
-
-                  const _readAllDB = backup_db_inst.backup_readAllDB.bind(backup_db_inst);
-                  const _removeinDB = backup_db_inst.backup_removeinDB.bind(backup_db_inst);
-                  
-                  const tableArray = [
-                      "deposit",
-                      "cash_deposits",
-                      "withdraw_cash",
-                      "withdraw_btc",
-                      "cash_balances",
-                      "crypto_balances",
-                      "buyOrders",
-                      "sellOrders",
-                      "system_btc_reserves_private_keys",
-                      "supernode_private_key_chunks"
-                  ];      
-
-                  let del_promise = [];
-
-                  (async function() {
-                      try {
-                          for (let tbl of tableArray) {
-                              const allDataPromises = await _readAllDB(tbl, false);
-
-                              for(t of allDataPromises) {
-                                  if(t.is_deletable===true) {
-                                      console.log(tbl, t);
-                                      del_promise.push(_removeinDB(tbl, t.id, true));
-                                  }
-                              }
-                          }
-
-                          console.log(del_promise);
-                          await Promise.all(del_promise);
-                      } catch (error) {
-                          throw new Error(error);    
-                      }
-                  })();
-              }
-            }
-          break;  
 
           case "reconnect_with_another_supernode":
             if (
@@ -23016,7 +23029,6 @@ async function processBackupUserOnMesssageRequest(response) {
 
           let allowed_methods = [
             "sync_backup_supernode_from_backup_supernode_response",
-            "updateUserBTCReservesRequest",
             "do_you_have_latest_data_for_this_supernode"
           ];
 
@@ -23054,6 +23066,8 @@ async function processBackupUserOnMesssageRequest(response) {
         if (!byPassMethods.includes(res_obj.method)) {
           if (
             typeof res_obj.globalParams.primarySupernode !== "string"
+            || localbitcoinplusplus.myClosestSupernodes
+              [res_obj.globalParams.primarySupernode].is_live==true
             // || typeof localbitcoinplusplus.services[`can_serve_${res_obj.globalParams.primarySupernode}`] !== "boolean"
             // || localbitcoinplusplus.services[`can_serve_${res_obj.globalParams.primarySupernode}`]==false
           ) {
@@ -23110,6 +23124,7 @@ async function processBackupUserOnMesssageRequest(response) {
                         res.myLocalFLOAddress ===
                         received_resp.trader_flo_address
                       ) {
+                          notify(received_resp.server_msg);
                         showMessage(received_resp.server_msg);
                         return false;
                       }
@@ -23125,6 +23140,7 @@ async function processBackupUserOnMesssageRequest(response) {
                       if (
                         primarySupernode == myPrimarySu.trader_flo_address
                       ) {
+                          notify(received_resp.server_msg);
                         showMessage(received_resp.server_msg);
                         return false;
                       }
@@ -23358,9 +23374,11 @@ async function processBackupUserOnMesssageRequest(response) {
                     typeof user == "object" &&
                     user.myLocalFLOAddress == resp.data.trader_flo_address
                   ) {
+                      document.getElementById("server_deposit_crypto_addr")
+                      .innerText = resp.data.btc_address;
                       let counterTraderAccountAddress = resp.msg;
-                    showMessage(counterTraderAccountAddress);
-                    notify(counterTraderAccountAddress);
+                      showMessage(counterTraderAccountAddress);
+                      notify(counterTraderAccountAddress);
                   }
                 });
               }
@@ -23709,7 +23727,7 @@ async function processBackupUserOnMesssageRequest(response) {
                 || typeof localbitcoinplusplus.newBackupDatabase.db[res_obj.params[0].db_inst]
                 !== "object"
                 || !localbitcoinplusplus.master_configurations.supernodesPubKeys
-                .includes(localbitcoinplusplus.wallets.my_local_flo_address)
+                .includes(localbitcoinplusplus.wallets.my_local_flo_public_key)
               )
                 return;
 
@@ -23731,82 +23749,177 @@ async function processBackupUserOnMesssageRequest(response) {
               });
             }
             break;
-          case "retrieve_shamirs_secret_btc_pvtkey":
+          case "delete_shamirs_secret_btc_pvtkey":
             if (
+              typeof res_obj.params == "object" &&
+              typeof res_obj.params[0] == "object"
+            ) {
+              if (
+                typeof res_obj.nodePubKey != "string"
+                || !localbitcoinplusplus.master_configurations.supernodesPubKeys
+                .includes(res_obj.nodePubKey)
+                || typeof localbitcoinplusplus.newBackupDatabase.db[res_obj.params[0].db_inst]
+                !== "object"
+                || !localbitcoinplusplus.master_configurations.supernodesPubKeys
+                .includes(localbitcoinplusplus.wallets.my_local_flo_public_key)
+              )
+                return;
+
+                localbitcoinplusplus.newBackupDatabase.db[res_obj.params[0].db_inst]
+                  .backup_removeinDB(
+                  "supernode_private_key_chunks",
+                  res_obj.params[0].chunk_val
+                );
+            }
+            break;
+
+          case "retrieve_shamirs_secret_btc_pvtkey":
+          if (
               typeof res_obj.params == "object" &&
               typeof res_obj.params[0] == "object" &&
               typeof res_obj.params[0].private_key_chunk == "object" &&
               typeof res_obj.params[0].retrieve_pvtkey_req_id ==
-                "string" &&
+              "string" &&
               typeof res_obj.params[0].withdraw_id == "string" &&
               typeof res_obj.params[0].db_inst == "string" &&
               typeof localbitcoinplusplus.wallets.my_local_flo_address ==
-                "string" &&
+              "string" &&
               res_obj.params[0].receiver_flo_address ===
-                localbitcoinplusplus.wallets.my_local_flo_address
-            ) {
+              localbitcoinplusplus.wallets.my_local_flo_address
+          ) {
               // This message was for Primary Supernode and is meant to be run in onMessage()
-              if (
-                res_obj.params[0].db_inst ==
-                localbitcoinplusplus.wallets.my_local_flo_address
-              )
-                return;
+              if (res_obj.params[0].db_inst ==
+                  localbitcoinplusplus.wallets.my_local_flo_address
+              ) return;
 
               let shamirs_shares_response = res_obj.params[0];
               let retrieve_pvtkey_req_id =
-                res_obj.params[0].retrieve_pvtkey_req_id;
+              res_obj.params[0].retrieve_pvtkey_req_id;
               let withdraw_id = res_obj.params[0].withdraw_id;
               if (typeof btc_pvt_arr !== "object") btc_pvt_arr = [];
-              if (
-                typeof btc_pvt_arr[retrieve_pvtkey_req_id] == "undefined"
-              )
-                btc_pvt_arr[retrieve_pvtkey_req_id] = [];
+              if (typeof btc_pvt_arr[retrieve_pvtkey_req_id] == "undefined") {
+                  btc_pvt_arr[retrieve_pvtkey_req_id] = [];
+                  localbitcoinplusplus.actions.delay(15*60*1000)
+                  .then(()=>{
+                      if(typeof btc_pvt_arr[retrieve_pvtkey_req_id]=="object") {
+                          btc_pvt_arr[retrieve_pvtkey_req_id] = null;
+                      }
+                  });
+              }
+
               // Filter function below logic source -
               // https://stackoverflow.com/a/9229821/5348972
               let seen_chunk_id_list = [];
 
               btc_pvt_arr[retrieve_pvtkey_req_id].filter(function(item) {
-                  if (typeof item.private_key_chunk !== "undefined") {
-                      return seen_chunk_id_list.hasOwnProperty(
-                          item.private_key_chunk.id
-                      )
-                      ? false
-                      : seen_chunk_id_list.push(item.private_key_chunk.id);
+              if(typeof item.private_key_chunk=="object" &&
+                      typeof item.private_key_chunk.id=="string" &&
+                      !seen_chunk_id_list.hasOwnProperty(
+                      item.private_key_chunk.id
+                  ) ) {
+                      return seen_chunk_id_list.push(item.private_key_chunk.id);
                   }
               });
 
               if (
-                !seen_chunk_id_list.includes(
+              !seen_chunk_id_list.includes(
                   shamirs_shares_response.private_key_chunk.id
-                ) &&
-                typeof shamirs_shares_response.private_key_chunk.id ==
+              ) &&
+              typeof shamirs_shares_response.private_key_chunk.id ==
                   "string"
               ) {
-                btc_pvt_arr[retrieve_pvtkey_req_id].push(
+              btc_pvt_arr[retrieve_pvtkey_req_id].push(
                   shamirs_shares_response
-                );
+              );
               }
               if (
-                btc_pvt_arr[retrieve_pvtkey_req_id].length ===
-                localbitcoinplusplus.master_configurations
+              btc_pvt_arr[retrieve_pvtkey_req_id].length ===
+              localbitcoinplusplus.master_configurations
                   .ShamirsMaxShares
               ) {
-                delete res_obj.params[0].private_key_chunk;
-                res_obj.params[0].btc_private_key_array = JSON.stringify(
-                  btc_pvt_arr[retrieve_pvtkey_req_id]
-                );
-                res_obj.params[0].trader_flo_address =
-                  localbitcoinplusplus.wallets.my_local_flo_address;
-                RM_RPC.backup_receive_rpc_response.call(
-                  this,
-                  JSON.stringify(res_obj)
-                );
+              const backup_server_db_instance =
+                  localbitcoinplusplus.newBackupDatabase.db[primarySupernodeOfThisUser];
 
-                localbitcoinplusplus.actions.delay(300000).then(() => {
-                  btc_pvt_arr[retrieve_pvtkey_req_id] = []; // Unset the object
-                });
+              if (typeof backup_server_db_instance !== "object") {
+                  let backup_db_error_msg = `WARNING: Unknown DB instance. DB Backup failed.`;
+                  throw new Error(backup_db_error_msg);
               }
-            }
+              delete res_obj.params[0].private_key_chunk;
+              let btc_pk_shares_array = btc_pvt_arr[retrieve_pvtkey_req_id]
+                  .map(pkChunks => {
+                      if (typeof pkChunks.private_key_chunk !== "undefined")
+                          return pkChunks.private_key_chunk.privateKeyChunks;
+                  })
+                  .filter(val => val !== undefined);
+              console.log(btc_pk_shares_array);
+              const btc_reserves = await backup_server_db_instance
+                  .backup_readDB("system_btc_reserves_private_keys", retrieve_pvtkey_req_id);
+              if (typeof btc_reserves !== "object") {
+                  console.warn(`Record for ${retrieve_pvtkey_req_id} not found in system_btc_reserves_private_keys`);
+                  break;
+              }
+
+              let transaction_key = localbitcoinplusplus.actions
+                      .master_decrypt(btc_reserves.supernode_transaction_key);
+              if(typeof transaction_key=="string") {
+                  transaction_key = JSON.parse(transaction_key);
+              }     
+              if (transaction_key.length <= 0) {
+                  console.warn(`Failed to build tx key for ${retrieve_pvtkey_req_id} in system_btc_reserves_private_keys`);
+                  break;
+              }
+              let btc_private_key = RM_WALLET.rebuild_private_key(
+                  btc_pk_shares_array,
+                  transaction_key
+              );
+              if (btc_private_key.length <= 0) {
+                  console.warn(`Failed to build private key for ${retrieve_pvtkey_req_id} in system_btc_reserves_private_keys`);
+                  break;
+              }
+              console.log(btc_private_key);
+
+              const withdraw_res = await backup_server_db_instance
+                  .backup_readDB("withdraw_btc", withdraw_id);
+              if(typeof withdraw_res=="object" 
+              && typeof withdraw_res.utxo_addr=="object") {
+                  const RM_WALLET = new localbitcoinplusplus.wallets;
+                  let crypto_addr_gen = RM_WALLET.generateFloKeys(btc_private_key, withdraw_res.product);
+                  let crypto_addr = crypto_addr_gen.address;
+                  if(!Object.values(withdraw_res.utxo_addr).includes(crypto_addr)) {
+                      console.warn(`${crypto_addr} deposit address not present in withdraw id ${withdraw_id}`);
+                      break;
+                  }
+
+                  if(typeof localbitcoinplusplus.btc_private_key_array!=="object"
+                  || Object.keys(localbitcoinplusplus.btc_private_key_array).length==0) {
+                      localbitcoinplusplus.btc_private_key_array={};
+                  }
+                  if(typeof localbitcoinplusplus.btc_private_key_array[withdraw_id] !== "object"
+                  || localbitcoinplusplus.btc_private_key_array[withdraw_id]==null) {
+                      localbitcoinplusplus.btc_private_key_array[withdraw_id] = [];
+                  }
+                  localbitcoinplusplus.btc_private_key_array[withdraw_id].push(btc_private_key);
+
+                  if(localbitcoinplusplus.btc_private_key_array[withdraw_id].length
+                      ===Object.values(withdraw_res.utxo_addr).length) {
+                      // When all the private keys are built successfully proceed further
+                      res_obj.params[0].btc_private_key_array = 
+                          localbitcoinplusplus.btc_private_key_array[withdraw_id];
+
+                      res_obj.params[0].trader_flo_address = withdraw_res.trader_flo_address;
+                      RM_RPC.backup_receive_rpc_response.call(
+                          this,
+                          JSON.stringify(res_obj)
+                      );
+                      if(!delete localbitcoinplusplus.btc_private_key_array[withdraw_id]) {
+                          localbitcoinplusplus.btc_private_key_array[withdraw_id] = null; 
+                      }
+                  }
+                  
+              }
+              btc_pvt_arr = Object.keys(btc_pvt_arr).filter(f=>f!==retrieve_pvtkey_req_id);
+              }
+          }
             break;
 
           case "update_all_new_cash_withdraw_recorded_in_db":
@@ -24523,22 +24636,18 @@ async function processBackupUserOnMesssageRequest(response) {
                     );
                   }
 
-                  if (typeof res_data.deposit_data == "object")
-                    _updateinDB(
-                      "deposit",
-                      res_data.deposit_data,
-                      res_data.deposit_data.id,
-                      true,
-                      false
-                    );
-                  if (typeof res_data.btc_reserve_data == "object")
-                    _updateinDB(
-                      "system_btc_reserves_private_keys",
-                      res_data.btc_reserve_data,
-                      res_data.btc_reserve_data.id.id,
-                      true,
-                      false
-                    );
+                  if (typeof res_data.deposit_data == "object") {
+                      for (const deposits of res_data.deposit_data) {
+                          _updateinDB(
+                              "deposit",
+                              deposits,
+                              deposits.id,
+                              true,
+                              false
+                          );                                
+                      }
+                  }
+
                 }
               } catch (e) {
                 console.error(e);
@@ -24577,13 +24686,11 @@ async function processBackupUserOnMesssageRequest(response) {
                   }
                   if (typeof res_data.withdraw_btc_id == "string")
                     _removeinDB("withdraw_btc", res_data.withdraw_btc_id);
-                  if (typeof res_data.deposit_id == "string")
-                    _removeinDB("deposit", res_data.deposit_id);
-                  if (typeof res_data.btc_reserve_id == "string")
-                    _removeinDB(
-                      "system_btc_reserves_private_keys",
-                      res_data.btc_reserve_id
-                    );
+                  if(typeof res_data.deposit_id=="string")
+                      _removeinDB("deposit", res_data.deposit_id);
+                  if(typeof res_data.reserves_id=="string")
+                      _removeinDB("system_btc_reserves_private_keys", 
+                      res_data.reserves_id);
                 }
               } catch (e) {
                 console.error(e);
@@ -25516,7 +25623,7 @@ async function handle_backup_server_messages(response) {
                 || typeof localbitcoinplusplus.newBackupDatabase.db[res_obj.params[0].db_inst]
                 !== "object"
                 || !localbitcoinplusplus.master_configurations.supernodesPubKeys
-                .includes(localbitcoinplusplus.wallets.my_local_flo_address)
+                .includes(localbitcoinplusplus.wallets.my_local_flo_public_key)
               )
                 return;
 
@@ -25539,6 +25646,30 @@ async function handle_backup_server_messages(response) {
               });
             }
             break;
+
+          case "delete_shamirs_secret_btc_pvtkey":
+            if (
+              typeof res_obj.params == "object" &&
+              typeof res_obj.params[0] == "object"
+            ) {
+              if (
+                typeof res_obj.nodePubKey != "string"
+                || !localbitcoinplusplus.master_configurations.supernodesPubKeys
+                .includes(res_obj.nodePubKey)
+                || typeof localbitcoinplusplus.newBackupDatabase.db[res_obj.params[0].db_inst]
+                !== "object"
+                || !localbitcoinplusplus.master_configurations.supernodesPubKeys
+                .includes(localbitcoinplusplus.wallets.my_local_flo_public_key)
+              )
+                return;
+
+                localbitcoinplusplus.newBackupDatabase.db[res_obj.params[0].db_inst]
+                .backup_removeinDB(
+                  "supernode_private_key_chunks",
+                  res_obj.params[0].chunk_val
+                 );
+            }
+            break;  
 
           case "store_shamirs_secret_pvtkey_shares":
             if (
@@ -25581,12 +25712,6 @@ async function handle_backup_server_messages(response) {
               res_obj.params[0].receiver_flo_address ===
                 localbitcoinplusplus.wallets.my_local_flo_address
             ) {
-              // This message was for Primary Supernode and is meant to be run in onMessage()
-              // if (
-              //   res_obj.params[0].db_inst ==
-              //   localbitcoinplusplus.wallets.my_local_flo_address
-              // )
-              //   return;
 
               let shamirs_shares_response = res_obj.params[0];
               let retrieve_pvtkey_req_id =
@@ -25595,8 +25720,15 @@ async function handle_backup_server_messages(response) {
               if (typeof btc_pvt_arr !== "object") btc_pvt_arr = [];
               if (
                 typeof btc_pvt_arr[retrieve_pvtkey_req_id] == "undefined"
-              )
-                btc_pvt_arr[retrieve_pvtkey_req_id] = [];
+              ) {
+                  btc_pvt_arr[retrieve_pvtkey_req_id] = [];
+                  localbitcoinplusplus.actions.delay(15*60*1000)
+                    .then(()=>{
+                        if(typeof btc_pvt_arr[retrieve_pvtkey_req_id]=="object") {
+                          btc_pvt_arr[retrieve_pvtkey_req_id] = null;
+                        }
+                    });
+              }
 
               // Filter function below logic source -
               // https://stackoverflow.com/a/9229821/5348972
@@ -25610,7 +25742,6 @@ async function handle_backup_server_messages(response) {
                   ) ) {
                       return seen_chunk_id_list.push(item.private_key_chunk.id);
                   }
-
               });
 
               if (
@@ -25631,31 +25762,111 @@ async function handle_backup_server_messages(response) {
                   .ShamirsMaxShares
               ) {
                 delete res_obj.params[0].private_key_chunk;
-                res_obj.params[0].btc_private_key_array = JSON.stringify(
-                  btc_pvt_arr[retrieve_pvtkey_req_id]
+
+                let btc_pk_shares_array = btc_pvt_arr[retrieve_pvtkey_req_id]
+                      .map(pkChunks => {
+                          if (typeof pkChunks.private_key_chunk !== "undefined")
+                              return pkChunks.private_key_chunk.privateKeyChunks;
+                      })
+                      .filter(val => val !== undefined);
+                  console.log(btc_pk_shares_array);
+
+                let _readDB = readDB;
+                let _readDBbyIndex = readDBbyIndex;
+                let _updateinDB = updateinDB;
+                
+                if(shamirs_shares_response.db_inst!==localbitcoinplusplus.wallets.my_local_flo_address) {
+                  if (typeof localbitcoinplusplus.newBackupDatabase.db[shamirs_shares_response.db_inst] ==
+                      "object") {
+                      const foreign_db =
+                          localbitcoinplusplus.newBackupDatabase.db[shamirs_shares_response.db_inst];
+                      _readDB = foreign_db.backup_readDB.bind(foreign_db);
+                      _readDBbyIndex = foreign_db.backup_readDBbyIndex.bind(foreign_db);
+                      _updateinDB = foreign_db.backup_updateinDB.bind(foreign_db);
+                  } else {
+                      err_msg = `WARNING: Invalid Backup DB Instance Id: ${shamirs_shares_response.db_inst}.`;
+                      showMessage(err_msg);
+                      throw new Error(err_msg);
+                  }
+                }
+                
+                const btc_reserves = await _readDB("system_btc_reserves_private_keys", retrieve_pvtkey_req_id);
+                if (typeof btc_reserves !== "object") {
+                  console.warn(`Record for ${retrieve_pvtkey_req_id} not found in system_btc_reserves_private_keys`);
+                  break;
+                }
+
+                let transaction_key = localbitcoinplusplus.actions
+                      .master_decrypt(btc_reserves.supernode_transaction_key);
+                if(typeof transaction_key=="string") {
+                  transaction_key = JSON.parse(transaction_key);
+                }     
+                if (transaction_key.length <= 0) {
+                  console.warn(`Failed to build tx key for ${retrieve_pvtkey_req_id} in system_btc_reserves_private_keys`);
+                  break;
+                }
+                let btc_private_key = RM_WALLET.rebuild_private_key(
+                  btc_pk_shares_array,
+                  transaction_key
                 );
-                res_obj.params[0].trader_flo_address =
-                  localbitcoinplusplus.wallets.my_local_flo_address;
+                if (btc_private_key.length <= 0) {
+                  console.warn(`Failed to build private key for ${retrieve_pvtkey_req_id} in system_btc_reserves_private_keys`);
+                  break;
+                }
+                console.log(btc_private_key);
 
-                // This response was sent by a backup (right direction) supernode
-                if(res_obj.params[0].db_inst==localbitcoinplusplus.wallets.my_local_flo_address) {
-                  RM_RPC.receive_rpc_response.call(
-                      this,
-                      JSON.stringify(res_obj)
-                  );    
-                    return;
-                }  
+                  const withdraw_res = await _readDB("withdraw_btc", withdraw_id);
+                  if(typeof withdraw_res=="object" 
+                  && typeof withdraw_res.utxo_addr=="object") {
+                  const RM_WALLET = new localbitcoinplusplus.wallets;
+                  let crypto_addr_gen = RM_WALLET.generateFloKeys(btc_private_key, withdraw_res.product);
+                  let crypto_addr = crypto_addr_gen.address;
 
-                RM_RPC.backup_receive_rpc_response.call(
-                  this,
-                  JSON.stringify(res_obj)
-                );
+                  // Very Important Validation: to prevent different withdraw requests mashup
+                  if(!Object.values(withdraw_res.utxo_addr).includes(crypto_addr)) {
+                      console.warn(`${crypto_addr} deposit address not present in withdraw id ${withdraw_id}`);
+                      break;
+                  }
+                  if(typeof localbitcoinplusplus.btc_private_key_array!=="object"
+                  || Object.keys(localbitcoinplusplus.btc_private_key_array).length==0) {
+                      localbitcoinplusplus.btc_private_key_array={};
+                  }
+                  if(typeof localbitcoinplusplus.btc_private_key_array[withdraw_id] !== "object"
+                   || localbitcoinplusplus.btc_private_key_array[withdraw_id]==null) {
+                      localbitcoinplusplus.btc_private_key_array[withdraw_id] = [];
+                  }
+                  localbitcoinplusplus.btc_private_key_array[withdraw_id].push(btc_private_key);
+                  
+                  if(localbitcoinplusplus.btc_private_key_array[withdraw_id].length
+                      ===Object.values(withdraw_res.utxo_addr).length) {
+                      // When all the private keys are built successfully proceed further
+                      res_obj.params[0].btc_private_key_array = 
+                          localbitcoinplusplus.btc_private_key_array[withdraw_id];
+                      
+                      res_obj.params[0].trader_flo_address = withdraw_res.trader_flo_address;
+                      
+                      if(shamirs_shares_response.db_inst==localbitcoinplusplus.wallets.my_local_flo_address) {
+                          RM_RPC.receive_rpc_response.call(
+                              this,
+                              JSON.stringify(res_obj)
+                          );
 
-                localbitcoinplusplus.actions.delay(300000).then(() => {
-                  btc_pvt_arr[retrieve_pvtkey_req_id] = []; // Unset the object
-                });
+                      } else {
+                          RM_RPC.backup_receive_rpc_response.call(
+                              this,
+                              JSON.stringify(res_obj)
+                          );
+                      }
+
+                      if(!delete localbitcoinplusplus.btc_private_key_array[withdraw_id]) {
+                          localbitcoinplusplus.btc_private_key_array[withdraw_id] = null;
+                      }
+                      
+                  }
               }
+              btc_pvt_arr = Object.keys(btc_pvt_arr).filter(f=>f!==retrieve_pvtkey_req_id);
             }
+          }
             break;
 
           case "updateUserCryptoBalanceRequest":
@@ -25801,64 +26012,7 @@ async function handle_backup_server_messages(response) {
             }
             break;
 
-          case "updateUserBTCReservesRequest":
-            if (
-              localbitcoinplusplus.master_configurations.supernodesPubKeys.includes(
-                res_obj.nodePubKey
-              )
-            ) {
-              let updateUserReservesResponseObject = res_obj.params[0];
-              let subjectuser =
-                res_obj.params[0].trader_flo_address ||
-                res_obj.params[0].updatedReservesObject[0]
-                  .trader_flo_address;
-              let backup_server_db_instance = "";
-              if (typeof subjectuser != "string") return;
-              localbitcoinplusplus.kademlia
-                .determineClosestSupernode(subjectuser)
-                .then(my_closest_su_list => {
-                  const primarySupernodeOfThisUser = my_closest_su_list[0].data.id;
-                  backup_server_db_instance =
-                    localbitcoinplusplus.newBackupDatabase.db[
-                      primarySupernodeOfThisUser
-                    ];
-
-                  if (typeof backup_server_db_instance !== "object") {
-                    let backup_db_error_msg = `WARNING: Unknown DB instance. DB Backup failed.`;
-                    showMessage(backup_db_error_msg);
-                    throw new Error(backup_db_error_msg);
-                  }
-
-                  let updateUserReservesResponseString = JSON.stringify(
-                    updateUserReservesResponseObject.updatedReservesObject
-                  );
-                  let updateUserReservesResponseStringHash = Crypto.SHA256(
-                    updateUserReservesResponseString
-                  );
-                  let isBalanceLegit = RM_WALLET.verify(
-                    updateUserReservesResponseStringHash,
-                    updateUserReservesResponseObject.updatedBTCReservesObjectSign,
-                    res_obj.nodePubKey
-                  );
-                  if (isBalanceLegit) {
-                    backup_server_db_instance.backup_updateinDB(
-                      "system_btc_reserves_private_keys",
-                      updateUserReservesResponseObject
-                        .updatedReservesObject[0],
-                      true,
-                      false
-                    );
-                    return true;
-                  } else {
-                    showMessage(
-                      `WARNING: Failed to update balance in your DB. Please refresh.`
-                    );
-                  }
-                });
-            }
-            break;
-
-          case "sync_backup_supernode_from_backup_supernode_response":
+            case "sync_backup_supernode_from_backup_supernode_response":
             let su_db_data = res_obj.params[0];
             if (
               typeof localbitcoinplusplus.wallets.my_local_flo_address !==
@@ -25872,6 +26026,10 @@ async function handle_backup_server_messages(response) {
               );
               return;
             }
+
+            const timenow = + new Date();
+            const lifetime = JSON.parse(localbitcoinplusplus.master_configurations.ordersLife);
+            const db_sync_promises = [];
 
             if (
               typeof res_obj.params == "object" &&
@@ -25918,6 +26076,9 @@ async function handle_backup_server_messages(response) {
                     _updateinDB = foreign_db.backup_updateinDB.bind(
                       foreign_db
                     );
+                   _removeinDB = foreign_db.backup_removeinDB.bind(
+                      foreign_db
+                    );
                   } else {
                     err_msg = `WARNING: Invalid Backup DB Instance Id: ${backup_db}.`;
                     showMessage(err_msg);
@@ -25928,9 +26089,6 @@ async function handle_backup_server_messages(response) {
                 for (let tableStoreName in su_db_data) {
                   i++;
                   if (i == Object.keys(su_db_data).length - 2) {
-                    localbitcoinplusplus.services[
-                      `can_serve_${su_db_data.trader_flo_address}`
-                    ] = true;
                     // Close unnecessary connections now
                     reactor.dispatchEvent(
                       "remove_extra_backup_connections"
@@ -25949,17 +26107,60 @@ async function handle_backup_server_messages(response) {
                     if (obj.length > 0) {
                       for (var prop in obj) {
                         if (!obj.hasOwnProperty(prop)) continue;
-                        _updateinDB(
+                        if(tableStoreName=="buyOrders" || tableStoreName=="sellOrders") {
+                          if(timenow-obj[prop].timestamp>=lifetime.trade) {
+                              db_sync_promises.push(_removeinDB(tableStoreName, obj[prop].id));
+                              continue;
+                          } else {
+                              db_sync_promises.push(localbitcoinplusplus.actions
+                              .delay(timenow-obj[prop].timestamp)
+                              .then(()=>_removeinDB(tableStoreName, obj[prop].id)))
+                          } 
+                        }
+                        
+                        if(tableStoreName=="cash_deposits") {
+                          if(timenow-obj[prop].timestamp>=lifetime.cashDeposit) {
+                              db_sync_promises.push(_removeinDB(tableStoreName, obj[prop].id));
+                              continue;
+                          } else {
+                              db_sync_promises.push(localbitcoinplusplus.actions
+                              .delay(timenow-obj[prop].timestamp)
+                              .then(()=>_removeinDB(tableStoreName, obj[prop].id)))
+                          }
+                        }
+
+                        if(tableStoreName=="deposit") {
+                          // if(timenow-obj[prop].timestamp>=lifetime.cryptoDeposit) {
+                          //     db_sync_promises.push(_removeinDB(tableStoreName, obj[prop].id));
+                          //     continue;
+                          // } else {
+                          //     db_sync_promises.push(localbitcoinplusplus.actions
+                          //     .delay(timenow-obj[prop].timestamp)
+                          //     .then(()=>_removeinDB(tableStoreName, obj[prop].id)))
+                          // } 
+                        }
+
+                        if(tableStoreName=="withdraw_btc") {
+                          if(timenow-obj[prop].timestamp>=lifetime.cryptoWithdraw) {
+                              db_sync_promises.push(_removeinDB(tableStoreName, obj[prop].id));
+                              continue;
+                          } else {
+                              db_sync_promises.push(localbitcoinplusplus.actions
+                              .delay(timenow-obj[prop].timestamp)
+                              .then(()=>_removeinDB(tableStoreName, obj[prop].id)))
+                          } 
+                        }
+
+                        db_sync_promises.push(_updateinDB(
                           tableStoreName,
                           obj[prop],
                           obj[prop].id,
                           true,
                           false
-                        ).then(() => {
-                          showMessage(
-                            `INFO: "${tableStoreName}" datastore syncing is complete.`
-                          );
-                        });
+                        ));
+                        showMessage(
+                          `INFO: "${tableStoreName}" datastore syncing is complete.`
+                        );
                       }
                     }
                   } catch (error) {
@@ -25967,6 +26168,17 @@ async function handle_backup_server_messages(response) {
                   }
                 }
               })();
+                await Promise.all(db_sync_promises);
+
+                const RM_RPC = new localbitcoinplusplus.rpc();                            
+                // Inform users
+                RM_RPC.send_rpc
+                  .call(this, "supernode_message", {
+                  trader_flo_address:
+                      su_db_data.trader_flo_address,
+                  server_msg: `Backup system is synced and ready to serve.`
+                  })
+                  .then(server_response => doSend(server_response));
             }
             break;
 
@@ -26057,7 +26269,8 @@ async function handle_backup_server_messages(response) {
 
                   const su_db_data_from_my_db = await localbitcoinplusplus.actions.get_sharable_db_data(
                     tableArray,
-                    backup_database
+                    backup_database,
+                    false
                   );
 
                   const dbHashData_from_my_db = await localbitcoinplusplus.actions.getDBTablesLatestHashAndTimestamp(
@@ -26107,7 +26320,7 @@ async function handle_backup_server_messages(response) {
                     const mf = mismatched_fields[i];
                     latest_data[mf] = [];
                     old_data[mf] = [];
-                    const res_data_obj = await _readAllDB(mf, false);
+                    const res_data_obj = await _readAllDB(mf);
                     if(res_data_obj.length===0) {
                       old_data[mf].push(res_data_obj);
                       continue;
@@ -26127,7 +26340,6 @@ async function handle_backup_server_messages(response) {
                           )) {
                               latest_data[mf].push(odho);    
                           } else {
-                              if(typeof odho.is_deletable ==="boolean") continue;
                               old_data[mf].push(odho);
                           }
                       }  
@@ -26180,96 +26392,6 @@ async function handle_backup_server_messages(response) {
                 });
             }
 
-            break;
-
-          case "validate_latest_db_hash":
-            if (
-              localbitcoinplusplus.master_configurations.supernodesPubKeys.includes(
-                res_obj.nodePubKey
-              )
-            ) {
-              const response_object = res_obj.params[0];
-              if (typeof response_object.trader_flo_address != "string")
-                return;
-
-              localbitcoinplusplus.kademlia
-                .determineClosestSupernode(
-                  res_obj.params[0].trader_flo_address
-                )
-                .then(my_closest_su_list => {
-                  const primarySupernodeOfThisUser =
-                    my_closest_su_list[0].data.id;
-                  const backup_server_db_instance =
-                    localbitcoinplusplus.newBackupDatabase.db[
-                      primarySupernodeOfThisUser
-                    ];
-
-                  if (
-                    typeof backup_server_db_instance !== "object" ||
-                    backup_server_db_instance ==
-                      localbitcoinplusplus.wallets.my_local_flo_address
-                  ) {
-                    let backup_db_error_msg = `WARNING: Unknown DB instance. DB Backup failed.`;
-                    showMessage(backup_db_error_msg);
-                    throw new Error(backup_db_error_msg);
-                  }
-
-                  backup_server_db_instance
-                    .backup_readDB("supernodesDbHash", response_object.id)
-                    .then(my_db_hash_obj => {
-                      if (typeof my_db_hash_obj == "object") {
-                        if (
-                          my_db_hash_obj.vectorClock >=
-                            response_object.vectorClock ||
-                          my_db_hash_obj.timestamp >=
-                            response_object.timestamp
-                        ) {
-                          let diffs = []; // compare two objects and get the tables with difference in hash
-
-                          for (key in my_db_hash_obj) {
-                            if (my_db_hash_obj.hasOwnProperty(key)) {
-                              if (
-                                response_object[key] &&
-                                response_object[key] !==
-                                  my_db_hash_obj[key] &&
-                                ![
-                                  "DBHash",
-                                  "data_of",
-                                  "id",
-                                  "timestamp",
-                                  "vectorClock"
-                                ].includes(key)
-                              ) {
-                                diffs[key] = my_db_hash_obj[key];
-                              }
-                            }
-                          }
-
-                          localbitcoinplusplus.actions
-                            .get_sharable_db_data(
-                              diffs,
-                              primarySupernodeOfThisUser
-                            )
-                            .then(function(su_db_data) {
-                              if (typeof su_db_data == "object") {
-                                su_db_data.trader_flo_address = primarySupernodeOfThisUser;
-                                su_db_data.receiver_flo_address = res_obj.globalParams.senderFloId;
-                                RM_RPC.send_rpc
-                                  .call(
-                                    this,
-                                    "sync_backup_supernode_from_backup_supernode_response",
-                                    su_db_data
-                                  )
-                                  .then(server_sync_response =>
-                                    doSend(server_sync_response)
-                                  );
-                              }
-                            });
-                        }
-                      }
-                    });
-                });
-            }
             break;
 
           case "store_backup_system_btc_reserves_private_keys":
@@ -26370,22 +26492,17 @@ async function handle_backup_server_messages(response) {
                     );
                   }
 
-                  if (typeof res_data.deposit_data == "object")
-                    _updateinDB(
-                      "deposit",
-                      res_data.deposit_data,
-                      res_data.deposit_data.id,
-                      true,
-                      false
-                    );
-                  if (typeof res_data.btc_reserve_data == "object")
-                    _updateinDB(
-                      "system_btc_reserves_private_keys",
-                      res_data.btc_reserve_data,
-                      res_data.btc_reserve_data.id.id,
-                      true,
-                      false
-                    );
+                  if (typeof res_data.deposit_data == "object") {
+                      for (const deposits of res_data.deposit_data) {
+                          _updateinDB(
+                              "deposit",
+                              deposits,
+                              deposits.id,
+                              true,
+                              false
+                          );                                
+                      }
+                  }
                 }
               } catch (e) {
                 console.error(e);
@@ -26424,13 +26541,11 @@ async function handle_backup_server_messages(response) {
                   }
                   if (typeof res_data.withdraw_btc_id == "string")
                     _removeinDB("withdraw_btc", res_data.withdraw_btc_id);
-                  if (typeof res_data.deposit_id == "string")
-                    _removeinDB("deposit", res_data.deposit_id);
-                  if (typeof res_data.btc_reserve_id == "string")
-                    _removeinDB(
-                      "system_btc_reserves_private_keys",
-                      res_data.btc_reserve_id
-                    );
+                  if(typeof res_data.deposit_id=="string")
+                      _removeinDB("deposit", res_data.deposit_id);
+                  if(typeof res_data.reserves_id=="string")
+                      _removeinDB("system_btc_reserves_private_keys", 
+                      res_data.reserves_id);
                 }
               } catch (e) {
                 console.error(e);
@@ -26541,61 +26656,6 @@ async function handle_backup_server_messages(response) {
               }
 
           break;
-
-          case "delete_deletables_from_supernode_db_instance":
-            if(localbitcoinplusplus.master_configurations.supernodesPubKeys
-            .includes(localbitcoinplusplus.wallets.my_local_flo_public_key)
-            &&
-            localbitcoinplusplus.master_configurations.supernodesPubKeys
-            .includes(res_obj.nodePubKey)) {
-
-              if(res_obj.params[0].delete_deletables===true
-              && typeof localbitcoinplusplus.newBackupDatabase
-              .db[res_obj.params[0].trader_flo_address]==="object") {
-
-                  const backup_db_inst = localbitcoinplusplus.newBackupDatabase
-                  .db[res_obj.params[0].trader_flo_address];
-
-                  const _readAllDB = backup_db_inst.backup_readAllDB.bind(backup_db_inst);
-                  const _removeinDB = backup_db_inst.backup_removeinDB.bind(backup_db_inst);
-                  
-                  const tableArray = [
-                      "deposit",
-                      "cash_deposits",
-                      "withdraw_cash",
-                      "withdraw_btc",
-                      "cash_balances",
-                      "crypto_balances",
-                      "buyOrders",
-                      "sellOrders",
-                      "system_btc_reserves_private_keys",
-                      "supernode_private_key_chunks"
-                  ];      
-
-                  let del_promise = [];
-
-                  (async function() {
-                      try {
-                          for (let tbl of tableArray) {
-                              const allDataPromises = await _readAllDB(tbl, false);
-
-                              for(t of allDataPromises) {
-                                  if(t.is_deletable===true) {
-                                      console.log(tbl, t);
-                                      del_promise.push(_removeinDB(tbl, t.id, true));
-                                  }
-                              }
-                          }
-
-                          console.log(del_promise);
-                          await Promise.all(del_promise);
-                      } catch (error) {
-                          throw new Error(error);    
-                      }
-                  })();
-              }
-            }
-          break;  
   
           default:
             break;
@@ -26650,6 +26710,7 @@ async function handleCashierMessages(evt) {
         );
 
       if (typeof res_obj.method !== "undefined") {
+        localbitcoinplusplus.CashierStatusObject[res_obj.nodePubKey].is_live=true;
         let response_from_sever;
 
         const RM_WALLET = new localbitcoinplusplus.wallets();
@@ -26680,6 +26741,9 @@ async function handleCashierMessages(evt) {
               JSON.stringify(res_obj)
             );
             break;
+          case "cashier_left":
+              localbitcoinplusplus.CashierStatusObject[res_obj.nodePubKey].is_live=false; 
+          break;  
 
           default:
             break;
@@ -27145,15 +27209,18 @@ const exception_datastores = ['localbitcoinUser', 'ipTable', 'kBucketStore', 'my
 
 function signDBData(objectdata) {
     try {
-        if(!localbitcoinplusplus.master_configurations.supernodesPubKeys
-          .includes(localbitcoinplusplus.wallets.my_local_flo_public_key)) return objectdata;
-        
+        if(typeof localbitcoinplusplus.wallets.MY_SUPERNODE_PRIVATE_KEY !=="string")
+          throw new Error("Private key not found.");
         const RM_WALLET = new localbitcoinplusplus.wallets;
+        const pubKey = RM_WALLET.generateFloKeys(localbitcoinplusplus.wallets.MY_SUPERNODE_PRIVATE_KEY).pubKeyHex;  
+        if(!localbitcoinplusplus.master_configurations.supernodesPubKeys
+          .includes(pubKey)) return objectdata;
+        
         let objectdata_copy = JSON.parse(JSON.stringify(objectdata));
         if(typeof objectdata_copy.db_sign=="string")  delete objectdata_copy.db_sign;
         if(typeof objectdata_copy.db_signer=="string") delete objectdata_copy.db_signer;
         objectdata_copy.db_sign = RM_WALLET.sign(JSON.stringify(objectdata_copy), localbitcoinplusplus.wallets.MY_SUPERNODE_PRIVATE_KEY);
-        objectdata_copy.db_signer = localbitcoinplusplus.wallets.my_local_flo_public_key;
+        objectdata_copy.db_signer = pubKey;
         return objectdata_copy;
     } catch (error) {
         throw new Error(error);
@@ -27168,7 +27235,6 @@ function verifyDBData(objectdata) {
         let objectdata_copy = JSON.parse(JSON.stringify(objectdata));
         delete objectdata_copy.db_sign;
         delete objectdata_copy.db_signer;
-        //return RM_WALLET.verify(JSON.stringify(objectdata_copy), objectdata.db_sign, objectdata.db_signer);
           if(RM_WALLET.verify(JSON.stringify(objectdata_copy), objectdata.db_sign, objectdata.db_signer)) {
               return true;         
           } else {
@@ -27283,7 +27349,7 @@ function exportToJson(idbDatabase, dataStores=[]) {
       })
   }
 
-function readDB(tablename, id, filter_deletables = true) {
+function readDB(tablename, id, with_dbsigns = true) {
   return new Promise((resolve, reject) => {
     var transaction = db.transaction([tablename]);
     var objectStore = transaction.objectStore(tablename);
@@ -27298,12 +27364,13 @@ function readDB(tablename, id, filter_deletables = true) {
           if(!exception_datastores.includes(tablename)) {
               if(!verifyDBData(request.result)) return resolve();
           }
-          if (filter_deletables == true) {
-              if (typeof request.result.is_deletable == "undefined") {
-               resolve(request.result);
-              } else {
-                  resolve();
+          if (with_dbsigns == false) {
+              let eachrecordcopy = JSON.parse(JSON.stringify(request.result));
+              if(typeof eachrecordcopy.db_sign=="string" || typeof eachrecordcopy.db_signer=="string") {
+                  delete eachrecordcopy.db_sign;
+                  delete eachrecordcopy.db_signer;
               }
+              resolve(eachrecordcopy);
           } else {
               resolve(request.result);
           }
@@ -27319,7 +27386,7 @@ function readDBbyIndex(
   tablename,
   index,
   indexValue,
-  filter_deletables = true
+  with_dbsigns = true
 ) {
   return new Promise((resolve, reject) => {
     var transaction = db.transaction([tablename]);
@@ -27335,22 +27402,19 @@ function readDBbyIndex(
         if (cursor.value[index] == indexValue) {
           if(!exception_datastores.includes(tablename)) {
               if(verifyDBData(cursor.value)) {
-                  if (filter_deletables == true) {
-                      if (typeof cursor.value.is_deletable == "undefined") {
-                          response.push(cursor.value);
+                  if (with_dbsigns == false) {
+                      let eachrecordcopy = JSON.parse(JSON.stringify(cursor.value));
+                      if(typeof eachrecordcopy.db_sign=="string" || typeof eachrecordcopy.db_signer=="string") {
+                          delete eachrecordcopy.db_sign;
+                          delete eachrecordcopy.db_signer;
                       }
+                      response.push(eachrecordcopy); 
                   } else {
                       response.push(cursor.value);
                   }
               }
             } else {
-              if (filter_deletables == true) {
-                  if (typeof cursor.value.is_deletable == "undefined") {
-                      response.push(cursor.value);
-                  }
-              } else {
-                  response.push(cursor.value);
-              }
+              response.push(cursor.value);
             }
         }
         cursor.continue();
@@ -27361,45 +27425,35 @@ function readDBbyIndex(
   });
 }
 
-function readAllDB(tablename, filter_deletables = true, limit = 0) {
+function readAllDB(tablename, with_dbsigns=true) {
   return new Promise((resolve, reject) => {
     let response = [];
     var objectStore = db.transaction(tablename).objectStore(tablename);
-    
-  //   if ('getAll' in objectStore) {
-  //     // IDBObjectStore.getAll() will return the full set of items in our store.
-  //     objectStore.getAll().onsuccess = function(event) {
-  //         resolve(event.target.result);
-  //     };
-  //   } else {                
+                 
       objectStore.openCursor().onsuccess = function(event) {
           let cursor = event.target.result;
           if (cursor) {
               if(!exception_datastores.includes(tablename)) {
                   if(verifyDBData(cursor.value)) {
-                      if (filter_deletables == true) {
-                          if (typeof cursor.value.is_deletable == "undefined") {
-                          response.push(cursor.value);
+                      if (with_dbsigns == false) {
+                          let eachrecordcopy = JSON.parse(JSON.stringify(cursor.value));
+                          if(typeof eachrecordcopy.db_sign=="string" || typeof eachrecordcopy.db_signer=="string") {
+                              delete eachrecordcopy.db_sign;
+                              delete eachrecordcopy.db_signer;
                           }
+                          response.push(eachrecordcopy); 
                       } else {
                           response.push(cursor.value);
                       }
                   }
               } else {
-                  if (filter_deletables == true) {
-                      if (typeof cursor.value.is_deletable == "undefined") {
-                      response.push(cursor.value);
-                      }
-                  } else {
-                      response.push(cursor.value);
-                  }
+                  response.push(cursor.value);
               }
               cursor.continue();
           } else {
               resolve(response);
           }
       };
-  //   }
     
   });
 }
@@ -27447,6 +27501,7 @@ function updateinDB(
 ) {
   return new Promise((resolve, reject) => {
      try {
+          const originalObj = JSON.parse(JSON.stringify(Obj));
           if (typeof Obj.vectorClock == "undefined") {
               Obj.vectorClock = 0;
           } else if (increaseVectorClock === false) {
@@ -27454,7 +27509,7 @@ function updateinDB(
           } else {
               Obj.vectorClock += 1;
               // If vectorClock is increased, also update timestamp
-              Obj.timestamp = +new Date();
+              //Obj.timestamp = +new Date();
           }
           if (typeof Obj.timestamp !== "number") {
               Obj.timestamp = +new Date();
@@ -27479,15 +27534,29 @@ function updateinDB(
                       request = db.transaction([tablename], "readwrite")
                       .objectStore(tablename).put(Obj);
                   } else if (myRecord.vectorClock < Obj.vectorClock) {
-                      // Don't sign rather verify data here
+                      // First verify data here
                       if(!exception_datastores.includes(tablename)) {
-                          if(verifyDBData(Obj)===true) {
-                              request = db.transaction([tablename], "readwrite")
-                                  .objectStore(tablename).put(Obj);
+                          if(verifyDBData(originalObj)===true) {
+                              Obj = signDBData(Obj); 
                           } else {
                               console.trace(Obj);
                               throw new Error('Failed verification at db update');
                           }
+                      }
+                      request = db.transaction([tablename], "readwrite")
+                          .objectStore(tablename).put(Obj);
+                  } else if (myRecord.vectorClock == Obj.vectorClock) {
+                      if(myRecord.timestamp < Obj.timestamp) {
+                          if(!exception_datastores.includes(tablename)) {
+                              if(verifyDBData(originalObj)===true) {
+                                  Obj = signDBData(Obj); 
+                              } else {
+                                  console.trace(Obj);
+                                  throw new Error('Failed verification at db update');
+                              }
+                          }
+                          request = db.transaction([tablename], "readwrite")
+                              .objectStore(tablename).put(Obj);
                       }
                   } else {
                       resolve(Obj);
@@ -27503,7 +27572,17 @@ function updateinDB(
               };
           } else {
               if(!exception_datastores.includes(tablename)) {
-                  Obj = signDBData(Obj); 
+                  if(verifyDBData(originalObj)===true) {
+                      Obj = signDBData(Obj); 
+                  } else {
+                      if(typeof localbitcoinplusplus.wallets.my_local_flo_public_key=="string"
+                      && localbitcoinplusplus.master_configurations.supernodesPubKeys
+                      .includes(localbitcoinplusplus.wallets.my_local_flo_public_key)) {
+                          Obj = signDBData(Obj);
+                      } else {
+                          reject("Verification failed in backup update");
+                      }
+                  } 
               }
               request = db.transaction([tablename], "readwrite")
               .objectStore(tablename).put(Obj);
@@ -27940,7 +28019,7 @@ newBackupDB.prototype = {
     }.bind(this);
   },
 
-  backup_readDB(tablename, id, filter_deletables = true) {
+  backup_readDB(tablename, id, with_dbsigns = true) {
     return new Promise((resolve, reject) => {
       this.transaction = this.db.transaction([tablename]);
       var objectStore = this.transaction.objectStore(tablename);
@@ -27956,16 +28035,15 @@ newBackupDB.prototype = {
           if(!exception_datastores.includes(tablename)) {
               if(!verifyDBData(parent_request.result)) return resolve();
           }
-          if (filter_deletables == true) {
-            if (
-              typeof parent_request.result.is_deletable == "undefined"
-            ) {
-              resolve(parent_request.result);
-            } else {
-              resolve();
-            }
+          if (with_dbsigns == false) {
+              let eachrecordcopy = JSON.parse(JSON.stringify(parent_request.result));
+              if(typeof eachrecordcopy.db_sign=="string" || typeof eachrecordcopy.db_signer=="string") {
+                  delete eachrecordcopy.db_sign;
+                  delete eachrecordcopy.db_signer;
+              }
+              resolve(eachrecordcopy);
           } else {
-            resolve(parent_request.result);
+              resolve(parent_request.result);
           }
         } else {
           resolve();
@@ -27978,7 +28056,7 @@ newBackupDB.prototype = {
     tablename,
     index,
     indexValue,
-    filter_deletables = true
+    with_dbsigns = true
   ) {
     return new Promise((resolve, reject) => {
       this.transaction = this.db.transaction([tablename]);
@@ -27995,22 +28073,19 @@ newBackupDB.prototype = {
             
               if(!exception_datastores.includes(tablename)) {
                   if(verifyDBData(cursor.value)) {
-                      if (filter_deletables == true) {
-                          if (typeof cursor.value.is_deletable == "undefined") {
-                           response.push(cursor.value);
+                      if (with_dbsigns == false) {
+                          let eachrecordcopy = JSON.parse(JSON.stringify(cursor.value));
+                          if(typeof eachrecordcopy.db_sign=="string" || typeof eachrecordcopy.db_signer=="string") {
+                              delete eachrecordcopy.db_sign;
+                              delete eachrecordcopy.db_signer;
                           }
+                          response.push(eachrecordcopy); 
                       } else {
                           response.push(cursor.value);
                       }
                   }
               } else {
-                  if (filter_deletables == true) {
-                      if (typeof cursor.value.is_deletable == "undefined") {
-                         response.push(cursor.value);
-                      }
-                  } else {
-                      response.push(cursor.value);
-                  }
+                  response.push(cursor.value);
               }
            
           }
@@ -28022,7 +28097,7 @@ newBackupDB.prototype = {
     });
   },
 
-  backup_readAllDB(tablename, filter_deletables = true) {
+  backup_readAllDB(tablename, with_dbsigns = true) {
     return new Promise((resolve, reject) => {
       let response = [];
       var objectStore = this.db
@@ -28034,22 +28109,19 @@ newBackupDB.prototype = {
         if (cursor) {
           if(!exception_datastores.includes(tablename)) {
               if(verifyDBData(cursor.value)) {
-                  if (filter_deletables == true) {
-                      if (typeof cursor.value.is_deletable == "undefined") {
-                          response.push(cursor.value);
+                  if (with_dbsigns == false) {
+                      let eachrecordcopy = JSON.parse(JSON.stringify(cursor.value));
+                      if(typeof eachrecordcopy.db_sign=="string" || typeof eachrecordcopy.db_signer=="string") {
+                          delete eachrecordcopy.db_sign;
+                          delete eachrecordcopy.db_signer;
                       }
+                      response.push(eachrecordcopy); 
                   } else {
                       response.push(cursor.value);
                   }
               }
           } else {
-              if (filter_deletables == true) {
-                  if (typeof cursor.value.is_deletable == "undefined") {
-                      response.push(cursor.value);
-                  }
-              } else {
-                  response.push(cursor.value);
-              }
+              response.push(cursor.value);
           }
 
           cursor.continue();
@@ -28103,6 +28175,7 @@ newBackupDB.prototype = {
   ) {
     return new Promise((resolve, reject) => {              
       try {
+          const originalObj = JSON.parse(JSON.stringify(Obj));
           if (typeof Obj.vectorClock == "undefined") {
               Obj.vectorClock = 0;
           } else if (increaseVectorClock === false) {
@@ -28110,7 +28183,7 @@ newBackupDB.prototype = {
           } else {
               Obj.vectorClock += 1;
               // If vectorClock is increased, also update timestamp
-              Obj.timestamp = +new Date();
+              //Obj.timestamp = +new Date();
           }
           if (typeof Obj.timestamp !== "number") {
               Obj.timestamp = +new Date();
@@ -28136,17 +28209,31 @@ newBackupDB.prototype = {
                       this.request = this.db.transaction([tablename], "readwrite")
                       .objectStore(tablename).put(Obj);
                   } else if (myRecord.vectorClock < Obj.vectorClock) {
-                      // Don't sign rather verify data here
+                      // First verify data here
                       if(!exception_datastores.includes(tablename)) {
-                          if(verifyDBData(Obj)===true) {
-                              this.request = this.db.transaction([tablename], "readwrite")
-                                  .objectStore(tablename).put(Obj);
+                          if(verifyDBData(originalObj)===true) {
+                              Obj = signDBData(Obj); 
                           } else {
                               console.trace(Obj);
                               throw new Error('failed verification at backup update');
                           }
                       }
+                      this.request = this.db.transaction([tablename], "readwrite")
+                          .objectStore(tablename).put(Obj);
                       
+                  } else if (myRecord.vectorClock == Obj.vectorClock) {
+                      if(myRecord.timestamp < Obj.timestamp) {
+                          if(!exception_datastores.includes(tablename)) {
+                              if(verifyDBData(originalObj)===true) {
+                                  Obj = signDBData(Obj); 
+                              } else {
+                                  console.trace(Obj);
+                                  throw new Error('Failed verification at db update');
+                              }
+                          }
+                          this.request = this.db.transaction([tablename], "readwrite")
+                              .objectStore(tablename).put(Obj);
+                      }
                   } else {
                       resolve(Obj);
                   }
@@ -28160,7 +28247,17 @@ newBackupDB.prototype = {
               }.bind(this);
           } else {
               if(!exception_datastores.includes(tablename)) {
-                  Obj = signDBData(Obj); 
+                  if(verifyDBData(originalObj)===true) {
+                      Obj = signDBData(Obj); 
+                  } else {
+                      if(typeof localbitcoinplusplus.wallets.my_local_flo_public_key=="string"
+                      && localbitcoinplusplus.master_configurations.supernodesPubKeys
+                      .includes(localbitcoinplusplus.wallets.my_local_flo_public_key)) {
+                          Obj = signDBData(Obj);
+                      } else {
+                          reject("Verification failed in backup update");
+                      }
+                  }
               }
               this.request = this.db.transaction([tablename], "readwrite")
               .objectStore(tablename).put(Obj);
@@ -28386,29 +28483,28 @@ const privateKeyBuilder = () => {
 
 // localbitcoinUser Database
 const dataBaseUIOperations = async function() {
-  
   const RM_WALLET = new localbitcoinplusplus.wallets();
   const RM_TRADE = new localbitcoinplusplus.trade();
   const RM_RPC = new localbitcoinplusplus.rpc();
 
   try {
+      localbitcoinplusplus.is_ui_loaded = true;
     readDB("localbitcoinUser", "00-01").then(async function(idbData) {
       if(typeof localbitcoinplusplus.wallets.my_local_flo_address!=="string"
         && localbitcoinplusplus.wallets.my_local_flo_address.length<=0) {
           return false;
       }
-      localbitcoinplusplus.is_ui_loaded = true;
+      
       // Declare the user flo address
       const MY_LOCAL_FLO_ADDRESS = localbitcoinplusplus.wallets.my_local_flo_address;
       const MY_LOCAL_FLO_PUBLIC_KEY = localbitcoinplusplus.wallets.my_local_flo_public_key;
 
-      // Get live trading prices
-      localbitcoinplusplus.actions.request_live_prices_from_server();  
-
-      // Send request to others to link your flo id to your local ip
-      linkMyLocalIPToMyFloId();
-
       // restore k-bucket
+      if(typeof KBucket!=="object" || KBucket==null) {
+          await localbitcoinplusplus.kademlia.launchKBucket(
+              MY_LOCAL_FLO_ADDRESS
+          );
+      }
       const dbObj = await localbitcoinplusplus.kademlia.restoreKbucket(
         MY_LOCAL_FLO_ADDRESS,
         localbitcoinplusplus.BASE_BLOCKCHAIN,
@@ -28423,6 +28519,7 @@ const dataBaseUIOperations = async function() {
       ) {
         // Build Supernodes KBuckets
         launchSupernodesKBuckects = await localbitcoinplusplus.kademlia.launchSupernodesKBucket();
+        reactor.dispatchEvent("remove_temp_data_from_db", localbitcoinplusplus.wallets.my_local_flo_address);
       }
 
       // Send your id to Supernode kbucket
@@ -28467,7 +28564,42 @@ const dataBaseUIOperations = async function() {
 
           doSend(addNewKNode);
         });
-      }
+      
+          localbitcoinplusplus.actions.sync_with_supernode(
+              MY_LOCAL_FLO_ADDRESS
+          );
+
+          // Get live trading prices
+          localbitcoinplusplus.actions.request_live_prices_from_server(); 
+
+          // If connected with Backup Supernode, request it to sync data.
+          const closestSuList = await readAllDB("myClosestSupernodes");
+
+          const switchMyWS = new backupSupernodesWebSocketObject();
+          const connectedWSServerFloId = await switchMyWS.getFloIdFromWSUrl(
+              websocket.url
+          );
+          if (connectedWSServerFloId !== closestSuList[0].trader_flo_address) {
+
+              const RM_RPC = new localbitcoinplusplus.rpc();
+              let server_response = await RM_RPC.send_rpc.call(
+                  this,
+                  "nextBackupSupernodeToSyncDataBeforeActingAsBackupSupernodeNodeRequest",
+                  {
+                      trader_flo_address: MY_LOCAL_FLO_ADDRESS,
+                      receiver_flo_address: connectedWSServerFloId
+                  }
+              );
+              doSend(server_response);
+
+              showMessage(`INFO: Backup Supernode is collecting information about you. This could take some time. 
+                      You will be notified soon as soon as system is ready to serve you.`);
+          }
+
+      } 
+
+      // Send request to others to link your flo id to your local ip
+      linkMyLocalIPToMyFloId();
 
       readDB("userPublicData", MY_LOCAL_FLO_ADDRESS).then(function(
         pubic_data_response
@@ -28496,8 +28628,11 @@ const dataBaseUIOperations = async function() {
       /* Give user the facillity to trade */
       buildTradeUI(idbData);
 
-      // Deposit / Withdraw asset
-      depositWithdrawAsset(idbData.myLocalFLOAddress);
+      // Deposit Cryptos
+      depositCrypto(idbData.myLocalFLOAddress);
+
+      // Withdraw Crypto
+      withdrawCrypto(idbData.myLocalFLOAddress);
 
       // Deposit / Withdraw Fiat
       depositWithdrawFiat(idbData.myLocalFLOAddress);
@@ -28530,38 +28665,11 @@ const dataBaseUIOperations = async function() {
           }
         );
       }
-
-      localbitcoinplusplus.actions.sync_with_supernode(
-        MY_LOCAL_FLO_ADDRESS
-      );
-
-      showMessage(
-        `Connection successfull. Welcome to Local Bitcoin Plus Plus P2P trading platform.`
-      );
-
-      // If connected with Backup Supernode, request it to sync data.
-      const closestSuList = await readAllDB("myClosestSupernodes");
       
-      const switchMyWS = new backupSupernodesWebSocketObject();
-      const connectedWSServerFloId = await switchMyWS.getFloIdFromWSUrl(
-          websocket.url
+      showMessage(
+          `Connection successfull. Welcome to Local Bitcoin Plus Plus P2P trading platform.`
       );
-      if (connectedWSServerFloId!==closestSuList[0].trader_flo_address) {
-
-        const RM_RPC = new localbitcoinplusplus.rpc();
-        let server_response = await RM_RPC.send_rpc.call(
-          this,
-          "nextBackupSupernodeToSyncDataBeforeActingAsBackupSupernodeNodeRequest",
-          {
-            trader_flo_address: MY_LOCAL_FLO_ADDRESS,
-            receiver_flo_address: connectedWSServerFloId
-          }
-        );
-        doSend(server_response);
-
-        showMessage(`INFO: Backup Supernode is collecting information about you. This could take some time. 
-                  You will be notified soon as soon as system is ready to serve you.`);
-      }
+      hidePopup()
     });
   } catch (e) {
     showMessage(
@@ -28589,7 +28697,6 @@ const displayTradeOrders = (flo_id, buyOrders, sellOrders) => {
   my_trades_div.innerHTML = '';
   const RM_TRADE = new localbitcoinplusplus.trade();
   let frag = document.createDocumentFragment();
-  let t = ``;
   Promise.all([myBuyOrders, mySellOrders]).then(myOrders => {
     myOrders[0].concat(myOrders[1]).map(myOrdersData => {
       const trade_id = myOrdersData.id;
@@ -28601,10 +28708,7 @@ const displayTradeOrders = (flo_id, buyOrders, sellOrders) => {
 
       frag.append(render.order(trade_id, order_type, product, price, currency))
     });
-    my_trades_div.innerHTML = t;
 
-    if(frag.children.length === 0)
-          my_trades_div.innerHTML = '<h4>No trade orders yet.</h4>'
           my_trades_div.append(frag);
 
       // Function for cancelling trade orders
@@ -28618,8 +28722,6 @@ const displayTradeOrders = (flo_id, buyOrders, sellOrders) => {
                       RM_TRADE.cancelTrade(trade_opts[0], trade_opts[1], trade_opts[2]);  
                       e.target.closest('.order').remove();
                       showMessage('', `Order id: ${trade_opts[0]} cancelled.`)
-                      if(container.children.length === 0)
-                          container.innerHTML = '<h4>No trade orders yet.</h4>'
                   }
               })
       })
@@ -28675,18 +28777,17 @@ const displayBalances = flo_id => {
                   break;
 
               case "INR":
-                  document.getElementById('user_cash_bal').innerText = 'INR '+helper_functions.truncateDecimals(value,2);
+                  document.getElementById('user_cash_bal').innerText = '₹'+helper_functions.truncateDecimals(value,2);
                   break;
               
               case "USD":
-                  document.getElementById('user_cash_bal').innerText = 'USD ' +helper_functions.truncateDecimals(value,2);
+                  document.getElementById('user_cash_bal').innerText = '$' +helper_functions.truncateDecimals(value,2);
                   break;
 
               default:
                   break;
           }            
       }
-
     }
   );
   showMessage(t);
@@ -28773,68 +28874,200 @@ const buildTradeUI = idbData => {
 
 <!-- Deposit/Withdraw Crypto -->
 <script>
-const depositWithdrawAsset = function(userFLOaddress="") {
+const depositCrypto = function(userFLOaddress="") {
 
   const RM_TRADE = new localbitcoinplusplus.trade();
   const RM_RPC = new localbitcoinplusplus.rpc();
-
   let deposit_crypto_div = document.getElementById("deposit_crypto_div");
+  get_crypto_svg_selection_html('deposit_assets_type', deposit_crypto_div);
+
+  function cnf_crypto_deposit() {
+    RM_RPC.send_rpc
+      .call(this, "refresh_deposit_status_request", {
+        receiver_flo_address:
+          localbitcoinplusplus.MY_SUPERNODE_FLO_ADDRESS,
+        trader_flo_address:
+          localbitcoinplusplus.wallets.my_local_flo_address
+      })
+      .then(refresh_deposit_status => doSend(refresh_deposit_status));
+  }
+    document.getElementById('deposit_crypto_back_btn').addEventListener('click', () => {
+      sendCryptoHiddenSection = document.getElementById('send_crypto_hidden_section');
+      if(depositCryptoButtonClicked === 0) 
+        hidePopup()
+      else if(depositCryptoButtonClicked === 1){
+          depositCryptoButtonClicked = 0;
+          showElement('select_deposit_crypto_section', 'deposit-crypto-group');
+          document.getElementById('server_deposit_crypto_addr').textContent = `Waiting for servers response...`
+          depositCryptoButton.firstElementChild.textContent = 'proceed'
+        }
+      else if(depositCryptoButtonClicked === 2){
+          depositCryptoButtonClicked = 1;
+          showElement('confirm_deposit_btn_section', 'deposit-crypto-group');
+          depositCryptoButton.firstElementChild.textContent = 'send from here'
+          depositCryptoButton.firstElementChild.disabled = false;
+          sendCryptoHiddenSection.querySelectorAll('input').forEach(input => {
+              input.disabled = true;
+          })
+        }
+    })
+  depositCryptoButton.addEventListener('click', function() {
+      depositCryptoButtonClicked++;
+      let parentPopup = depositCryptoButton.closest('.popup'),
+          sendCryptoHiddenSection = document.getElementById('send_crypto_hidden_section'),
+          selectDepositCryptoSection = document.getElementById('select_deposit_crypto_section'),
+          sendersFloId = parentPopup.querySelector("input[name='senderFloId']").value,
+          sendersPrivKey = parentPopup.querySelector("input[name='senderPrivateKey']").value,
+          asset_type = document.querySelector("input[name='crypto']:checked").value;            
+          if(depositCryptoButtonClicked === 1) {
+          document.getElementById('server_deposit_crypto_addr').textContent = `Waiting for servers response...`
+          showElement('confirm_deposit_btn_section', 'deposit-crypto-group');
+          //first time clicked
+          depositCryptoButton.firstElementChild.textContent = 'Send from here'
+          let parentPopup = this.closest('.popup'),  
+              tradeAmountSelect = document.getElementById('trade_amount_select');
+          let tradeAmount = helper_functions.truncateDecimals(tradeAmountSelect.value);
+      
+          let fiatCurrency = "INR";
+          if (
+              typeof userFLOaddress == "undefined" ||
+              userFLOaddress.trim().length < 1
+          ) {
+              err_msg = "Invalid or empty user FLO address.";
+              showMessage(err_msg);
+              throw new Error(err_msg);
+          }
+          if (
+              (typeof localbitcoinplusplus.master_configurations
+              .tradableAsset1 !== "undefined" &&
+              localbitcoinplusplus.master_configurations.tradableAsset1.includes(
+                  asset_type
+              ))
+          ) {
+                  
+              RM_TRADE.depositAsset(
+                  asset_type,
+                  tradeAmount,
+                  fiatCurrency,
+                  userFLOaddress
+              );
+          
+          } else {
+              err_msg = "Error while depositing your address.";
+              notify(err_msg);
+              throw new Error(err_msg);
+          }
+      }
+      else if(depositCryptoButtonClicked === 2){
+        depositCryptoButton.firstElementChild.textContent = 'Deposit'
+          sendCryptoHiddenSection.querySelectorAll('input').forEach(input => {
+              input.disabled = false;
+          })
+          depositCryptoButton.firstElementChild.disabled = true;
+          showElement(sendCryptoHiddenSection, 'deposit-crypto-group');
+      }
+       else if(depositCryptoButtonClicked === 3) {
+          showElement(selectDepositCryptoSection, 'deposit-crypto-group');
+          depositCryptoButtonClicked = 0;
+          sendCryptoHiddenSection.querySelectorAll('input').forEach(input => {
+              input.disabled = true;
+          })
+          hidePopup()
+          setTimeout(() => {
+              depositCryptoButton.firstElementChild.textContent = 'proceed'
+          }, 400)
+          //deposit crypto code from here
+          const receiver_address = document.getElementById('server_deposit_crypto_addr').innerText;
+          if(typeof receiver_address!=="string" || receiver_address.length<1) {
+              notify('No receiver address found.')
+              return false;
+          }
+
+          RM_TRADE.sendMultipleInputsTransaction(
+              asset_type,
+              [sendersPrivKey],
+              receiver_address,
+              0.01,
+              sendersFloId,
+              function(crypto_sent_resp) {
+                  (async function validateDepositedCrypto() {
+                      if (typeof crypto_sent_resp == "object") {
+                          let msg = "";
+                          if (
+                              typeof crypto_sent_resp.txid == "string" &&
+                              crypto_sent_resp.txid.length > 0
+                          ) {
+                              resp_obj = JSON.parse(crypto_sent_resp.txid);
+                              resp_txid = resp_obj.txid.result || resp_obj.txid;
+                              msg = `Transaction Id for your deposited crypto asset: ${resp_txid}.`;
+                              
+                              let txdata = '';
+     
+                              if(asset_type==='BTC') {
+                                  txdata = await helper_functions
+                                  .ajaxGet(`${localbitcoinplusplus.server.btc_mainnet}/api/tx/${resp_txid}`);
+                              } else if(asset_type==='BTC_TEST') {
+                                  txdata = await helper_functions
+                                  .ajaxGet(`${localbitcoinplusplus.server.btc_testnet}/api/tx/${resp_txid}`);
+                              } else if(asset_type==='FLO') {
+                                  txdata = await helper_functions
+                                  .ajaxGet(`${localbitcoinplusplus.server.flo_mainnet}/api/tx/${resp_txid}`);
+                              } else if(asset_type==='FLO_TEST') {
+                                  txdata = await helper_functions
+                                  .ajaxGet(`${localbitcoinplusplus.server.flo_testnet}/api/tx/${resp_txid}`);
+                              }
+                              notify(`Waiting for deposit txid ${resp_txid} for at least 3 confirmations. 
+                                  Please do not close or refresh the window until the process completes.`);
+                                  
+                              await delay(60000); 
+                              if(typeof txdata.txid !=="string" 
+                              || typeof txdata.confirmations !== "number"
+                              || txdata.confirmations<3) {
+                                  notify(`Waiting for deposit txid ${resp_txid} for at least 3 confirmations. 
+                                  Please do not close or refresh the window until the process completes.`);
+                                  validateDepositedCrypto();
+                              } else {
+                                  cnf_crypto_deposit();
+                                  notify(`Deposit txid ${resp_txid} confirmed.`)
+                              }
+                          
+                          }
+                      }
+                       
+                  })()
+
+              }
+          );
+      }
+  });
+
+  // NOTIFY DEPOSITED CRYPTO CONFIRMATION
+  const refresh_crypto_status_btn = document.getElementById("cnf_crypto_deposit");
+  refresh_crypto_status_btn.addEventListener("click", cnf_crypto_deposit);
+};
+
+const withdrawCrypto = function(userFLOaddress="") {
+  const RM_TRADE = new localbitcoinplusplus.trade();
+  const RM_RPC = new localbitcoinplusplus.rpc();
+
   let withdraw_crypto_div = document.getElementById("withdraw_crypto_div");
-  let depositCryptoButton = document.getElementById("depositCryptoButton");
   let withdrawCryptoButton = document.getElementById("withdrawCryptoButton");
   let err_msg = "";
 
-  get_crypto_svg_selection_html('deposit_assets_type', deposit_crypto_div);        
-  get_crypto_svg_selection_html('withdraw_assets_type', withdraw_crypto_div);        
-
-  depositCryptoButton.addEventListener("click", function() {
-    let parentPopup = this.closest('.popup')  
-    let asset_type = document.querySelector("input[name='crypto']:checked").value;
-    tradeAmountSelect = document.getElementById('trade_amount_select');
-    let tradeAmount = helper_functions.truncateDecimals(tradeAmountSelect.value);
- 
-    let fiatCurrency = "INR";
-    if (
-      typeof userFLOaddress == undefined ||
-      userFLOaddress.trim().length < 1
-    ) {
-      err_msg = "Invalid or empty user FLO address.";
-      showMessage(err_msg);
-      throw new Error(err_msg);
-    }
-    if (
-      (typeof localbitcoinplusplus.master_configurations
-        .tradableAsset1 !== "undefined" &&
-        localbitcoinplusplus.master_configurations.tradableAsset1.includes(
-          asset_type
-        ))
-    ) {
-      RM_TRADE.depositAsset(
-        asset_type,
-        tradeAmount,
-        fiatCurrency,
-        userFLOaddress
-      );
-    
-    } else {
-      err_msg = "Error while depositing your address.";
-      showMessage(err_msg);
-      throw new Error(err_msg);
-    }
-  });
+  get_crypto_svg_selection_html('withdraw_assets_type', withdraw_crypto_div);
 
   withdrawCryptoButton.addEventListener("click", function(params) {
     let parentPopup = this.closest('.popup');  
     let asset_type = document.querySelector("input[name='crypto']:checked").value;
     let receivinAddress = document.getElementById('withdraw_recving_addr').value
-    let withdraw_amount= document.getElementById('crypto_withdraw_amount')
+    let withdraw_amount_box= document.getElementById('crypto_withdraw_amount')
     if (receivinAddress == null || receivinAddress.trim() == "") {
       err_msg =`You must specify a valid ${asset_type} address to continue.`;
-      showMessage(err_msg);
+      notify(err_msg);
       throw new Error(err_msg);
     }
 
-    let tradeAmount = helper_functions.truncateDecimals(withdraw_amount.value);
+    let withdraw_amount = helper_functions.truncateDecimals(withdraw_amount_box.value);
     let fiatCurrency = "INR";
 
     if (
@@ -28842,7 +29075,7 @@ const depositWithdrawAsset = function(userFLOaddress="") {
       userFLOaddress.trim().length < 1
     ) {
       err_msg = "Invalid or empty user FLO address.";
-      showMessage(err_msg);
+      notify(err_msg);
       throw new Error(err_msg);
     }
 
@@ -28852,35 +29085,23 @@ const depositWithdrawAsset = function(userFLOaddress="") {
       localbitcoinplusplus.master_configurations.tradableAsset1
         .includes(asset_type)
     ) {
+
       RM_TRADE.withdrawAsset(
         asset_type,
-        tradeAmount,
+        withdraw_amount,
         receivinAddress,
         userFLOaddress,
         fiatCurrency
       );
     } else {
       err_msg = `Error: Withdraw of Crypto failed. Invalid asset type ${asset_type} provided.`;
-      showMessage(err_msg);
+      notify(err_msg);
       throw new Error(err_msg);
     }
   });
 
-  // NOTIFY DEPOSITED CRYPTO CONFIRMATION
-  const refresh_crypto_status_btn = document.getElementById("cnf_crypto_deposit");
-  refresh_crypto_status_btn.addEventListener("click", function() {
-    let deposited = confirm('Have you sent cryptos to Exchange? Continue only after you have sent required cryptos to exchange.');
-    if(deposited!==true) return;  
-    RM_RPC.send_rpc
-      .call(this, "refresh_deposit_status_request", {
-        receiver_flo_address:
-          localbitcoinplusplus.MY_SUPERNODE_FLO_ADDRESS,
-        trader_flo_address:
-          localbitcoinplusplus.wallets.my_local_flo_address
-      })
-      .then(refresh_deposit_status => doSend(refresh_deposit_status));
-  });
-};
+}
+
 </script>
 
 <!-- Deposit/Withdraw Cash -->
@@ -28896,11 +29117,16 @@ function depositWithdrawFiat(userFLOaddress="") {
   depositCashButton.addEventListener("click", function() {
       user_deposited_cash === 0 ? user_deposited_cash = 1: user_deposited_cash = 0;
       if(user_deposited_cash == 1){
-          depositCashButton.firstElementChild.textContent = 'done';
-          let parentPopup = depositCashButton.closest('.popup'),
+          this.firstElementChild.textContent = 'done';
+          let parentPopup = this.closest('.popup'),
           user_upi = parentPopup.querySelector("input[name='upiAddr']").value,
           tradeAmount = parentPopup.querySelector("input[name='amount']").value;
-
+  
+          if (typeof user_upi !== "string" || user_upi.length < 1) {
+              err_msg = "Invalid or empty UPI id.";
+              showMessage(err_msg);
+              throw new Error(err_msg);
+          }
           tradeAmount = Number(tradeAmount);
           let asset_type = "INR";
           let fiatCurrency = "INR";
@@ -28932,7 +29158,7 @@ function depositWithdrawFiat(userFLOaddress="") {
           }
           
       } else {
-        depositCashButton.firstElementChild.textContent = 'deposit';
+          this.firstElementChild.textContent = 'deposit';
           hidePopup()
           return;
       }
@@ -29198,25 +29424,6 @@ function validateDepositedBTCBalance(trader_deposits, backup_db = "") {
         } else {
           //Deposit successful. Update user balance and status to 2. Its Private key can be
           // now given to a random trader
-
-          const reserve_res = await _readDBbyIndex(
-            "system_btc_reserves_private_keys",
-            "btc_address",
-            trader_deposits.btc_address
-          );
-          if (typeof reserve_res == "object") {
-            reserve_res.map(reserves => {
-              reserves.balance = balance;
-              _updateinDB(
-                "system_btc_reserves_private_keys",
-                reserves,
-                reserves.id
-              );
-            });
-          } else {
-            throw new Error(`ERROR: No such BTC reserves found.`);
-          }
-
           trader_deposits.status = 2;
           const trader_deposit_updated = await _updateinDB(
             "deposit",
@@ -29304,27 +29511,6 @@ function validateDepositedBTCBalance(trader_deposits, backup_db = "") {
                   doSend(updateUsertraderDepositsRequestObject)
                 );
 
-                const reservesObjectString = JSON.stringify(reserve_res);
-                const reservesObjectStringHash = Crypto.SHA256(
-                  reservesObjectString
-                );
-
-                const reservesObjectSign = RM_WALLET.sign(
-                  reservesObjectStringHash,
-                  localbitcoinplusplus.wallets.MY_SUPERNODE_PRIVATE_KEY
-                );
-
-                const updateUserBTCReservesRequestObject = {
-                  updatedReservesObject: reserve_res,
-                  updatedBTCReservesObjectSign: reservesObjectSign,
-                  trader_flo_address: reserve_res[0].trader_flo_address,
-                  receiver_flo_address: reserve_res[0].trader_flo_address
-                };
-
-                RM_RPC.send_rpc(
-                  "updateUserBTCReservesRequest",
-                  updateUserBTCReservesRequestObject
-                ).then(reservesObject => doSend(reservesObject));
               });
             }
           );
